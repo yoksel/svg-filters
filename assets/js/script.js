@@ -3,6 +3,9 @@ function list() {
     var listElem = doc.querySelector(".list-filters");
     var svgDefsElem = doc.querySelector(".defs--filters");
     var stylesElem = doc.querySelector(".style-changing");
+    var textareaElem =doc.querySelector(".code__textarea");
+
+    var filtersCode = {};
 
     this.fillTemplate = function( templateId, jsonData){
         var template = doc.querySelector(templateId);
@@ -16,11 +19,14 @@ function list() {
 
         for ( var i = 0; i < filtersList.length; i++){
             var filterItem = filtersList[i];
-            finalHTML +=this.fillTemplate(filterItem.template, filterItem.params);
+            var filterCode = this.fillTemplate(filterItem.template, filterItem.params);
+            filtersCode[filterItem.id] = filterCode;
+            finalHTML += filterCode;
             }
 
         svgDefsElem.innerHTML += finalHTML;
-        out(svgDefsElem.innerHTML);
+        //out(svgDefsElem.innerHTML);
+        out(filtersCode);
     }
 
     this.print = function() {
@@ -30,9 +36,15 @@ function list() {
         this.addLife();
     }
 
-    this.applyFilter = function(filtrId){
-        stylesElem.innerHTML = ".preview__use { filter: url(#" + filtrId + ");border: 1px solid red;}";
+    this.applyFilter = function(filterId){
+        stylesElem.innerHTML = ".preview__use { filter: url(#" + filterId + ");border: 1px solid red;}";
     }
+
+    this.printCode = function(filterId){
+        textareaElem.value = filtersCode[filterId];
+    }
+
+
 
     this.addLife = function() {
         var listElem__items = listElem.querySelectorAll(".list-filters__item");
@@ -44,9 +56,10 @@ function list() {
             listElem__items[i].onclick = function(){
                 var filterId = this.getAttribute("data-filter-id");
                 parent.applyFilter(filterId);
+                parent.printCode(filterId);
             }
         }
-        out(listElem__items);
+        //out(listElem__items);
     }
 
 

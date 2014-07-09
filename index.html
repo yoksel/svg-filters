@@ -16,37 +16,37 @@
         {{/filters}}
     </script>
 
-    <script id="t-filter--blur" type="x-tmpl-mustache">
-        <filter id="{{id}}"
-                filterUnits="{{filterUnits}}"
-                x="{{x}}"
-                y="{{y}}"
-                width="{{width}}"
-                height="{{height}}">
-            <feGaussianBlur in="SourceGraphic"
-                stdDeviation="{{stdDeviation}}"
-                result="blur"/>
-        </filter>
-    </script>
+<script id="t-filter--blur" type="x-tmpl-mustache">
+<filter id="{{id}}"
+        filterUnits="{{filterUnits}}"
+        x="{{x}}"
+        y="{{y}}"
+        width="{{width}}"
+        height="{{height}}">
+    <feGaussianBlur in="SourceGraphic"
+        stdDeviation="{{stdDeviation}}"
+        result="blur"/>
+</filter>
+</script>
 
-    <script id="t-filter--shadow">
-        <filter id="{{id}}"
-                filterUnits="{{filterUnits}}"
-                x="{{x}}"
-                y="{{y}}"
-                width="{{width}}"
-                height="{{height}}">
-            <feGaussianBlur in="SourceAlpha"
-                    stdDeviation="{{stdDeviation}}" result="blur"/>
-            <feOffset in="blur" dx="0" dy="{{dy}}" result="offsetBlr" />
-            <feFlood flood-color="{{flood-color}}"/>
-            <feComposite operator="in" in2="offsetBlr" result="colBlur"/>
-            <feMerge>
-              <feMergeNode in="colBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-      </script>
+<script id="t-filter--shadow">
+<filter id="{{id}}"
+        filterUnits="{{filterUnits}}"
+        x="{{x}}"
+        y="{{y}}"
+        width="{{width}}"
+        height="{{height}}">
+    <feGaussianBlur in="SourceAlpha"
+            stdDeviation="{{stdDeviation}}" result="blur"/>
+    <feOffset in="blur" dx="0" dy="{{dy}}" result="offsetBlr" />
+    <feFlood flood-color="{{flood-color}}"/>
+    <feComposite operator="in" in2="offsetBlr" result="colBlur"/>
+    <feMerge>
+      <feMergeNode in="colBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</script>
 
     <svg class="svg-defs">
         <defs class="defs">
