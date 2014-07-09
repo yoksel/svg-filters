@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>SVG-filters</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style class="style-changing">
+    </style>
+</head>
+<body>
+    <script id="template--list-item" type="x-tmpl-mustache">
+        {{#filters}}
+            <li class="list-filters__item" data-filter-id="{{id}}">
+                {{name}}
+            </li>
+        {{/filters}}
+    </script>
+
+    <script id="t-filter--blur" type="x-tmpl-mustache">
+        <filter id="{{id}}"
+                filterUnits="{{filterUnits}}"
+                x="{{x}}"
+                y="{{y}}"
+                width="{{width}}"
+                height="{{height}}">
+            <feGaussianBlur in="SourceGraphic"
+                stdDeviation="{{stdDeviation}}"
+                result="blur"/>
+        </filter>
+    </script>
+
+    <svg class="svg-defs">
+        <defs class="defs">
+            <image id="image-default"
+            xlink:href="http://img-fotki.yandex.ru/get/9746/5091629.a0/0_83326_aebc4487_orig" width="100%" height="100%"/>
+
+            <g id="text-default">
+                <text
+                    class="svg-text-default"
+                    dy=".4em" text-anchor="middle"
+                    x="50%" y="50%"
+                    >Text</text>
+             </g>
+        </defs>
+        <defs class="defs defs--filters"></defs>
+    </svg>
+
+    <div class="l-wrapper">
+
+        <div class="column column--left">
+            <div class="preview">
+                <div class="column column--left">
+
+                    <svg class="preview__svg">
+                        <use xlink:href="#image-default"
+                                class="preview__use"/>
+                    </svg>
+
+                </div>
+                <div class="column column--right">
+
+                    <svg class="preview__svg">
+                        <use xlink:href="#text-default"
+                                class="preview__use"/>
+                    </svg>
+
+                </div>
+            </div>
+            <div class="code">
+                <textarea class="code__textarea">
+
+                </textarea>
+            </div>
+        </div>
+        <div class="column column--right">
+            <ul class="list-filters"></ul>
+
+        </div>
+
+    </div>
+    <script src="./assets/js/data.json"></script>
+    <script src="./assets/js/mustache.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="//localhost:35731/livereload.js"></script>
+</body>
+</html>

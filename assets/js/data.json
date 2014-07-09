@@ -1,0 +1,81 @@
+var listItems = {
+    "filters": [
+        {
+            "id": "blur",
+            "name": "Blur (размытие)",
+            "template": "#t-filter--blur",
+            "params":  {
+                "id": "blur",
+                "x": 0,
+                "y": 0,
+                "width": 500,
+                "height": 500,
+                "stdDeviation": 4,
+                "filterUnits": "userSpaceOnUse"
+            }
+        },
+        {
+            "id": "blur2",
+            "name": "Blur (размытие)",
+            "template": "#t-filter--blur",
+            "params":  {
+                "id": "blur2",
+                "x": 0,
+                "y": 0,
+                "width": 1500,
+                "height": 1000,
+                "stdDeviation": 20,
+                "filterUnits": "userSpaceOnUse"
+            }
+        }
+    ]
+};
+
+
+
+var items = {
+    "props": [{
+        "prop-name": "gradients",
+        "browsers": [{
+            "browser-id": "firefox",
+            "browser-name": "Firefox",
+            "bug-desc": "не работает <code>spreadMethod: reflect</code>"
+            }, {
+                "browser-id": "safari",
+                "browser-name": "Safari",
+                "bug-desc": "не работает <code>spreadMethod: reflect</code> и <code>spreadMethod: repeat</code>"
+            }]
+        }, {
+        "prop-name": "animation",
+        "browsers": [{
+            "browser-id": "ie-9-11",
+            "browser-name": "IE9-11",
+            "bug-desc": "не поддерживается SMIL и CSS-анимация для SVG-элементов"
+        }, {
+            "browser-id": "firefox",
+            "browser-name": "firefox",
+            "bug-desc": "не работает анимация в переиспользуемх элементах"
+            }]
+        }, {
+        "prop-name": "filters",
+        "browsers": [{
+            "browser-id": "ie-9",
+            "browser-name": "IE9",
+            "bug-desc": "не поддерживаются"
+        }, ]
+    }, {
+        "prop-name": "SVG в HTML",
+        "browsers": [{
+            "browser-id": "opera-old opera-min",
+            "browser-name": "Opera Mini",
+            "bug-desc": "не поддерживается"
+        }, ]
+    }, {
+        "prop-name": "SVG в background",
+        "browsers": [{
+            "browser-id": "opera-old opera-12",
+            "browser-name": "Opera 12",
+            "bug-desc": "размывается при растягивании"
+        }, ]
+    }]
+};

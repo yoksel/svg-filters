@@ -1,0 +1,85 @@
+@import '_mixins';
+@import '_fonts';
+/*@import '_browsers';*/
+
+/* Common
+--------------------- */
+
+CODE {
+    display: inline-block;
+    padding: 0 3px;
+    background: palegoldenrod;
+    border-radius: 4px;
+    text-shadow: 1px 1px white;
+    font-family: Consolas, Monaco, Lucida Console, monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: darkred;
+    }
+
+IMG {
+    max-width: 100%;
+    height: auto;
+    }
+
+/* SVG
+--------------------- */
+.svg-defs {
+    position: absolute;
+    left: -1000px;
+    visibility: hidden;
+    }
+    .svg-text-default {
+        font:  5em/1 Georgia;
+        font-size:  10vmin;
+        }
+/* Layout
+--------------------- */
+.column {
+    width: 49%;
+    border: 1px dashed #DDD;
+    @include clear;
+    &--left {
+        float: left;
+        }
+    &--right {
+        float: right;
+        }
+    }
+
+.l-wrapper {
+    position: relative;
+    min-width: 400px;
+    max-width: 1200px;
+    margin: 50px auto;
+    border: 1px solid #DDD;
+    font: 16px/1.5 'Open Sans',sans-serif;
+    @include clear;
+    }
+    .preview {
+        border: 1px solid green;
+        @include clear;
+        @include margb;
+        &__svg {
+            display: block;
+            width: 100%;
+            height: 300px;
+            }
+         &__use {
+            stroke: red;
+            }
+        }
+
+
+    .code {
+        padding: 1em;
+        background: #DDD;
+        &__textarea {
+            display: block;
+            width: 100%;
+            height: 200px;
+            border:  0;
+            box-sizing: border-box;
+            }
+        }
+

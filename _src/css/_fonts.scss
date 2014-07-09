@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Ubuntu Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url(../../assets/fonts/Ubuntu-Condensed/uc.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Russo One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Russo One'), local('RussoOne-Regular'), url(../../assets/fonts/Russo-One/font.woff) format('woff');
+}
+
+$font-headers: "Ubuntu Condensed",sans-serif;
+
+.slide H1,
+.slide H2,
+.slide H3,
+.slide H4,
+.slide H5 {
+    /*position: relative;*/
+    z-index: 2;
+    font-family: "Ubuntu Condensed",sans-serif;
+    line-height: 1;
+    font-weight: normal;
+}
+
+$map-headers: (h2: 2.4, h3: 2.3, h4: 1.7, h5: 1.2);
+
+@mixin headers {
+    @each $header in map-keys($map-headers) {/* map-keys($map-headers) */
+        $header-fsize: $base-size * map-get($map-headers, $header);
+        .slide #{$header} {
+            margin: 0 0 $header-fsize/1.5;
+            font-size: #{$header-fsize};
+            }
+    }
+}
+
+@include headers;
+
+.slide H2 + H3 {
+    margin-top: -30px;
+    color: #BBB;
+    }
+
+
+.slide .free-fly {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font: 90px/1 'Ubuntu Condensed', sans-serif;
+    transform: translateY(-50%);
+
+    &--small {
+        font-size: 85px
+        }
+
+    .tooltip {
+        position: absolute;
+        left: 0;
+        bottom: -1.9em;
+        width: 100%;
+        font-size: 30px;
+        color: #555
+        }
+    }
+
+.sign {
+    padding: 0 .5em;
+    vertical-align: middle;
+    font-size: 3em;
+    }

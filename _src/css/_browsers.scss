@@ -1,0 +1,141 @@
+.list--browsers-inside {
+  LI {
+    margin-bottom: 50px;
+    }
+  }
+
+.browsers {
+  display: inline-block;
+  text-indent: 0;
+  DT {
+    display: inline-block;
+    width: 265px;
+    margin-right: 40px;
+  }
+}
+
+.list--problems {
+  LI {
+    margin-bottom: 30px;
+    }
+  }
+
+.list--support-stacks {
+  DT {
+    width: 325px;
+    vertical-align: top;
+    }
+}
+
+.list--cssmasks {
+  DL {
+    vertical-align: top;
+  }
+  DT {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+
+$browser-size: 64px;
+
+.browser {
+  position: relative;
+  display: inline-block;
+  width: $browser-size;
+  height: $browser-size;
+  margin-right: 20px;
+  background: url(../../assets/img/sprite-browsers-64.png) 0 0 no-repeat;
+  vertical-align: middle;
+  &:after {
+    display: inline-block;
+    margin: -.5em 0 0;
+    padding: 0 5px 0 3.3em;
+    vertical-align: top;
+    font-size: .75em;
+    line-height: 1.4;
+    font-weight: bold;
+    white-space: nowrap;
+    }
+  }
+  .list--support-stacks .browser {
+    margin-right: 11px;
+    }
+  .no-support {
+    opacity: .2;
+    }
+
+.chrome {
+  background-position: 0 0;
+  }
+.firefox {
+  background-position: 0 -#{$browser-size};
+  }
+.ie-8 {
+  background-position: 0 -#{$browser-size*2};
+  &:after {
+    content: "8";
+    padding-left: 3.7em;
+
+    }
+  }
+.ie-9-11 {
+  background-position: 0 -#{$browser-size*3};
+  &:after {
+    content: "9-11";
+    padding-left: 3.7em;
+    }
+  }
+.ie-9 {
+  background-position: 0 -#{$browser-size*3};
+  &:after {
+    content: "9+";
+    padding-left: 3.7em;
+    }
+  }
+.opera-old {
+  background-position: 0 -#{$browser-size*4};
+  }
+.opera-12-mb-min {
+  &:after {
+    content: "12, Mobile, Mini";
+    }
+}
+.opera-12 {
+  &:after {
+    content: "12";
+    }
+  }
+.opera-min {
+  &:after {
+    content: "Mini";
+    }
+  }
+.opera-mob {
+  margin-right: 50px;
+  &:after {
+    content: "Mobile";
+    }
+  }
+.opera-15 {
+  background-position: 0 -#{$browser-size*5};
+  &:after {
+    content: "15+";
+    }
+  }
+.safari {
+  background-position: 0 -#{$browser-size*6};
+  }
+
+/*.ie8:before {
+  background-position: -90px 0;
+  }*/
+/*
+.opera-mob:before {
+  background-position: -150px 0;
+  }
+.opera-mini:before {
+  background-position: -150px 0;
+  }*/
