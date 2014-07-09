@@ -31,8 +31,6 @@ function list() {
     }
 
     this.applyFilter = function(filtrId){
-        out("this.applyFilter");
-        out(filtrId);
         stylesElem.innerHTML = ".preview__use { filter: url(#" + filtrId + ");border: 1px solid red;}";
     }
 
@@ -45,8 +43,6 @@ function list() {
         for( var i = 0; i < listElem__items.length; i++ ){
             listElem__items[i].onclick = function(){
                 var filterId = this.getAttribute("data-filter-id");
-                out("Hi!");
-                //out(this);
                 parent.applyFilter(filterId);
             }
         }

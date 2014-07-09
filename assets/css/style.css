@@ -146,7 +146,6 @@ IMG {
 }
 
 .preview {
-  border: 1px solid green;
   margin-bottom: 1em;
 }
 .preview:after {
@@ -158,9 +157,6 @@ IMG {
   display: block;
   width: 100%;
   height: 300px;
-}
-.preview__use {
-  stroke: red;
 }
 
 .code {

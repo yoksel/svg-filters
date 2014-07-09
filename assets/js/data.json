@@ -15,17 +15,19 @@ var listItems = {
             }
         },
         {
-            "id": "blur2",
-            "name": "Blur (размытие)",
-            "template": "#t-filter--blur",
+            "id": "shadow",
+            "name": "Shadow (тень)",
+            "template": "#t-filter--shadow",
             "params":  {
-                "id": "blur2",
+                "id": "shadow",
                 "x": 0,
                 "y": 0,
                 "width": 1500,
                 "height": 1000,
-                "stdDeviation": 20,
-                "filterUnits": "userSpaceOnUse"
+                "stdDeviation": 10,
+                "filterUnits": "userSpaceOnUse",
+                "dy": 4,
+                "flood-color": "rgba(0,0,0,.7)"
             }
         }
     ]
