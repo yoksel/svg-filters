@@ -8,16 +8,21 @@
     </style>
 </head>
 <body>
-    <script id="template--list-item" type="x-tmpl-mustache">
-        {{#filters}}
-            <li class="list-filters__item" data-filter-id="{{id}}">
-                {{name}}
-            </li>
-        {{/filters}}
-    </script>
+<script id="t-list-item" type="x-tmpl-mustache">
+    {{#filters}}
+        <li class="list-filters__item" data-filter-id="{{id}}">
+            <div class="filter-name">{{name}}</div>
+        </li>
+    {{/filters}}
+</script>
 
-<script id="t-filter--blur" type="x-tmpl-mustache">
-<filter id="{{id}}"
+<script id="t-text-field" type="x-tmpl-mustache">
+    <div class="{{itemClass}}">
+        {{name}} <input type="number" data-prop="{{name}}" data-filter-id="{{filterId}}" class="{{inputClass}}" value="{{value}}"/>
+   </div>
+</script>
+
+<script id="t-filter--blur" type="x-tmpl-mustache"><filter id="{{id}}"
         filterUnits="{{filterUnits}}"
         x="{{x}}"
         y="{{y}}"
@@ -29,8 +34,7 @@
 </filter>
 </script>
 
-<script id="t-filter--shadow">
-<filter id="{{id}}"
+<script id="t-filter--shadow" type="x-tmpl-mustache"><filter id="{{id}}"
         filterUnits="{{filterUnits}}"
         x="{{x}}"
         y="{{y}}"
@@ -45,8 +49,7 @@
       <feMergeNode in="colBlur"/>
       <feMergeNode in="SourceGraphic"/>
     </feMerge>
-  </filter>
-</script>
+  </filter></script>
 
     <svg class="svg-defs">
         <defs class="defs">

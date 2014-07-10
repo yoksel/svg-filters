@@ -1,13 +1,13 @@
 @font-face {
-  font-weight: 400;
-  font-style: normal;
   font-family: 'Ubuntu Condensed';
+  font-style: normal;
+  font-weight: 400;
   src: local("Ubuntu Condensed"), local("UbuntuCondensed-Regular"), url(../../assets/fonts/Ubuntu-Condensed/uc.woff) format("woff");
 }
 @font-face {
-  font-weight: 400;
-  font-style: normal;
   font-family: 'Russo One';
+  font-style: normal;
+  font-weight: 400;
   src: local("Russo One"), local("RussoOne-Regular"), url(../../assets/fonts/Russo-One/font.woff) format("woff");
 }
 .slide H1,
@@ -17,9 +17,9 @@
 .slide H5 {
   /*position: relative;*/
   z-index: 2;
+  font-family: "Ubuntu Condensed",sans-serif;
   line-height: 1;
   font-weight: normal;
-  font-family: "Ubuntu Condensed",sans-serif;
 }
 
 /* map-keys($map-headers) */
@@ -54,8 +54,8 @@
 .slide .free-fly {
   position: absolute;
   top: 45%;
-  right: 0;
   left: 0;
+  right: 0;
   text-align: center;
   font: 90px/1 'Ubuntu Condensed', sans-serif;
   -webkit-transform: translateY(-50%);
@@ -67,8 +67,8 @@
 }
 .slide .free-fly .tooltip {
   position: absolute;
-  bottom: -1.9em;
   left: 0;
+  bottom: -1.9em;
   width: 100%;
   font-size: 30px;
   color: #555555;
@@ -171,4 +171,16 @@ IMG {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 0;
+}
+
+.filter-name {
+  margin-bottom: 0.5em;
+  background: gold;
+  font-weight: bold;
+}
+
+.filter-controls {
+  margin-bottom: 1em;
+  padding: 1em;
+  border: 1px solid #DDD;
 }

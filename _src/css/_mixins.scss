@@ -17,8 +17,12 @@ $trans-dur: .3s;
     left: 0;
     }
 
-@mixin margb {
-    margin-bottom: 1em;
+@mixin margb($koeff: 1) {
+    $margin: 1em;
+    @if( $koeff ){
+        $margin: 1em * $koeff;
+    }
+    margin-bottom: $margin;
     }
 
 @mixin will-be-animate {

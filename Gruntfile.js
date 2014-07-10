@@ -45,14 +45,6 @@ module.exports = function(grunt) {
                 ' */\n'
         },
 
-        bump: {
-            options: {
-                files: ['package.json', 'bower.json'],
-                commitFiles: ['package.json', 'bower.json'],
-                pushTo: 'origin'
-            }
-        },
-
         /**
          * https://npmjs.org/package/grunt-contrib-sass
          */
@@ -150,6 +142,17 @@ module.exports = function(grunt) {
                 },
             }
         },
+
+        cssshrink: {
+            options: {
+              log: false
+            },
+            your_target: {
+              files: {
+                '<%= project.css_res %>/tmp': ['<%= project.css_res %>/*.css']
+              }
+            }
+          },
 
         /**
          * https://github.com/alanshaw/grunt-include-replace
