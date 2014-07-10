@@ -1,7 +1,7 @@
 function list() {
     var doc = document;
     var filtersList = listItems.filters;
-    var filtersListUser= JSON.parse(JSON.stringify(filtersList));// clone object
+    var filtersListUser = {};
     var listElem = doc.querySelector(".list-filters");
     var svgDefsElem = doc.querySelector(".defs--filters");
     var stylesElem = doc.querySelector(".style-changing");
@@ -25,9 +25,11 @@ function list() {
             filterItem.params.id = filtersList[i].id; // add filter ID to properties
             var filterCode = this.fillTemplate(filterItem.template, filterItem.params);
             filtersCode[filterItem.id] = filterCode; // save code for fither use
+            filterCode = "<g id=\"g-" + filterItem.id +"\">" + filterCode + "</g>";
             finalHTML += filterCode;
             }
 
+        filtersListUser= JSON.parse(JSON.stringify(filtersList));// clone object
         svgDefsElem.innerHTML += finalHTML;
         // out(filtersCode, "this.fillSvgDefs");
     }
@@ -84,32 +86,28 @@ function list() {
         }
         return finalHTML;
     }
-    //
+
+    this.changeFilter = function(filterId, prop, value){
+       var filterGroup = doc.querySelector("#g-" + filterId);
+       var params = this.getUserFilterData(filterId).params;
+       params[prop] = value;
+       var template = this.getUserFilterData(filterId).template;
+       var filterCode = this.fillTemplate(template, params);
+
+       filterGroup.innerHTML = filterCode;
+    }
 
     this.addControlsLife = function(){
        var controls = doc.querySelectorAll("." + propInputClass);
        var parent = this;
-
-       var filterElem = doc.querySelector("#blur");
-       //filterElem.innerHTML = "";
-       out( filterElem, "filterElem");
-       var sp1 = doc.createElement("span");
-       var parentElem = filterElem.parentNode;
-
-       out(parentElem, "parentElem");
-
-       // filterElem = parentElem.replaceChild(sp1, filterElem);
 
 
        for (var i = 0; i < controls.length; i++) {
            controls[i].onchange = function(){
                 var filterId = this.getAttribute("data-filter-id");
                 var prop = this.getAttribute("data-prop");
-                // out(this.getAttribute("data-prop"));
-                var params = parent.getUserFilterData(filterId).params;
-                params[prop] = this.value;
-                out(this.value);
-                out(params);
+                parent.changeFilter(filterId, prop, this.value);
+                //out(params);
            }
        };
        //out(controls);
