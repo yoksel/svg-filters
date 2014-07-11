@@ -22,6 +22,18 @@
    </div>
 </script>
 
+<script id="t-select" type="x-tmpl-mustache">
+    <div class="{{itemClass}}">
+        {{name}}
+        <select data-prop="{{name}}" data-filter-id="{{filterId}}" class="{{inputClass}}">
+        // value="{{value}}"
+            {{#options}}
+            <option value="{{value}}" {{selected}}>{{value}}</option>
+            {{/options}}
+        </select>
+   </div>
+</script>
+
 <script id="t-filter--blur" type="x-tmpl-mustache"><filter id="{{id}}"
         filterUnits="{{filterUnits}}"
         x="{{x}}"

@@ -69,11 +69,10 @@ function list() {
     this.paramsToControls = function(params){
         var finalHTML = "";
 
-        var templateId = "#t-text-field";
-
         for ( var item in params ) {
                 var value = params[item];
                 if ( typeof( value) == "number" ){
+                    var templateId = "#t-text-field";
                     var jsonData = {
                         "filterId": params.id,
                         "name": item,
@@ -81,6 +80,24 @@ function list() {
                         "inputClass": propInputClass,
                         "itemClass": propItemClass
                         };
+
+                    finalHTML += this.fillTemplate(templateId, jsonData);
+                }
+                else if( item == "filterUnits"){
+                    var templateId = "#t-select";
+                    var jsonData = {
+                        "filterId": params.id,
+                        "name": item,
+                        "value": value,
+                        "inputClass": propInputClass,
+                        "itemClass": propItemClass,
+                        "options": [
+                            {"value": "userSpaceOnUse",
+                             "selected": "selected"},
+                            {"value": "objectBoundingBox"}
+                            ]
+                        };
+
                     finalHTML += this.fillTemplate(templateId, jsonData);
                 }
         }
@@ -107,7 +124,7 @@ function list() {
                 var filterId = this.getAttribute("data-filter-id");
                 var prop = this.getAttribute("data-prop");
                 parent.changeFilter(filterId, prop, this.value);
-                //out(params);
+                out("onChange", "addControlsLife");
            }
        };
        //out(controls);
