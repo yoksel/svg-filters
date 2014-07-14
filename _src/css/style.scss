@@ -78,13 +78,20 @@ IMG {
             }
         }
 
-    .filter-name {
+    .filter__name {
         @include margb(.5);
         background: gold;
         font-weight: bold;
+        cursor: pointer;
         }
-     .filter-controls {
+     .filter__controls {
+         display: none;
          @include margb;
          padding: 1em;
          border: 1px solid #DDD;
+
+         .filter--current & {
+            display: block;
+            }
          }
+

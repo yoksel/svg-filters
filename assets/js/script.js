@@ -1,26 +1,39 @@
 function list() {
-    var doc = document;
-    var filtersList = listItems.filters;
-    var filtersListUser = {};
-    var listElem = doc.querySelector(".list-filters");
-    var svgDefsElem = doc.querySelector(".defs--filters");
-    var stylesElem = doc.querySelector(".style-changing");
-    var textareaElem =doc.querySelector(".code__textarea");
-    var propItemClass = "filter-controls__item";
-    var propInputClass = "filter-prop-control";
+    var doc = document,
+          filtersList = listItems.filters,
+          filtersListUser = {},
+          listElem = doc.querySelector(".list-filters"),
+          svgDefsElem = doc.querySelector(".defs--filters"),
+          stylesElem = doc.querySelector(".style-changing"),
+          textareaElem =doc.querySelector(".code__textarea"),
+
+          controls = {
+            "elemClass": "filter__controls controls js-controls",
+            "jsClass": "js-controls"
+          },
+          propItemClass = "controls__item control",
+          propInputClass = "controls__input",
+          filterClassName = "js-filter",
+          filterCurrent = "filter--current";
+
 
     var filtersCode = {};
 
-    this.fillTemplate = function( templateId, jsonData){
-        var template = doc.querySelector(templateId);
-        var output = Mustache.render(template.innerHTML, jsonData);
-        return output;
+    //  Init
+    // ----------------------------------
+
+    this.init = function() {
+        this.fillSvgDefs();
+        this.printList();
     }
+
+    //  Initial Actions
+    // ----------------------------------
 
     this.fillSvgDefs = function() {
         var finalHTML = "";
 
-        for ( var i = 0; i < filtersList.length; i++){
+        for ( var i = 0; i < filtersList.length; i++) {
             var filterItem = filtersList[i];
             filterItem.params.id = filtersList[i].id; // add filter ID to properties
             var filterCode = this.fillTemplate(filterItem.template, filterItem.params);
@@ -39,39 +52,62 @@ function list() {
         var jsonData = listItems;
         listElem.innerHTML = this.fillTemplate(templateId, jsonData);
 
-        this.addLife();
+        this.addLifeToList();
     }
 
-    this.applyFilter = function(filterId){
-        stylesElem.innerHTML = ".preview__use { filter: url(#" + filterId + ");border: 1px solid red;}";
-    }
+    this.addLifeToList = function() {
+        var listElem__items = listElem.querySelectorAll("." +filterClassName);
+        var parent = this;
 
-    this.printCode = function(filterId){
-        textareaElem.value = filtersCode[filterId];
-    }
+        for( var i = 0; i < listElem__items .length; i++ ) {
+            // out(i);
+            var item = listElem__items[i];
+            var filterId = item.getAttribute("data-filter-id");
+            // out(filterId);
+            this.printControls(filterId, item);
+        }
 
-    this.getFilterData = function (filterId) {
-        for ( var i = 0; i < filtersList.length; i ++ ){
-            if ( filtersList[i].id == filterId ){
-                return filtersList[i];
+        var listElem__titles = listElem.querySelectorAll(".filter__name");
+
+        for( var i = 0; i < listElem__titles .length; i++ ) {
+            out(i);
+            var item = listElem__titles[i];
+
+            item.onclick = function() {
+                var parentElem = this.parentNode;
+                var filterId = parentElem.getAttribute("data-filter-id");
+                parent.applyFilter(filterId);
+                parent.printCode(filterId);
+                parent.showCurrentControls(parentElem);
             }
         }
     }
 
-    this.getUserFilterData = function (filterId) {
-        for ( var i = 0; i < filtersListUser.length; i ++ ){
-            if ( filtersListUser[i].id == filterId ){
-                return filtersListUser[i];
-            }
-        }
+    //  Print controls
+    // ----------------------------------
+
+    this.printControls = function(filterId, elem) {
+        var params = this.getFilterData(filterId).params;
+        var finalHTML = this.paramsToControls(params);
+
+        // out(finalHTML);
+
+        finalHTML = "<ul class=\"" + controls.elemClass +"\" data-filter-id=\"" + filterId + "\">" + finalHTML  + "</ul>";
+
+        elem.innerHTML += finalHTML;
+
+        this.addControlsLife();
+        // elem.innerHTML += "sdsdf";
+
+        // out(elem, "this.printControls");
     }
 
-    this.paramsToControls = function(params){
+    this.paramsToControls = function(params) {
         var finalHTML = "";
 
         for ( var item in params ) {
                 var value = params[item];
-                if ( typeof( value) == "number" ){
+                if ( typeof( value) == "number" ) {
                     var templateId = "#t-text-field";
                     var jsonData = {
                         "filterId": params.id,
@@ -83,7 +119,7 @@ function list() {
 
                     finalHTML += this.fillTemplate(templateId, jsonData);
                 }
-                else if( item == "filterUnits"){
+                else if( item == "filterUnits") {
                     var templateId = "#t-select";
                     var jsonData = {
                         "filterId": params.id,
@@ -104,7 +140,21 @@ function list() {
         return finalHTML;
     }
 
-    this.changeFilter = function(filterId, prop, value){
+    this.addControlsLife = function() {
+       var controls = doc.querySelectorAll("." + propInputClass);
+       var parent = this;
+
+       for (var i = 0; i < controls.length; i++) {
+           controls[i].onchange = function() {
+                var filterId = this.getAttribute("data-filter-id");
+                var prop = this.getAttribute("data-prop");
+                parent.changeFilter(filterId, prop, this.value);
+                // out("onChange", "addControlsLife");
+           }
+       }
+    }
+
+    this.changeFilter = function(filterId, prop, value) {
        var filterGroup = doc.querySelector("#g-" + filterId);
        var params = this.getUserFilterData(filterId).params;
        params[prop] = value;
@@ -114,69 +164,49 @@ function list() {
        filterGroup.innerHTML = filterCode;
     }
 
-    this.addControlsLife = function(){
-       var controls = doc.querySelectorAll("." + propInputClass);
-       var parent = this;
+    //  Filters life
+    // ----------------------------------
 
-
-       for (var i = 0; i < controls.length; i++) {
-           controls[i].onchange = function(){
-                var filterId = this.getAttribute("data-filter-id");
-                var prop = this.getAttribute("data-prop");
-                parent.changeFilter(filterId, prop, this.value);
-                out("onChange", "addControlsLife");
-           }
-       };
-       //out(controls);
+    this.applyFilter = function(filterId) {
+        stylesElem.innerHTML = ".preview__use { filter: url(#" + filterId + ");}";
     }
 
-    this.printControls = function(filterId, elem){
-        var params = this.getFilterData(filterId).params;
-        var finalHTML = this.paramsToControls(params);
-
-        // out(finalHTML);
-
-        finalHTML = "<div class=\"filter-controls\" data-filter-id=\"" + filterId + "\">" + finalHTML  + "</div>";
-
-        elem.innerHTML += finalHTML;
-
-        this.addControlsLife();
-        // elem.innerHTML += "sdsdf";
-
-        // out(elem, "this.printControls");
+    this.printCode = function(filterId) {
+        textareaElem.value = filtersCode[filterId];
     }
 
-    this.addLife = function() {
-        var listElem__items = listElem.querySelectorAll(".list-filters__item");
-        var parent = this;
-
-        for( var i = 0; i < listElem__items .length; i++ ){
-            // out(i);
-            var item = listElem__items[i];
-            var filterId = item.getAttribute("data-filter-id");
-            // out(filterId);
-            this.printControls(filterId, item);
+    this.showCurrentControls = function(parentElem) {
+        var currentFilterElem = doc.querySelector("." + filterCurrent);
+        if ( currentFilterElem ) {
+            currentFilterElem.classList.remove(filterCurrent);
         }
 
-        var listElem__titles = listElem.querySelectorAll(".filter-name");
+        parentElem.classList.add("filter--current");
+    }
 
-        for( var i = 0; i < listElem__titles .length; i++ ){
-            out(i);
-            var item = listElem__titles[i];
+    //  Common
+    // ----------------------------------
 
-            item.onclick = function(){
-                var parentElem = this.parentNode;
-                var filterId = parentElem.getAttribute("data-filter-id");
-                parent.applyFilter(filterId);
-                parent.printCode(filterId);
+    this.fillTemplate = function( templateId, jsonData) {
+        var template = doc.querySelector(templateId);
+        var output = Mustache.render(template.innerHTML, jsonData);
+        return output;
+    }
+
+    this.getFilterData = function (filterId) {
+        for ( var i = 0; i < filtersList.length; i ++ ) {
+            if ( filtersList[i].id == filterId ) {
+                return filtersList[i];
             }
         }
-
     }
 
-    this.init = function() {
-        this.fillSvgDefs();
-        this.printList();
+    this.getUserFilterData = function (filterId) {
+        for ( var i = 0; i < filtersListUser.length; i ++ ) {
+            if ( filtersListUser[i].id == filterId ) {
+                return filtersListUser[i];
+            }
+        }
     }
 }
 
@@ -185,7 +215,7 @@ function list() {
 
 function out(str, context) {
     console.log(str);
-    if( context ){
+    if( context ) {
         bg = "skyblue";
         color = "#333";
 

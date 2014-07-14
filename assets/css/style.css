@@ -173,14 +173,19 @@ IMG {
   border: 0;
 }
 
-.filter-name {
+.filter__name {
   margin-bottom: 0.5em;
   background: gold;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.filter-controls {
+.filter__controls {
+  display: none;
   margin-bottom: 1em;
   padding: 1em;
   border: 1px solid #DDD;
+}
+.filter--current .filter__controls {
+  display: block;
 }

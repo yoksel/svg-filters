@@ -8,22 +8,24 @@
     </style>
 </head>
 <body>
+
+<!-- HTML Templates -->
+
 <script id="t-list-item" type="x-tmpl-mustache">
     {{#filters}}
-        <li class="list-filters__item" data-filter-id="{{id}}">
-            <div class="filter-name">{{name}}</div>
+        <li class="list-filters__item filter js-filter" data-filter-id="{{id}}">
+            <div class="filter__name">{{name}}</div>
         </li>
     {{/filters}}
 </script>
 
 <script id="t-text-field" type="x-tmpl-mustache">
-    <div class="{{itemClass}}">
-        {{name}} <input type="number" data-prop="{{name}}" data-filter-id="{{filterId}}" class="{{inputClass}}" value="{{value}}"/>
-   </div>
+    <li class="{{itemClass}}">{{name}} <input type="number" data-prop="{{name}}" data-filter-id="{{filterId}}" class="{{inputClass}}" value="{{value}}"/>
+   </li>
 </script>
 
 <script id="t-select" type="x-tmpl-mustache">
-    <div class="{{itemClass}}">
+    <li class="{{itemClass}}">
         {{name}}
         <select data-prop="{{name}}" data-filter-id="{{filterId}}" class="{{inputClass}}">
         // value="{{value}}"
@@ -31,15 +33,17 @@
             <option value="{{value}}" {{selected}}>{{value}}</option>
             {{/options}}
         </select>
-   </div>
+   </li>
 </script>
+
+<!-- // HTML Templates -->
+
+<!-- SVG Templates -->
 
 <script id="t-filter--blur" type="x-tmpl-mustache"><filter id="{{id}}"
         filterUnits="{{filterUnits}}"
-        x="{{x}}"
-        y="{{y}}"
-        width="{{width}}"
-        height="{{height}}">
+        x="{{x}}" y="{{y}}"
+        width="{{width}}" height="{{height}}">
     <feGaussianBlur in="SourceGraphic"
         stdDeviation="{{stdDeviation}}"
         result="blur"/>
@@ -48,10 +52,8 @@
 
 <script id="t-filter--shadow" type="x-tmpl-mustache"><filter id="{{id}}"
         filterUnits="{{filterUnits}}"
-        x="{{x}}"
-        y="{{y}}"
-        width="{{width}}"
-        height="{{height}}">
+        x="{{x}}" y="{{y}}"
+        width="{{width}}" height="{{height}}">
     <feGaussianBlur in="SourceAlpha"
             stdDeviation="{{stdDeviation}}" result="blur"/>
     <feOffset in="blur" dx="0" dy="{{dy}}" result="offsetBlr" />
@@ -78,6 +80,8 @@
         </defs>
         <defs class="defs defs--filters"></defs>
     </svg>
+
+<!-- // Templates -->
 
     <div class="l-wrapper">
 
