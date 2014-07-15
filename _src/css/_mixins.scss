@@ -25,10 +25,8 @@ $trans-dur: .3s;
     margin-bottom: $margin;
     }
 
-@mixin will-be-animate {
-    backface-visibility: hidden;
-    perspective: 1000;
-    transform: translateZ(0);
+@mixin border {
+    border: 1px solid #DDD;
     }
 
 @function shadows($max: 5, $color: white, $backshadow: rgba(0,0,0,.8)){

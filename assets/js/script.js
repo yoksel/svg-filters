@@ -2,17 +2,22 @@ function list() {
     var doc = document,
           filtersList = listItems.filters,
           filtersListUser = {},
-          listElem = doc.querySelector(".list-filters"),
-          svgDefsElem = doc.querySelector(".defs--filters"),
-          stylesElem = doc.querySelector(".style-changing"),
-          textareaElem =doc.querySelector(".code__textarea"),
+          listElem = doc.querySelector(".js-list-filters"),
+          svgDefsElem = doc.querySelector(".js-defs--filters"),
+          stylesElem = doc.querySelector(".js-style-changing"),
+          textareaElem =doc.querySelector(".js-code"),
 
-          controls = {
-            "elemClass": "filter__controls controls js-controls",
-            "jsClass": "js-controls"
+          controlsJs = {
+            "listClass": "js-controls",
+            "inputClass": "js-control__input",
           },
-          propItemClass = "controls__item control",
-          propInputClass = "controls__input",
+          controls = {
+            "listClass": "filter__controls controls " + controlsJs.listClass,
+            "itemClass": "controls__item control",
+            "labelClass": "control__label",
+            "inputClass": "control__input " + controlsJs.inputClass,
+          },
+
           filterClassName = "js-filter",
           filterCurrent = "filter--current";
 
@@ -92,7 +97,7 @@ function list() {
 
         // out(finalHTML);
 
-        finalHTML = "<ul class=\"" + controls.elemClass +"\" data-filter-id=\"" + filterId + "\">" + finalHTML  + "</ul>";
+        finalHTML = "<ul class=\"" + controls.listClass +"\" data-filter-id=\"" + filterId + "\">" + finalHTML  + "</ul>";
 
         elem.innerHTML += finalHTML;
 
@@ -107,32 +112,29 @@ function list() {
 
         for ( var item in params ) {
                 var value = params[item];
-                if ( typeof( value) == "number" ) {
-                    var templateId = "#t-text-field";
-                    var jsonData = {
+
+                var jsonData = {
                         "filterId": params.id,
                         "name": item,
+                        "inputId": params.id + "-" + item,
                         "value": value,
-                        "inputClass": propInputClass,
-                        "itemClass": propItemClass
+                        "inputClass": controls.inputClass,
+                        "labelClass": controls.labelClass,
+                        "itemClass": controls.itemClass
                         };
 
+                if ( typeof( value) == "number" ) {
+                    var templateId = "#t-text-field";
                     finalHTML += this.fillTemplate(templateId, jsonData);
                 }
                 else if( item == "filterUnits") {
                     var templateId = "#t-select";
-                    var jsonData = {
-                        "filterId": params.id,
-                        "name": item,
-                        "value": value,
-                        "inputClass": propInputClass,
-                        "itemClass": propItemClass,
-                        "options": [
+
+                    jsonData["options"] = [
                             {"value": "userSpaceOnUse",
                              "selected": "selected"},
                             {"value": "objectBoundingBox"}
-                            ]
-                        };
+                            ];
 
                     finalHTML += this.fillTemplate(templateId, jsonData);
                 }
@@ -141,7 +143,7 @@ function list() {
     }
 
     this.addControlsLife = function() {
-       var controls = doc.querySelectorAll("." + propInputClass);
+       var controls = doc.querySelectorAll("." + controlsJs.inputClass);
        var parent = this;
 
        for (var i = 0; i < controls.length; i++) {

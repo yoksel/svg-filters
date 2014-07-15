@@ -4,7 +4,7 @@
     <title>SVG-filters</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style class="style-changing">
+    <style class="js-style-changing">
     </style>
 </head>
 <body>
@@ -20,14 +20,16 @@
 </script>
 
 <script id="t-text-field" type="x-tmpl-mustache">
-    <li class="{{itemClass}}">{{name}} <input type="number" data-prop="{{name}}" data-filter-id="{{filterId}}" class="{{inputClass}}" value="{{value}}"/>
+    <li class="{{itemClass}}">
+        <label for="{{inputId}}" class="{{labelClass}}">{{name}}</label>
+        <input id="{{inputId}}" class="{{inputClass}}" value="{{value}}" type="number" data-prop="{{name}}" data-filter-id="{{filterId}}"/>
    </li>
 </script>
 
 <script id="t-select" type="x-tmpl-mustache">
     <li class="{{itemClass}}">
-        {{name}}
-        <select data-prop="{{name}}" data-filter-id="{{filterId}}" class="{{inputClass}}">
+        <label for="{{inputId}}" class="{{labelClass}}">{{name}}</label>
+        <select id="{{inputId}}" class="{{inputClass}}" data-prop="{{name}}" data-filter-id="{{filterId}}">
         // value="{{value}}"
             {{#options}}
             <option value="{{value}}" {{selected}}>{{value}}</option>
@@ -78,40 +80,40 @@
                     >Text</text>
              </g>
         </defs>
-        <defs class="defs defs--filters"></defs>
+        <defs class="defs defs--filters js-defs--filters"></defs>
     </svg>
 
 <!-- // Templates -->
 
     <div class="l-wrapper">
 
-        <div class="column column--left">
-            <div class="preview">
-                <div class="column column--left">
+        <div class="l-column l-column--left">
+            <div class="l-preview-holder">
+                <div class="l-column l-column--left">
 
-                    <svg class="preview__svg">
+                    <svg class="svg-preview">
                         <use xlink:href="#image-default"
                                 class="preview__use"/>
                     </svg>
 
                 </div>
-                <div class="column column--right">
+                <div class="l-column l-column--right">
 
-                    <svg class="preview__svg">
+                    <svg class="svg-preview">
                         <use xlink:href="#text-default"
                                 class="preview__use"/>
                     </svg>
 
                 </div>
             </div>
-            <div class="code">
-                <textarea class="code__textarea">
+            <div class="l-code-holder">
+                <textarea class="code js-code">
 
                 </textarea>
             </div>
         </div>
-        <div class="column column--right">
-            <ul class="list-filters"></ul>
+        <div class="l-column l-column--right">
+            <ul class="list-filters js-list-filters"></ul>
 
         </div>
 
