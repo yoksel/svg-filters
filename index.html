@@ -13,7 +13,7 @@
 
 <script id="t-list-item" type="x-tmpl-mustache">
     {{#filters}}
-        <li class="list-filters__item filter js-filter" data-filter-id="{{id}}">
+        <li class="{{itemClass}}" data-filter-id="{{id}}">
             <div class="filter__name">{{name}}</div>
         </li>
     {{/filters}}

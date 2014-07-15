@@ -2,6 +2,8 @@ function list() {
     var doc = document,
           filtersList = listItems.filters,
           filtersListUser = {},
+          filtersCode = {},
+
           listElem = doc.querySelector(".js-list-filters"),
           svgDefsElem = doc.querySelector(".js-defs--filters"),
           stylesElem = doc.querySelector(".js-style-changing"),
@@ -18,11 +20,14 @@ function list() {
             "inputClass": "control__input " + controlsJs.inputClass,
           },
 
-          filterClassName = "js-filter",
-          filterCurrent = "filter--current";
+          filterJs = {
+            "itemClass": "js-filter"
+          },
 
-
-    var filtersCode = {};
+          filter = {
+            "itemClass": "list-filters__item filter " + filterJs.itemClass,
+            "currentClass": "filter--current"
+          }
 
     //  Init
     // ----------------------------------
@@ -55,13 +60,14 @@ function list() {
     this.printList = function() {
         var templateId = "#t-list-item";
         var jsonData = listItems;
+        jsonData.itemClass = filter.itemClass;
         listElem.innerHTML = this.fillTemplate(templateId, jsonData);
 
         this.addLifeToList();
     }
 
     this.addLifeToList = function() {
-        var listElem__items = listElem.querySelectorAll("." +filterClassName);
+        var listElem__items = listElem.querySelectorAll("." +filterJs.itemClass);
         var parent = this;
 
         for( var i = 0; i < listElem__items .length; i++ ) {
@@ -178,9 +184,9 @@ function list() {
     }
 
     this.showCurrentControls = function(parentElem) {
-        var currentFilterElem = doc.querySelector("." + filterCurrent);
+        var currentFilterElem = doc.querySelector("." + filter.currentClass);
         if ( currentFilterElem ) {
-            currentFilterElem.classList.remove(filterCurrent);
+            currentFilterElem.classList.remove(filter.currentClass);
         }
 
         parentElem.classList.add("filter--current");

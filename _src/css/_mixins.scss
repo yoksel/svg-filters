@@ -1,7 +1,7 @@
 $base-size: 24px;
 $trans-dur: .3s;
 
-@mixin clear {
+%clear {
     &:after {
         content: "";
         display: table;
@@ -9,7 +9,7 @@ $trans-dur: .3s;
         }
     }
 
-@mixin posabs {
+%posabs {
     position: absolute;
     top: 0;
     right: 0;

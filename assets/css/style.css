@@ -17,6 +17,12 @@ ol, ul {
   list-style: none;
 }
 
+.l-column:after, .l-wrapper:after, .l-preview-holder:after {
+  content: "";
+  display: table;
+  width: 100%;
+}
+
 @font-face {
   font-family: 'Ubuntu Condensed';
   font-style: normal;
@@ -138,11 +144,6 @@ IMG {
   width: 49%;
   /*border: 1px dashed #DDD;*/
 }
-.l-column:after {
-  content: "";
-  display: table;
-  width: 100%;
-}
 .l-column--left {
   float: left;
 }
@@ -157,19 +158,9 @@ IMG {
   margin: 50px auto;
   font: 16px/1.5 'Open Sans',sans-serif;
 }
-.l-wrapper:after {
-  content: "";
-  display: table;
-  width: 100%;
-}
 
 .l-preview-holder {
   margin-bottom: 1em;
-}
-.l-preview-holder:after {
-  content: "";
-  display: table;
-  width: 100%;
 }
 
 .svg-preview {
@@ -195,11 +186,21 @@ IMG {
 
 /* Filters
 --------------------- */
-.filter__name {
+.filter {
   margin-bottom: 0.5em;
-  background: gold;
+}
+
+.filter__name {
+  display: inline-block;
+  padding: 3px 15px;
+  background: #CCC;
+  border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+}
+.filter--current .filter__name {
+  border-radius: 5px 5px 0 0;
+  cursor: default;
 }
 
 .filter__controls {
