@@ -9,8 +9,8 @@ var listItems = {
                 "y": 0,
                 "width": 500,
                 "height": 500,
+                "filterUnits": "userSpaceOnUse",
                 "stdDeviation": 4,
-                "filterUnits": "userSpaceOnUse"
             }
         },
         {
@@ -22,60 +22,44 @@ var listItems = {
                 "y": 0,
                 "width": 1500,
                 "height": 1000,
-                "stdDeviation": 10,
                 "filterUnits": "userSpaceOnUse",
+                "stdDeviation": 10,
+                "dx": 4,
                 "dy": 4,
                 "flood-color": "rgba(0,0,0,.7)"
             }
+        },
+        {
+            "id": "ct-linear",
+            "name": "feComponentTransfer",
+            "template": "#t-filter--ct-linear",
+            "params":  {
+                "x": 0,
+                "y": 0,
+                "width": "1",
+                "height": "1",
+                "filterUnits": "objectBoundingBox",
+                "feFuncs": [
+                    {
+                        "name": "feFuncR",
+                        "type": "linear",
+                        "slope": .5,
+                        "intercept": .25
+                    },
+                    {
+                        "name": "feFuncG",
+                        "type": "linear",
+                        "slope": .5,
+                        "intercept": .0
+                    },
+                    {
+                        "name": "feFuncB",
+                        "type": "linear",
+                        "slope": .5,
+                        "intercept": .5
+                    }
+                ]
+            }
         }
     ]
-};
-
-
-
-var items = {
-    "props": [{
-        "prop-name": "gradients",
-        "browsers": [{
-            "browser-id": "firefox",
-            "browser-name": "Firefox",
-            "bug-desc": "не работает <code>spreadMethod: reflect</code>"
-            }, {
-                "browser-id": "safari",
-                "browser-name": "Safari",
-                "bug-desc": "не работает <code>spreadMethod: reflect</code> и <code>spreadMethod: repeat</code>"
-            }]
-        }, {
-        "prop-name": "animation",
-        "browsers": [{
-            "browser-id": "ie-9-11",
-            "browser-name": "IE9-11",
-            "bug-desc": "не поддерживается SMIL и CSS-анимация для SVG-элементов"
-        }, {
-            "browser-id": "firefox",
-            "browser-name": "firefox",
-            "bug-desc": "не работает анимация в переиспользуемх элементах"
-            }]
-        }, {
-        "prop-name": "filters",
-        "browsers": [{
-            "browser-id": "ie-9",
-            "browser-name": "IE9",
-            "bug-desc": "не поддерживаются"
-        }, ]
-    }, {
-        "prop-name": "SVG в HTML",
-        "browsers": [{
-            "browser-id": "opera-old opera-min",
-            "browser-name": "Opera Mini",
-            "bug-desc": "не поддерживается"
-        }, ]
-    }, {
-        "prop-name": "SVG в background",
-        "browsers": [{
-            "browser-id": "opera-old opera-12",
-            "browser-name": "Opera 12",
-            "bug-desc": "размывается при растягивании"
-        }, ]
-    }]
 };

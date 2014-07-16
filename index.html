@@ -19,10 +19,17 @@
     {{/filters}}
 </script>
 
+<script id="t-named-list" type="x-tmpl-mustache">
+    <b>{{name}}</b>
+    <ul>
+        {{&items}}
+    </ul>
+</script>
+
 <script id="t-text-field" type="x-tmpl-mustache">
     <li class="{{itemClass}}">
         <label for="{{inputId}}" class="{{labelClass}}">{{name}}</label>
-        <input id="{{inputId}}" class="{{inputClass}}" value="{{value}}" type="number" data-prop="{{name}}" data-filter-id="{{filterId}}"/>
+        <input id="{{inputId}}" class="{{inputClass}}" value="{{value}}" type="number" data-filter-id="{{filterId}}" data-container="{{container}}" data-elem="{{elem}}" data-prop="{{name}}" />
    </li>
 </script>
 
@@ -65,25 +72,39 @@
       <feMergeNode in="colBlur"/>
       <feMergeNode in="SourceGraphic"/>
     </feMerge>
-  </filter></script>
+  </filter>
+</script>
 
-    <svg class="svg-defs">
-        <defs class="defs">
-            <image id="image-default"
-            xlink:href="http://img-fotki.yandex.ru/get/9746/5091629.a0/0_83326_aebc4487_orig" width="100%" height="100%"/>
+<script id="t-filter--ct-linear" type="x-tmpl-mustache">
+    <filter id="{{id}}"
+        filterUnits="{{filterUnits}}"
+        x="{{x}}" y="{{y}}"
+        width="{{width}}" height="{{height}}">
+      <feComponentTransfer>
+        {{#feFuncs}}
+        <{{name}} type="{{type}}" slope="{{slope}}" intercept="{{intercept}}"/>
+        {{/feFuncs}}
+      </feComponentTransfer>
+    </filter>
+</script>
 
-            <g id="text-default">
-                <text
-                    class="svg-text-default"
-                    dy=".4em" text-anchor="middle"
-                    x="50%" y="50%"
-                    >Text</text>
-             </g>
-        </defs>
-        <defs class="defs defs--filters js-defs--filters"></defs>
-    </svg>
+<svg class="svg-defs">
+    <defs class="defs">
+        <image id="image-default"
+        xlink:href="http://img-fotki.yandex.ru/get/9746/5091629.a0/0_83326_aebc4487_orig" width="100%" height="100%"/>
 
-<!-- // Templates -->
+        <g id="text-default">
+            <text
+                class="svg-text-default"
+                dy=".4em" text-anchor="middle"
+                x="50%" y="50%"
+                >Text</text>
+         </g>
+    </defs>
+    <defs class="defs defs--filters js-defs--filters"></defs>
+</svg>
+
+<!-- // SVG Templates -->
 
     <div class="l-wrapper">
 
