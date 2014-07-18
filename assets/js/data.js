@@ -43,20 +43,20 @@ var listItems = {
                     {
                         "name": "feFuncR",
                         "type": "linear",
-                        "slope": .5,
-                        "intercept": .25
+                        "slope": 0.5,
+                        "intercept": 0.25
                     },
                     {
                         "name": "feFuncG",
                         "type": "linear",
-                        "slope": .5,
-                        "intercept": .0
+                        "slope": 0.5,
+                        "intercept": 0
                     },
                     {
                         "name": "feFuncB",
                         "type": "linear",
-                        "slope": .5,
-                        "intercept": .5
+                        "slope": 0.5,
+                        "intercept": 0.5
                     }
                 ]
             }

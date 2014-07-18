@@ -8,6 +8,7 @@ function list() {
           svgDefsElem = doc.querySelector(".js-defs--filters"),
           stylesElem = doc.querySelector(".js-style-changing"),
           textareaElem =doc.querySelector(".js-code"),
+          filterUnits = ["userSpaceOnUse", "objectBoundingBox"],
 
           controlsJs = {
             "listClass": "js-controls",
@@ -27,7 +28,8 @@ function list() {
           filter = {
             "itemClass": "list-filters__item filter " + filterJs.itemClass,
             "currentClass": "filter--current"
-          }
+          };
+
 
     //  Init
     // ----------------------------------
@@ -35,6 +37,7 @@ function list() {
     this.init = function() {
         this.fillSvgDefs();
         this.printList();
+        filtersListUser= JSON.parse(JSON.stringify(filtersList));// clone object
     }
 
     //  Initial Actions
@@ -52,7 +55,6 @@ function list() {
             finalHTML += filterCode;
             }
 
-        filtersListUser= JSON.parse(JSON.stringify(filtersList));// clone object
         svgDefsElem.innerHTML += finalHTML;
         // out(filtersCode, "this.fillSvgDefs");
     }
@@ -101,25 +103,22 @@ function list() {
         var params = this.getFilterData(filterId).params;
         var finalHTML = this.paramsToControls(params);
 
-        // out(finalHTML);
-
         finalHTML = "<ul class=\"" + controls.listClass +"\" data-filter-id=\"" + filterId + "\">" + finalHTML  + "</ul>";
 
         elem.innerHTML += finalHTML;
-
         this.addControlsLife();
-        // elem.innerHTML += "sdsdf";
 
-        // out(elem, "this.printControls");
     }
 
     this.paramsToControls = function(params) {
         var finalHTML = "";
 
-        //out( params );
-
         for ( var item in params ) {
-                // out(item, "ITEM");
+
+                if(~item.indexOf("data")) {
+                    continue;
+                }
+
                 var value = params[item];
 
                 var jsonData = {
@@ -131,8 +130,9 @@ function list() {
                         "labelClass": controls.labelClass,
                         "itemClass": controls.itemClass,
                         "options": [],
-                        "elem": params.elem,
-                        "container": params.container
+                        "data-position": params["data-position"], // position in list
+                        "data-elem": params["data-elem"],
+                        "data-container": params["data-container"]
                         };
 
                 if ( !isNaN(parseInt(value)) ) {
@@ -142,8 +142,6 @@ function list() {
                 }
                 else if( item == "filterUnits") {
                     var templateId = "#t-select";
-
-                    var filterUnits = ["userSpaceOnUse", "objectBoundingBox"];
 
                     for (var i = 0; i < filterUnits.length; i++) {
                         jsonData["options"][i] = {"value": filterUnits[i]};
@@ -162,10 +160,12 @@ function list() {
 
                         // get inputs from params
                         value[i].id = params.id;
-                        value[i].elem = name;
-                        value[i].container = item;
+                        value[i]["data-position"] = i;
+                        value[i]["data-elem"] = name;
+                        value[i]["data-container"] = item;
                         jsonList.items = this.paramsToControls(value[i]);
                         // get named list
+                        finalHTML += i + "/";
                         finalHTML += this.fillTemplate("#t-named-list", jsonList);
                     }
                 }
@@ -186,25 +186,22 @@ function list() {
 
     this.changeFilter = function(elem) {
        var attrs = this.getAttrsbyList(elem);
-       //out(attrs);
 
        var filterId = attrs["data-filter-id"];
        var container = attrs["data-container"];
-       var elem = attrs["data-elem"];
+       var position = attrs["data-position"];
        var prop = attrs["data-prop"];
        var value = attrs["value"];
 
        var filterGroup = doc.querySelector("#g-" + filterId);
        var params = this.getUserFilterData(filterId).params;
        if ( container ){
-           // params[prop]
+           params[container][position][prop] = value;
        }
        else {
            params[prop] = value;
        }
-       out(prop);
-       out(params);
-       out("-------");
+
        var template = this.getUserFilterData(filterId).template;
        var filterCode = this.fillTemplate(template, params);
 
@@ -257,16 +254,17 @@ function list() {
     }
 
     this.getAttrsbyList = function(elem) {
+        var context = "getAttrsbyList";
+        var attributes = elem.attributes;
         var map = {};
-        var list = ["value",
-                        "data-filter-id",
-                        "data-elem",
-                        "data-container",
-                        "data-prop"];
-         for (var i = 0; i < list.length; i++) {
-             map[list[i]] = elem.getAttribute(list[i]);
-         };
-         return map;
+
+        for (var i = 0; i < attributes.length; i++) {
+            map[attributes[i].name] =attributes[i].value;
+        }
+
+        map.value = elem.value;
+
+        return map;
     }
 }
 

@@ -142,7 +142,6 @@ IMG {
 --------------------- */
 .l-column {
   width: 49%;
-  /*border: 1px dashed #DDD;*/
 }
 .l-column--left {
   float: left;
@@ -193,13 +192,15 @@ IMG {
 .filter__name {
   display: inline-block;
   padding: 3px 15px;
-  background: #CCC;
+  background: #DDD;
   border-radius: 5px;
-  font-weight: bold;
   cursor: pointer;
 }
 .filter--current .filter__name {
+  background: tomato;
   border-radius: 5px 5px 0 0;
+  font-weight: normal;
+  color: #FFF;
   cursor: default;
 }
 
