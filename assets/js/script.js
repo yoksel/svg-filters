@@ -83,7 +83,6 @@ function list() {
         var listElem__titles = listElem.querySelectorAll(".filter__name");
 
         for( var i = 0; i < listElem__titles .length; i++ ) {
-            //out(i);
             var item = listElem__titles[i];
 
             item.onclick = function() {
@@ -165,7 +164,6 @@ function list() {
                         value[i]["data-container"] = item;
                         jsonList.items = this.paramsToControls(value[i]);
                         // get named list
-                        finalHTML += i + "/";
                         finalHTML += this.fillTemplate("#t-named-list", jsonList);
                     }
                 }
