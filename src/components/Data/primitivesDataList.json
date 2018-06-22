@@ -1,0 +1,75 @@
+[
+  {
+    "name": "feGaussianBlur",
+    "params": {
+      "stdDeviation": {
+        "value": 4,
+        "type": "number"
+      }
+    }
+  },
+  {
+    "name": "feBlend",
+    "params": {
+      "mode": {
+        "value": "multiply",
+        "type": "select"
+      }
+    },
+    "paramsValues": {
+      "mode": [
+        "normal",
+        "multiply",
+        "screen",
+        "darken",
+        "lighten"
+      ]
+    }
+  },
+  {
+    "name": "feOffset",
+    "params": {
+      "dx": {
+        "value": 15,
+        "type": "number"
+      },
+      "dy": {
+        "value": 15,
+        "type": "number"
+      }
+    }
+  },
+  {
+    "name": "feColorMatrix",
+    "params": {
+      "type": {
+        "value": "saturate",
+        "type": "select"
+      },
+      "values": {
+        "value": 180,
+        "type": "number"
+      }
+    },
+    "paramsValues": {
+      "type": [
+        "saturate",
+        "hueRotate",
+        "luminanceToAlpha"
+      ]
+    }
+  },
+  {
+    "name": "feFlood",
+    "params": {
+      "floodColor": {
+        "value": "gold",
+        "type": "text"
+      },
+      "floodOpacity": {
+        "value": 0.5,
+        "type": "number"
+      }
+    }
+  }
+]

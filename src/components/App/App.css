@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  justify-content: space-between; }
+
+.App__container {
+  padding: 2rem;
+  box-sizing: border-box;
+  border-left: 1px solid #DDD; }
+  .App__container:first-child {
+    border: none; }

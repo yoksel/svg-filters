@@ -1,0 +1,28 @@
+{
+  "name": "svg-filters",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "create-component-files": "^0.1.10",
+    "node-sass-chokidar": "^1.3.0",
+    "npm-run-all": "^4.1.3",
+    "react": "^16.4.1",
+    "react-beautiful-dnd": "^7.1.3",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "create": "create-component-files --path=./src/components/"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.1"
+  }
+}

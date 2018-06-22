@@ -1,0 +1,14 @@
+.FilterContsructor {
+  margin-bottom: 1rem;
+  color: teal;
+}
+
+
+.FilterContsructor__item {
+  margin-bottom: .5rem;
+  margin-left: .5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
