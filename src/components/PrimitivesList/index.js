@@ -5,6 +5,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Primitive from '../Primitive';
 
 class PrimitivesList extends Component {
+
   render() {
     return (
       <div className="PrimitivesList">
@@ -13,23 +14,27 @@ class PrimitivesList extends Component {
             <div
               ref={provided.innerRef}
               >
-              {this.props.items.map((item, index) => (
+              {this.props.items.map((primitive, index) => (
                 <Draggable
                   key={index}
-                  draggableId={item.name}
+                  draggableId={primitive.name}
                   index={index}
                   >
-                  {(provided, snapshot) => (
-                    <div
-                      className="PrimitivesList__item"
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      >
-                      <Primitive primitive={item}/>
-                    </div>
+                  {(provided, snapshot) => {
+                    return (
+                      <div
+                        className="PrimitivesList__item"
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        >
+                        <Primitive
+                          primitive={primitive}
+                          />
+                      </div>
 
-                  )}
+                    )
+                  }}
                 </Draggable>
               ))}
               {provided.placeholder}

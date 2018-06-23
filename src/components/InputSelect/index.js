@@ -18,8 +18,9 @@ class InputSelect extends Component {
 
   render() {
     const value = this.props.value;
+    let valuesList = this.props.valuesList;
 
-    const options = this.props.valuesList.map((item, index) =>{
+    const options = valuesList.map((item, index) =>{
       return React.createElement('option', {
           value: item,
           key: index,
@@ -31,6 +32,7 @@ class InputSelect extends Component {
       defaultValue: value,
       className: 'InputSelect'
     }, options);
+
     return (
         <Fragment>{input}</Fragment>
     );

@@ -8,3 +8,5 @@
   border-left: 1px solid #DDD; }
   .App__container:first-child {
     border: none; }
+  .App__container--Playground {
+    flex-grow: 1; }

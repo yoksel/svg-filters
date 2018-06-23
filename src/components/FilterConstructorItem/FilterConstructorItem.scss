@@ -1,6 +1,19 @@
 .FilterConstructorItem {
+  display: inline-block;
   padding: .25rem .5rem;
   background: #FFF;
-  border: 1px solid;
+  border: 1px solid #DDD;
   border-radius: 5px;
+}
+
+.FilterConstructorItem__label {
+  margin-left: 8px;
+}
+
+.FilterConstructorItem__result {
+  margin-left: 8px;
+}
+
+.FilterConstructorItem__result-name {
+  color: yellowgreen
 }

@@ -1,18 +1,28 @@
 [
   {
     "name": "feGaussianBlur",
+    "resultName": "blur",
     "params": {
       "stdDeviation": {
         "value": 4,
         "type": "number"
+      },
+      "in": {
+        "value": "SourceGraphic",
+        "type": "select"
       }
     }
   },
   {
     "name": "feBlend",
+    "resultName": "blend",
     "params": {
       "mode": {
         "value": "multiply",
+        "type": "select"
+      },
+      "in": {
+        "value": "SourceGraphic",
         "type": "select"
       }
     },
@@ -28,6 +38,7 @@
   },
   {
     "name": "feOffset",
+    "resultName": "offset",
     "params": {
       "dx": {
         "value": 15,
@@ -36,11 +47,16 @@
       "dy": {
         "value": 15,
         "type": "number"
+      },
+      "in": {
+        "value": "SourceGraphic",
+        "type": "select"
       }
     }
   },
   {
     "name": "feColorMatrix",
+    "resultName": "colormatrix",
     "params": {
       "type": {
         "value": "saturate",
@@ -49,6 +65,10 @@
       "values": {
         "value": 180,
         "type": "number"
+      },
+      "in": {
+        "value": "SourceGraphic",
+        "type": "select"
       }
     },
     "paramsValues": {
@@ -61,6 +81,7 @@
   },
   {
     "name": "feFlood",
+    "resultName": "flood",
     "params": {
       "floodColor": {
         "value": "gold",
@@ -69,7 +90,35 @@
       "floodOpacity": {
         "value": 0.5,
         "type": "number"
+      },
+      "in": {
+        "value": "SourceGraphic",
+        "type": "select"
       }
+    }
+  },
+  {
+    "name": "feMorphology",
+    "resultName": "morphology",
+    "params": {
+      "operator": {
+        "value": "erode",
+        "type": "select"
+      },
+      "radius" : {
+        "value": 3,
+        "type": "number"
+      },
+      "in": {
+        "value": "SourceAlpha",
+        "type": "select"
+      }
+    },
+    "paramsValues": {
+      "operator": [
+        "erode",
+        "dilate"
+      ]
     }
   }
 ]

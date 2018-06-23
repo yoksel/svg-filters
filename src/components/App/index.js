@@ -98,7 +98,7 @@ class App extends Component {
             />
           </div>
 
-          <div className="App__container">
+          <div className="App__container App__container--Playground">
             <h2>Playground</h2>
             <FilterConstructor
               items={this.state.items}

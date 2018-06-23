@@ -11,4 +11,8 @@
   &:first-child {
     border: none;
   }
+
+  &--Playground {
+    flex-grow: 1;
+  }
 }
