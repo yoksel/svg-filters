@@ -23,6 +23,7 @@
     "create": "create-component-files --path=./src/components/"
   },
   "devDependencies": {
-    "chalk": "^2.4.1"
+    "chalk": "^2.4.1",
+    "react-styleguidist": "^7.0.18"
   }
 }
