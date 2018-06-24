@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import './Data.css';
+import primitivesAttrsSrc from './primitivesAttrs.json';
+import primitivesListSrc from './primitivesList.json';
 
-class Data extends Component {
-  render() {
-    return (
-        <div className="Data">Data</div>
-    );
-  }
-}
+export const primitivesList = primitivesListSrc;
+export const primitivesAttrs = primitivesAttrsSrc;
+
+const Data = {
+  primitivesAttrs: primitivesAttrsSrc,
+  primitivesList: primitivesListSrc
+};
 
 export default Data;

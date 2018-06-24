@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 
+
 import { deepClone, reorder, move } from '../Helpers';
+import { primitivesList } from '../Data';
 import {DragDrop} from '../DragDrop';
 import Playground from '../Playground';
 import PrimitivesList from '../PrimitivesList';
 import PresetsList from '../PresetsList';
 import FilterConstructor from '../FilterConstructor';
 
-import primitivesList from '../Data/primitivesDataList.json';
 
 class App extends Component {
   constructor() {

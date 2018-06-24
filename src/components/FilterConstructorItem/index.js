@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
+import { primitivesAttrs } from '../Data';
 import InputText from '../InputText';
 import InputSelect from '../InputSelect';
 import FilterConstructorControls from '../FilterConstructorControls';
-import primitivesAttrs from '../Data/primitivesAttrs.json';
 import './FilterConstructorItem.css';
 
 class FilterConstructorItem extends Component {
