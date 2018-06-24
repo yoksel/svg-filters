@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
+import { DragDropContext } from 'react-beautiful-dnd';
 
-
-import { deepClone, reorder, move } from '../Helpers';
-import { primitivesList } from '../Data';
-import {DragDrop} from '../DragDrop';
-import Playground from '../Playground';
-import PrimitivesList from '../PrimitivesList';
 import PresetsList from '../PresetsList';
 import FilterConstructor from '../FilterConstructor';
+import Playground from '../Playground';
+import PrimitivesList from '../PrimitivesList';
 
+import { primitivesList } from '../Data';
+
+import { deepClone, reorder, move } from '../Helpers';
+
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -155,8 +156,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <DragDrop
-          state={this.state}
+        <DragDropContext
           onDragEnd={this.onDragEnd}
           >
           <div className="App__container">
@@ -180,7 +180,7 @@ class App extends Component {
             <Playground
               selected={this.state.selected}/>
           </div>
-        </DragDrop>
+        </DragDropContext>
       </div>
     );
   }

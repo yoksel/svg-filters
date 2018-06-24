@@ -1,6 +1,6 @@
 Root component for app.
 
-It contains page layout, DragDrop wrapper (enables dragging items between lists) & actions for data manipulations:
+It contains page layout, DragDropContext wrapper (enables dragging items between lists) & actions for data manipulations:
 
 * `addPrimitive` — copy privitive to new instance
 * `removePrimitive` — delete privitive
