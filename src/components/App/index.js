@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import {DragDrop, reorder, move} from '../DragDrop';
+import { deepClone, reorder, move } from '../Helpers';
+import {DragDrop} from '../DragDrop';
 import Playground from '../Playground';
 import PrimitivesList from '../PrimitivesList';
 import PresetsList from '../PresetsList';
@@ -29,7 +30,8 @@ class App extends Component {
 
   getList = id => this.state[this.id2List[id]];
 
-  addPrimitive = (id) => {
+  // Copy privitive to new instance
+  addPrimitive = id => {
     const selected = this.state.selected;
     const collections = this.state.collections;
     let sourceIndex;
@@ -65,13 +67,14 @@ class App extends Component {
     });
   }
 
+  // Delete privitive
   // TODO: place last primitive of group back to list
   removePrimitive = (id) => {
     const selected = this.state.selected;
 
     let deletedIndex;
 
-    const [deleted] = selected.filter((item, index) => {
+    selected.filter((item, index) => {
       if(item.id === id) {
         deletedIndex = index;
         return true;
@@ -86,6 +89,7 @@ class App extends Component {
     });
   }
 
+  // Save draggable items after dragging
   onDragEnd = result => {
     const { source, destination } = result;
 
@@ -125,6 +129,7 @@ class App extends Component {
     }
   };
 
+  // Save data from inputs to state
   onChange = params => {
     const selected = this.state.selected;
     let currentPos = null;
@@ -186,33 +191,3 @@ export default App;
 //   <h2>PresetsList</h2>
 //   <PresetsList/>
 // </div>
-
-const obj = {
-  a: 2,
-  b: {
-    c: 8
-  },
-  d: {
-    test: {
-      f: {
-        car: 'hi!'
-      }
-    },
-    hello: 2
-  }
-};
-
-function deepClone(obj) {
-  const resultObj = {};
-
-  for (let key in obj) {
-    if(typeof obj[key] === 'object') {
-      resultObj[key] = deepClone(obj[key]);
-    }
-    else {
-      resultObj[key] = obj[key];
-    }
-  }
-
-  return resultObj;
-}
