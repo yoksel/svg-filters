@@ -8,11 +8,13 @@ class FilterConstructorControls extends Component {
     return (
         <div className="FilterConstructorControls">
           <button
+            className="FilterConstructorControl"
             onClick={() => {
               this.props.addPrimitive(this.props.id)
             }}
             type="button">+</button>
           <button
+            className="FilterConstructorControl"
             type="button"
             onClick={() => {
               this.props.removePrimitive(this.props.id)
