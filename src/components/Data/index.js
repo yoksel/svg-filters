@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import primitivesAttrsSrc from './primitivesAttrs.json';
 import primitivesListSrc from './primitivesList.json';
 
