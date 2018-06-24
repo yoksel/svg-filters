@@ -18,7 +18,8 @@ class App extends Component {
 
   state = {
     items: primitivesList,
-    selected: []
+    selected: [],
+    collections: {}
   };
 
   id2List = {
@@ -27,6 +28,63 @@ class App extends Component {
   };
 
   getList = id => this.state[this.id2List[id]];
+
+  addPrimitive = (id) => {
+    const selected = this.state.selected;
+    const collections = this.state.collections;
+    let sourceIndex;
+    const [source] = selected.filter((item, index) => {
+      if(item.id === id) {
+        sourceIndex = index;
+        return true;
+      }
+      return false;
+    });
+    const resultName = source.resultName;
+
+    // Copy source
+    const copied = deepClone(source);
+
+    if(!collections[resultName]) {
+      collections[resultName] = 0;
+    }
+
+    collections[resultName]++;
+
+    const newResultName = copied.resultName + collections[resultName];
+
+    copied.id = newResultName;
+    copied.params.result = newResultName;
+
+    // Insert to 'selected' list
+    selected.splice(sourceIndex + 1, 0, copied);
+
+    this.setState({
+      collections: collections,
+      selected: selected
+    });
+  }
+
+  // TODO: place last primitive of group back to list
+  removePrimitive = (id) => {
+    const selected = this.state.selected;
+
+    let deletedIndex;
+
+    const [deleted] = selected.filter((item, index) => {
+      if(item.id === id) {
+        deletedIndex = index;
+        return true;
+      }
+      return false;
+    });
+
+    selected.splice(deletedIndex, 1);
+
+    this.setState({
+      selected: selected
+    });
+  }
 
   onDragEnd = result => {
     const { source, destination } = result;
@@ -37,6 +95,7 @@ class App extends Component {
     }
 
     if (source.droppableId === destination.droppableId) {
+      // Reorder in same list
       const items = reorder(
         this.getList(source.droppableId),
         source.index,
@@ -51,6 +110,7 @@ class App extends Component {
 
       this.setState(state);
     } else {
+      // Move to another list
       const result = move(
         this.getList(source.droppableId),
         this.getList(destination.droppableId),
@@ -65,11 +125,11 @@ class App extends Component {
     }
   };
 
-  onChange(params) {
+  onChange = params => {
     const selected = this.state.selected;
     let currentPos = null;
     const currentItem = this.state.selected.filter((item, index) => {
-      if(item.name === params.primitiveName) {
+      if(item.id === params.id) {
         currentPos = index;
         return true;
       }
@@ -89,7 +149,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <DragDrop state={this.state} onDragEnd={this.onDragEnd}>
+        <DragDrop
+          state={this.state}
+          onDragEnd={this.onDragEnd}
+          >
           <div className="App__container">
             <h2>PrimitivesList</h2>
             <PrimitivesList
@@ -104,6 +167,8 @@ class App extends Component {
               items={this.state.items}
               selected={this.state.selected}
               onChange={this.onChange}
+              addPrimitive={this.addPrimitive}
+              removePrimitive={this.removePrimitive}
               />
 
             <Playground
@@ -121,3 +186,33 @@ export default App;
 //   <h2>PresetsList</h2>
 //   <PresetsList/>
 // </div>
+
+const obj = {
+  a: 2,
+  b: {
+    c: 8
+  },
+  d: {
+    test: {
+      f: {
+        car: 'hi!'
+      }
+    },
+    hello: 2
+  }
+};
+
+function deepClone(obj) {
+  const resultObj = {};
+
+  for (let key in obj) {
+    if(typeof obj[key] === 'object') {
+      resultObj[key] = deepClone(obj[key]);
+    }
+    else {
+      resultObj[key] = obj[key];
+    }
+  }
+
+  return resultObj;
+}

@@ -1,15 +1,24 @@
 .FilterConstructorItem {
-  display: inline-block;
-  padding: .25rem .5rem;
+  position: relative;
+  display: flex;
+  padding: .4rem .5rem;
   background: #FFF;
-  border: 1px solid #DDD;
-  border-radius: 5px; }
+  border: 1px solid #999;
+  border-radius: 5px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+  color: #333; }
+  .FilterConstructorItem--dragging {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+  .FilterConstructorItem--droppable {
+    border-style: dashed; }
 
 .FilterConstructorItem__label {
-  margin-left: 8px; }
+  margin-left: 8px;
+  white-space: nowrap; }
 
 .FilterConstructorItem__result {
-  margin-left: 8px; }
+  margin-left: 8px;
+  white-space: nowrap; }
 
 .FilterConstructorItem__result-name {
   color: yellowgreen; }

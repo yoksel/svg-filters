@@ -1,5 +1,10 @@
 .InputText {
-  width: 2rem;
+  width: 3rem;
+  margin-left: 2px;
+  border-radius: 4px;
+  border: 1px solid #CCC;
   text-align: right;
-  color: tomato;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
 }

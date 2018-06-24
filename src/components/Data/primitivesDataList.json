@@ -1,5 +1,6 @@
 [
   {
+    "id": "blur",
     "name": "feGaussianBlur",
     "resultName": "blur",
     "params": {
@@ -10,10 +11,12 @@
       "in": {
         "value": "SourceGraphic",
         "type": "select"
-      }
+      },
+      "result": "blur"
     }
   },
   {
+    "id": "blend",
     "name": "feBlend",
     "resultName": "blend",
     "params": {
@@ -24,7 +27,8 @@
       "in": {
         "value": "SourceGraphic",
         "type": "select"
-      }
+      },
+      "result": "blend"
     },
     "paramsValues": {
       "mode": [
@@ -37,6 +41,7 @@
     }
   },
   {
+    "id": "offset",
     "name": "feOffset",
     "resultName": "offset",
     "params": {
@@ -51,10 +56,12 @@
       "in": {
         "value": "SourceGraphic",
         "type": "select"
-      }
+      },
+      "result": "offset"
     }
   },
   {
+    "id": "colormatrix",
     "name": "feColorMatrix",
     "resultName": "colormatrix",
     "params": {
@@ -69,7 +76,8 @@
       "in": {
         "value": "SourceGraphic",
         "type": "select"
-      }
+      },
+      "result": "colormatrix"
     },
     "paramsValues": {
       "type": [
@@ -80,6 +88,7 @@
     }
   },
   {
+    "id": "flood",
     "name": "feFlood",
     "resultName": "flood",
     "params": {
@@ -94,10 +103,12 @@
       "in": {
         "value": "SourceGraphic",
         "type": "select"
-      }
+      },
+      "result": "flood"
     }
   },
   {
+    "id": "morphology",
     "name": "feMorphology",
     "resultName": "morphology",
     "params": {
@@ -112,7 +123,8 @@
       "in": {
         "value": "SourceAlpha",
         "type": "select"
-      }
+      },
+      "result": "morphology"
     },
     "paramsValues": {
       "operator": [

@@ -1,0 +1,6 @@
+.FilterConstructorControls {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: yellowgreen; }

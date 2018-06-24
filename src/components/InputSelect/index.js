@@ -10,7 +10,7 @@ class InputSelect extends Component {
 
   onChange(event) {
     this.props.onChange({
-      primitiveName: this.props.primitiveName,
+      id: this.props.id,
       param: this.props.param,
       value: event.target.value
     });

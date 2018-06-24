@@ -3,12 +3,17 @@ import './Filter.css';
 
 class Filter extends Component {
   getPrimitives() {
+    const divider = '\n\t\t';
     const isCode = this.props.code;
 
     return this.props.selected.map( (primitive, index) => {
       const paramsKeys = Object.keys(primitive.params);
       const params = paramsKeys.reduce((prev, param) => {
-        const value = primitive.params[param].value;
+        let value = primitive.params[param].value;
+
+        if (param === 'result') {
+          value = primitive.params[param];
+        }
 
         prev.obj[param] = value;
         prev.list.push(`${param}="${value}`);
@@ -16,7 +21,7 @@ class Filter extends Component {
       }, {obj: {}, list: []});
 
       if(isCode) {
-        return `<${primitive.name} ${params.list.join(' ')}/>`;
+        return `<${primitive.name}${divider}${params.list.join(divider)}/>`;
       }
 
       return (
@@ -27,7 +32,7 @@ class Filter extends Component {
 
   getCode() {
 return `<filter id="filter">
-  ${this.getPrimitives().join('\n  ')}
+\t${this.getPrimitives().join('\n\t')}
 </filter>`;
   }
 

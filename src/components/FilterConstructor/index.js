@@ -6,8 +6,6 @@ import './FilterConstructor.css';
 
 class FilterContsructor extends Component {
   render() {
-    const results = {};
-
     return (
         <div className="FilterContsructor">
           &lt;filter id="#filter">
@@ -17,39 +15,35 @@ class FilterContsructor extends Component {
                 ref={provided.innerRef}
                 >
                 {this.props.selected.map((primitive, index) => {
+                  let resName = primitive.params.result;
+                  let resultsList = this.props.selected.slice(0, index)
+                    .map(item => item.params.result);
+
                   return (
                     <Draggable
-                      key={index}
-                      draggableId={primitive.name}
-                      index={index}>
+                      key={resName}
+                      index={index}
+                      draggableId={resName}
+                      >
                       {(provided, snapshot) => {
-                        const resName = primitive.resultName;
-                        const index = results[resName] || 0;
-
-                        // console.log(snapshot.isDragging);
-                        if (snapshot.draggingOver === 'droppable') {
-                          console.log(snapshot.draggingOver);
-                        }
-
-
-                        if (index) {
-                          results[resName + index] = index + 1;
-                        }
-                        else {
-                          results[resName] = 0;
-                        }
+                        let className = "FilterContsructor__item";
 
                         return (
                           <div
-                            className="FilterContsructor__item"
+                            className={className}
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                             >
                             <FilterConstructorItem
                               primitive={primitive}
-                              results={results}
+                              resultsList={resultsList}
+                              selected={this.props.selected}
+                              isDragging={snapshot.isDragging}
+                              isDroppable={snapshot.draggingOver === 'droppable'}
                               onChange={this.props.onChange}
+                              addPrimitive={this.props.addPrimitive}
+                              removePrimitive={this.props.removePrimitive}
                             />
                           </div>
                         );

@@ -7,6 +7,7 @@ import Primitive from '../Primitive';
 class PrimitivesList extends Component {
 
   render() {
+
     return (
       <div className="PrimitivesList">
         <Droppable droppableId="droppable">
@@ -14,29 +15,32 @@ class PrimitivesList extends Component {
             <div
               ref={provided.innerRef}
               >
-              {this.props.items.map((primitive, index) => (
-                <Draggable
-                  key={index}
-                  draggableId={primitive.name}
-                  index={index}
-                  >
-                  {(provided, snapshot) => {
-                    return (
-                      <div
-                        className="PrimitivesList__item"
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        >
-                        <Primitive
-                          primitive={primitive}
-                          />
-                      </div>
+              {this.props.items.map((primitive, index) => {
+                let resName = primitive.params.result;
 
-                    )
-                  }}
-                </Draggable>
-              ))}
+                return (
+                  <Draggable
+                    key={resName}
+                    index={index}
+                    draggableId={resName}
+                    >
+                    {(provided, snapshot) => {
+                      return (
+                        <div
+                          className="PrimitivesList__item"
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          >
+                          <Primitive
+                            primitive={primitive}
+                            />
+                        </div>
+                      );
+                    }}
+                  </Draggable>
+                );
+              })}
               {provided.placeholder}
             </div>
           )}
