@@ -16,7 +16,8 @@ class Filter extends Component {
         }
 
         prev.obj[param] = value;
-        prev.list.push(`${param}="${value}`);
+        prev.list.push(`${param}="${value}"`);
+
         return prev;
       }, {obj: {}, list: []});
 
