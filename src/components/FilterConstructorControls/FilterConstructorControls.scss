@@ -1,5 +1,12 @@
 .FilterConstructorControls {
-  margin-left: 8px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: yellowgreen;
 }
 

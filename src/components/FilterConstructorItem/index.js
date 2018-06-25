@@ -82,7 +82,7 @@ class FilterConstructorItem extends Component {
     return (
         <div
           className={className}
-          >&lt;{primitive.name}{params}/>
+          >&lt;{primitive.name}{params}&#8203;/>
           <FilterConstructorControls
             id={primitive.id}
             selected={this.props.selected}
