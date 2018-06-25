@@ -132,5 +132,35 @@
         "dilate"
       ]
     }
+  },
+  {
+    "id": "turbulence",
+    "name": "feTurbulence",
+    "resultName": "turbulence",
+    "params": {
+      "type": {
+        "value": "turbulence",
+        "type": "select"
+      },
+      "baseFrequency" : {
+        "value": 0.15,
+        "type": "number"
+      },
+      "numOctaves": {
+        "value": "2",
+        "type": "number"
+      },
+      "in": {
+        "value": "SourceGraphic",
+        "type": "select"
+      },
+      "result": "turbulence"
+    },
+    "paramsValues": {
+      "type": [
+        "turbulence",
+        "fractalNoise"
+      ]
+    }
   }
 ]
