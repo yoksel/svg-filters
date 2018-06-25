@@ -1,6 +1,7 @@
 .FilterConstructorItem {
   position: relative;
   display: flex;
+  align-items: center;
   padding: .4rem .5rem;
   background: #FFF;
   border: 1px solid #999;
@@ -29,3 +30,4 @@
 .FilterConstructorItem__result-name {
   color: yellowgreen
 }
+

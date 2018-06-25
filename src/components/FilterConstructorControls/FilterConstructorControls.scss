@@ -1,20 +1,18 @@
 .FilterConstructorControls {
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    margin-right: 6px;
-    transform: translateY(-50%);
-    color: yellowgreen;
+  margin-left: 8px;
+  color: yellowgreen;
 }
 
 .FilterConstructorControl {
+  display: block;
   width: 1em;
   height: 1em;
   padding: 0;
-  background: #333;
+  background: none;
   border: none;
   border-radius: 50%;
   font: inherit;
   line-height: 1;
-  color: #FFF;
+  color: inherit;
+  cursor: pointer;
 }

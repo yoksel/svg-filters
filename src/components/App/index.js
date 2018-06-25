@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 
+import Icons from '../Icons';
 import PresetsList from '../PresetsList';
 import FilterConstructor from '../FilterConstructor';
 import Playground from '../Playground';
@@ -156,6 +157,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Icons/>
         <DragDropContext
           onDragEnd={this.onDragEnd}
           >

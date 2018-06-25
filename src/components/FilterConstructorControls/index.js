@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import Icon from '../Icon';
+
 import './FilterConstructorControls.css';
 
 class FilterConstructorControls extends Component {
@@ -12,14 +15,24 @@ class FilterConstructorControls extends Component {
             onClick={() => {
               this.props.addPrimitive(this.props.id)
             }}
-            type="button">+</button>
+            type="button">
+              <Icon
+                symbol="plus"
+                color="currentColor"
+                size="12"/>
+            </button>
           <button
             className="FilterConstructorControl"
             type="button"
             onClick={() => {
               this.props.removePrimitive(this.props.id)
             }}
-            >x</button>
+            >
+              <Icon
+                symbol="cross"
+                color="currentColor"
+                size="11"/>
+            </button>
         </div>
     );
   }
