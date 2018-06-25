@@ -11,7 +11,7 @@ class FilterContsructor extends Component {
           &lt;filter id="#filter">
           <Droppable droppableId="droppable2">
             {(provided, snapshot) => (
-              <div
+              <div className="FilterContsructor__container"
                 ref={provided.innerRef}
                 >
                 {this.props.selected.map((primitive, index) => {
@@ -51,7 +51,9 @@ class FilterContsructor extends Component {
                     </Draggable>
                   )}
                 )}
-                {(this.props.selected.length === 0) && '...'}
+                {(this.props.selected.length === 0) && (
+                  <span className="FilterContsructor__placeholder">Drag primitives here</span>
+                )}
                 {provided.placeholder}
               </div>
             )}
