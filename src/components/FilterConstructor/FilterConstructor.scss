@@ -29,8 +29,14 @@
   display: flex;
 
   outline: none;
+  outline: 2px solid red;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &--dragging {
+    overflow: hidden;
+    outline: 10px solid green;
   }
 }

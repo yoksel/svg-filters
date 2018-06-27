@@ -28,6 +28,10 @@ class FilterContsructor extends Component {
                       {(provided, snapshot) => {
                         let className = "FilterContsructor__item";
 
+                        if(snapshot.isDragging) {
+                          className += ` ${className}--dragging`;
+                        }
+
                         return (
                           <div
                             className={className}
