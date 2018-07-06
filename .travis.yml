@@ -1,0 +1,9 @@
+language: js
+
+node_js:
+  - node
+  - 8
+
+script:
+  - npm run lint
+  - npm run test
