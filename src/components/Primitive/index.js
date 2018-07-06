@@ -1,16 +1,22 @@
-import React, { Component } from 'react';
-import './Primitive.css';
+import React from 'react';
 
-class Primitive extends Component {
-  render() {
-    const primitive = this.props.primitive;
-    return (
-        <div
-          className="Primitive">
-          {primitive.name}
-        </div>
-    );
-  }
-}
+const Primitive = ({primitive}) => {
+  const paramsKeys = Object.keys(primitive.params);
+  const params = paramsKeys.reduce((prev, param) => {
+    let value = primitive.params[param].value;
+
+    if (param === 'result') {
+      value = primitive.params[param];
+    }
+
+    prev[param] = value;
+
+    return prev;
+  }, {});
+
+  return (
+    <primitive.name {...params}/>
+  );
+};
 
 export default Primitive;

@@ -21,9 +21,10 @@
     "create": "create-component-files",
     "component": "create-component-files -- --path=./src/components",
     "container": "create-component-files -- --path=./src/containers",
-    "jslint": "eslint '**/*.js'",
+    "js:lint": "eslint '**/*.js'",
+    "js:fix": "eslint '**/*.js' --fix",
     "csslint": "stylelint src/**/*.scss",
-    "lint": "npm run jslint && npm run csslint"
+    "lint": "npm run js:lint && npm run csslint"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -31,10 +32,14 @@
     "babel-preset-env": "^1.7.0",
     "chalk": "^2.4.1",
     "create-component-files": "^0.1.10",
+    "deep-freeze": "0.0.1",
     "eslint": "^5.0.1",
+    "eslint-config-yandex": "^1.0.6",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-react": "^7.10.0",
     "jest": "^23.3.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
     "stylelint": "^9.3.0",
     "stylelint-config-standard": "^18.2.0"
   }

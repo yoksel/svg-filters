@@ -1,4 +1,4 @@
-.FilterConstructorControls {
+.PrimitivePanelControls {
   position: absolute;
   right: 0;
   top: 0;
@@ -6,11 +6,11 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   color: yellowgreen;
 }
 
-.FilterConstructorControl {
+.PrimitivePanelControl {
   display: block;
   width: 1em;
   height: 1em;

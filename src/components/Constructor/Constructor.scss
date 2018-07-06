@@ -1,9 +1,10 @@
-.FilterContsructor {
+.Contsructor {
   margin-bottom: 1rem;
   color: #999;
+  outline: 1px solid red;
 }
 
-.FilterContsructor__container {
+.Contsructor__container {
   position: relative;
   min-height: 100px;
   padding: 4px;
@@ -11,7 +12,7 @@
   border-radius: 5px;
 }
 
-.FilterContsructor__placeholder {
+.Contsructor__placeholder {
   position: absolute;
   top: 0;
   right: 0;
@@ -20,23 +21,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #efefef;
+  background: #EFEFEF;
   border-radius: 5px;
 }
 
-.FilterContsructor__item {
+.Contsructor__item {
   margin-bottom: .75rem;
   display: flex;
-
-  outline: none;
-  outline: 2px solid red;
+  border: 1px solid #DDD;
+  border-radius: 5px;
 
   &:last-child {
     margin-bottom: 0;
-  }
-
-  &--dragging {
-    overflow: hidden;
-    outline: 10px solid green;
   }
 }

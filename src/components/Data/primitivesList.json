@@ -1,8 +1,8 @@
 [
   {
     "id": "blur",
+    "groupName": "blur",
     "name": "feGaussianBlur",
-    "resultName": "blur",
     "params": {
       "stdDeviation": {
         "value": 4,
@@ -17,8 +17,8 @@
   },
   {
     "id": "blend",
+    "groupName": "blend",
     "name": "feBlend",
-    "resultName": "blend",
     "params": {
       "mode": {
         "value": "multiply",
@@ -42,8 +42,8 @@
   },
   {
     "id": "offset",
+    "groupName": "offset",
     "name": "feOffset",
-    "resultName": "offset",
     "params": {
       "dx": {
         "value": 15,
@@ -62,8 +62,8 @@
   },
   {
     "id": "colormatrix",
+    "groupName": "colormatrix",
     "name": "feColorMatrix",
-    "resultName": "colormatrix",
     "params": {
       "type": {
         "value": "saturate",
@@ -89,8 +89,8 @@
   },
   {
     "id": "flood",
+    "groupName": "flood",
     "name": "feFlood",
-    "resultName": "flood",
     "params": {
       "floodColor": {
         "value": "gold",
@@ -109,8 +109,8 @@
   },
   {
     "id": "morphology",
+    "groupName": "morphology",
     "name": "feMorphology",
-    "resultName": "morphology",
     "params": {
       "operator": {
         "value": "erode",
@@ -135,8 +135,8 @@
   },
   {
     "id": "turbulence",
+    "groupName": "turbulence",
     "name": "feTurbulence",
-    "resultName": "turbulence",
     "params": {
       "type": {
         "value": "turbulence",
