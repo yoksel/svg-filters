@@ -3,11 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "create-component-files": "^0.1.10",
     "node-sass-chokidar": "^1.3.0",
     "npm-run-all": "^4.1.3",
     "react": "^16.4.1",
-    "react-beautiful-dnd": "^7.1.3",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
   },
@@ -20,9 +18,24 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "create": "create-component-files --path=./src/components/"
+    "create": "create-component-files",
+    "component": "create-component-files -- --path=./src/components",
+    "container": "create-component-files -- --path=./src/containers",
+    "jslint": "eslint '**/*.js'",
+    "csslint": "stylelint src/**/*.scss",
+    "lint": "npm run jslint && npm run csslint"
   },
   "devDependencies": {
-    "chalk": "^2.4.1"
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.2.0",
+    "babel-preset-env": "^1.7.0",
+    "chalk": "^2.4.1",
+    "create-component-files": "^0.1.10",
+    "eslint": "^5.0.1",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.3.0",
+    "stylelint": "^9.3.0",
+    "stylelint-config-standard": "^18.2.0"
   }
 }
