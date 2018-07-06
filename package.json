@@ -37,7 +37,6 @@
     "eslint-config-yandex": "^1.0.6",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-react": "^7.10.0",
-    "jest": "^23.3.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "stylelint": "^9.3.0",
