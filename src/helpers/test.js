@@ -46,15 +46,16 @@ describe('actions', () => {
       const changeProp = () => {
         try {
           stateBefore.params.mode.value = 'darken';
-        }
-        catch(err) {
+        } catch (err) {
           throw new TypeError();
         }
       };
 
+      /* eslint-disable new-cap */
       expect(
         changeProp
       ).toThrow(TypeError());
+      /* eslint-enable new-cap */
     });
 });
 
