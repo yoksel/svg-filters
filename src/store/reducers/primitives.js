@@ -23,14 +23,15 @@ const getId = idKeeper();
 const primitive = (state, action) => {
   switch (action.type) {
   case 'ADD_PRIMITIVE':
-    let newId = getId(action.groupName);
+    let newIdAdd = getId(action.groupName);
 
     action.params = {
       ...action.params,
-      result: newId
+      result: newIdAdd
     };
+
     return {
-      id: newId,
+      id: newIdAdd,
       name: action.name,
       params: action.params,
       groupName: action.groupName,
@@ -40,12 +41,12 @@ const primitive = (state, action) => {
   case 'DUPLICATE_PRIMITIVE':
     const source = state.filter(item => item.id === action.id);
     const duplicate = {...source[0]};
-    newId = getId(duplicate.groupName);
+    let newIdDupl = getId(duplicate.groupName);
 
-    duplicate.id = newId;
+    duplicate.id = newIdDupl;
     duplicate.params = {
       ...duplicate.params,
-      result: newId
+      result: newIdDupl
     };
 
     return duplicate;

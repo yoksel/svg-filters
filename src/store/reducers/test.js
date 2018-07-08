@@ -1,4 +1,4 @@
-import deepFreeze from 'deep-freeze';
+import deepFreeze from '../../helpers/deepFreeze';
 
 import * as primitivesReducers from './primitives';
 import * as primitiveControlsReducers from './primitiveControls';
