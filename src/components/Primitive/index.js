@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Primitive = ({primitive}) => {
   const paramsKeys = Object.keys(primitive.params);
@@ -18,3 +19,8 @@ const Primitive = ({primitive}) => {
 };
 
 export default Primitive;
+
+Primitive.propTypes = {
+  primitive: PropTypes.object.isRequired,
+  children: PropTypes.array
+};
