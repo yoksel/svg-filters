@@ -22,4 +22,8 @@
   line-height: 1;
   color: inherit;
   cursor: pointer;
+
+  &--remove {
+    color: crimson;
+  }
 }

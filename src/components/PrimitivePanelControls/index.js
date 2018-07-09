@@ -11,7 +11,7 @@ class PrimitivePanelControls extends Component {
     return (
       <div className="PrimitivePanelControls">
         <button
-          className="PrimitivePanelControl"
+          className="PrimitivePanelControl PrimitivePanelControl--add"
           onClick={duplicatePrimitive}
           type="button"
         >
@@ -21,7 +21,7 @@ class PrimitivePanelControls extends Component {
             size="12"/>
         </button>
         <button
-          className="PrimitivePanelControl"
+          className="PrimitivePanelControl PrimitivePanelControl--remove"
           type="button"
           onClick={removePrimitive}
         >
