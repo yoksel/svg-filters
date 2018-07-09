@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import InputText from '../../containers/InputText';
 import InputSelect from '../../containers/InputSelect';
@@ -9,9 +10,9 @@ import {primitivesAttrs} from '../Data';
 
 import './PrimitivePanel.css';
 
-const PrimitivePanel = ({primitive, parent, onChange}) => {
+const PrimitivePanel = ({primitive, parent, onChange, resultsList}) => {
   const paramsValues = primitive.paramsValues;
-  let resultsList = Array.from(this.props.resultsList);
+  resultsList = Array.from(resultsList);
 
   const params = Object.keys(primitive.params).map((key, index) => {
     const param = primitive.params[key];
@@ -92,3 +93,9 @@ const PrimitivePanel = ({primitive, parent, onChange}) => {
 };
 
 export default PrimitivePanel;
+
+PrimitivePanel.propTypes = {
+  primitive: PropTypes.object,
+  parent: PropTypes.string,
+  onChange: PropTypes.func
+};
