@@ -38,13 +38,16 @@ class PrimitivePanel extends Component {
       // Select
       if (param.type === 'select') {
         let valuesList = paramsValues && paramsValues[key];
+        let valuesKey = param.valuesKey || key;
+        let lastResult = '';
 
         if (!valuesList) {
-          valuesList = primitivesAttrs[key];
+          valuesList = primitivesAttrs[valuesKey];
         }
 
-        if (key === 'in') {
+        if (valuesKey === 'in') {
           valuesList = valuesList.concat(resultsList);
+          lastResult = resultsList[resultsList.length - 1];
         }
 
         input = <InputSelect
@@ -52,6 +55,7 @@ class PrimitivePanel extends Component {
           param={key}
           value={value}
           valuesList={valuesList}
+          lastResult={lastResult}
           parentId={this.props.parent}
           onChange={this.props.onChange}
         />;

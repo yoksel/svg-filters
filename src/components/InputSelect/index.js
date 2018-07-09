@@ -7,8 +7,7 @@ class InputSelect extends Component {
   }
 
   render() {
-    const value = this.props.value;
-    let valuesList = this.props.valuesList;
+    const {value, valuesList, lastResult} = this.props;
 
     const options = valuesList.map((item, index) =>{
       return React.createElement('option', {
@@ -19,7 +18,7 @@ class InputSelect extends Component {
 
     return React.createElement('select', {
       onChange: this.onChange,
-      defaultValue: value,
+      defaultValue: lastResult || value,
       className: 'InputSelect'
     }, options);
   }
