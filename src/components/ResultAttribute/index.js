@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './ResultAttribute.css';
 
 const ResultAttribute = ({value}) => {
