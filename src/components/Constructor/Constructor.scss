@@ -11,24 +11,8 @@
   border-radius: 5px;
 }
 
-.Contsructor__placeholder {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #EFEFEF;
-  border-radius: 5px;
-}
-
 .Contsructor__item {
   margin-bottom: .75rem;
-  display: flex;
-  border: 1px solid #DDD;
-  border-radius: 5px;
 
   &:last-child {
     margin-bottom: 0;
