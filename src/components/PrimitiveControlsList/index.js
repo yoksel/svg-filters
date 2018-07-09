@@ -1,33 +1,34 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
 import './PrimitiveControlsList.css';
 
-class PrimitiveControlsList extends Component {
-
-  render() {
-    const primitives = this.props.primitiveControls;
-
-    return (
-      <div className="PrimitiveControlsList">
-        <div>
-          {primitives.map((primitive, index) => {
-            return (
-              <div
-                key={primitive.id}
-                className="PrimitiveControlsList__item"
-                onClick={() => {
-                  this.props.onClick(primitive);
-                }}
-              >
-                {primitive.name}
-              </div>
-            );
-          })}
-
-        </div>
+const PrimitiveControlsList = ({primitiveControls, onClick}) => {
+  return (
+    <div className="PrimitiveControlsList">
+      <div>
+        {primitiveControls.map((primitive, index) => {
+          return (
+            <div
+              key={primitive.id}
+              className="PrimitiveControlsList__item"
+              onClick={() => {
+                onClick(primitive);
+              }}
+            >
+              {primitive.name}
+            </div>
+          );
+        })}
 
       </div>
-    );
-  }
-}
+
+    </div>
+  );
+};
 
 export default PrimitiveControlsList;
+
+PrimitiveControlsList.propTypes = {
+  primitiveControls: PropTypes.array
+};
