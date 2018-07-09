@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './ResultAttribute.css';
 
 const ResultAttribute = ({value}) => {
@@ -13,3 +15,7 @@ const ResultAttribute = ({value}) => {
 };
 
 export default ResultAttribute;
+
+ResultAttribute.propTypes = {
+  value: PropTypes.string
+};
