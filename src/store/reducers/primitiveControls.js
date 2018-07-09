@@ -6,7 +6,8 @@ const primitiveControl = (state, action) => {
       name: action.name,
       params: action.params,
       groupName: action.groupName,
-      paramsValues: action.paramsValues
+      paramsValues: action.paramsValues,
+      children: action.children
     };
 
   default:

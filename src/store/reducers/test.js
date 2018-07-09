@@ -51,7 +51,9 @@ describe('actions', () => {
           'value': 'multiply',
           'type': 'select'
         },
-        result: 'blur'
+        result: {
+          value: 'blur'
+        }
       },
       paramsValues: [
         'mode': [
@@ -77,7 +79,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur'
+          result: {
+            value: 'blur'
+          }
         },
         paramsValues: [
           'mode': [
@@ -115,7 +119,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur'
+          result: {
+            value: 'blur'
+          }
         },
         paramsValues: [
           'mode': [
@@ -146,7 +152,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur'
+          result: {
+            value: 'blur'
+          }
         },
         paramsValues: [
           'mode': [
@@ -171,7 +179,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur1'
+          result: {
+            value: 'blur1'
+          }
         },
         paramsValues: [
           'mode': [
@@ -209,7 +219,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur'
+          result: {
+            value: 'blur'
+          }
         },
         paramsValues: [
           'mode': [
@@ -234,7 +246,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur1'
+          result: {
+            value: 'blur1'
+          }
         },
         paramsValues: [
           'mode': [
@@ -265,7 +279,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur'
+          result: {
+            value: 'blur'
+          }
         },
         paramsValues: [
           'mode': [
@@ -303,7 +319,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur'
+          result: {
+            value: 'blur'
+          }
         },
         paramsValues: [
           'mode': [
@@ -328,7 +346,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur1'
+          result: {
+            value: 'blur1'
+          }
         },
         paramsValues: [
           'mode': [
@@ -361,7 +381,9 @@ describe('actions', () => {
             'value': 'multiply',
             'type': 'select'
           },
-          result: 'blur'
+          result: {
+            value: 'blur'
+          }
         },
         paramsValues: [
           'mode': [
@@ -386,7 +408,9 @@ describe('actions', () => {
             'value': 'screen',
             'type': 'select'
           },
-          result: 'blur1'
+          result: {
+            value: 'blur1'
+          }
         },
         paramsValues: [
           'mode': [

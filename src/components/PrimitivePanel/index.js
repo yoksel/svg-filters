@@ -4,6 +4,7 @@ import InputText from '../../containers/InputText';
 import InputSelect from '../../containers/InputSelect';
 import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
 
+import ResultAttribute from '../ResultAttribute';
 import {primitivesAttrs} from '../Data';
 
 import './PrimitivePanel.css';
@@ -14,22 +15,16 @@ class PrimitivePanel extends Component {
     const paramsValues = primitive.paramsValues;
     let resultsList = Array.from(this.props.resultsList);
 
-    const getResultAttr = (resultId) => {
-      return (
-        <span key="result" className="PrimitivePanel__result">
-        result="<span className='PrimitivePanel__result-name'>
-            {resultId}
-          </span>"
-        </span>
-      );
-    };
-
     const params = Object.keys(primitive.params).map((key, index) => {
       const param = primitive.params[key];
       const value = param.value;
 
       if (key === 'result') {
-        return getResultAttr(param);
+        return (
+          <ResultAttribute
+            key={value}
+            value={value} />
+        );
       }
 
       // Default types text/number
@@ -57,6 +52,7 @@ class PrimitivePanel extends Component {
           param={key}
           value={value}
           valuesList={valuesList}
+          parentId={this.props.parent}
           onChange={this.props.onChange}
         />;
       }

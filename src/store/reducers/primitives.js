@@ -27,7 +27,9 @@ const primitive = (state, action) => {
 
     action.params = {
       ...action.params,
-      result: newIdAdd
+      result: {
+        value: newIdAdd
+      }
     };
 
     return {
@@ -35,7 +37,8 @@ const primitive = (state, action) => {
       name: action.name,
       params: action.params,
       groupName: action.groupName,
-      paramsValues: action.paramsValues
+      paramsValues: action.paramsValues,
+      children: action.children
     };
 
   case 'DUPLICATE_PRIMITIVE':
@@ -46,7 +49,9 @@ const primitive = (state, action) => {
     duplicate.id = newIdDupl;
     duplicate.params = {
       ...duplicate.params,
-      result: newIdDupl
+      result: {
+        value: newIdDupl
+      }
     };
 
     return duplicate;
@@ -71,21 +76,27 @@ export const primitives = (state = [], action) => {
     ];
 
   case 'DELETE_PRIMITIVE':
-    const filtered = state.filter(item => item.id !== action.id);
+    const filteredDel = state.filter(item => item.id !== action.id);
 
-    return filtered;
+    return filteredDel;
 
   case 'CHANGE_PRIMITIVE_PROP':
     const newState = state.map(item => {
-      if (item.id === action.id) {
+
+      // Edit prop of child
+      if (item.id === action.parentId) {
         item = deepClone(item);
-        // item.params = {...item.params};
-        // item.params[action.param] = {...item.params[action.param]}
-        if (item.params[action.param].value) {
-          item.params[action.param].value = action.value;
-        } else {
-          item.params[action.param] = action.value;
-        }
+
+        item.children = item.children.map(child => {
+          if (child.id === action.id) {
+            child.params[action.param].value = action.value;
+          }
+          return child;
+        });
+      } else if (item.id === action.id) {
+        item = deepClone(item);
+
+        item.params[action.param].value = action.value;
       }
 
       return item;

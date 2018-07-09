@@ -12,7 +12,9 @@
         "value": "SourceGraphic",
         "type": "select"
       },
-      "result": "blur"
+      "result": {
+        "value": "blur"
+      }
     }
   },
   {
@@ -28,7 +30,9 @@
         "value": "SourceGraphic",
         "type": "select"
       },
-      "result": "blend"
+      "result": {
+        "value": "blend"
+      }
     },
     "paramsValues": {
       "mode": [
@@ -57,7 +61,9 @@
         "value": "SourceGraphic",
         "type": "select"
       },
-      "result": "offset"
+      "result": {
+        "value": "offset"
+      }
     }
   },
   {
@@ -77,7 +83,9 @@
         "value": "SourceGraphic",
         "type": "select"
       },
-      "result": "colormatrix"
+      "result": {
+        "value": "colormatrix"
+      }
     },
     "paramsValues": {
       "type": [
@@ -104,7 +112,9 @@
         "value": "SourceGraphic",
         "type": "select"
       },
-      "result": "flood"
+      "result": {
+        "value": "flood"
+      }
     }
   },
   {
@@ -124,7 +134,9 @@
         "value": "SourceAlpha",
         "type": "select"
       },
-      "result": "morphology"
+      "result": {
+        "value": "morphology"
+      }
     },
     "paramsValues": {
       "operator": [
@@ -154,7 +166,9 @@
         "value": "SourceGraphic",
         "type": "select"
       },
-      "result": "turbulence"
+      "result": {
+        "value": "turbulence"
+      }
     },
     "paramsValues": {
       "type": [

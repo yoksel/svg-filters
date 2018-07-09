@@ -25,7 +25,8 @@ primitivesList.forEach(primitive => {
     groupName: primitive.groupName,
     name: primitive.name,
     params: primitive.params,
-    paramsValues: primitive.paramsValues
+    paramsValues: primitive.paramsValues,
+    children: primitive.children
   });
 });
 

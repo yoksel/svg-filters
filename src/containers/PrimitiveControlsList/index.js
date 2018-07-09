@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchProps = (dispatch) => {
+
   return {
     onClick: (primitive) => {
       dispatch({
@@ -17,7 +18,8 @@ const mapDispatchProps = (dispatch) => {
         groupName: primitive.groupName,
         name: primitive.name,
         params: primitive.params,
-        paramsValues: primitive.paramsValues
+        paramsValues: primitive.paramsValues,
+        children: primitive.children
       });
     }
   };

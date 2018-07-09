@@ -11,6 +11,7 @@ const mapDispatchProps = (
         type: 'CHANGE_PRIMITIVE_PROP',
         id: props.id,
         param: props.param,
+        parentId: props.parentId,
         value: value
       });
     }

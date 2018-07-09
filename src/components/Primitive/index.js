@@ -5,17 +5,15 @@ const Primitive = ({primitive}) => {
   const params = paramsKeys.reduce((prev, param) => {
     let value = primitive.params[param].value;
 
-    if (param === 'result') {
-      value = primitive.params[param];
-    }
-
     prev[param] = value;
 
     return prev;
   }, {});
 
   return (
-    <primitive.name {...params}/>
+    <primitive.name {...params}>
+      {primitive.children}
+    </primitive.name>
   );
 };
 
