@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import deepClone from '../../helpers/deepClone';
 
@@ -30,3 +31,7 @@ const Filter = ({primitives}) => (
 );
 
 export default Filter;
+
+Filter.propTypes = {
+  primitives: PropTypes.array.isRequired
+};

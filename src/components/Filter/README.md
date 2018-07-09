@@ -1,3 +1,3 @@
 # Filter
 
-Creates element `filter`
+Creates element `filter` for using inside element `svg`
