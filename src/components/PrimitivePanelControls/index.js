@@ -30,7 +30,7 @@ const PrimitivePanelControls = ({duplicatePrimitive, removePrimitive}) => {
       </button>
     </div>
   );
-}
+};
 
 export default PrimitivePanelControls;
 
