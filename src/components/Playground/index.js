@@ -13,8 +13,7 @@ const Playground = ({filterId}) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          className="Playground__svg"
-          width="250" height="320">
+          className="Playground__svg">
 
           <Filter/>
 
@@ -29,7 +28,7 @@ const Playground = ({filterId}) => {
             <circle r="70" cx="40%" cy="180" fill="gold" stroke="yellowgreen" strokeWidth="5"
             />
             <text
-              x="50%" y="260" dy="1em"
+              x="50%" y="280" dy="1em"
               textAnchor="middle">Some text</text>
           </g>
         </svg>
