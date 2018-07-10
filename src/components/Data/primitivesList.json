@@ -5,7 +5,10 @@
     "name": "feGaussianBlur",
     "params": {
       "stdDeviation": {
-        "value": 4,
+        "value": 10,
+        "min": 0,
+        "max": 500,
+        "step": 1,
         "type": "number"
       },
       "in": {
@@ -101,16 +104,12 @@
     "name": "feFlood",
     "params": {
       "floodColor": {
-        "value": "gold",
-        "type": "text"
+        "value": "#FFCC99",
+        "type": "color"
       },
       "floodOpacity": {
         "value": 0.5,
         "type": "number"
-      },
-      "in": {
-        "value": "SourceGraphic",
-        "type": "select"
       },
       "result": {
         "value": "flood"
@@ -162,10 +161,6 @@
         "value": "2",
         "type": "number"
       },
-      "in": {
-        "value": "SourceGraphic",
-        "type": "select"
-      },
       "result": {
         "value": "turbulence"
       }
@@ -176,5 +171,68 @@
         "fractalNoise"
       ]
     }
+  },
+  {
+    "id": "composite",
+    "groupName": "composite",
+    "name": "feComposite",
+    "params": {
+      "in": {
+        "value": "SourceGraphic",
+        "type": "select"
+      },
+      "in2": {
+        "value": "SourceGraphic",
+        "type": "select",
+        "valuesKey": "in"
+      },
+      "operator": {
+        "value": "in",
+        "type": "select"
+      },
+      "result": {
+        "value": "composite"
+      }
+    }
+  },
+  {
+    "id": "merge",
+    "groupName": "merge",
+    "name": "feMerge",
+    "params": {
+      "result": {
+        "value": "merge"
+      }
+    },
+    "children": [
+      {
+        "id": "mergeNode",
+        "groupName": "mergeNode",
+        "name": "feMergeNode",
+        "params": {
+          "in": {
+            "value": "SourceGraphic",
+            "type": "select"
+          },
+          "result": {
+            "value": "mergeNode"
+          }
+        }
+      },
+      {
+        "id": "mergeNode1",
+        "groupName": "mergeNode",
+        "name": "feMergeNode",
+        "params": {
+          "in": {
+            "value": "SourceGraphic",
+            "type": "select"
+          },
+          "result": {
+            "value": "mergeNode1"
+          }
+        }
+      }
+    ]
   }
 ]

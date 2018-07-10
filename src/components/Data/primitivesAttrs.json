@@ -4,11 +4,19 @@
   "width": "100%",
   "height": "100%",
   "in": [
-      "SourceGraphic",
-      "SourceAlpha",
-      "BackgroundImage",
-      "BackgroundAlpha",
-      "FillPaint",
-      "StrokePaint"
-    ]
+    "SourceGraphic",
+    "SourceAlpha",
+    "BackgroundImage",
+    "BackgroundAlpha",
+    "FillPaint",
+    "StrokePaint"
+  ],
+  "operator": [
+    "over",
+    "in",
+    "out",
+    "atop",
+    "xor",
+    "arithmetic"
+  ]
 }
