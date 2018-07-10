@@ -24,51 +24,55 @@ const getLastResult = (state) => {
   let result = 'SourceGraphic';
   const last = state[state.length - 1];
 
-  if(last) {
-    result = last.params.result.value;
+  if (last) {
+    result = last.id;
   }
   return result;
-}
+};
+
+const updateUnicalProps = (state, action) => {
+  const newAction = deepClone(action);
+  let newIdAdd = getId(newAction.groupName);
+  let newIn = getLastResult(state);
+
+  newAction.id = newIdAdd;
+
+  if (newAction.params) {
+    if (newAction.params.result) {
+      newAction.params.result.value = newIdAdd;
+    }
+
+    if (newAction.params.in) {
+      newAction.params.in.value = newIn;
+    }
+  }
+
+  if (newAction.children) {
+    newAction.children = newAction.children.map(item => updateUnicalProps(state, item));
+  }
+
+  return newAction;
+};
 
 const primitive = (state, action) => {
   switch (action.type) {
   case 'ADD_PRIMITIVE':
-    let newIdAdd = getId(action.groupName);
-    let newIn = getLastResult(state);
-
-    action.params = deepClone(action.params);
-
-    if (action.params.result) {
-      action.params.result.value = newIdAdd;
-    }
-
-    if (action.params.in) {
-      action.params.in.value = newIn;
-    }
+    const newAction = updateUnicalProps(state, action);
 
     return {
-      id: newIdAdd,
-      name: action.name,
-      params: action.params,
-      groupName: action.groupName,
-      paramsValues: action.paramsValues,
-      children: action.children
+      id: newAction.id,
+      name: newAction.name,
+      params: newAction.params,
+      groupName: newAction.groupName,
+      paramsValues: newAction.paramsValues,
+      children: newAction.children
     };
 
   case 'DUPLICATE_PRIMITIVE':
     const source = state.filter(item => item.id === action.id);
-    const duplicate = {...source[0]};
-    let newIdDupl = getId(duplicate.groupName);
+    const duplAction = updateUnicalProps(state, source[0]);
 
-    duplicate.id = newIdDupl;
-    duplicate.params = {
-      ...duplicate.params,
-      result: {
-        value: newIdDupl
-      }
-    };
-
-    return duplicate;
+    return duplAction;
 
   default:
     return state;
