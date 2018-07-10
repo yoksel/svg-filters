@@ -68,26 +68,28 @@ const PrimitivePanel = ({primitive, parent, onChange, resultsList}) => {
     );
   });
 
-  let primitiveText = {
-    start: `&amp;lt;${primitive.name}${params}&amp;#8203;>`,
-    end: `&amp;lt;/${primitive.name}${params}>`
-  };
-
   if (!primitive.children) {
-    primitiveText = {
-      start: primitiveText.start.replace('>', '/>'),
-      end: null
-    };
+    return (
+      <div
+        className="PrimitivePanel"
+      >&lt;{primitive.name}{params}&#8203;/>
+        <PrimitivePanelControls
+          id={primitive.id}
+        />
+        {primitive.children}
+      </div>
+    );
   }
 
   return (
     <div
       className="PrimitivePanel"
-    >&lt;{primitive.name}{params}&#8203;/>
+    >&lt;{primitive.name}{params}&#8203;>
       <PrimitivePanelControls
         id={primitive.id}
       />
       {primitive.children}
+      &lt;/{primitive.name}&#8203;>
     </div>
   );
 };
