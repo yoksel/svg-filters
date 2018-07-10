@@ -9,7 +9,7 @@ class InputSelect extends Component {
   }
 
   render() {
-    const {value, valuesList, lastResult} = this.props;
+    const {value, valuesList} = this.props;
 
     const options = valuesList.map((item, index) =>{
       return React.createElement('option', {
@@ -20,7 +20,7 @@ class InputSelect extends Component {
 
     return React.createElement('select', {
       onChange: this.onChange,
-      defaultValue: lastResult || value,
+      defaultValue: value,
       className: 'InputSelect'
     }, options);
   }
@@ -31,6 +31,5 @@ export default InputSelect;
 InputSelect.propTypes = {
   value: PropTypes.string,
   valuesList: PropTypes.array,
-  lastResult: PropTypes.string,
   onChange: PropTypes.func
 };

@@ -38,7 +38,6 @@ const PrimitivePanel = ({primitive, parent, onChange, resultsList}) => {
     if (param.type === 'select') {
       let valuesList = paramsValues && paramsValues[key];
       let valuesKey = param.valuesKey || key;
-      let lastResult = '';
 
       if (!valuesList) {
         valuesList = primitivesAttrs[valuesKey];
@@ -46,7 +45,6 @@ const PrimitivePanel = ({primitive, parent, onChange, resultsList}) => {
 
       if (valuesKey === 'in') {
         valuesList = valuesList.concat(resultsList);
-        lastResult = resultsList[resultsList.length - 1];
       }
 
       input = <InputSelect
@@ -54,7 +52,6 @@ const PrimitivePanel = ({primitive, parent, onChange, resultsList}) => {
         param={key}
         value={value}
         valuesList={valuesList}
-        lastResult={lastResult}
         parentId={parent}
         onChange={onChange}
       />;

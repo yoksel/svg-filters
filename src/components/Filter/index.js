@@ -15,7 +15,7 @@ const Filter = ({primitives}) => (
 
           return (
             <Primitive
-              key={item.params.result.value}
+              key={item.id}
               primitive={item}/>
           );
         });
@@ -23,7 +23,7 @@ const Filter = ({primitives}) => (
 
       return (
         <Primitive
-          key={primitive.params.result.value}
+          key={primitive.id}
           primitive={primitive}/>
       );
     })}

@@ -20,17 +20,31 @@ export const idKeeper = () => {
 
 const getId = idKeeper();
 
+const getLastResult = (state) => {
+  let result = 'SourceGraphic';
+  const last = state[state.length - 1];
+
+  if(last) {
+    result = last.params.result.value;
+  }
+  return result;
+}
+
 const primitive = (state, action) => {
   switch (action.type) {
   case 'ADD_PRIMITIVE':
     let newIdAdd = getId(action.groupName);
+    let newIn = getLastResult(state);
 
-    action.params = {
-      ...action.params,
-      result: {
-        value: newIdAdd
-      }
-    };
+    action.params = deepClone(action.params);
+
+    if (action.params.result) {
+      action.params.result.value = newIdAdd;
+    }
+
+    if (action.params.in) {
+      action.params.in.value = newIn;
+    }
 
     return {
       id: newIdAdd,
@@ -66,7 +80,7 @@ export const primitives = (state = [], action) => {
   case 'ADD_PRIMITIVE':
     return [
       ...state,
-      primitive(undefined, action)
+      primitive(state, action)
     ];
 
   case 'DUPLICATE_PRIMITIVE':

@@ -9,7 +9,7 @@ import './Constructor.css';
 
 const getResultsList = (primitives, index) => {
   return primitives.slice(0, index)
-    .map(item => item.params.result.value);
+    .map(item => item.id);
 };
 
 const Contsructor = ({primitives}) => {
@@ -25,7 +25,7 @@ const Contsructor = ({primitives}) => {
             primitive.children = primitive.children.map(item => {
               return (
                 <div
-                  key={item.params.result.value}
+                  key={item.id}
                   className="Contsructor__item">
                   <PrimitivePanel
                     parent={primitive.id}
@@ -39,7 +39,7 @@ const Contsructor = ({primitives}) => {
 
           return (
             <div
-              key={primitive.params.result.value}
+              key={primitive.id}
               className="Contsructor__item">
               <PrimitivePanel
                 primitive={primitive}
