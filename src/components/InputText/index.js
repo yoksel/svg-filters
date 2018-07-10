@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './InputText.css';
+import PropTypes from 'prop-types';
 
 class InputText extends Component {
   onChange = (event) => {
@@ -7,11 +8,11 @@ class InputText extends Component {
   }
 
   render() {
-    let inputType = this.props.type;
+    let {value, type} = this.props;
 
     return React.createElement('input', {
-      defaultValue: this.props.value,
-      type: inputType,
+      defaultValue: value,
+      type: type,
       onChange: this.onChange,
       className: 'InputText'
     });
@@ -19,3 +20,12 @@ class InputText extends Component {
 }
 
 export default InputText;
+
+InputText.propTypes = {
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  type: PropTypes.string,
+  onChange: PropTypes.func
+};

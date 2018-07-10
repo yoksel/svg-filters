@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
 import './InputSelect.css';
 
 class InputSelect extends Component {
@@ -25,3 +27,10 @@ class InputSelect extends Component {
 }
 
 export default InputSelect;
+
+InputSelect.propTypes = {
+  value: PropTypes.string,
+  valuesList: PropTypes.array,
+  lastResult: PropTypes.string,
+  onChange: PropTypes.func
+};
