@@ -42,7 +42,12 @@ const updateUnicalProps = (state, action) => {
       newAction.params.result.value = newIdAdd;
     }
 
-    if (newAction.params.in) {
+    if (newAction.params.in2) {
+      // In + In2
+      newAction.params.in.value = 'SourceGraphic';
+      newAction.params.in2.value = newIn;
+    } else if (newAction.params.in) {
+      // In only
       newAction.params.in.value = newIn;
     }
   }
