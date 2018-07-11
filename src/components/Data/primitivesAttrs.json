@@ -20,5 +20,11 @@
   "stitchTiles": [
     "stitch",
     "noStitch"
+  ],
+  "ChannelSelector": [
+    "R",
+    "G",
+    "B",
+    "A"
   ]
 }
