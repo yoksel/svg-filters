@@ -11,7 +11,7 @@ class InputText extends Component {
     let {value, type, step, min, max} = this.props;
 
     return React.createElement('input', {
-      defaultValue: value,
+      value: value,
       type: type,
       step: step,
       min: min,

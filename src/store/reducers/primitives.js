@@ -149,8 +149,15 @@ export const primitives = (state = [], action) => {
         });
       } else if (item.id === action.id) {
         item = deepClone(item);
+        const param = item.params[action.param];
+        param.value = action.value;
 
-        item.params[action.param].value = action.value;
+        // Save value to variants (feColorMatrix, for example)
+        if (param.variants) {
+          const propByKey = item.params[param.variants.key];
+          const keyValue = propByKey.value;
+          param.variants.values[keyValue] = action.value;
+        }
       }
 
       return item;

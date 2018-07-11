@@ -78,8 +78,16 @@
         "type": "select"
       },
       "values": {
-        "value": 180,
-        "type": "number"
+        "value": 5,
+        "type": "number",
+        "variants": {
+          "key": "type",
+          "values": {
+            "saturate": 5,
+            "hueRotate": 50,
+            "luminanceToAlpha": false
+          }
+        }
       },
       "in": {
         "value": "SourceGraphic",

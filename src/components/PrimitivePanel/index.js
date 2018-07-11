@@ -16,7 +16,8 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
 
   const params = Object.keys(primitive.params).map((key, index) => {
     const param = primitive.params[key];
-    const {value, step, min, max} = param;
+    const {value, step, min, max, variants} = param;
+    let input;
 
     if (key === 'result') {
       return (
@@ -26,19 +27,35 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
       );
     }
 
+    if (param.type !== 'select') {
     // Default types text/number
-    let input = <InputText
-      id={primitive.id}
-      param={key}
-      value={value}
-      step={step}
-      min={min}
-      max={max}
-      type={param.type}
-    />;
+      let actualValue = value;
 
-    // Select
-    if (param.type === 'select') {
+
+      if (variants) {
+        const propByKey = primitive.params[variants.key];
+
+        if (propByKey) {
+          const keyValue = propByKey.value;
+          actualValue = variants.values[keyValue];
+        }
+      }
+
+      if (!actualValue) {
+        input = null;
+        return;
+      }
+
+      input = <InputText
+        id={primitive.id}
+        param={key}
+        value={actualValue}
+        step={step}
+        min={min}
+        max={max}
+        type={param.type}
+      />;
+    } else { // Select
       let valuesList = paramsValues && paramsValues[key];
       let valuesKey = param.valuesKey || key;
 
