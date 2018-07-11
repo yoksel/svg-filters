@@ -12,12 +12,14 @@
 
 .PrimitivePanelControl {
   display: block;
-  width: 1em;
-  height: 1em;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin: 4px;
   padding: 0;
   background: none;
-  border: none;
-  border-radius: 50%;
+  border: 1px solid #DDD;
+  border-radius: 4px;
   font: inherit;
   line-height: 1;
   color: inherit;

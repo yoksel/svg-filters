@@ -16,7 +16,7 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
 
   const params = Object.keys(primitive.params).map((key, index) => {
     const param = primitive.params[key];
-    const { value, step, min, max } = param;
+    const {value, step, min, max} = param;
 
     if (key === 'result') {
       return (
@@ -70,9 +70,9 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
 
   if (!primitive.children) {
     return (
-      <div
-        className="PrimitivePanel"
-      >&lt;{primitive.name}{params}&#8203;/>
+      <div className="PrimitivePanel">
+        &lt;{primitive.name}{params}&#8203;/>
+
         <PrimitivePanelControls
           id={primitive.id}
           parentId={parentId}
@@ -83,14 +83,17 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
   }
 
   return (
-    <div
-      className="PrimitivePanel"
-    >&lt;{primitive.name}{params}&#8203;>
+    <div className="PrimitivePanel">
+      <div className="PrimitivePanel__tag">
+        &lt;{primitive.name}{params}&#8203;>
+      </div>
       <PrimitivePanelControls
         id={primitive.id}
       />
       {primitive.children}
-      &lt;/{primitive.name}&#8203;>
+      <div className="PrimitivePanel__tag">
+        &lt;/{primitive.name}&#8203;>
+      </div>
     </div>
   );
 };

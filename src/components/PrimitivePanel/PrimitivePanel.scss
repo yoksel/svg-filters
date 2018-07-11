@@ -1,10 +1,11 @@
 .PrimitivePanel {
   position: relative;
+  min-height: 48px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   padding: .5rem .5rem;
-  padding-right: 20px;
+  padding-right: 32px;
   background: #FFF;
   border: 1px solid #999;
   border-radius: 5px;
@@ -18,6 +19,10 @@
   &--droppable {
     border-style: dashed;
   }
+}
+
+.PrimitivePanel__tag {
+  width: 100%;
 }
 
 .PrimitivePanel__label {

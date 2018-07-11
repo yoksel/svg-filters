@@ -14,7 +14,7 @@
 .Contsructor__item {
   margin-bottom: .75rem;
 
-  &:last-child {
+  &:last-of-type {
     margin-bottom: 0;
   }
 }

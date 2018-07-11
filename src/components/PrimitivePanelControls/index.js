@@ -16,7 +16,7 @@ const PrimitivePanelControls = ({duplicatePrimitive, removePrimitive}) => {
         <Icon
           symbol="plus"
           color="currentColor"
-          size="12"/>
+          size="14"/>
       </button>
       <button
         className="PrimitivePanelControl PrimitivePanelControl--remove"
@@ -26,7 +26,7 @@ const PrimitivePanelControls = ({duplicatePrimitive, removePrimitive}) => {
         <Icon
           symbol="cross"
           color="currentColor"
-          size="11"/>
+          size="13"/>
       </button>
     </div>
   );
