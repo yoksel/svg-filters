@@ -10,7 +10,7 @@ import {primitivesAttrs} from '../Data';
 
 import './PrimitivePanel.css';
 
-const PrimitivePanel = ({primitive, parent, onChange, resultsList}) => {
+const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
   const paramsValues = primitive.paramsValues;
   resultsList = Array.from(resultsList);
 
@@ -52,7 +52,7 @@ const PrimitivePanel = ({primitive, parent, onChange, resultsList}) => {
         param={key}
         value={value}
         valuesList={valuesList}
-        parentId={parent}
+        parentId={parentId}
         onChange={onChange}
       />;
     }
@@ -72,6 +72,7 @@ const PrimitivePanel = ({primitive, parent, onChange, resultsList}) => {
       >&lt;{primitive.name}{params}&#8203;/>
         <PrimitivePanelControls
           id={primitive.id}
+          parentId={parentId}
         />
         {primitive.children}
       </div>
@@ -95,6 +96,6 @@ export default PrimitivePanel;
 
 PrimitivePanel.propTypes = {
   primitive: PropTypes.object,
-  parent: PropTypes.string,
+  parentId: PropTypes.string,
   onChange: PropTypes.func
 };

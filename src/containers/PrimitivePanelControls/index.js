@@ -6,18 +6,27 @@ const mapDispatchProps = (
   dispatch,
   props
 ) => {
+  let params = {
+    id: props.id
+  };
+
+  if (props.parentId) {
+    params = {
+      id: props.parentId,
+      childId: props.id
+    };
+  }
+
   return {
     removePrimitive: () => {
-      dispatch({
-        type: 'DELETE_PRIMITIVE',
-        id: props.id
-      });
+      params.type = 'DELETE_PRIMITIVE';
+
+      dispatch(params);
     },
     duplicatePrimitive: () => {
-      dispatch({
-        type: 'DUPLICATE_PRIMITIVE',
-        id: props.id
-      });
+      params.type = 'DUPLICATE_PRIMITIVE';
+
+      dispatch(params);
     }
   };
 };

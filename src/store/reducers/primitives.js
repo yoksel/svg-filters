@@ -69,7 +69,11 @@ const primitive = (state, action) => {
     };
 
   case 'DUPLICATE_PRIMITIVE':
-    const source = state.filter(item => item.id === action.id);
+    let source = state.filter(item => item.id === action.id);
+
+    if (action.childId) {
+      source = source[0].children.filter(item => item.id === action.childId);
+    }
     const duplAction = updateUnicalProps(state, source[0]);
 
     return duplAction;
@@ -88,13 +92,39 @@ export const primitives = (state = [], action) => {
     ];
 
   case 'DUPLICATE_PRIMITIVE':
+    const newPrimitive = primitive(state, action);
+
+    if (action.childId !== undefined) {
+      return state.map(item => {
+        if (item.id === action.id) {
+          item = deepClone(item);
+          item.children.push(newPrimitive);
+        }
+
+        return item;
+      });
+    }
+
     return [
       ...state,
-      primitive(state, action)
+      newPrimitive
     ];
 
   case 'DELETE_PRIMITIVE':
-    const filteredDel = state.filter(item => item.id !== action.id);
+    let filteredDel = {};
+
+    if (action.childId) {
+      filteredDel = state.map(item => {
+        if (item.id === action.id) {
+          item = deepClone(item);
+          item.children = item.children.filter(child => child.id !== action.childId);
+        }
+
+        return item;
+      });
+    } else {
+      filteredDel = state.filter(item => item.id !== action.id);
+    }
 
     return filteredDel;
 
@@ -109,6 +139,7 @@ export const primitives = (state = [], action) => {
           if (child.id === action.id) {
             child.params[action.param].value = action.value;
           }
+
           return child;
         });
       } else if (item.id === action.id) {

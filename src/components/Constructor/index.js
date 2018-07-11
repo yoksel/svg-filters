@@ -28,7 +28,7 @@ const Contsructor = ({primitives}) => {
                   key={item.id}
                   className="Contsructor__item">
                   <PrimitivePanel
-                    parent={primitive.id}
+                    parentId={primitive.id}
                     primitive={item}
                     resultsList={getResultsList(primitives, index)}
                   />
