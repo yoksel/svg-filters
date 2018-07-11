@@ -16,7 +16,7 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
 
   const params = Object.keys(primitive.params).map((key, index) => {
     const param = primitive.params[key];
-    const value = param.value;
+    const { value, step, min, max } = param;
 
     if (key === 'result') {
       return (
@@ -31,6 +31,9 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
       id={primitive.id}
       param={key}
       value={value}
+      step={step}
+      min={min}
+      max={max}
       type={param.type}
     />;
 

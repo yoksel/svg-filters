@@ -6,8 +6,6 @@
   "in": [
     "SourceGraphic",
     "SourceAlpha",
-    "BackgroundImage",
-    "BackgroundAlpha",
     "FillPaint",
     "StrokePaint"
   ],
@@ -18,5 +16,9 @@
     "atop",
     "xor",
     "arithmetic"
+  ],
+  "stitchTiles": [
+    "stitch",
+    "noStitch"
   ]
 }
