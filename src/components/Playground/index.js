@@ -15,17 +15,26 @@ const Playground = ({filterId}) => {
           xmlnsXlink="http://www.w3.org/1999/xlink"
           className="Playground__svg">
 
-          <Filter/>
+          <defs>
+            <Filter/>
+          </defs>
 
           <image
-            xlinkHref="http://placekitten.com/250/150"
+            x="20" y="20"
+            width="250" height="151"
+            xlinkHref="http://placekitten.com/250/151"
             filter={filterUrl}
           />
 
           <g filter={filterUrl}>
-            <rect x="50%" y="50%" width="50%" height="100" fill="teal"/>
+            <rect x="50%" y="53%"
+              width="40%" height="40%"
+              fill="teal"
+              stroke="lightseagreen" strokeWidth="10"/>
 
-            <circle r="70" cx="40%" cy="180" fill="gold" stroke="yellowgreen" strokeWidth="5"
+            <circle r="50" cx="40%" cy="240"
+              fill="gold"
+              stroke="tomato" strokeWidth="10"
             />
             <text
               x="50%" y="280" dy="1em"
