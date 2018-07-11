@@ -5,10 +5,11 @@
     "name": "feGaussianBlur",
     "params": {
       "stdDeviation": {
-        "value": 10,
+        "value": "5 20",
         "min": 0,
         "step": 1,
-        "type": "number"
+        "type": "number",
+        "double": true
       },
       "in": {
         "value": "SourceGraphic",
@@ -201,10 +202,11 @@
         "type": "select"
       },
       "baseFrequency" : {
-        "value": 0.015,
+        "value": "0.015 0.1",
         "min": 0,
         "step": 0.001,
-        "type": "number"
+        "type": "number",
+        "double": true
       },
       "numOctaves": {
         "value": "2",
