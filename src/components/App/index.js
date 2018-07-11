@@ -13,13 +13,11 @@ class App extends Component {
       <div className="App">
         <Icons/>
         <div className="App__container">
-          PrimitiveControlsList
           <PrimitiveControlsList/>
         </div>
 
         <div className="App__container">
           <Constructor/>
-          Playground
           <Playground/>
         </div>
       </div>
