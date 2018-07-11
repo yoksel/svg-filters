@@ -105,11 +105,13 @@
     "params": {
       "floodColor": {
         "value": "#FFCC99",
-        "type": "color"
+        "type": "color",
+        "name": "flood-color"
       },
       "floodOpacity": {
         "value": 0.5,
-        "type": "number"
+        "type": "number",
+        "name": "flood-opacity"
       },
       "result": {
         "value": "flood"

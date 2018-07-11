@@ -50,6 +50,3 @@ registerServiceWorker();
 
 // Presets
 // -- Preset
-
-// Как правильно заполнять стор?
-// Где хранить actions?

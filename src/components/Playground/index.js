@@ -3,6 +3,7 @@ import './Playground.css';
 import PropTypes from 'prop-types';
 
 import Filter from '../../containers/Filter';
+import Code from '../../containers/Code';
 
 const Playground = ({filterId}) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
@@ -43,7 +44,7 @@ const Playground = ({filterId}) => {
         </svg>
       </div>
 
-      (code)
+      <Code/>
     </div>
   );
 };
