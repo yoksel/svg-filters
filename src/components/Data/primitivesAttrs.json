@@ -5,9 +5,7 @@
   "height": "100%",
   "in": [
     "SourceGraphic",
-    "SourceAlpha",
-    "FillPaint",
-    "StrokePaint"
+    "SourceAlpha"
   ],
   "operator": [
     "over",

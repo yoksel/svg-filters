@@ -5,7 +5,7 @@
     "name": "feGaussianBlur",
     "params": {
       "stdDeviation": {
-        "value": "5 20",
+        "value": "3 10",
         "min": 0,
         "step": 1,
         "type": "number",
