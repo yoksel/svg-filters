@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .Contsructor {
   margin-bottom: 1rem;
   color: #999;
@@ -8,7 +10,7 @@
   min-height: 100px;
   padding: 4px;
   border: 2px dashed #DDD;
-  border-radius: 5px;
+  border-radius: $border-radius;
 }
 
 .Contsructor__item {

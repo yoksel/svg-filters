@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .Code {
   margin-top: 32px;
 }
@@ -7,7 +9,7 @@
   height: 300px;
   padding: 16px;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: $border-radius;
   border: 1px solid #DDD;
   tab-size: 24px;
   font: inherit;
