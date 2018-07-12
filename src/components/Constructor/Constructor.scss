@@ -2,19 +2,19 @@
 
 .Contsructor {
   margin-bottom: 1rem;
-  color: #999;
+  color: $color-lightgray;
 }
 
 .Contsructor__container {
   position: relative;
   min-height: 100px;
-  padding: 4px;
-  border: 2px dashed #DDD;
+  padding: 12px;
+  border: 2px dashed;
   border-radius: $border-radius;
 }
 
 .Contsructor__item {
-  margin-bottom: .75rem;
+  margin-bottom: 12px;
 
   &:last-of-type {
     margin-bottom: 0;
