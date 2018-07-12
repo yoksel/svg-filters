@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 
-import PrimitiveControlsListTemplate from '../../components/PrimitiveControlsList';
+import ControlsListTemplate from '../../components/ControlsList';
 
 const mapStateToProps = (state) => {
   return {
-    primitiveControls: state.primitiveControls
+    items: state.primitiveControls
   };
 };
 
@@ -28,6 +28,6 @@ const mapDispatchProps = (dispatch) => {
 const PrimitiveControlsList = connect(
   mapStateToProps,
   mapDispatchProps
-)(PrimitiveControlsListTemplate);
+)(ControlsListTemplate);
 
 export default PrimitiveControlsList;
