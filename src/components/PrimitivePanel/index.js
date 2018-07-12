@@ -126,7 +126,7 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
   }
 
   return (
-    <div className="PrimitivePanel">
+    <div className="PrimitivePanel PrimitivePanel--has-children">
       <div className="PrimitivePanel__tag">
         &lt;{primitive.name}{params}&#8203;>
       </div>
