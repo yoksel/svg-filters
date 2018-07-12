@@ -1,0 +1,45 @@
+@import "../../variables.scss";
+
+.Tabs {
+  color: lightseagreen;
+}
+
+.Tabs__controls {
+  min-width: 200px;
+  white-space: nowrap;
+}
+
+.Tabs__control {
+  padding: 4px 16px;
+  background: none;
+  border: none;
+  border-radius: $border-radius;
+  outline: none;
+  font: inherit;
+  cursor: pointer;
+
+  &--active {
+    background: $color-darkgray;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .5) inset;
+    border: none;
+    color: #FFF;
+    pointer-events: none;
+  }
+}
+
+.Tabs__control-text {
+  border-bottom: 1px dashed;
+
+  .Tabs__control--active & {
+    border: none;
+  }
+}
+
+.Tabs__item {
+  display: none;
+  padding-top: 24px;
+
+  &--active {
+    display: block;
+  }
+}
