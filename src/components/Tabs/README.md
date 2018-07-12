@@ -7,6 +7,6 @@ Component for panels switching by tabs.
 `items` — list of objects like this:
 
 ```{
-  name: 'Name for tab'
+  id: 'Name for tab'
   content: <Component/>
 }```
