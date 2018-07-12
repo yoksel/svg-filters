@@ -15,10 +15,10 @@ class Tabs extends Component {
   };
 
   render() {
-    console.log(this.props);
     const {items} = this.props;
     const tabsList = items.reduce((prev, item) => {
       const id = item.id;
+      const name = item.name;
 
       let buttonClass = 'Tabs__control';
       if (id === this.state.active) {
@@ -33,7 +33,7 @@ class Tabs extends Component {
         }}
       >
         <span className="Tabs__control-text">
-          {id}
+          {name}
         </span>
       </button>;
 

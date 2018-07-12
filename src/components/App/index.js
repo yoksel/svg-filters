@@ -19,16 +19,17 @@ class App extends Component {
           <Tabs
             items={[
               {
-                id: 'Primitives',
+                id: 'primitives',
+                name: 'Primitives',
                 content: PrimitiveControlsList
               },
               {
-                id: 'Presets',
+                id: 'presets',
+                name: 'Presets',
                 content: PresetsList
               }
             ]}
           />
-
         </div>
 
         <div className="App__container">
