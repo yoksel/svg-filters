@@ -1,7 +1,8 @@
 @import "../../variables.scss";
 
 .Code {
-  margin-top: 32px;
+  min-width: 400px;
+  margin-top: 1.4em;
 }
 
 .Code__textarea {

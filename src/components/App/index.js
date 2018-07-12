@@ -7,6 +7,7 @@ import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
 
 import Tabs from '../../components/Tabs';
+import Code from '../../containers/Code';
 
 import './App.css';
 
@@ -35,6 +36,10 @@ class App extends Component {
         <div className="App__container">
           <Constructor/>
           <Playground/>
+        </div>
+
+        <div className="App__container">
+          <Code/>
         </div>
       </div>
     );
