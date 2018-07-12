@@ -165,6 +165,11 @@ export const primitives = (state = [], action) => {
 
     return newState;
 
+  case 'ADD_PRESET':
+    return [
+      ...action.primitives
+    ];
+
   default:
     return state;
   }

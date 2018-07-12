@@ -4,6 +4,9 @@ import Icons from '../Icons';
 import PrimitiveControlsList from '../../containers/PrimitiveControlsList';
 import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
+import PresetsList from '../../containers/PresetsList';
+
+import Tabs from '../../components/Tabs';
 
 import './App.css';
 
@@ -13,7 +16,19 @@ class App extends Component {
       <div className="App">
         <Icons/>
         <div className="App__container">
-          <PrimitiveControlsList/>
+          <Tabs
+            items={[
+              {
+                id: 'Primitives',
+                content: PrimitiveControlsList
+              },
+              {
+                id: 'Presets',
+                content: PresetsList
+              }
+            ]}
+          />
+
         </div>
 
         <div className="App__container">

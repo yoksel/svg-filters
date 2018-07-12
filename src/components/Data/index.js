@@ -1,12 +1,9 @@
-import primitivesAttrsSrc from './primitivesAttrs.json';
-import primitivesListSrc from './primitivesList.json';
+import primitivesAttrs from './primitivesAttrs.json';
+import primitivesList from './primitivesList.json';
+import presetsList from './presetsList.json';
 
-export const primitivesList = primitivesListSrc;
-export const primitivesAttrs = primitivesAttrsSrc;
-
-const Data = {
-  primitivesAttrs: primitivesAttrsSrc,
-  primitivesList: primitivesListSrc
+export {
+  primitivesAttrs,
+  primitivesList,
+  presetsList
 };
-
-export default Data;
