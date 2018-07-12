@@ -17,11 +17,17 @@ const primitiveControl = (state, action) => {
 
 export const primitiveControls = (state = [], action) => {
   switch (action.type) {
+  case 'ADD_All_PRIMITIVE_CONTROLS':
+    return [
+      ...action.data
+    ];
+
   case 'ADD_PRIMITIVE_CONTROL':
     return [
       ...state,
       primitiveControl(undefined, action)
     ];
+
   default:
     return state;
   }
