@@ -31,7 +31,7 @@ const Playground = ({filterId}) => {
             <rect width="1" height="1" fill="none"/>
 
             <path d='M0,310 1000,310'
-              stroke-width="10"
+              strokeWidth="10"
               stroke="yellowgreen"/>
           </g>
 
