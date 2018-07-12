@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import Icons from '../Icons';
 
 import PrimitiveControlsList from '../../containers/PrimitiveControlsList';
+import PresetsList from '../../containers/PresetsList';
 import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
-import PresetsList from '../../containers/PresetsList';
 
 import Tabs from '../../components/Tabs';
 

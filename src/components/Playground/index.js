@@ -28,6 +28,14 @@ const Playground = ({filterId}) => {
           />
 
           <g filter={filterUrl}>
+            <rect width="1" height="1" fill="none"/>
+
+            <path d='M0,310 1000,310'
+              stroke-width="10"
+              stroke="yellowgreen"/>
+          </g>
+
+          <g filter={filterUrl}>
             <rect x="50%" y="53%"
               width="40%" height="40%"
               fill="teal"
@@ -41,6 +49,7 @@ const Playground = ({filterId}) => {
               x="50%" y="280" dy="1em"
               textAnchor="middle">Some text</text>
           </g>
+
         </svg>
       </div>
 
