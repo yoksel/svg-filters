@@ -1,0 +1,22 @@
+{
+  "id": "offset",
+  "groupName": "offset",
+  "name": "feOffset",
+  "params": {
+    "dx": {
+      "value": 15,
+      "type": "number"
+    },
+    "dy": {
+      "value": 15,
+      "type": "number"
+    },
+    "in": {
+      "value": "SourceGraphic",
+      "type": "select"
+    },
+    "result": {
+      "value": "offset"
+    }
+  }
+}

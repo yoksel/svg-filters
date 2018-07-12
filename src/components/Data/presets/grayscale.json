@@ -1,0 +1,43 @@
+{
+  "id": "grayscale",
+  "name": "Grayscale",
+  "primitives": [
+    {
+      "id": "colormatrix",
+      "name": "feColorMatrix",
+      "params": {
+        "type": {
+          "value": "saturate",
+          "type": "select"
+        },
+        "values": {
+          "value": "0",
+          "type": "number",
+          "variants": {
+            "key": "type",
+            "values": {
+              "saturate": "0",
+              "hueRotate": 50,
+              "luminanceToAlpha": false
+            }
+          }
+        },
+        "in": {
+          "value": "SourceGraphic",
+          "type": "select"
+        },
+        "result": {
+          "value": "colormatrix"
+        }
+      },
+      "groupName": "colormatrix",
+      "paramsValues": {
+        "type": [
+          "saturate",
+          "hueRotate",
+          "luminanceToAlpha"
+        ]
+      }
+    }
+  ]
+}

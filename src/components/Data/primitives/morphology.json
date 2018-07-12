@@ -1,0 +1,29 @@
+{
+  "id": "morphology",
+  "groupName": "morphology",
+  "name": "feMorphology",
+  "params": {
+    "operator": {
+      "value": "erode",
+      "type": "select"
+    },
+    "radius" : {
+      "value": 3,
+      "min": 0,
+      "type": "number"
+    },
+    "in": {
+      "value": "SourceAlpha",
+      "type": "select"
+    },
+    "result": {
+      "value": "morphology"
+    }
+  },
+  "paramsValues": {
+    "operator": [
+      "erode",
+      "dilate"
+    ]
+  }
+}

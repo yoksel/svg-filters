@@ -6,8 +6,7 @@ import {Provider} from 'react-redux';
 
 import {primitives, primitiveControls, presetControls} from './store/reducers';
 import App from './components/App';
-
-import {primitivesList, presetsList} from './components/Data';
+import {primitivesData, presetsData} from './components/Data';
 
 import './index.css';
 
@@ -22,11 +21,11 @@ const store = createStore(appReducers);
 // Add initial data
 store.dispatch({
   type: 'ADD_All_PRIMITIVE_CONTROLS',
-  data: primitivesList
+  data: primitivesData
 });
 store.dispatch({
   type: 'ADD_All_PRESET_CONTROLS',
-  data: presetsList
+  data: presetsData
 });
 
 ReactDOM.render(

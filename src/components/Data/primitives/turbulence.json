@@ -1,0 +1,41 @@
+{
+  "id": "turbulence",
+  "groupName": "turbulence",
+  "name": "feTurbulence",
+  "params": {
+    "type": {
+      "value": "turbulence",
+      "type": "select"
+    },
+    "baseFrequency" : {
+      "value": "0.015 0.1",
+      "min": 0,
+      "step": 0.001,
+      "type": "number",
+      "double": true
+    },
+    "numOctaves": {
+      "value": "2",
+      "min": 0,
+      "type": "number"
+    },
+    "seed": {
+      "value": "2",
+      "min": 0,
+      "type": "number"
+    },
+    "stitchTiles": {
+      "value": "stitch",
+      "type": "select"
+    },
+    "result": {
+      "value": "turbulence"
+    }
+  },
+  "paramsValues": {
+    "type": [
+      "turbulence",
+      "fractalNoise"
+    ]
+  }
+}

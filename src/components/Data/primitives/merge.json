@@ -1,0 +1,40 @@
+{
+  "id": "merge",
+  "groupName": "merge",
+  "name": "feMerge",
+  "params": {
+    "result": {
+      "value": "merge"
+    }
+  },
+  "children": [
+    {
+      "id": "mergeNode",
+      "groupName": "mergeNode",
+      "name": "feMergeNode",
+      "params": {
+        "in": {
+          "value": "SourceGraphic",
+          "type": "select"
+        },
+        "result": {
+          "value": "mergeNode"
+        }
+      }
+    },
+    {
+      "id": "mergeNode1",
+      "groupName": "mergeNode",
+      "name": "feMergeNode",
+      "params": {
+        "in": {
+          "value": "SourceGraphic",
+          "type": "select"
+        },
+        "result": {
+          "value": "mergeNode1"
+        }
+      }
+    }
+  ]
+}

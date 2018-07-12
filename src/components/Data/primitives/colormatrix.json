@@ -1,0 +1,37 @@
+{
+  "id": "colormatrix",
+  "groupName": "colormatrix",
+  "name": "feColorMatrix",
+  "params": {
+    "type": {
+      "value": "saturate",
+      "type": "select"
+    },
+    "values": {
+      "value": 5,
+      "type": "number",
+      "variants": {
+        "key": "type",
+        "values": {
+          "saturate": 5,
+          "hueRotate": 50,
+          "luminanceToAlpha": false
+        }
+      }
+    },
+    "in": {
+      "value": "SourceGraphic",
+      "type": "select"
+    },
+    "result": {
+      "value": "colormatrix"
+    }
+  },
+  "paramsValues": {
+    "type": [
+      "saturate",
+      "hueRotate",
+      "luminanceToAlpha"
+    ]
+  }
+}

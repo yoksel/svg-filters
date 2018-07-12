@@ -1,0 +1,34 @@
+{
+  "id": "displacementMap",
+  "groupName": "displacementMap",
+  "name": "feDisplacementMap",
+  "params": {
+    "in": {
+      "value": "SourceAlpha",
+      "type": "select"
+    },
+    "in2": {
+      "value": "SourceAlpha",
+      "type": "select",
+      "valuesKey": "in"
+    },
+    "scale": {
+      "value": 20,
+      "min": 0,
+      "type": "number"
+    },
+    "xChannelSelector": {
+      "value": "R",
+      "type": "select",
+      "valuesKey": "ChannelSelector"
+    },
+    "yChannelSelector": {
+      "value": "A",
+      "type": "select",
+      "valuesKey": "ChannelSelector"
+    },
+    "result": {
+      "value": "displacementMap"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "composite",
+  "groupName": "composite",
+  "name": "feComposite",
+  "params": {
+    "in": {
+      "value": "SourceGraphic",
+      "type": "select"
+    },
+    "in2": {
+      "value": "SourceGraphic",
+      "type": "select",
+      "valuesKey": "in"
+    },
+    "operator": {
+      "value": "in",
+      "type": "select"
+    },
+    "result": {
+      "value": "composite"
+    }
+  }
+}

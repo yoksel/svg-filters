@@ -1,0 +1,27 @@
+{
+  "id": "blend",
+  "groupName": "blend",
+  "name": "feBlend",
+  "params": {
+    "mode": {
+      "value": "multiply",
+      "type": "select"
+    },
+    "in": {
+      "value": "SourceGraphic",
+      "type": "select"
+    },
+    "result": {
+      "value": "blend"
+    }
+  },
+  "paramsValues": {
+    "mode": [
+      "normal",
+      "multiply",
+      "screen",
+      "darken",
+      "lighten"
+    ]
+  }
+}

@@ -1,9 +1,9 @@
 import primitivesAttrs from './primitivesAttrs.json';
-import primitivesList from './primitivesList.json';
-import presetsList from './presetsList.json';
+import primitivesData from './primitives';
+import presetsData from './presets';
 
 export {
   primitivesAttrs,
-  primitivesList,
-  presetsList
+  primitivesData,
+  presetsData
 };
