@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "homepage": "https://yoksel.github.io/svg-filters/",
+  "jest": {
+    "coverageReporters": ["text"]
+  },
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -16,10 +19,11 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
+    "test:coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "create": "create-component-files",
     "component": "create-component-files -- --path=./src/components",
-    "container": "create-component-files -- --path=./src/containers",
+    "container": "create-component-files -- --path=./src/containers --type=container",
     "js:lint": "eslint '**/*.js'",
     "js:fix": "eslint '**/*.js' --fix",
     "css:lint": "stylelint src/**/*.scss",
@@ -28,7 +32,7 @@
     "deploy": "npm run build && gh-pages -d build"
   },
   "devDependencies": {
-    "create-component-files": "^0.1.10",
+    "create-component-files": "^0.1.14",
     "eslint-config-yandex": "^1.0.6",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-react": "^7.10.0",
