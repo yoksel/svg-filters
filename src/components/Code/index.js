@@ -50,6 +50,9 @@ class Code extends Component {
     const {primitives} = this.props;
     const primitivesCode = getAllPrimitivesCode(primitives).join('\n');
 
+    // Temporary for extracting good presets
+    console.log(JSON.stringify(primitives, null, '\t'));
+
     const value = primitivesCode ?
       `<filter id="filter">\n${primitivesCode}\n</filter>` :
       '';
