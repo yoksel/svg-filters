@@ -1,22 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-import {createStore, combineReducers} from 'redux';
-import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 
-import {primitives, primitiveControls, presetControls} from './store/reducers';
-import App from './components/App';
+import reducers from './store/reducers';
+import Root from './components/Root';
 import {primitivesData, presetsData} from './components/Data';
 
 import './index.css';
 
-const appReducers = combineReducers({
-  primitives: primitives,
-  primitiveControls: primitiveControls,
-  presetControls: presetControls
-});
-
-const store = createStore(appReducers);
+const store = createStore(reducers);
 
 // Add initial data
 store.dispatch({
@@ -29,9 +22,7 @@ store.dispatch({
 });
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
+  <Root store={store}/>,
   root
 );
 
