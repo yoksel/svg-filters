@@ -29,11 +29,16 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "create": "create-component-files"
+    "create": "create-component-files",
+    "js:lint": "eslint '**/*.js'",
+    "js:fix": "eslint '**/*.js' --fix"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
     "babel-runtime": "^7.0.0-beta.3",
-    "chalk": "^2.4.1"
+    "chalk": "^2.4.1",
+    "eslint-config-yandex": "^1.0.6",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-react": "^7.10.0"
   }
 }
