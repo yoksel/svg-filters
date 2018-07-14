@@ -32,7 +32,8 @@
     "eject": "react-scripts eject",
     "create": "create-component-files",
     "js:lint": "eslint '**/*.js'",
-    "js:fix": "eslint '**/*.js' --fix"
+    "js:fix": "eslint '**/*.js' --fix",
+    "lint": "npm run js:lint"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
