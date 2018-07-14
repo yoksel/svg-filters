@@ -1,12 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, combineReducers } from 'redux';
-import {Provider} from 'react-redux';
+import {createStore, combineReducers} from 'redux';
 
 import {todos, visibilityFilter} from './store/reducers';
 
-import App from './components/App';
+import Root from './components/Root';
 
 import './index.css';
 
@@ -17,10 +16,10 @@ const todoApp = combineReducers({
   visibilityFilter
 });
 
-ReactDOM.render(
-  <Provider store={createStore(todoApp)}>
-    <App/>
-  </Provider>,
+const store = createStore(todoApp);
+
+render(
+  <Root store={store}/>,
   root
 );
 

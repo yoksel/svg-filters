@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import FilterButton from '../../containers/FilterButton';
+import FilterLink from '../../containers/FilterLink';
+
+import './FilterControls.css';
 
 class FilterControls extends Component {
   render() {
@@ -10,16 +13,22 @@ class FilterControls extends Component {
       ['SHOW_COMPLETED', 'Completed']
     ];
 
-    return filters.map(filter => {
+    const controls = filters.map(filter => {
       return (
-        <FilterButton
+        <FilterLink
           key={filter}
           filter={filter[0]}
         >
           {filter[1]}
-        </FilterButton>
+        </FilterLink>
       );
-    })
+    });
+
+    return (
+      <div className="FilterControls">
+        {controls}
+      </div>
+    );
   }
 }
 
