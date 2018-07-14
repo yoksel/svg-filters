@@ -1,7 +1,16 @@
 .App {
-  display: flex;
+  // display: flex;
   // justify-content: space-between;
+  padding: 2rem;
   flex-wrap: wrap;
+  font-size: 20px;
+
+  input, button {
+    margin: .25rem;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    font: inherit;
+  }
 }
 
 .App__container {
