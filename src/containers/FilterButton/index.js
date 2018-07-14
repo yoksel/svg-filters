@@ -1,13 +1,8 @@
 import {connect} from 'react-redux';
 
-import Button from '../../components/Button';
+import {setVisibilityFilter} from '../../store/actions';
 
-const setVisibilityFilter = (filter) => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter: filter
-  }
-};
+import Button from '../../components/Button';
 
 const mapStateToFilterButtonProps = (state, ownProps ) => {
   return {

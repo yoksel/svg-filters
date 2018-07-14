@@ -1,14 +1,8 @@
 import {connect} from 'react-redux';
 
+import {toggleTodo} from '../../store/actions';
 import TodosList from '../../components/TodosList';
 
-
-const toggleTodo = (id) => {
-  return {
-    type: 'TOGGLE_TODO',
-    id: id
-  }
-};
 
 const getVisibleTodos = (todos, visibilityFilter) => {
   switch (visibilityFilter) {
