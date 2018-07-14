@@ -7,17 +7,17 @@ let AddNew = ({dispatch}) => {
   let textInput;
 
   return (
-      <p>
-        <input ref={(node) => textInput = node}/>
+    <p>
+      <input ref={(node) => textInput = node}/>
 
-        <button
-          onClick={(text) => {
-            dispatch(addTodo(textInput.value));
-            textInput.value = '';
-          }}
-          >Add new</button>
-      </p>
-    )
+      <button
+        onClick={(text) => {
+          dispatch(addTodo(textInput.value));
+          textInput.value = '';
+        }}
+      >Add new</button>
+    </p>
+  );
 };
 
 AddNew = connect()(AddNew);

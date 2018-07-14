@@ -1,10 +1,10 @@
 import React from 'react';
 
 const ToDoItem = ({
-    onChange,
-    text,
-    complete
-  }) => (
+  onChange,
+  text,
+  complete
+}) => (
   <div>
     <label
       style={{
@@ -17,7 +17,7 @@ const ToDoItem = ({
         onChange={onChange}
         checked={complete}
       />
-        {text}
+      {text}
     </label>
   </div>
 );

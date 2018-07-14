@@ -10,8 +10,8 @@ const TodosList = ({todos, onChange}) => {
         {...todo}
         onChange={() => onChange(todo.id)}
       />
-    )
+    );
   });
-}
+};
 
 export default TodosList;

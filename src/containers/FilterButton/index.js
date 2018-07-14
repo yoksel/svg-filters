@@ -4,10 +4,10 @@ import {setVisibilityFilter} from '../../store/actions';
 
 import Button from '../../components/Button';
 
-const mapStateToFilterButtonProps = (state, ownProps ) => {
+const mapStateToFilterButtonProps = (state, ownProps) => {
   return {
     isActive: ownProps.filter === state.visibilityFilter
-  }
+  };
 };
 
 const mapDispatchToFilterButtonProps = (dispatch, ownProps) => {
@@ -15,8 +15,8 @@ const mapDispatchToFilterButtonProps = (dispatch, ownProps) => {
     onClick: () => {
       dispatch(setVisibilityFilter(ownProps.filter));
     }
-  }
-}
+  };
+};
 
 const FilterButton = connect(
   mapStateToFilterButtonProps,

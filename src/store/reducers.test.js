@@ -20,7 +20,7 @@ const testAddTodo = () => {
   expect(
     todos(stateBefore, action)
   ).toEqual(stateAfter);
-}
+};
 
 const testToggleTodo = () => {
   const stateBefore = [
@@ -58,7 +58,7 @@ const testToggleTodo = () => {
   expect(
     todos(stateBefore, action)
   ).toEqual(stateAfter);
-}
+};
 
 const testVisibilityFilter = () => {
   const stateBefore = 'SHOW_ALL';
@@ -73,7 +73,7 @@ const testVisibilityFilter = () => {
   expect(
     visibilityFilter(stateBefore, action)
   ).toEqual(stateAfter);
-}
+};
 
 
 testAddTodo();
