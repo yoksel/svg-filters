@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <Icons/>
-        <div className="App__container">
+        <div className="App__container App__container--list">
           <Tabs
             items={[
               {
@@ -33,13 +33,14 @@ class App extends Component {
           />
         </div>
 
-        <div className="App__container">
+        <div className="App__container App__container--constructor">
           <Constructor/>
-          <Playground/>
+          <Code/>
+
         </div>
 
-        <div className="App__container">
-          <Code/>
+        <div className="App__container App__container--playground">
+          <Playground/>
         </div>
       </div>
     );

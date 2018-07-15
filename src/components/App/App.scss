@@ -4,15 +4,22 @@
 }
 
 .App__container {
-  padding: 2rem;
+  padding: 1rem;
   box-sizing: border-box;
+  flex-basis: 20%;
   border-left: 1px solid #DDD;
 
   &:first-child {
     border: none;
   }
 
-  &--Playground {
+  &--constructor {
     flex-grow: 1;
+    flex-basis: 40%;
+  }
+
+  &--playground {
+    flex-grow: 1;
+    flex-basis: 40%;
   }
 }
