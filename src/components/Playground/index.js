@@ -47,6 +47,9 @@ const Playground = ({filterId}) => {
               fill="gold"
               stroke="tomato" strokeWidth="10"
             />
+          </g>
+
+          <g filter={filterUrl}>
             <text
               x="50%" y="280" dy="1em"
               textAnchor="middle">Some text</text>
