@@ -2,6 +2,7 @@ import deepFreeze from '../../helpers/deepFreeze';
 
 import * as primitivesReducers from './primitives';
 import * as primitiveControlsReducers from './primitiveControls';
+import * as helpers from './helpers';
 
 describe('reducers', () => {
   it(
@@ -10,7 +11,7 @@ describe('reducers', () => {
       const stateBefore = {};
       const groupName = 'blur';
       const stateAfter = 'blur';
-      const getId = primitivesReducers.idKeeper();
+      const getId = helpers.idKeeper();
 
       expect(
         getId(groupName)
@@ -25,7 +26,7 @@ describe('reducers', () => {
       const stateBefore = {};
       const groupName = 'blur';
       const stateAfter = 'blur1';
-      const getId = primitivesReducers.idKeeper();
+      const getId = helpers.idKeeper();
       getId(groupName);
 
       expect(
