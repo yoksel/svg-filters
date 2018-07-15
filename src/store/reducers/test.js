@@ -3,7 +3,7 @@ import deepFreeze from '../../helpers/deepFreeze';
 import * as primitivesReducers from './primitives';
 import * as primitiveControlsReducers from './primitiveControls';
 
-describe('actions', () => {
+describe('reducers', () => {
   it(
     'idKeeper should return the same ID in it doesn\'t exist yet',
     () => {
@@ -18,7 +18,7 @@ describe('actions', () => {
     });
 });
 
-describe('actions', () => {
+describe('reducers', () => {
   it(
     'idKeeper should return unical id for group',
     () => {
@@ -34,7 +34,7 @@ describe('actions', () => {
     });
 });
 
-describe('actions', () => {
+describe('reducers', () => {
   it('ADD_PRIMITIVE: should add primitive to state', () => {
     const stateBefore = [];
     const action = {
@@ -103,7 +103,7 @@ describe('actions', () => {
   });
 });
 
-describe('actions', () => {
+describe('reducers', () => {
   it('DUPLICATE_PRIMITIVE: should duplicate primitive in state', () => {
     const stateBefore = [
       {
@@ -203,7 +203,7 @@ describe('actions', () => {
   });
 });
 
-describe('actions', () => {
+describe('reducers', () => {
   it('DELETE_PRIMITIVE: should delete primitive from state by ID', () => {
     const stateBefore = [
       {
@@ -303,7 +303,7 @@ describe('actions', () => {
   });
 });
 
-describe('actions', () => {
+describe('reducers', () => {
   it('CHANGE_PRIMITIVE_PROP: should change primitive param value', () => {
     const stateBefore = [
       {

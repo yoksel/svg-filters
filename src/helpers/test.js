@@ -1,7 +1,7 @@
 import deepFreeze from './deepFreeze';
 import deepClone from './deepClone';
 
-describe('actions', () => {
+describe('helpers', () => {
   it(
     'deepFreeze() should prevent object mutation',
     () => {
@@ -59,7 +59,7 @@ describe('actions', () => {
     });
 });
 
-describe('actions', () => {
+describe('helpers', () => {
   it(
     'deepClone() should return cloned object',
     () => {
