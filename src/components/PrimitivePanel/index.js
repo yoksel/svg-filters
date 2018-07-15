@@ -46,7 +46,7 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
 
       if (!actualValue) {
         input = null;
-        return;
+        return null;
       }
 
       if (double) {
