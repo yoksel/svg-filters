@@ -1,4 +1,6 @@
 import {connect} from 'react-redux';
+
+import {changePrimitiveProp} from '../../store/actions';
 import InputSelectTemplate from '../../components/InputSelect';
 
 const mapDispatchProps = (
@@ -7,13 +9,7 @@ const mapDispatchProps = (
 ) => {
   return {
     onChange: (value) => {
-      dispatch({
-        type: 'CHANGE_PRIMITIVE_PROP',
-        id: props.id,
-        param: props.param,
-        parentId: props.parentId,
-        value: value
-      });
+      dispatch(changePrimitiveProp(props, value));
     }
   };
 };

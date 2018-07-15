@@ -1,5 +1,7 @@
 import {connect} from 'react-redux';
 
+import {addPreset} from '../../store/actions';
+
 import ControlsListTemplate from '../../components/ControlsList';
 
 const mapStateToProps = (state) => {
@@ -9,15 +11,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchProps = (dispatch) => {
-
   return {
     onClick: (preset) => {
-      dispatch({
-        type: 'ADD_PRESET',
-        id: preset.id,
-        name: preset.name,
-        primitives: preset.primitives,
-      });
+      dispatch(addPreset(preset));
     }
   };
 };

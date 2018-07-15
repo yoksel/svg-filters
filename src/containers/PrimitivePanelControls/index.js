@@ -1,5 +1,7 @@
 import {connect} from 'react-redux';
 
+import {deletePrimitive, duplicatePrimitive} from '../../store/actions';
+
 import PrimitivePanelControlsTemplate from '../../components/PrimitivePanelControls';
 
 const mapDispatchProps = (
@@ -19,14 +21,11 @@ const mapDispatchProps = (
 
   return {
     removePrimitive: () => {
-      params.type = 'DELETE_PRIMITIVE';
-
-      dispatch(params);
+      dispatch(deletePrimitive(params));
     },
     duplicatePrimitive: () => {
-      params.type = 'DUPLICATE_PRIMITIVE';
 
-      dispatch(params);
+      dispatch(duplicatePrimitive(params));
     }
   };
 };

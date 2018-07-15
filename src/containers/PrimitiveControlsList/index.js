@@ -1,5 +1,7 @@
 import {connect} from 'react-redux';
 
+import {addPrimitive} from '../../store/actions';
+
 import ControlsListTemplate from '../../components/ControlsList';
 
 const mapStateToProps = (state) => {
@@ -9,18 +11,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchProps = (dispatch) => {
-
   return {
     onClick: (primitive) => {
-      dispatch({
-        type: 'ADD_PRIMITIVE',
-        id: primitive.id,
-        groupName: primitive.groupName,
-        name: primitive.name,
-        params: primitive.params,
-        paramsValues: primitive.paramsValues,
-        children: primitive.children
-      });
+      dispatch(addPrimitive(primitive));
     }
   };
 };
