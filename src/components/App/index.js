@@ -86,8 +86,10 @@ class App extends Component {
             <Constructor/>
           </div>
 
-        <div className="App__container App__container--playground">
-          <Playground/>
+          <div className="App__container App__container--playground">
+            <Playground/>
+            <Code/>
+          </div>
         </div>
 
       </Provider>
