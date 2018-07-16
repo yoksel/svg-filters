@@ -1,5 +1,5 @@
 import deepClone from '../../helpers/deepClone';
-import {idKeeper, getLastResult, updateUnicalProps} from './helpers';
+import {updateUnicalProps} from './helpers';
 
 const primitive = (state, action) => {
   switch (action.type) {

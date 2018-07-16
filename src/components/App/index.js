@@ -57,7 +57,7 @@ class App extends Component {
   }
 
   render() {
-    const {sidebarList, presetId} = this.props.match.params;
+    const {sidebarList} = this.props.match.params;
 
     return (
       <Provider store={store}>
