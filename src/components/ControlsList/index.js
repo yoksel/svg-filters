@@ -1,21 +1,36 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './ControlsList.css';
 
-const ControlsList = ({items, onClick}) => {
+const ControlsList = ({items, control, onClick}) => {
   return (
     <div className="ControlsList">
-      {items.map((preset, index) => {
+      {items.map((item) => {
+
+        if (control === 'NavLink') {
+          return (
+            <NavLink
+              key={item.id}
+              to={`/presets/${item.id}`}
+            >
+              <span className="Control Control--navlink">
+                {item.name}
+              </span>
+            </NavLink>
+          );
+        }
+
         return (
           <button
             className="Control"
-            key={preset.id}
+            key={item.id}
             onClick={() => {
-              onClick(preset);
+              onClick(item);
             }}
           >
-            {preset.name}
+            {item.name}
           </button>
         );
       })}

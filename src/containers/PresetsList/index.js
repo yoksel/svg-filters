@@ -6,7 +6,8 @@ import ControlsListTemplate from '../../components/ControlsList';
 
 const mapStateToProps = (state) => {
   return {
-    items: state.presetControls
+    items: state.presetControls,
+    control: 'NavLink'
   };
 };
 

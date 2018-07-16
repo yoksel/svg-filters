@@ -1,11 +1,22 @@
 @import "../../variables.scss";
 
+.ControlsList {
+  A {
+    display: block;
+  }
+}
+
 .Control {
   display: block;
   margin-bottom: 1rem;
   padding: 4px 20px;
   background: #FFF;
-  border: 1px dashed $color-darkgray;
+  border: 1px dashed;
   border-radius: $border-radius;
   font: inherit;
+  color: $color-darkgray;
+
+  &--navlink {
+    display: inline-block;
+  }
 }
