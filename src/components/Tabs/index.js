@@ -5,7 +5,7 @@ import './Tabs.css';
 
 class Tabs extends Component {
   state = {
-    active: this.props.items[0].id
+    active: this.props.currentTab || this.props.items[0].id
   };
 
   setActive = (tabName) => {
