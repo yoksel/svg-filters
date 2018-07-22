@@ -28,7 +28,7 @@ const configureStore = () => {
   const initialState = {
     presetControls: presetsData,
     primitiveControls: primitivesData,
-    primitives: getState().primitives
+    primitives: getState() ? getState().primitives : undefined
   };
   const store = createStore(
     reducers,
