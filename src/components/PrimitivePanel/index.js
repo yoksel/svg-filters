@@ -99,7 +99,6 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
         value={value}
         valuesList={valuesList}
         parentId={parentId}
-        onChange={onChange}
       />;
     }
 
