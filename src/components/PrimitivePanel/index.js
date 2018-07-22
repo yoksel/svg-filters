@@ -5,108 +5,27 @@ import InputText from '../../containers/InputText';
 import InputSelect from '../../containers/InputSelect';
 import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
 
+import PrimitivePanelInput from '../PrimitivePanelInput';
 import ResultAttribute from '../ResultAttribute';
 import {primitivesAttrs} from '../Data';
 
 import './PrimitivePanel.css';
 
 const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
-  const paramsValues = primitive.paramsValues;
   resultsList = Array.from(resultsList);
 
-  const params = Object.keys(primitive.params).map((key, index) => {
-    const param = primitive.params[key];
-    const {value, step, min, max, variants, double} = param;
-    let input;
-    let input2;
-
-    if (key === 'result') {
-      return (
-        <ResultAttribute
-          key={value}
-          value={value} />
-      );
-    }
-
-    if (param.type !== 'select') {
-      // Default types text/number/color
-
-      let actualValue = value;
-      let valuesList = [];
-      let secondValue = 0;
-
-      if (variants) {
-        const propByKey = primitive.params[variants.key];
-
-        if (propByKey) {
-          const keyValue = propByKey.value;
-          actualValue = variants.values[keyValue];
-        }
-      }
-
-      if (!actualValue) {
-        input = null;
-        return null;
-      }
-
-      if (double) {
-        valuesList = value.split(' ');
-        actualValue = valuesList[0];
-        secondValue = valuesList[1];
-      }
-
-      input = <InputText
-        id={primitive.id}
-        param={key}
-        value={actualValue}
-        secondValue={secondValue}
-        step={step}
-        min={min}
-        max={max}
-        type={param.type}
-      />;
-
-      if (double) {
-        input2 = <InputText
-          id={primitive.id}
-          param={key}
-          value={secondValue}
-          firstValue={actualValue}
-          step={step}
-          min={min}
-          max={max}
-          type={param.type}
-        />;
-      }
-
-    } else {
-      // Select
-
-      let valuesList = paramsValues && paramsValues[key];
-      let valuesKey = param.valuesKey || key;
-
-      if (!valuesList) {
-        valuesList = primitivesAttrs[valuesKey];
-      }
-
-      if (valuesKey === 'in') {
-        valuesList = valuesList.concat(resultsList);
-      }
-
-      input = <InputSelect
-        id={primitive.id}
-        param={key}
-        value={value}
-        valuesList={valuesList}
-        parentId={parentId}
-      />;
-    }
-
+  const params = Object.keys(primitive.params).map((key) => {
     return (
       <label
         key={key}
         className="PrimitivePanel__label"
-      >{key}={input}{input2}</label>
+      >{key}=<PrimitivePanelInput
+        primitive={primitive}
+        paramKey={key}
+        resultsList={resultsList}
+        parentId={parentId}
+        />
+      </label>
     );
   });
 
