@@ -5,7 +5,7 @@ export const idKeeper = (state) => {
   // need fill groupIdCounter with existed IDs
   const fillCounter = () => {
     let counterObj = {};
-    if (state.length > 0) {
+    if (state > 0) {
       counterObj = state.reduce((prev, item) => {
         const groupName = item.groupName;
 
