@@ -1,50 +1,78 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
-import PrimitiveControlsList from '../../containers/PrimitiveControlsList';
-import PresetsList from '../../containers/PresetsList';
 import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
 import Code from '../../containers/Code';
 
+import {addPreset} from '../../store/actions';
+
 import Icons from '../Icons';
-import Tabs from '../Tabs';
+import Sidebar from '../Sidebar';
 
 import './App.css';
 
-const App = ({match}) => {
-  const {sidebarList} = match.params;
+class App extends Component {
+  setPreset = () => {
+    const {presetId} = this.props.match.params;
 
-  return (
-    <div className="App">
-      <Icons/>
-      <div className="App__container App__container--list">
-        <Tabs
-          currentTab = {sidebarList === 'presets' ? 'presets' : 'primitives'}
-          items={[
-            {
-              id: 'primitives',
-              name: 'Primitives',
-              content: PrimitiveControlsList
-            },
-            {
-              id: 'presets',
-              name: 'Presets',
-              content: PresetsList
-            }
-          ]}
-        />
-      </div>
+    if (!presetId) {
+      return null;
+    }
 
-      <div className="App__container App__container--constructor">
-        <Constructor/>
-      </div>
+    const presets = this.props.presetControls;
+    const currentPreset = presets.filter(item => item.id === presetId)[0];
 
-      <div className="App__container App__container--playground">
-        <Playground/>
-        <Code/>
+    if (currentPreset) {
+      this.props.addPreset(currentPreset);
+    }
+  };
+
+  componentDidMount() {
+    this.setPreset();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.presetId !== this.props.presetId) {
+      this.setPreset();
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Icons/>
+
+        <div className="App__container App__container--list">
+          <Sidebar/>
+        </div>
+
+        <div className="App__container App__container--constructor">
+          <Constructor/>
+        </div>
+
+        <div className="App__container App__container--playground">
+          <Playground/>
+          <Code/>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+}
+
+const mapStateToProps = (state, {match}) => {
+  return {
+    presetControls: state.presetControls,
+    presetId: match.params.presetId
+  };
 };
+
+App = withRouter(connect(
+  mapStateToProps,
+  {
+    addPreset
+  }
+)(App));
 
 export default App;
