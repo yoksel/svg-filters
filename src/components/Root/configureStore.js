@@ -1,6 +1,9 @@
 import {createStore} from 'redux';
+import throttle from 'lodash/throttle';
+
 import reducers from '../../store/reducers';
 import {primitivesData, presetsData} from '../Data';
+import {saveState, getState} from './localStorage';
 
 const addLoggingToDispatch = (store) => {
   const rawDispatch = store.dispatch;
@@ -24,7 +27,8 @@ const addLoggingToDispatch = (store) => {
 const configureStore = () => {
   const initialState = {
     presetControls: presetsData,
-    primitiveControls: primitivesData
+    primitiveControls: primitivesData,
+    primitives: getState().primitives
   };
   const store = createStore(
     reducers,
@@ -34,6 +38,14 @@ const configureStore = () => {
   if (process.env.NODE_ENV !== 'production') {
     store.dispatch = addLoggingToDispatch(store);
   }
+
+  store.subscribe(throttle(
+    () => {
+      saveState({
+        primitives: store.getState().primitives
+      });
+    }
+  ), 1000);
 
   return store;
 };

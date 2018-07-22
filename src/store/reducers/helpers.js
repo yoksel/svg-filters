@@ -1,24 +1,45 @@
 import deepClone from '../../helpers/deepClone';
 
-export const idKeeper = () => {
-  const groupIdCounter = {};
+export const idKeeper = (state) => {
+  // If state was filled from localStorage,
+  // need fill groupIdCounter with existed IDs
+  const fillCounter = () => {
+    let counterObj = {};
+    if (state.length > 0) {
+      counterObj = state.reduce((prev, item) => {
+        const groupName = item.groupName;
+
+        if (prev[groupName] !== undefined) {
+          prev[groupName] = ++prev[groupName];
+        } else {
+          const orderNum = Number(item.id.replace(groupName, ''));
+          prev[groupName] = orderNum;
+        }
+
+        return prev;
+      }, {});
+    }
+    return counterObj;
+  };
+
+  const groupIdCounter = fillCounter();
 
   const getId = (groupName) => {
-    let id = groupName;
+    let newId = groupName;
 
     if (groupIdCounter[groupName] !== undefined) {
-      id += ++groupIdCounter[groupName];
+      newId += ++groupIdCounter[groupName];
     } else {
       groupIdCounter[groupName] = 0;
     }
 
-    return id;
+    return newId;
   };
 
   return getId;
 };
 
-const getId = idKeeper();
+let getId;
 
 export const getLastResult = (state) => {
   let result = 'SourceGraphic';
@@ -31,6 +52,10 @@ export const getLastResult = (state) => {
 };
 
 export const updateUnicalProps = (state, action) => {
+  if (!getId) {
+    getId = idKeeper(state);
+  }
+
   const newAction = deepClone(action);
   let newIdAdd = getId(newAction.groupName);
   let newIn = getLastResult(state);
