@@ -3,7 +3,7 @@
   "name": "Colored Spots",
   "primitives": [
     {
-      "id": "turbulence2",
+      "id": "turbulence",
       "name": "feTurbulence",
       "params": {
         "type": {
@@ -18,12 +18,12 @@
           "double": true
         },
         "numOctaves": {
-          "value": "2",
+          "value": "3",
           "min": 0,
           "type": "number"
         },
         "seed": {
-          "value": "1",
+          "value": "5",
           "min": 0,
           "type": "number"
         },
@@ -32,7 +32,7 @@
           "type": "select"
         },
         "result": {
-          "value": "turbulence2"
+          "value": "turbulence"
         }
       },
       "groupName": "turbulence",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "id": "morphology1",
+      "id": "morphology",
       "name": "feMorphology",
       "params": {
         "operator": {
@@ -52,16 +52,16 @@
           "type": "select"
         },
         "radius": {
-          "value": "39",
+          "value": "40",
           "min": 0,
           "type": "number"
         },
         "in": {
-          "value": "turbulence2",
+          "value": "turbulence",
           "type": "select"
         },
         "result": {
-          "value": "morphology1"
+          "value": "morphology"
         }
       },
       "groupName": "morphology",
@@ -73,7 +73,7 @@
       }
     },
     {
-      "id": "colormatrix1",
+      "id": "colormatrix",
       "name": "feColorMatrix",
       "params": {
         "type": {
@@ -93,11 +93,11 @@
           }
         },
         "in": {
-          "value": "morphology1",
+          "value": "morphology",
           "type": "select"
         },
         "result": {
-          "value": "colormatrix1"
+          "value": "colormatrix"
         }
       },
       "groupName": "colormatrix",
@@ -110,7 +110,7 @@
       }
     },
     {
-      "id": "flood1",
+      "id": "flood",
       "name": "feFlood",
       "params": {
         "floodColor": {
@@ -127,21 +127,44 @@
           "name": "flood-opacity"
         },
         "result": {
-          "value": "flood1"
+          "value": "flood"
         }
       },
       "groupName": "flood"
+    },
+    {
+      "id": "composite",
+      "name": "feComposite",
+      "params": {
+        "in": {
+          "value": "flood",
+          "type": "select"
+        },
+        "in2": {
+          "value": "SourceGraphic",
+          "type": "select",
+          "valuesKey": "in"
+        },
+        "operator": {
+          "value": "in",
+          "type": "select"
+        },
+        "result": {
+          "value": "composite"
+        }
+      },
+      "groupName": "composite"
     },
     {
       "id": "composite1",
       "name": "feComposite",
       "params": {
         "in": {
-          "value": "flood1",
+          "value": "colormatrix",
           "type": "select"
         },
         "in2": {
-          "value": "SourceGraphic",
+          "value": "composite",
           "type": "select",
           "valuesKey": "in"
         },
@@ -156,84 +179,71 @@
       "groupName": "composite"
     },
     {
-      "id": "composite2",
-      "name": "feComposite",
-      "params": {
-        "in": {
-          "value": "colormatrix1",
-          "type": "select"
-        },
-        "in2": {
-          "value": "composite1",
-          "type": "select",
-          "valuesKey": "in"
-        },
-        "operator": {
-          "value": "in",
-          "type": "select"
-        },
-        "result": {
-          "value": "composite2"
-        }
-      },
-      "groupName": "composite"
-    },
-    {
-      "id": "composite4",
-      "name": "feComposite",
-      "params": {
-        "in": {
-          "value": "colormatrix1",
-          "type": "select"
-        },
-        "in2": {
-          "value": "composite1",
-          "type": "select",
-          "valuesKey": "in"
-        },
-        "operator": {
-          "value": "in",
-          "type": "select"
-        },
-        "result": {
-          "value": "composite4"
-        }
-      },
-      "groupName": "composite"
-    },
-    {
-      "id": "composite5",
-      "name": "feComposite",
-      "params": {
-        "in": {
-          "value": "colormatrix1",
-          "type": "select"
-        },
-        "in2": {
-          "value": "composite1",
-          "type": "select",
-          "valuesKey": "in"
-        },
-        "operator": {
-          "value": "in",
-          "type": "select"
-        },
-        "result": {
-          "value": "composite5"
-        }
-      },
-      "groupName": "composite"
-    },
-    {
-      "id": "merge2",
+      "id": "merge",
       "name": "feMerge",
       "params": {
         "result": {
-          "value": "merge2"
+          "value": "merge"
         }
       },
       "groupName": "merge",
       "children": [
+        {
+          "id": "mergeNode",
+          "groupName": "mergeNode",
+          "name": "feMergeNode",
+          "params": {
+            "in": {
+              "value": "composite",
+              "type": "select"
+            },
+            "result": {
+              "value": "mergeNode"
+            }
+          }
+        },
+        {
+          "id": "mergeNode1",
+          "groupName": "mergeNode",
+          "name": "feMergeNode",
+          "params": {
+            "in": {
+              "value": "composite1",
+              "type": "select"
+            },
+            "result": {
+              "value": "mergeNode1"
+            }
+          }
+        },
+        {
+          "id": "mergeNode2",
+          "groupName": "mergeNode",
+          "name": "feMergeNode",
+          "params": {
+            "in": {
+              "value": "composite1",
+              "type": "select"
+            },
+            "result": {
+              "value": "mergeNode2"
+            }
+          }
+        },
+        {
+          "id": "mergeNode3",
+          "groupName": "mergeNode",
+          "name": "feMergeNode",
+          "params": {
+            "in": {
+              "value": "composite1",
+              "type": "select"
+            },
+            "result": {
+              "value": "mergeNode3"
+            }
+          }
+        },
         {
           "id": "mergeNode4",
           "groupName": "mergeNode",
@@ -254,7 +264,7 @@
           "name": "feMergeNode",
           "params": {
             "in": {
-              "value": "composite2",
+              "value": "composite1",
               "type": "select"
             },
             "result": {
@@ -268,25 +278,11 @@
           "name": "feMergeNode",
           "params": {
             "in": {
-              "value": "composite4",
+              "value": "composite1",
               "type": "select"
             },
             "result": {
               "value": "mergeNode6"
-            }
-          }
-        },
-        {
-          "id": "mergeNode7",
-          "groupName": "mergeNode",
-          "name": "feMergeNode",
-          "params": {
-            "in": {
-              "value": "composite5",
-              "type": "select"
-            },
-            "result": {
-              "value": "mergeNode7"
             }
           }
         }
