@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import InputText from '../../containers/InputText';
 import InputSelect from '../../containers/InputSelect';
-import ResultAttribute from '../ResultAttribute';
 import {primitivesAttrs} from '../Data';
 
 import './PrimitivePanelInput.css';
@@ -19,17 +18,8 @@ class PrimitivePanelInput extends Component {
     let input;
     let input2;
 
-    if (key === 'result') {
-      return (
-        <ResultAttribute
-          key={value}
-          value={value} />
-      );
-    }
-
     if (param.type !== 'select') {
       // Default types text/number/color
-
       let actualValue = value;
       let valuesList = [];
       let secondValue = 0;
@@ -56,6 +46,7 @@ class PrimitivePanelInput extends Component {
 
       input = <InputText
         id={primitive.id}
+        key={primitive.id}
         param={key}
         value={actualValue}
         secondValue={secondValue}
@@ -68,6 +59,7 @@ class PrimitivePanelInput extends Component {
       if (double) {
         input2 = <InputText
           id={primitive.id}
+          key={primitive.id+1}
           param={key}
           value={secondValue}
           firstValue={actualValue}
@@ -94,6 +86,7 @@ class PrimitivePanelInput extends Component {
 
       input = <InputSelect
         id={primitive.id}
+        key={primitive.id}
         param={key}
         value={value}
         valuesList={valuesList}
@@ -108,5 +101,8 @@ class PrimitivePanelInput extends Component {
 export default PrimitivePanelInput;
 
 PrimitivePanelInput.propTypes = {
-
+  primitive: PropTypes.object,
+  paramKey: PropTypes.string,
+  resultsList: PropTypes.array,
+  parentId: PropTypes.string
 };

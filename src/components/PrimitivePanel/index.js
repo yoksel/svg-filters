@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import InputText from '../../containers/InputText';
-import InputSelect from '../../containers/InputSelect';
 import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
 
 import PrimitivePanelInput from '../PrimitivePanelInput';
 import ResultAttribute from '../ResultAttribute';
-import {primitivesAttrs} from '../Data';
 
 import './PrimitivePanel.css';
 
@@ -15,15 +12,26 @@ const PrimitivePanel = ({primitive, parentId, onChange, resultsList}) => {
   resultsList = Array.from(resultsList);
 
   const params = Object.keys(primitive.params).map((key) => {
+    const param = primitive.params[key];
+    const {value} = param;
+
+    if (key === 'result') {
+      return (
+        <ResultAttribute
+          key={value}
+          value={value} />
+      );
+    }
+
     return (
       <label
         key={key}
         className="PrimitivePanel__label"
       >{key}=<PrimitivePanelInput
-        primitive={primitive}
-        paramKey={key}
-        resultsList={resultsList}
-        parentId={parentId}
+          primitive={primitive}
+          paramKey={key}
+          resultsList={resultsList}
+          parentId={parentId}
         />
       </label>
     );
