@@ -11,16 +11,6 @@ import configureStore from './configureStore';
 
 const store = configureStore();
 
-// Add initial data
-store.dispatch({
-  type: 'ADD_All_PRIMITIVE_CONTROLS',
-  data: primitivesData
-});
-store.dispatch({
-  type: 'ADD_All_PRESET_CONTROLS',
-  data: presetsData
-});
-
 const setPreset = (presetId) => {
   if (!presetId) {
     return null;

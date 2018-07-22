@@ -1,5 +1,6 @@
 import {createStore} from 'redux';
 import reducers from '../../store/reducers';
+import {primitivesData, presetsData} from '../Data';
 
 const addLoggingToDispatch = (store) => {
   const rawDispatch = store.dispatch;
@@ -21,7 +22,14 @@ const addLoggingToDispatch = (store) => {
 };
 
 const configureStore = () => {
-  const store = createStore(reducers);
+  const initialState = {
+    presetControls: presetsData,
+    primitiveControls: primitivesData
+  };
+  const store = createStore(
+    reducers,
+    initialState
+  );
 
   if (process.env.NODE_ENV !== 'production') {
     store.dispatch = addLoggingToDispatch(store);
