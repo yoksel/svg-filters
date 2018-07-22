@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import PrimitiveControlsList from '../../containers/PrimitiveControlsList';
 import PresetsList from '../../containers/PresetsList';
@@ -11,47 +11,40 @@ import Tabs from '../Tabs';
 
 import './App.css';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+const App = ({match}) => {
+  const {sidebarList} = match.params;
 
-  render() {
-    const {sidebarList} = this.props.match.params;
-
-    return (
-      <div className="App">
-        <Icons/>
-        <div className="App__container App__container--list">
-          <Tabs
-            currentTab = {sidebarList === 'presets' ? 'presets' : 'primitives'}
-            items={[
-              {
-                id: 'primitives',
-                name: 'Primitives',
-                content: PrimitiveControlsList
-              },
-              {
-                id: 'presets',
-                name: 'Presets',
-                content: PresetsList
-              }
-            ]}
-          />
-        </div>
-
-        <div className="App__container App__container--constructor">
-          <Constructor/>
-        </div>
-
-        <div className="App__container App__container--playground">
-          <Playground/>
-          <Code/>
-        </div>
+  return (
+    <div className="App">
+      <Icons/>
+      <div className="App__container App__container--list">
+        <Tabs
+          currentTab = {sidebarList === 'presets' ? 'presets' : 'primitives'}
+          items={[
+            {
+              id: 'primitives',
+              name: 'Primitives',
+              content: PrimitiveControlsList
+            },
+            {
+              id: 'presets',
+              name: 'Presets',
+              content: PresetsList
+            }
+          ]}
+        />
       </div>
-    );
-  }
-}
+
+      <div className="App__container App__container--constructor">
+        <Constructor/>
+      </div>
+
+      <div className="App__container App__container--playground">
+        <Playground/>
+        <Code/>
+      </div>
+    </div>
+  );
+};
 
 export default App;
