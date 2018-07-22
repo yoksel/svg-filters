@@ -5,8 +5,6 @@ import PrimitiveControlsList from '../../containers/PrimitiveControlsList';
 import PresetsList from '../../containers/PresetsList';
 import Tabs from '../Tabs';
 
-import './Sidebar.css';
-
 const Sidebar = ({match}) => {
   const {sidebarList} = match.params;
 
