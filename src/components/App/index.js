@@ -45,7 +45,9 @@ class App extends Component {
         <Icons/>
 
         <div className="App__container App__container--list">
-          <Sidebar/>
+          <div className="App__content App__content--sticky">
+            <Sidebar/>
+          </div>
         </div>
 
         <div className="App__container App__container--constructor">
@@ -53,8 +55,10 @@ class App extends Component {
         </div>
 
         <div className="App__container App__container--playground">
-          <Playground/>
-          <Code/>
+          <div className="App__content App__content--sticky">
+            <Playground/>
+            <Code/>
+          </div>
         </div>
       </div>
     );

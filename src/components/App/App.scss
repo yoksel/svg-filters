@@ -23,3 +23,10 @@
     flex-basis: 40%;
   }
 }
+
+.App__content {
+  &--sticky {
+    position: sticky;
+    top: 20px;
+  }
+}
