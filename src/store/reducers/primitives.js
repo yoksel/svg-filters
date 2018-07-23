@@ -1,5 +1,5 @@
 import deepClone from '../../helpers/deepClone';
-import {updateUnicalProps} from './helpers';
+import {updateUnicalProps, resetIdKeeper} from './helpers';
 
 const primitive = (state, action) => {
   switch (action.type) {
@@ -108,9 +108,13 @@ export const primitives = (state = [], action) => {
     return newState;
 
   case 'ADD_PRESET':
-    return [
+    const newPresetState = [
       ...action.primitives
     ];
+
+    resetIdKeeper(newPresetState);
+
+    return newPresetState;
 
   default:
     return state;

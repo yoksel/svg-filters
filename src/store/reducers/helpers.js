@@ -1,28 +1,45 @@
 import deepClone from '../../helpers/deepClone';
 
+const reduceStateToCounterObj = (state) => {
+  return state.reduce((prev, item) => {
+    const groupName = item.groupName;
+    const orderNum = Number(item.id.replace(groupName, ''));
+
+    if (prev[groupName] !== undefined) {
+      if (prev[groupName] > orderNum) {
+        prev[groupName] = ++prev[groupName];
+      } else {
+        prev[groupName] = orderNum;
+      }
+
+    } else {
+      prev[groupName] = orderNum;
+    }
+
+    if (item.children) {
+      const childrenReduce = reduceStateToCounterObj(item.children);
+      prev = Object.assign(prev, childrenReduce);
+    }
+
+    return prev;
+  }, {});
+};
+
+// Fill counter with state from storage
+const fillCounter = (state) => {
+  let counterObj = {};
+
+  if (state) {
+    counterObj = reduceStateToCounterObj(state);
+  }
+
+  return counterObj;
+};
+
 export const idKeeper = (state) => {
   // If state was filled from localStorage,
   // need fill groupIdCounter with existed IDs
-  const fillCounter = () => {
-    let counterObj = {};
-    if (state > 0) {
-      counterObj = state.reduce((prev, item) => {
-        const groupName = item.groupName;
-
-        if (prev[groupName] !== undefined) {
-          prev[groupName] = ++prev[groupName];
-        } else {
-          const orderNum = Number(item.id.replace(groupName, ''));
-          prev[groupName] = orderNum;
-        }
-
-        return prev;
-      }, {});
-    }
-    return counterObj;
-  };
-
-  const groupIdCounter = fillCounter();
+  const groupIdCounter = fillCounter(state);
 
   const getId = (groupName) => {
     let newId = groupName;
@@ -40,6 +57,10 @@ export const idKeeper = (state) => {
 };
 
 let getId;
+
+export const resetIdKeeper = (state) => {
+  getId = idKeeper(state);
+};
 
 export const getLastResult = (state) => {
   let result = 'SourceGraphic';
