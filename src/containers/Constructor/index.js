@@ -3,7 +3,8 @@ import ConstructorTemplate from '../../components/Constructor';
 
 const mapStateToProps = (state) => {
   return {
-    primitives: state.primitives
+    primitives: state.primitives,
+    dragDrop: state.dragDrop
   };
 };
 

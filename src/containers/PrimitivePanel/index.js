@@ -1,4 +1,7 @@
 import {connect} from 'react-redux';
+
+import {startDrag} from '../../store/actions';
+
 import PrimitivePanelTemplate from '../../components/PrimitivePanel';
 
 const mapDispatchProps = (
@@ -7,10 +10,7 @@ const mapDispatchProps = (
 ) => {
   return {
     startDrag: (params) => {
-      dispatch({
-        type: 'START_DRAG',
-        ...params
-      });
+      dispatch(startDrag(params));
     }
   };
 };
