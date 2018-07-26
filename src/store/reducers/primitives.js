@@ -116,6 +116,16 @@ export const primitives = (state = [], action) => {
 
     return newPresetState;
 
+  case 'SWAP_PRIMITIVES':
+    const swapPositions = action.swap;
+    const newSwapState = Array.from(state);
+    const item1 = newSwapState[swapPositions[0]];
+    const item2 = newSwapState[swapPositions[1]];
+    newSwapState[swapPositions[0]] = item2;
+    newSwapState[swapPositions[1]] = item1;
+
+    return newSwapState;
+
   default:
     return state;
   }
