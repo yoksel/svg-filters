@@ -1,12 +1,19 @@
 export const createAction = (type, propNames) => {
   const action = (props, value) => {
     const result = {
-      type: type,
-      value: value
+      type: type
     };
 
+    if (value) {
+      result.value = value;
+    }
+
+    if (!propNames) {
+      return result;
+    }
+
     propNames.forEach(propName => {
-      if (props[propName]) {
+      if (props[propName] !== undefined) {
         result[propName] = props[propName];
       }
     });
