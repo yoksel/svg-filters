@@ -1,5 +1,9 @@
 const deepClone = (obj) => {
-  const resultObj = {};
+  let resultObj = {};
+
+  if (Array.isArray(obj)) {
+    resultObj = [];
+  }
 
   for (let key in obj) {
     if (Array.isArray(obj[key])) {

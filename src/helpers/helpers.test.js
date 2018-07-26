@@ -141,3 +141,36 @@ describe('helpers', () => {
       ).toEqual(stateAfter);
     });
 });
+
+describe('helpers', () => {
+  it(
+    'deepClone() should return cloned array',
+    () => {
+      const stateBefore = [
+        'normal',
+        'multiply',
+        {
+          'mode': {
+            'value': 'multiply',
+            'type': 'select'
+          }
+        }
+      ];
+      const stateAfter = [
+        'normal',
+        'multiply',
+        {
+          'mode': {
+            'value': 'multiply',
+            'type': 'select'
+          }
+        }
+      ];
+
+      deepFreeze(stateBefore);
+
+      expect(
+        deepClone(stateBefore)
+      ).toEqual(stateAfter);
+    });
+});
