@@ -30,7 +30,6 @@ let App = (props) => {
         }
 
         const itemsCoords = dragDrop.getSiblingsCoords(dragDrop);
-
         const left = event.nativeEvent.x - dragDrop.offset.x;
         const top = event.nativeEvent.y - dragDrop.offset.y;
         const middleY = top + dragDrop.offset.middleY;
@@ -53,7 +52,10 @@ let App = (props) => {
         });
 
         if (itemsToSwap[0]) {
-          onSwap(swapItems);
+          onSwap({
+            swap: swapItems,
+            parentId: dragDrop.parentId
+          });
         }
       }}
     >
@@ -77,9 +79,9 @@ const mapDispatchProps = (dispatch, props) => {
     onMoveDrag: (coords) => {
       dispatch(moveDrag({coords}));
     },
-    onSwap: (swap) => {
+    onSwap: ({swap, parentId}) => {
       if (swap) {
-        dispatch(swapPrimitives({swap}));
+        dispatch(swapPrimitives({swap, parentId}));
       }
     },
     onStopDrag: () => {

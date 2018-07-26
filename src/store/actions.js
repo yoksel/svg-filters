@@ -76,5 +76,5 @@ export const stopDrag = createAction(
 
 export const swapPrimitives = createAction(
   SWAP_PRIMITIVES,
-  ['swap']
+  ['swap', 'parentId']
 );

@@ -1,5 +1,5 @@
 import deepClone from '../../helpers/deepClone';
-import {updateUnicalProps, resetIdKeeper} from './helpers';
+import {updateUnicalProps, resetIdKeeper, swap} from './helpers';
 
 const primitive = (state, action) => {
   switch (action.type) {
@@ -117,12 +117,21 @@ export const primitives = (state = [], action) => {
     return newPresetState;
 
   case 'SWAP_PRIMITIVES':
-    const swapPositions = action.swap;
-    const newSwapState = Array.from(state);
-    const item1 = newSwapState[swapPositions[0]];
-    const item2 = newSwapState[swapPositions[1]];
-    newSwapState[swapPositions[0]] = item2;
-    newSwapState[swapPositions[1]] = item1;
+    const parentId = action.parentId;
+    let newSwapState = Array.from(state);
+
+    if (parentId) {
+      newSwapState = newSwapState.map(item => {
+        if (item.id === parentId) {
+          const children = deepClone(item).children;
+          item.children = swap(children, action.swap);
+        }
+
+        return item;
+      });
+    } else {
+      newSwapState = swap(newSwapState, action.swap);
+    }
 
     return newSwapState;
 
@@ -132,4 +141,3 @@ export const primitives = (state = [], action) => {
 };
 
 export default primitives;
-

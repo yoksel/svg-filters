@@ -104,3 +104,12 @@ export const updateUnicalProps = (state, action) => {
 
   return newAction;
 };
+
+export const swap = (items, positions) => {
+  const item1 = items[positions[0]];
+  const item2 = items[positions[1]];
+  items[positions[0]] = item2;
+  items[positions[1]] = item1;
+
+  return items;
+};
