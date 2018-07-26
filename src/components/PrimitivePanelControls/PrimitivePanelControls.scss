@@ -11,8 +11,8 @@
 }
 
 .PrimitivePanelControl {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   margin: 4px;
   padding: 0;
   display: flex;
@@ -20,12 +20,19 @@
   align-items: center;
   justify-content: center;
   background: none;
-  border: 1px solid #DDD;
+  border: none;
   border-radius: 4px;
   font: inherit;
   line-height: 1;
   color: inherit;
   cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 0 2px transparent;
+  transition: box-shadow .25s;
+
+  &:focus {
+    box-shadow: 0 0 0 2px;
+  }
 
   &--remove {
     color: crimson;
