@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
 import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
 import Code from '../../containers/Code';
-
-import {addPreset} from '../../store/actions';
 
 import Icons from '../Icons';
 import Sidebar from '../Sidebar';
@@ -65,18 +62,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, {match}) => {
-  return {
-    presetControls: state.presetControls,
-    presetId: match.params.presetId
-  };
-};
-
-App = withRouter(connect(
-  mapStateToProps,
-  {
-    addPreset
-  }
-)(App));
-
-export default App;
+export default withRouter(App);
