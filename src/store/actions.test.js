@@ -8,6 +8,7 @@ describe('actions', () => {
         'id',
         'name',
         'groupName',
+        'zeroValue',
         'params',
         'children'
       ];
@@ -16,6 +17,7 @@ describe('actions', () => {
         id: 'blur',
         name: 'Blur',
         groupName: 'Blur',
+        zeroValue: 0,
         params: {
           'stdDeviation': {
             'value': '3 10',
@@ -39,6 +41,7 @@ describe('actions', () => {
         id: props.id,
         name: props.name,
         groupName: props.groupName,
+        zeroValue: 0,
         params: props.params
       };
 
