@@ -13,49 +13,65 @@ let DragDrop = (props) => {
     onSwap
   } = props;
 
+  const onMouseUp = () => {
+    if (!isDragging) {
+      return null;
+    }
+
+    onStopDrag();
+  };
+
+  const getItemsToSwap = (top) => {
+    const itemsCoords = dragDrop.getSiblingsCoords(dragDrop);
+    const middleY = top + dragDrop.offset.middleY;
+
+    const intersections = itemsCoords.filter(item => {
+      if (item.id === dragDrop.id) {
+        // Need to keep all items to get right index
+        // and remove dragging one just for measures
+        return false;
+      }
+      // Check intersection with the middle of dragging item
+      return (middleY > item.top && middleY < item.bottom);
+    });
+
+    if (!intersections[0]) {
+      return null;
+    }
+
+    return [
+      dragDrop.index,
+      intersections[0].index
+    ];
+  };
+
+  const onMouseMove = (event) => {
+    if (!isDragging) {
+      return null;
+    }
+
+    const left = event.nativeEvent.x - dragDrop.offset.x;
+    const top = event.nativeEvent.y - dragDrop.offset.y;
+
+    const swapItems = getItemsToSwap(top);
+
+    onMoveDrag({
+      left: left,
+      top: top
+    });
+
+    if (swapItems) {
+      onSwap({
+        swap: swapItems,
+        parentId: dragDrop.parentId
+      });
+    }
+  };
+
   return (
     <div
-      onMouseUp={() => {
-        if (!isDragging) {
-          return null;
-        }
-
-        onStopDrag();
-      }}
-      onMouseMove={(event) => {
-        if (!isDragging) {
-          return null;
-        }
-
-        const itemsCoords = dragDrop.getSiblingsCoords(dragDrop);
-        const left = event.nativeEvent.x - dragDrop.offset.x;
-        const top = event.nativeEvent.y - dragDrop.offset.y;
-        const middleY = top + dragDrop.offset.middleY;
-
-        const itemsToSwap = itemsCoords.filter(item => {
-          if (item.id === dragDrop.id) {
-            // Need to keep all items to get right index
-            // and remove dragging one just for measures
-            return false;
-          }
-          // Check intersection with the middle of dragging item
-          return (middleY > item.top && middleY < item.bottom);
-        });
-
-        let swapItems = itemsToSwap[0] && [dragDrop.index, itemsToSwap[0].index];
-
-        onMoveDrag({
-          left: left,
-          top: top
-        });
-
-        if (itemsToSwap[0]) {
-          onSwap({
-            swap: swapItems,
-            parentId: dragDrop.parentId
-          });
-        }
-      }}
+      onMouseUp={onMouseUp}
+      onMouseMove={onMouseMove}
     >
       {props.children}
     </div>
