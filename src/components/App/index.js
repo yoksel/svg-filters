@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';

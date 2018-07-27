@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
-import {addPreset, moveDrag, stopDrag, swapPrimitives} from '../../store/actions';
+import {addPreset} from '../../store/actions';
 
 import AppTemplate from '../../components/App';
 

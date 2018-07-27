@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
 
 import {moveDrag, stopDrag, swapPrimitives} from '../../store/actions';
 
