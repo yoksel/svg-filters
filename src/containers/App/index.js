@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
@@ -6,87 +6,48 @@ import {addPreset, moveDrag, stopDrag, swapPrimitives} from '../../store/actions
 
 import AppTemplate from '../../components/App';
 
-let App = (props) => {
-  const {
-    dragDrop,
-    isDragging,
-    onStopDrag,
-    onMoveDrag,
-    onSwap
-  } = props;
+class App extends Component {
+  setPreset = () => {
+    const {presetId} = this.props.match.params;
 
-  return (
-    <div
-      onMouseUp={() => {
-        if (!isDragging) {
-          return null;
-        }
+    if (!presetId) {
+      return null;
+    }
 
-        onStopDrag();
-      }}
-      onMouseMove={(event) => {
-        if (!isDragging) {
-          return null;
-        }
+    const presets = this.props.presetControls;
+    const currentPreset = presets.filter(item => item.id === presetId)[0];
 
-        const itemsCoords = dragDrop.getSiblingsCoords(dragDrop);
-        const left = event.nativeEvent.x - dragDrop.offset.x;
-        const top = event.nativeEvent.y - dragDrop.offset.y;
-        const middleY = top + dragDrop.offset.middleY;
+    if (currentPreset) {
+      this.props.addPreset(currentPreset);
+    }
+  };
 
-        const itemsToSwap = itemsCoords.filter(item => {
-          if (item.id === dragDrop.id) {
-            // Need to keep all items to get right index
-            // and remove dragging one just for measures
-            return false;
-          }
-          // Check intersection on the middle of dragging item
-          return (middleY > item.top && middleY < item.bottom);
-        });
+  componentDidMount() {
+    this.setPreset();
+  }
 
-        let swapItems = itemsToSwap[0] && [dragDrop.index, itemsToSwap[0].index];
+  componentDidUpdate(prevProps) {
+    if (prevProps.presetId !== this.props.presetId) {
+      this.setPreset();
+    }
+  }
 
-        onMoveDrag({
-          left: left,
-          top: top
-        });
-
-        if (itemsToSwap[0]) {
-          onSwap({
-            swap: swapItems,
-            parentId: dragDrop.parentId
-          });
-        }
-      }}
-    >
-      <AppTemplate {...props}/>
-    </div>
-  );
-};
+  render() {
+    return (
+      <AppTemplate/>
+    );
+  }
+}
 
 const mapStateToProps = (state, {match}) => {
   return {
     presetControls: state.presetControls,
-    presetId: match.params.presetId,
-    dragDrop: state.dragDrop,
-    isDragging: Boolean(state.dragDrop.id)
+    presetId: match.params.presetId
   };
 };
 
 const mapDispatchProps = (dispatch, props) => {
-  // console.log('mapDispatchProps',props);
   return {
-    onMoveDrag: (coords) => {
-      dispatch(moveDrag({coords}));
-    },
-    onSwap: ({swap, parentId}) => {
-      if (swap) {
-        dispatch(swapPrimitives({swap, parentId}));
-      }
-    },
-    onStopDrag: () => {
-      dispatch(stopDrag());
-    },
     addPreset: (preset) => {
       dispatch(addPreset(preset));
     }

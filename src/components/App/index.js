@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router';
 
 import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
@@ -10,56 +9,29 @@ import Sidebar from '../Sidebar';
 
 import './App.css';
 
-class App extends Component {
-  setPreset = () => {
-    const {presetId} = this.props.match.params;
+const App = () => {
+  return (
+    <div className="App">
+      <Icons/>
 
-    if (!presetId) {
-      return null;
-    }
-
-    const presets = this.props.presetControls;
-    const currentPreset = presets.filter(item => item.id === presetId)[0];
-
-    if (currentPreset) {
-      this.props.addPreset(currentPreset);
-    }
-  };
-
-  componentDidMount() {
-    this.setPreset();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.presetId !== this.props.presetId) {
-      this.setPreset();
-    }
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Icons/>
-
-        <div className="App__container App__container--list">
-          <div className="App__content App__content--sticky">
-            <Sidebar/>
-          </div>
-        </div>
-
-        <div className="App__container App__container--constructor">
-          <Constructor/>
-        </div>
-
-        <div className="App__container App__container--playground">
-          <div className="App__content App__content--sticky">
-            <Playground/>
-            <Code/>
-          </div>
+      <div className="App__container App__container--list">
+        <div className="App__content App__content--sticky">
+          <Sidebar/>
         </div>
       </div>
-    );
-  }
-}
 
-export default withRouter(App);
+      <div className="App__container App__container--constructor">
+        <Constructor/>
+      </div>
+
+      <div className="App__container App__container--playground">
+        <div className="App__content App__content--sticky">
+          <Playground/>
+          <Code/>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
