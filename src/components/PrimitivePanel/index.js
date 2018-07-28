@@ -9,37 +9,6 @@ import ResultAttribute from '../ResultAttribute';
 import './PrimitivePanel.css';
 
 class PrimitivePanel extends Component {
-
-  onMouseDown = (event) => {
-    const {
-      index,
-      primitive,
-      parentId,
-      startDrag,
-      getSiblingsCoords
-    } = this.props;
-
-    const className = event.target.className;
-
-    if (className === 'PrimitivePanel') {
-      const elemClientRect = event.target.getBoundingClientRect();
-      const middleY = elemClientRect.y + elemClientRect.height / 2;
-
-      startDrag({
-        id: primitive.id,
-        index: index,
-        parentId: parentId,
-        elemClientRect: elemClientRect,
-        offset: {
-          x: event.nativeEvent.x - elemClientRect.x,
-          y: event.nativeEvent.y - elemClientRect.y,
-          middleY: event.nativeEvent.y - middleY
-        },
-        getSiblingsCoords: getSiblingsCoords
-      });
-    }
-  };
-
   render() {
     const {
       primitive,
@@ -76,8 +45,7 @@ class PrimitivePanel extends Component {
 
     if (!primitive.children) {
       return (
-        <div className="PrimitivePanel"
-          onMouseDown={this.onMouseDown}>
+        <div className="PrimitivePanel">
           &lt;{primitive.name}{params}&#8203;/>
 
           <PrimitivePanelControls
@@ -110,5 +78,6 @@ export default PrimitivePanel;
 
 PrimitivePanel.propTypes = {
   primitive: PropTypes.object,
-  parentId: PropTypes.string
+  parentId: PropTypes.string,
+  resultsList: PropTypes.array
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import deepClone from '../../helpers/deepClone';
 
 import Placeholder from '../Placeholder';
-import PrimitivePanel from '../../containers/PrimitivePanel';
+import PrimitivePanel from '../../components/PrimitivePanel';
 
 import './Constructor.css';
 
