@@ -1,6 +1,6 @@
 {
-  "id": "coloredStripes",
-  "name": "Colored Stripes",
+  "id": "coloredStripesHor",
+  "name": "Colored Stripes ↔",
   "primitives": [
     {
       "id": "turbulence",
@@ -11,7 +11,7 @@
           "type": "select"
         },
         "baseFrequency": {
-          "value": "0 0.022",
+          "value": "0 0.03",
           "min": 0,
           "step": 0.001,
           "type": "number",
