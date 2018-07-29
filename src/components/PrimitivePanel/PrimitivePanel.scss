@@ -1,24 +1,28 @@
 @import "../../variables.scss";
 
 .PrimitivePanel {
-  position: relative;
   min-height: 48px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   padding: .5rem .5rem;
-  padding-right: 32px;
   background: #FFF;
   border: 1px solid $color-lightgray;
-  border-radius: 5px;
+  border-radius: $border-radius;
   box-shadow: 0 0 0 rgba(0, 0, 0, .5);
+  pointer-events: none;
   color: $color-darkgray;
   user-select: none;
 }
 
+.PrimitivePanel__content {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
 .PrimitivePanel--has-children {
-  .PrimitivePanelControls {
-    justify-content: flex-start;
+  & > .PrimitivePanelControls {
+    align-self: flex-start;
   }
 }
 
@@ -29,4 +33,5 @@
 .PrimitivePanel__label {
   margin-left: 8px;
   white-space: nowrap;
+  pointer-events: all;
 }

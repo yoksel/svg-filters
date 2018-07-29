@@ -46,29 +46,33 @@ class PrimitivePanel extends Component {
     if (!primitive.children) {
       return (
         <div className="PrimitivePanel">
-          &lt;{primitive.name}{params}&#8203;/>
+          <div className="PrimitivePanel__content">
+            &lt;{primitive.name}{params}&#8203;/>
+            {primitive.children}
+          </div>
 
           <PrimitivePanelControls
             id={primitive.id}
             parentId={parentId}
           />
-          {primitive.children}
         </div>
       );
     }
 
     return (
       <div className="PrimitivePanel PrimitivePanel--has-children">
-        <div className="PrimitivePanel__tag">
-          &lt;{primitive.name}{params}&#8203;>
+        <div className="PrimitivePanel__content">
+          <div className="PrimitivePanel__tag">
+            &lt;{primitive.name}{params}&#8203;>
+          </div>
+          {primitive.children}
+          <div className="PrimitivePanel__tag">
+            &lt;/{primitive.name}&#8203;>
+          </div>
         </div>
         <PrimitivePanelControls
           id={primitive.id}
         />
-        {primitive.children}
-        <div className="PrimitivePanel__tag">
-          &lt;/{primitive.name}&#8203;>
-        </div>
       </div>
     );
   }
