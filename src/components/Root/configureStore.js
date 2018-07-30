@@ -13,6 +13,10 @@ const addLoggingToDispatch = (store) => {
   }
 
   return (action) => {
+    if (action.type === 'MOVE_DRAG') {
+      return rawDispatch(action);
+    }
+
     console.groupCollapsed(action.type);
     console.log('Before:', store.getState());
     console.log('Action:', action);
