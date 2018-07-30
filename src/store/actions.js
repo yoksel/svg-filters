@@ -62,7 +62,7 @@ export const addPreset = createAction(
 
 export const startDrag = createAction(
   START_DRAG,
-  ['id', 'index', 'parentId', 'elemClientRect', 'offset', 'getSiblingsCoords']
+  ['id', 'index', 'parentId', 'listId', 'elemClientRect', 'offset']
 );
 
 export const moveDrag = createAction(
@@ -76,5 +76,5 @@ export const stopDrag = createAction(
 
 export const swapPrimitives = createAction(
   SWAP_PRIMITIVES,
-  ['swap', 'parentId']
+  ['parentId', 'indexes', 'swapSnapshot']
 );

@@ -31,7 +31,8 @@ const primitive = (state, action) => {
 };
 
 const initialState = {
-  list: []
+  list: [],
+  swapSnapshot: ''
 };
 
 export const primitives = (state = initialState, action) => {
@@ -143,6 +144,10 @@ export const primitives = (state = initialState, action) => {
     const parentId = action.parentId;
     let newSwapList = Array.from(state.list);
 
+    if (state.swapSnapshot && state.swapSnapshot === action.swapSnapshot) {
+      return state;
+    }
+
     if (parentId) {
       newSwapList = newSwapList.map(item => {
         if (item.id === parentId) {
@@ -157,7 +162,8 @@ export const primitives = (state = initialState, action) => {
     }
 
     return {
-      list: newSwapList
+      list: newSwapList,
+      swapSnapshot: action.swapSnapshot
     };
 
   default:

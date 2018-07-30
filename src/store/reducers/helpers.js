@@ -106,10 +106,14 @@ export const updateUnicalProps = (state, action) => {
 };
 
 export const swap = (items, positions) => {
-  const item1 = items[positions[0]];
-  const item2 = items[positions[1]];
-  items[positions[0]] = item2;
-  items[positions[1]] = item1;
+  const {from, to} = positions;
+  const item1 = items[from];
+  const item2 = items[to];
+
+  if (item1 && item2) {
+    items[from] = item2;
+    items[to] = item1;
+  }
 
   return items;
 };
