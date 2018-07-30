@@ -1,6 +1,8 @@
 import {createStore} from 'redux';
 import throttle from 'lodash/throttle';
 
+import deepClone from '../../helpers/deepClone';
+
 import reducers from '../../store/reducers';
 import {primitivesData, presetsData} from '../Data';
 import {saveState, getState} from './localStorage';
@@ -29,11 +31,15 @@ const addLoggingToDispatch = (store) => {
 };
 
 const configureStore = () => {
+  const dataFromStorage = getState();
+  const {primitives} = dataFromStorage;
+
   const initialState = {
     presetControls: presetsData,
     primitiveControls: primitivesData,
-    primitives: getState() ? getState().primitives : undefined
+    primitives: primitives
   };
+
   const store = createStore(
     reducers,
     initialState
@@ -45,8 +51,11 @@ const configureStore = () => {
 
   store.subscribe(throttle(
     () => {
+      const primitivesToSave = deepClone(store.getState().primitives);
+      primitivesToSave.swapSnapshot = '';
+
       saveState({
-        primitives: store.getState().primitives
+        primitives: primitivesToSave
       });
     }
   ), 1000);

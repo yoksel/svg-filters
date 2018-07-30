@@ -9,5 +9,5 @@ export const getState = () => {
     return JSON.parse(storageValue);
   }
 
-  return undefined;
+  return {};
 };
