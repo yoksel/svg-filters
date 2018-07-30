@@ -7,7 +7,6 @@
 }
 
 .Contsructor__container {
-  position: relative;
   min-height: 100px;
   padding: 12px;
   border: 2px dashed;
@@ -16,7 +15,7 @@
 
 .Contsructor__item {
   margin-bottom: 12px;
-  flex-grow: 1;
+  width: 100%;
 
   &:last-of-type {
     margin-bottom: 0;
