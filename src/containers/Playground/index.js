@@ -4,7 +4,7 @@ import PlaygroundTemplate from '../../components/Playground';
 
 const mapStateToProps = (state) => {
   return {
-    filterId: state.primitives.length ? 'filter' : ''
+    filterId: state.primitives.list.length ? 'filter' : ''
   };
 };
 

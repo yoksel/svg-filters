@@ -30,19 +30,28 @@ const primitive = (state, action) => {
   }
 };
 
-export const primitives = (state = [], action) => {
+const initialState = {
+  list: []
+};
+
+export const primitives = (state = initialState, action) => {
   switch (action.type) {
   case 'ADD_PRIMITIVE':
-    return [
+
+    return {
       ...state,
-      primitive(state, action)
-    ];
+      list: [
+        ...state.list,
+        primitive(state.list, action)
+      ]
+    };
 
   case 'DUPLICATE_PRIMITIVE':
-    const newPrimitive = primitive(state, action);
+    const newPrimitive = primitive(state.list, action);
+    let newStateDuplList = [];
 
     if (action.childId !== undefined) {
-      return state.map(item => {
+      newStateDuplList = state.list.map(item => {
         if (item.id === action.id) {
           item = deepClone(item);
           item.children.push(newPrimitive);
@@ -50,18 +59,23 @@ export const primitives = (state = [], action) => {
 
         return item;
       });
+    } else {
+      newStateDuplList = [
+        ...state.list,
+        newPrimitive
+      ];
     }
 
-    return [
+    return {
       ...state,
-      newPrimitive
-    ];
+      list: newStateDuplList
+    };
 
   case 'DELETE_PRIMITIVE':
     let filteredDel = {};
 
     if (action.childId) {
-      filteredDel = state.map(item => {
+      filteredDel = state.list.map(item => {
         if (item.id === action.id) {
           item = deepClone(item);
           item.children = item.children.filter(child => child.id !== action.childId);
@@ -70,13 +84,16 @@ export const primitives = (state = [], action) => {
         return item;
       });
     } else {
-      filteredDel = state.filter(item => item.id !== action.id);
+      filteredDel = state.list.filter(item => item.id !== action.id);
     }
 
-    return filteredDel;
+    return {
+      ...state,
+      list: filteredDel
+    };
 
   case 'CHANGE_PRIMITIVE_PROP':
-    const newState = state.map(item => {
+    let newStateChangPropList = state.list.map(item => {
 
       // Edit prop of child
       if (item.id === action.parentId) {
@@ -105,35 +122,43 @@ export const primitives = (state = [], action) => {
       return item;
     });
 
-    return newState;
+    return {
+      ...state,
+      list: newStateChangPropList
+    };
 
   case 'ADD_PRESET':
-    const newPresetState = [
+    const newPresetList = [
       ...action.primitives
     ];
 
-    resetIdKeeper(newPresetState);
+    resetIdKeeper(newPresetList);
 
-    return newPresetState;
+    return {
+      ...state,
+      list: newPresetList
+    };
 
   case 'SWAP_PRIMITIVES':
     const parentId = action.parentId;
-    let newSwapState = Array.from(state);
+    let newSwapList = Array.from(state.list);
 
     if (parentId) {
-      newSwapState = newSwapState.map(item => {
+      newSwapList = newSwapList.map(item => {
         if (item.id === parentId) {
           const children = deepClone(item).children;
-          item.children = swap(children, action.swap);
+          item.children = swap(children, action.indexes);
         }
 
         return item;
       });
     } else {
-      newSwapState = swap(newSwapState, action.swap);
+      newSwapList = swap(newSwapList, action.indexes);
     }
 
-    return newSwapState;
+    return {
+      list: newSwapList
+    };
 
   default:
     return state;

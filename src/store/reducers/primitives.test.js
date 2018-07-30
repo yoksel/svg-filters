@@ -6,7 +6,9 @@ import * as helpers from './helpers';
 
 describe('reducers', () => {
   it('ADD_PRIMITIVE: should add primitive to state', () => {
-    const stateBefore = [];
+    const stateBefore = {
+      list: []
+    };
     const action = {
       type: 'ADD_PRIMITIVE',
       id: 'blur',
@@ -17,10 +19,6 @@ describe('reducers', () => {
           'value': 4,
           'type': 'number'
         },
-        'mode': {
-          'value': 'multiply',
-          'type': 'select'
-        },
         result: {
           value: 'blur'
         }
@@ -28,42 +26,34 @@ describe('reducers', () => {
       paramsValues: [
         'mode': [
           'normal',
-          'multiply',
-          'screen',
-          'darken',
-          'lighten'
+          'multiply'
         ]
       ]
     };
-    const stateAfter = [
-      {
-        id: 'blur',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            'stdDeviation': {
+              'value': 4,
+              'type': 'number'
+            },
+            result: {
+              value: 'blur'
+            }
           },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur'
-          }
-        },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      }
-    ];
+        }
+      ]
+    };
 
     deepFreeze(stateBefore);
 
@@ -75,95 +65,78 @@ describe('reducers', () => {
 
 describe('reducers', () => {
   it('DUPLICATE_PRIMITIVE: should duplicate primitive in state', () => {
-    const stateBefore = [
-      {
-        id: 'blur',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            'stdDeviation': {
+              'value': 4,
+              'type': 'number'
+            },
+            result: {
+              value: 'blur'
+            }
           },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur'
-          }
-        },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply',
+            ]
           ]
-        ]
-      }
-    ];
+        }
+      ]
+    };
     const action = {
       type: 'DUPLICATE_PRIMITIVE',
       id: 'blur'
     };
-    const stateAfter = [
-      {
-        id: 'blur',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            'stdDeviation': {
+              'value': 4,
+              'type': 'number'
+            },
+            result: {
+              value: 'blur'
+            }
           },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur'
-          }
-        },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      },
-      {
-        id: 'blur1',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
-          },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur1'
-          }
         },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+        {
+          id: 'blur1',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            'stdDeviation': {
+              'value': 4,
+              'type': 'number'
+            },
+            result: {
+              value: 'blur1'
+            }
+          },
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      }
-    ];
+        }
+      ]
+    };
 
     deepFreeze(stateBefore);
 
@@ -175,95 +148,78 @@ describe('reducers', () => {
 
 describe('reducers', () => {
   it('DELETE_PRIMITIVE: should delete primitive from state by ID', () => {
-    const stateBefore = [
-      {
-        id: 'blur',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            'stdDeviation': {
+              'value': 4,
+              'type': 'number'
+            },
+            result: {
+              value: 'blur'
+            }
           },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur'
-          }
-        },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      },
-      {
-        id: 'blur1',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
-          },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur1'
-          }
         },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+        {
+          id: 'blur1',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            'stdDeviation': {
+              'value': 4,
+              'type': 'number'
+            },
+            result: {
+              value: 'blur1'
+            }
+          },
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      }
-    ];
+        }
+      ]
+    };
     const action = {
       type: 'DELETE_PRIMITIVE',
       id: 'blur1'
     };
-    const stateAfter = [
-      {
-        id: 'blur',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            'stdDeviation': {
+              'value': 4,
+              'type': 'number'
+            },
+            result: {
+              value: 'blur'
+            }
           },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur'
-          }
-        },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      }
-    ];
+        }
+      ]
+    };
 
     deepFreeze(stateBefore);
 
@@ -275,124 +231,100 @@ describe('reducers', () => {
 
 describe('reducers', () => {
   it('CHANGE_PRIMITIVE_PROP: should change primitive param value', () => {
-    const stateBefore = [
-      {
-        id: 'blur',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'select'
+            },
+            result: {
+              value: 'blur'
+            }
           },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur'
-          }
-        },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      },
-      {
-        id: 'blur1',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
-          },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur1'
-          }
         },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+        {
+          id: 'blur1',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'select'
+            },
+            result: {
+              value: 'blur1'
+            }
+          },
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      }
-    ];
+        }
+      ]
+    };
     const action = {
       type: 'CHANGE_PRIMITIVE_PROP',
       id: 'blur1',
       param: 'mode',
       value: 'screen'
     };
-    const stateAfter = [
-      {
-        id: 'blur',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'select'
+            },
+            result: {
+              value: 'blur'
+            }
           },
-          'mode': {
-            'value': 'multiply',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur'
-          }
-        },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      },
-      {
-        id: 'blur1',
-        name: 'Hello',
-        groupName: 'blur',
-        params: {
-          'stdDeviation': {
-            'value': 4,
-            'type': 'number'
-          },
-          'mode': {
-            'value': 'screen',
-            'type': 'select'
-          },
-          result: {
-            value: 'blur1'
-          }
         },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply',
-            'screen',
-            'darken',
-            'lighten'
+        {
+          id: 'blur1',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            mode: {
+              'value': 'screen',
+              'type': 'select'
+            },
+            result: {
+              value: 'blur1'
+            }
+          },
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
           ]
-        ]
-      }
-    ];
+        }
+      ]
+    };
 
     deepFreeze(stateBefore);
 

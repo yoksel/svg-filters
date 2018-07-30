@@ -3,7 +3,7 @@ import CodeTemplate from '../../components/Code';
 
 const mapStateToProps = (state) => {
   return {
-    primitives: state.primitives
+    primitives: state.primitives.list
   };
 };
 
