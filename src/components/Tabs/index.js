@@ -1,73 +1,62 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import {NavLink} from 'react-router-dom';
 
 import './Tabs.css';
 
-class Tabs extends Component {
-  state = {
-    active: this.props.currentTab || this.props.items[0].id
-  };
+const Tabs = ({items, active}) => {
+  const tabsList = items.reduce((prev, item) => {
+    const id = item.id;
+    const name = item.name;
+    const url = `${process.env.PUBLIC_URL}/${id}`;
+    let buttonClass = 'Tabs__control';
+    if (id === active) {
+      buttonClass += ` ${buttonClass}--active`;
+    }
 
-  setActive = (tabName) => {
-    this.setState({
-      active: tabName
-    });
-  };
-
-  render() {
-    const {items} = this.props;
-    const tabsList = items.reduce((prev, item) => {
-      const id = item.id;
-      const name = item.name;
-
-      let buttonClass = 'Tabs__control';
-      if (id === this.state.active) {
-        buttonClass += ` ${buttonClass}--active`;
-      }
-
-      const button = <button
+    const control = (
+      <NavLink
         key={id}
+        to={url}
         className={buttonClass}
-        onClick={() => {
-          this.setActive(id);
-        }}
       >
         <span className="Tabs__control-text">
           {name}
         </span>
-      </button>;
-
-      let contentClass = 'Tabs__item';
-      if (id === this.state.active) {
-        contentClass += ` ${contentClass}--active`;
-      }
-      const content = <div
-        key={id}
-        className={contentClass}
-      ><item.content/></div>;
-
-      prev.controls.push(button);
-      prev.tabs.push(content);
-
-      return prev;
-    },{
-      controls: [],
-      tabs: []
-    });
-
-    return (
-      <div className="Tabs">
-        <div className="Tabs__controls">
-          {tabsList.controls}
-        </div>
-        {tabsList.tabs}
-      </div>
+      </NavLink>
     );
-  }
-}
+
+    let contentClass = 'Tabs__item';
+    if (id === active) {
+      contentClass += ` ${contentClass}--active`;
+    }
+    const content = <div
+      key={id}
+      className={contentClass}
+    ><item.content/></div>;
+
+    prev.controls.push(control);
+    prev.tabs.push(content);
+
+    return prev;
+  },{
+    controls: [],
+    tabs: []
+  });
+
+  return (
+    <div className="Tabs">
+      <div className="Tabs__controls">
+        {tabsList.controls}
+      </div>
+      {tabsList.tabs}
+    </div>
+  );
+};
 
 export default Tabs;
 
 Tabs.propTypes = {
+  active: PropTypes.string,
   items: PropTypes.array
 };

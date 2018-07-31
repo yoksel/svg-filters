@@ -1,16 +1,12 @@
 import React from 'react';
-import {withRouter} from 'react-router';
 
 import PrimitiveControlsList from '../../containers/PrimitiveControlsList';
 import PresetsList from '../../containers/PresetsList';
-import Tabs from '../Tabs';
+import Tabs from '../../containers/Tabs';
 
 const Sidebar = ({match}) => {
-  const {sidebarList} = match.params;
-
   return (
     <Tabs
-      currentTab = {sidebarList === 'presets' ? 'presets' : 'primitives'}
       items={[
         {
           id: 'primitives',
@@ -27,4 +23,4 @@ const Sidebar = ({match}) => {
   );
 };
 
-export default withRouter(Sidebar);
+export default Sidebar;
