@@ -141,6 +141,34 @@ export const primitives = (state = initialState, action) => {
       list: newStateChangPropList
     };
 
+  case 'TOGGLE_PROP':
+    let newStateDisablePropList = state.list.map(item => {
+
+      // Edit prop of child
+      if (item.id === action.parentId) {
+        item = deepClone(item);
+
+        item.children = item.children.map(child => {
+          if (child.id === action.id) {
+            child.params[action.param].disabled = action.disabled;
+          }
+
+          return child;
+        });
+      } else if (item.id === action.id) {
+        item = deepClone(item);
+        const param = item.params[action.param];
+        param.disabled = action.disabled;
+      }
+
+      return item;
+    });
+
+    return {
+      ...state,
+      list: newStateDisablePropList
+    };
+
   case 'ADD_PRESET':
     const newPresetList = [
       ...action.primitives

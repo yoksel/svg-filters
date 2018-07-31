@@ -14,8 +14,8 @@
         "key": "type",
         "values": {
           "saturate": 5,
-          "hueRotate": 50,
-          "luminanceToAlpha": false
+          "hueRotate": 180,
+          "luminanceToAlpha": "disabled"
         }
       }
     },

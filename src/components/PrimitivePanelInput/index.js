@@ -74,6 +74,7 @@ class PrimitivePanelInput extends Component {
 
       let valuesList = paramsValues && paramsValues[key];
       let valuesKey = param.valuesKey || key;
+      let tiedValues = {};
 
       if (!valuesList) {
         valuesList = primitivesAttrs[valuesKey];
@@ -83,6 +84,10 @@ class PrimitivePanelInput extends Component {
         valuesList = valuesList.concat(resultsList);
       }
 
+      if (primitive.params.values) {
+        tiedValues = primitive.params.values.variants.values;
+      }
+
       input = <InputSelect
         id={primitive.id}
         key={primitive.id}
@@ -90,6 +95,7 @@ class PrimitivePanelInput extends Component {
         value={value}
         valuesList={valuesList}
         parentId={parentId}
+        tiedValues={tiedValues}
       />;
     }
 

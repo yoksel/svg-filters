@@ -28,6 +28,10 @@ class PrimitivePanel extends Component {
         );
       }
 
+      if (param.disabled) {
+        return null;
+      }
+
       return (
         <label
           key={key}

@@ -52,7 +52,7 @@ export const duplicatePrimitive = createAction(
 
 export const changePrimitiveProp = createAction(
   CHANGE_PRIMITIVE_PROP,
-  ['id', 'param', 'parentId']
+  ['id', 'param', 'parentId', 'tiedValues']
 );
 
 export const addPreset = createAction(
