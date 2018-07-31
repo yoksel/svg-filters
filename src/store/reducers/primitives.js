@@ -1,5 +1,5 @@
 import deepClone from '../../helpers/deepClone';
-import {updateUnicalProps, resetIdKeeper, swap} from './helpers';
+import {updateUnicalProps, resetIdKeeper, swap, getFilteredWithIndex} from './helpers';
 
 const primitive = (state, action) => {
   switch (action.type) {
@@ -16,14 +16,19 @@ const primitive = (state, action) => {
     };
 
   case 'DUPLICATE_PRIMITIVE':
-    let source = state.filter(item => item.id === action.id);
+    let filteredWithIndex = getFilteredWithIndex(state, action.id);
 
     if (action.childId) {
-      source = source[0].children.filter(item => item.id === action.childId);
+      const children = filteredWithIndex.filtered.children;
+      filteredWithIndex = getFilteredWithIndex(children, action.childId);
     }
-    const duplAction = updateUnicalProps(state, source[0]);
 
-    return duplAction;
+    const duplAction = updateUnicalProps(state, filteredWithIndex.filtered);
+
+    return {
+      pos: filteredWithIndex.pos,
+      newPrimitive: duplAction
+    };
 
   default:
     return state;
@@ -48,22 +53,28 @@ export const primitives = (state = initialState, action) => {
     };
 
   case 'DUPLICATE_PRIMITIVE':
-    const newPrimitive = primitive(state.list, action);
+    const {newPrimitive, pos} = primitive(state.list, action);
     let newStateDuplList = [];
 
     if (action.childId !== undefined) {
+      // Inner list
       newStateDuplList = state.list.map(item => {
         if (item.id === action.id) {
-          item = deepClone(item);
-          item.children.push(newPrimitive);
+          item.children = [
+            ...item.children.slice(0, pos + 1),
+            newPrimitive,
+            ...item.children.slice(pos + 1)
+          ];
         }
 
         return item;
       });
     } else {
+      // Top level list
       newStateDuplList = [
-        ...state.list,
-        newPrimitive
+        ...state.list.slice(0, pos + 1),
+        newPrimitive,
+        ...state.list.slice(pos + 1)
       ];
     }
 
@@ -76,6 +87,7 @@ export const primitives = (state = initialState, action) => {
     let filteredDel = {};
 
     if (action.childId) {
+      // Inner list
       filteredDel = state.list.map(item => {
         if (item.id === action.id) {
           item = deepClone(item);
@@ -85,6 +97,7 @@ export const primitives = (state = initialState, action) => {
         return item;
       });
     } else {
+      // Top level list
       filteredDel = state.list.filter(item => item.id !== action.id);
     }
 
