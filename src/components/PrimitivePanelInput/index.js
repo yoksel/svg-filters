@@ -34,8 +34,7 @@ class PrimitivePanelInput extends Component {
       }
 
       if (!actualValue) {
-        input = null;
-        return null;
+        actualValue = '';
       }
 
       if (double) {
