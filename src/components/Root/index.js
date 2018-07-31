@@ -8,11 +8,13 @@ import configureStore from './configureStore';
 const store = configureStore();
 
 const Root = () => {
+  const url = `${process.env.PUBLIC_URL}/:sidebarList?/:presetId?`;
+
   return (
     <Provider store={store}>
       <Router>
         <Route
-          path="/:sidebarList?/:presetId?"
+          path={url}
           component={App}
         />
       </Router>

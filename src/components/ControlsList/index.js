@@ -10,10 +10,12 @@ const ControlsList = ({items, control, onClick}) => {
       {items.map((item) => {
 
         if (control === 'NavLink') {
+          const url = `${process.env.PUBLIC_URL}/presets/${item.id}`;
+
           return (
             <NavLink
               key={item.id}
-              to={`/presets/${item.id}`}
+              to={url}
             >
               <span className="Control Control--navlink">
                 {item.name}
