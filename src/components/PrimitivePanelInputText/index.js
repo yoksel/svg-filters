@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 
 import InputText from '../../containers/InputText';
 
-import './PrimitivePanelInputText.css';
-
 class PrimitivePanelInputText extends Component {
   render() {
     const {primitive, paramKey} = this.props;

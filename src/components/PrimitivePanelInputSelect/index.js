@@ -3,8 +3,6 @@ import React, {Component} from 'react';
 import InputSelect from '../../containers/InputSelect';
 import {primitivesAttrs} from '../Data';
 
-import './PrimitivePanelInputSelect.css';
-
 class PrimitivePanelInputSelect extends Component {
   render() {
     const {primitive, paramKey, resultsList, parentId} = this.props;
