@@ -7,17 +7,9 @@
 }
 
 .Contsructor__container {
-  min-height: 100px;
+  min-height: 80px;
   padding: 12px;
   border: 2px dashed;
   border-radius: $border-radius;
 }
 
-.Contsructor__item {
-  margin-bottom: 12px;
-  width: 100%;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-}

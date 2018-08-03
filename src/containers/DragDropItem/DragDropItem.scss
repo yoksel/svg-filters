@@ -1,8 +1,13 @@
 @import "../../variables.scss";
 
 .DragDropItem {
+  margin-bottom: 12px;
   pointer-events: all;
   user-select: none;
+
+  .Contsructor__item:last-child & {
+    margin-bottom: 0;
+  }
 }
 
 .DragDropItem__container {
@@ -21,6 +26,8 @@
 }
 
 .DragDropItem--status-notOVerlapTarget {
+  margin-bottom: 0;
+
   .Placeholder {
     display: none;
   }

@@ -19,9 +19,11 @@ class DragDropItem extends Component {
 
   getStatus(position) {
     const isDragging = this.isDragging();
-    let status = 'readyToDrop';
+    let status = '';
 
     if (isDragging) {
+      status = 'readyToDrop';
+
       if (position.left < (this.leftSideCoord - 100)) {
         status = 'notOVerlapTarget';
       }
