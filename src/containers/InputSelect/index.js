@@ -14,6 +14,10 @@ const mapDispatchProps = (
       if (props.tiedValues) {
         const newValue = props.tiedValues[value];
 
+        if (!newValue) {
+          return null;
+        }
+
         const valueProps = {
           ...props,
           param: 'values'

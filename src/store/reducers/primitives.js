@@ -131,13 +131,16 @@ export const primitives = (state = initialState, action) => {
       } else if (item.id === action.id) {
         item = deepClone(item);
         const param = item.params[action.param];
-        param.value = action.value;
 
-        // Save value to variants (feColorMatrix, for example)
-        if (param.variants) {
-          const propByKey = item.params[param.variants.key];
-          const keyValue = propByKey.value;
-          param.variants.values[keyValue] = action.value;
+        if (param) {
+          param.value = action.value;
+
+          // Save value to variants (feColorMatrix, for example)
+          if (param.variants) {
+            const propByKey = item.params[param.variants.key];
+            const keyValue = propByKey.value;
+            param.variants.values[keyValue] = action.value;
+          }
         }
       }
 
@@ -168,10 +171,9 @@ export const primitives = (state = initialState, action) => {
         item = deepClone(item);
         const param = item.params[action.param];
 
-        if (param && param.disabled) {
+        if (param) {
           param.disabled = action.disabled;
         }
-
       }
 
       return item;

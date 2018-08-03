@@ -345,3 +345,70 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+describe('reducers', () => {
+  it('TOGGLE_PROP: should change primitive param value', () => {
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'select'
+            },
+            result: {
+              value: 'blur'
+            }
+          },
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
+          ]
+        }
+      ]
+    };
+    const action = {
+      type: 'TOGGLE_PROP',
+      id: 'blur',
+      param: 'mode',
+      value: 'screen',
+      disabled: true
+    };
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'select',
+              'disabled': true
+            },
+            result: {
+              value: 'blur'
+            }
+          },
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
+          ]
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
