@@ -15,7 +15,13 @@
         "values": {
           "saturate": 5,
           "hueRotate": 180,
+          "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 500 -20",
           "luminanceToAlpha": "disabled"
+        },
+        "types": {
+          "saturate": "number",
+          "hueRotate": "number",
+          "matrix": "textarea"
         }
       }
     },
@@ -31,6 +37,7 @@
     "type": [
       "saturate",
       "hueRotate",
+      "matrix",
       "luminanceToAlpha"
     ]
   }

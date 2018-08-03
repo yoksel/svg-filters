@@ -184,6 +184,38 @@ export const primitives = (state = initialState, action) => {
       list: newStateDisablePropList
     };
 
+  case 'CHANGE_PROP_TYPE':
+    let newStateChangePropTypeList = state.list.map(item => {
+
+      if (item.id === action.parentId) {
+        // Edit prop type of child
+        item = deepClone(item);
+
+        item.children = item.children.map(child => {
+          const childParam = child.params[action.param];
+          if (child.id === action.id && childParam) {
+            childParam.type = action.propType;
+          }
+
+          return child;
+        });
+      } else if (item.id === action.id) {
+        item = deepClone(item);
+        const param = item.params[action.param];
+
+        if (param) {
+          param.type = action.propType;
+        }
+      }
+
+      return item;
+    });
+
+    return {
+      ...state,
+      list: newStateChangePropTypeList
+    };
+
   case 'ADD_PRESET':
     const newPresetList = [
       ...action.primitives

@@ -18,11 +18,13 @@ const mapDispatchProps = (
           return null;
         }
 
+        // Override handling param
         const valueProps = {
           ...props,
           param: 'values'
         };
 
+        // Disable/enable values
         if (newValue === 'disabled') {
           dispatch({
             type: 'TOGGLE_PROP',
@@ -38,6 +40,25 @@ const mapDispatchProps = (
 
           dispatch(changePrimitiveProp(valueProps, props.tiedValues[value]));
         }
+      }
+
+      if (props.tiedTypes) {
+        const propType = props.tiedTypes[value];
+
+        if (!propType) {
+          return null;
+        }
+
+        const typeProps = {
+          ...props,
+          param: 'values'
+        };
+
+        dispatch({
+          type: 'CHANGE_PROP_TYPE',
+          ...typeProps,
+          propType
+        });
       }
     }
   };

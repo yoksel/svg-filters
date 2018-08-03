@@ -347,7 +347,7 @@ describe('reducers', () => {
 });
 
 describe('reducers', () => {
-  it('TOGGLE_PROP: should change primitive param value', () => {
+  it('TOGGLE_PROP: should toggle primitive param', () => {
     const stateBefore = {
       list: [
         {
@@ -390,6 +390,72 @@ describe('reducers', () => {
               'value': 'multiply',
               'type': 'select',
               'disabled': true
+            },
+            result: {
+              value: 'blur'
+            }
+          },
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
+          ]
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
+
+describe('reducers', () => {
+  it('CHANGE_PROP_TYPE: should change primitive param type', () => {
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'select'
+            },
+            result: {
+              value: 'blur'
+            }
+          },
+          paramsValues: [
+            'mode': [
+              'normal',
+              'multiply'
+            ]
+          ]
+        }
+      ]
+    };
+    const action = {
+      type: 'CHANGE_PROP_TYPE',
+      id: 'blur',
+      param: 'mode',
+      value: 'screen',
+      propType: 'string'
+    };
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          name: 'Hello',
+          groupName: 'blur',
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'string'
             },
             result: {
               value: 'blur'
