@@ -1,0 +1,3 @@
+# PrimitivePanelInputText
+
+## Props
