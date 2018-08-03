@@ -14,6 +14,12 @@ const mapDispatchProps = (dispatch) => {
   return {
     onClick: (primitive) => {
       dispatch(addPrimitive(primitive));
+    },
+    onAddPrimitive: ({item, nativeEvent}) => {
+      dispatch(addPrimitive({
+        item,
+        nativeEvent
+      }));
     }
   };
 };

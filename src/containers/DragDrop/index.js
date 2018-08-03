@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {moveDrag, stopDrag, swapPrimitives} from '../../store/actions';
+import {moveDrag, stopDrag, swapPrimitives, switchOffLastAdded} from '../../store/actions';
 
 let DragDrop = (props) => {
   const {
@@ -18,10 +18,10 @@ let DragDrop = (props) => {
       return null;
     }
 
-    onStopDrag();
+    onStopDrag(dragDrop.id);
   };
 
-  const getItemsToSwap = (top) => {
+  const getItemsToSwap = (top, left) => {
     const {id, parentId, index, siblingsCoords, listId, offset} = dragDrop;
     const siblingsCoordsObj = siblingsCoords[listId];
 
@@ -35,7 +35,7 @@ let DragDrop = (props) => {
         return false;
       }
       // Check intersection with the middle of dragging item
-      return (middleY > item.top && middleY < item.bottom);
+      return middleY > item.top && middleY < item.bottom;
     });
 
     const foundedIntersection = intersections[0];
@@ -71,10 +71,12 @@ let DragDrop = (props) => {
     }
 
     const top = event.nativeEvent.pageY - dragDrop.offset.y;
-    const swapItemsData = getItemsToSwap(top);
+    const left = event.nativeEvent.pageX - dragDrop.offset.x;
+    const swapItemsData = getItemsToSwap(top, left);
 
     onMoveDrag({
-      top: top
+      top,
+      left
     });
 
     if (swapItemsData) {
@@ -116,8 +118,9 @@ const mapDispatchProps = (dispatch, props) => {
         });
       }
     },
-    onStopDrag: () => {
+    onStopDrag: (id) => {
       dispatch(stopDrag());
+      dispatch(switchOffLastAdded({id}));
     }
   };
 };

@@ -9,10 +9,25 @@ import './DragDropItem.css';
 
 class DragDropItem extends Component {
   elem = null;
+  coords = {};
+  leftSideCoord = 0;
 
   isDragging() {
     const {id, dragDrop} = this.props;
     return dragDrop && id === dragDrop.id;
+  }
+
+  getStatus(position) {
+    const isDragging = this.isDragging();
+    let status = 'readyToDrop';
+
+    if (isDragging) {
+      if (position.left < (this.leftSideCoord - 100)) {
+        status = 'notOVerlapTarget';
+      }
+    }
+
+    return status;
   }
 
   getPosition() {
@@ -21,9 +36,18 @@ class DragDropItem extends Component {
     let position = {};
 
     if (isDragging) {
+      let coords = dragDrop.coords;
+      if (!coords) {
+        coords = this.coords;
+      }
+      let width = dragDrop.elemClientRect.width;
+      if (coords.left < (this.leftSideCoord - 100)) {
+        width = 'auto';
+      }
+
       position = {
-        ...dragDrop.coords,
-        width: dragDrop.elemClientRect.width
+        ...coords,
+        width
       };
     }
 
@@ -31,9 +55,9 @@ class DragDropItem extends Component {
   }
 
   onMouseDown = ({target, nativeEvent}) => {
-    const className = target.className;
+    const classList = target.classList;
 
-    if (className === 'DragDropItem') {
+    if (classList.contains('DragDropItem')) {
       const elemClientRect = target.getBoundingClientRect();
       const middleY = elemClientRect.y + elemClientRect.height / 2;
 
@@ -57,6 +81,7 @@ class DragDropItem extends Component {
     const top = this.elem.offsetTop;
     const bottom = top + this.elem.offsetHeight;
     const {id, index, parentId, listId} = this.props;
+    this.leftSideCoord = this.elem.offsetLeft;
 
     const params = {
       id,
@@ -70,13 +95,39 @@ class DragDropItem extends Component {
     this.props.addDragItemToList(params);
   }
 
+  moveJustAdded() {
+    const {justAdded, nativeEvent} = this.props;
+
+    // If element was just added with dragDrop
+    if (justAdded) {
+      const top = nativeEvent.offsetY;
+      const left = nativeEvent.offsetX;
+
+      this.coords = {
+        left: left,
+        top: top
+      };
+
+      // Force moving duplicated element to cursor,
+      // initiate startDrag
+      this.onMouseDown({
+        target: this.elem,
+        nativeEvent
+      });
+    }
+  }
+
   componentDidMount() {
     this.saveItemToList();
+    this.moveJustAdded();
   }
 
   componentDidUpdate(prevProps) {
+    this.coords = {};
+
     if (prevProps.lastSwapSnapshot !== this.props.lastSwapSnapshot) {
       this.saveItemToList();
+      this.moveJustAdded();
     }
   }
 
@@ -84,12 +135,14 @@ class DragDropItem extends Component {
     const dragDrop = this.props.dragDrop;
 
     const isDragging = this.isDragging();
+    const position = this.getPosition();
+    const status = this.getStatus(position);
+
     const classNames = [
-      'DragDropItem'
+      'DragDropItem',
+      `DragDropItem--status-${status}`
     ];
     isDragging && classNames.push('DragDropItem--dragging');
-
-    const position = this.getPosition();
 
     return (
       <div

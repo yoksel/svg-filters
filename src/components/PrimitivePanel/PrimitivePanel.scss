@@ -35,3 +35,16 @@
   white-space: nowrap;
   pointer-events: all;
 }
+
+.DragDropItem--status-notOVerlapTarget {
+  .PrimitivePanel {
+    display: inline-block;
+    min-height: auto;
+  }
+
+  .PrimitivePanel__label,
+  .PrimitivePanelControls,
+  .ResultAttribute {
+    display: none;
+  }
+}

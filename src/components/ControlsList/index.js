@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 import './ControlsList.css';
 
-const ControlsList = ({items, control, onClick}) => {
+const ControlsList = ({items, control, onAddPrimitive}) => {
   return (
     <div className="ControlsList">
-      {items.map((item) => {
+      {items.map((item, index) => {
 
         if (control === 'NavLink') {
           const url = `${process.env.PUBLIC_URL}/presets/${item.id}`;
@@ -28,8 +28,16 @@ const ControlsList = ({items, control, onClick}) => {
           <button
             className="Control"
             key={item.id}
-            onClick={() => {
-              onClick(item);
+            onMouseDown={(event) => {
+              const nativeEvent = {
+                offsetX: event.nativeEvent.offsetX,
+                offsetY: event.nativeEvent.offsetY
+              };
+
+              onAddPrimitive({
+                item,
+                nativeEvent
+              });
             }}
           >
             {item.name}

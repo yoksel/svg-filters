@@ -19,3 +19,9 @@
     cursor: move;
   }
 }
+
+.DragDropItem--status-notOVerlapTarget {
+  .Placeholder {
+    display: none;
+  }
+}
