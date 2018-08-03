@@ -43,12 +43,19 @@ const initialState = {
 export const primitives = (state = initialState, action) => {
   switch (action.type) {
   case 'ADD_PRIMITIVE':
+    const actionToNewPrimitive = {
+      type: action.type,
+      ...action.item
+    };
+    const newPrimitiveAdded = primitive(state.list, actionToNewPrimitive);
+    newPrimitiveAdded.justAdded = true;
+    newPrimitiveAdded.nativeEvent = action.nativeEvent;
 
     return {
       ...state,
       list: [
         ...state.list,
-        primitive(state.list, action)
+        newPrimitiveAdded
       ]
     };
 
@@ -114,7 +121,8 @@ export const primitives = (state = initialState, action) => {
         item = deepClone(item);
 
         item.children = item.children.map(child => {
-          if (child.id === action.id) {
+          const childParam = child.params[action.param];
+          if (child.id === action.id && childParam) {
             child.params[action.param].value = action.value;
           }
 
@@ -149,8 +157,9 @@ export const primitives = (state = initialState, action) => {
         item = deepClone(item);
 
         item.children = item.children.map(child => {
-          if (child.id === action.id) {
-            child.params[action.param].disabled = action.disabled;
+          const childParam = child.params[action.param];
+          if (child.id === action.id && childParam) {
+            childParam.disabled = action.disabled;
           }
 
           return child;
@@ -158,7 +167,11 @@ export const primitives = (state = initialState, action) => {
       } else if (item.id === action.id) {
         item = deepClone(item);
         const param = item.params[action.param];
-        param.disabled = action.disabled;
+
+        if (param && param.disabled) {
+          param.disabled = action.disabled;
+        }
+
       }
 
       return item;
@@ -205,6 +218,24 @@ export const primitives = (state = initialState, action) => {
     return {
       list: newSwapList,
       swapSnapshot: action.swapSnapshot
+    };
+
+  case 'SWITCH_OFF_LAST_ADDED':
+    let newSwitchList = {};
+
+    newSwitchList = state.list.map(item => {
+      if (item.id === action.id) {
+        item = deepClone(item);
+        item.justAdded = false;
+        item.nativeEvent = null;
+      }
+
+      return item;
+    });
+
+    return {
+      ...state,
+      list: newSwitchList
     };
 
   default:

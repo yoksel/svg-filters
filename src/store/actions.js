@@ -34,10 +34,11 @@ const ADD_PRESET = 'ADD_PRESET';
 const START_DRAG = 'START_DRAG';
 const MOVE_DRAG = 'MOVE_DRAG';
 const STOP_DRAG = 'STOP_DRAG';
+const SWITCH_OFF_LAST_ADDED = 'SWITCH_OFF_LAST_ADDED';
 
 export const addPrimitive = createAction(
   ADD_PRIMITIVE,
-  ['id', 'name', 'groupName', 'params', 'paramsValues', 'children']
+  ['item', 'nativeEvent']
 );
 
 export const deletePrimitive = createAction(
@@ -72,6 +73,11 @@ export const moveDrag = createAction(
 
 export const stopDrag = createAction(
   STOP_DRAG
+);
+
+export const switchOffLastAdded = createAction(
+  SWITCH_OFF_LAST_ADDED,
+  ['id']
 );
 
 export const swapPrimitives = createAction(

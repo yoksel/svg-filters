@@ -11,24 +11,30 @@ describe('reducers', () => {
     };
     const action = {
       type: 'ADD_PRIMITIVE',
-      id: 'blur',
-      name: 'Hello',
-      groupName: 'blur',
-      params: {
-        'stdDeviation': {
-          'value': 4,
-          'type': 'number'
+      item: {
+        id: 'blur',
+        name: 'Hello',
+        groupName: 'blur',
+        params: {
+          'stdDeviation': {
+            'value': 4,
+            'type': 'number'
+          },
+          result: {
+            value: 'blur'
+          }
         },
-        result: {
-          value: 'blur'
-        }
-      },
-      paramsValues: [
-        'mode': [
-          'normal',
-          'multiply'
+        paramsValues: [
+          'mode': [
+            'normal',
+            'multiply'
+          ]
         ]
-      ]
+      },
+      nativeEvent: {
+        'offsetX': 108,
+        'offsetY': 12
+      }
     };
     const stateAfter = {
       list: [
@@ -36,6 +42,8 @@ describe('reducers', () => {
           id: 'blur',
           name: 'Hello',
           groupName: 'blur',
+          justAdded: true,
+          children: undefined,
           params: {
             'stdDeviation': {
               'value': 4,
@@ -50,7 +58,11 @@ describe('reducers', () => {
               'normal',
               'multiply'
             ]
-          ]
+          ],
+          nativeEvent: {
+            'offsetX': 108,
+            'offsetY': 12
+          }
         }
       ]
     };
