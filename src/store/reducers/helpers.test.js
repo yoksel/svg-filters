@@ -32,3 +32,93 @@ describe('store helpers', () => {
       ).toEqual(stateAfter);
     });
 });
+
+describe('store helpers', () => {
+  it(
+    'swap should move elements by indexes: 2 -> 0',
+    () => {
+      const stateBefore = [
+        {
+          id: 'blur'
+        },
+        {
+          id: 'turbulence'
+        },
+        {
+          id: 'blend'
+        },
+        {
+          id: 'flood'
+        }
+      ];
+
+      const positions = {
+        from: 2,
+        to: 0
+      };
+
+      const stateAfter = [
+        {
+          id: 'blend'
+        },
+        {
+          id: 'blur'
+        },
+        {
+          id: 'turbulence'
+        },
+        {
+          id: 'flood'
+        }
+      ];
+
+      expect(
+        helpers.swap(stateBefore, positions)
+      ).toEqual(stateAfter);
+    });
+});
+
+describe('store helpers', () => {
+  it(
+    'swap should move elements by indexes: 2 -> 0',
+    () => {
+      const stateBefore = [
+        {
+          id: 'blur'
+        },
+        {
+          id: 'turbulence'
+        },
+        {
+          id: 'blend'
+        },
+        {
+          id: 'flood'
+        }
+      ];
+
+      const positions = {
+        from: 0,
+        to: 2
+      };
+
+      const stateAfter = [
+        {
+          id: 'turbulence'
+        },
+        {
+          id: 'blend'
+        },
+        {
+          id: 'blur'
+        },
+        {
+          id: 'flood'
+        }
+      ];
+
+      expect(
+        helpers.swap(stateBefore, positions)
+      ).toEqual(stateAfter);
+    });
+});
