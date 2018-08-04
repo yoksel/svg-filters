@@ -1,6 +1,7 @@
 import blur from './blur';
 import grayscale from './grayscale';
 import smoke from './smoke';
+import zebra from './zebra';
 import shadow from './shadow';
 import waves from './waves';
 import coloredSpots from './coloredSpots';
@@ -13,6 +14,7 @@ export default [
   grayscale,
   waves,
   smoke,
+  zebra,
   coloredStripesHor,
   coloredStripesVert,
   coloredSpots,
