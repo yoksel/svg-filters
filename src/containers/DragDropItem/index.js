@@ -134,17 +134,17 @@ class DragDropItem extends Component {
   }
 
   render() {
-    const dragDrop = this.props.dragDrop;
+    const {dragDrop, justAdded} = this.props;
 
     const isDragging = this.isDragging();
     const position = this.getPosition();
     const status = this.getStatus(position);
 
     const classNames = [
-      'DragDropItem',
-      `DragDropItem--status-${status}`
+      'DragDropItem'
     ];
     isDragging && classNames.push('DragDropItem--dragging');
+    status && classNames.push(`DragDropItem--status-${status}`);
 
     return (
       <div
