@@ -24,35 +24,29 @@ const Playground = ({filterId}) => {
 
           <image
             x="20" y="20"
-            width="250" height="151"
-            xlinkHref="http://placekitten.com/250/151"
+            width="360" height="160"
+            preserveAspectRatio="xMidYMid slice"
+            xlinkHref="http://placekitten.com/250/160"
             filter={filterUrl}
           />
 
           <g filter={filterUrl}>
-            <rect width="1" height="1" fill="none"/>
-
-            <path d='M0,310 1000,310'
-              strokeWidth="10"
-              stroke="yellowgreen"/>
-          </g>
-
-          <g filter={filterUrl}>
-            <rect x="50%" y="53%"
-              width="40%" height="40%"
+            <rect x="275" y="210"
+              width="100" height="100"
               fill="teal"
               stroke="lightseagreen" strokeWidth="10"/>
 
-            <circle r="50" cx="40%" cy="240"
+            <circle r="50" cx="70" cy="260"
               fill="gold"
-              stroke="tomato" strokeWidth="10"
+              stroke="darkorange"
+              strokeWidth="10"
             />
           </g>
 
           <g filter={filterUrl}>
             <text
-              x="50%" y="280" dy="1em"
-              textAnchor="middle">Some text</text>
+              x="50%" y="280"
+              textAnchor="middle">Text</text>
           </g>
         </svg>
       </div>
