@@ -1,8 +1,6 @@
 import deepFreeze from '../../helpers/deepFreeze';
 
 import * as primitivesReducers from './primitives';
-import * as primitiveControlsReducers from './primitiveControls';
-import * as helpers from './helpers';
 
 describe('reducers', () => {
   it('ADD_PRIMITIVE: should add primitive to state', () => {
