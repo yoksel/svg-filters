@@ -246,26 +246,6 @@ describe('reducers', () => {
     const stateBefore = {
       list: [
         {
-          id: 'blur',
-          name: 'Hello',
-          groupName: 'blur',
-          params: {
-            mode: {
-              'value': 'multiply',
-              'type': 'select'
-            },
-            result: {
-              value: 'blur'
-            }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
-        },
-        {
           id: 'blur1',
           name: 'Hello',
           groupName: 'blur',
@@ -295,26 +275,6 @@ describe('reducers', () => {
     };
     const stateAfter = {
       list: [
-        {
-          id: 'blur',
-          name: 'Hello',
-          groupName: 'blur',
-          params: {
-            mode: {
-              'value': 'multiply',
-              'type': 'select'
-            },
-            result: {
-              value: 'blur'
-            }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
-        },
         {
           id: 'blur1',
           name: 'Hello',
