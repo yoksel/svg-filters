@@ -5,7 +5,7 @@
   pointer-events: all;
   user-select: none;
 
-  .Contsructor__item:last-child & {
+  .Contsructor__item:last-child > & {
     margin-bottom: 0;
   }
 }
