@@ -144,3 +144,58 @@ export const getFilteredWithIndex = (list, id) => {
     filtered
   };
 };
+
+export const getIn = (state) => {
+  const list = state.list;
+  const allEnabledResultsObj = getAllEnabledResultsObj(list);
+
+  const defaultSources = {
+    SourceGraphic: 'SourceGraphic',
+    SourceAlpha: 'SourceAlpha'
+  };
+
+  const updateItem = ({item, index, isChild}) => {
+    item = deepClone(item);
+    const previousItems = list.slice(0, index);
+    const prevItemId = list[index - 1] && list[index - 1].id;
+    const initialValue = item.params.in.value;
+    const prevValue = item.params.in.prevValue;
+    const lastResult = getLastResult(previousItems);
+    let newValue = lastResult;
+
+    // SAVE
+    // Value not inherited, need to keep
+    if (index === 0) {
+      // First primitive in list
+      if (!isChild) {
+        newValue = initialValue;
+      }
+    } else {
+      // SourceGraphic || SourceAlpha
+      if (defaultSources[initialValue]) {
+        newValue = initialValue;
+      } else {
+        if (!allEnabledResultsObj[initialValue]) {
+          // in-elem not available
+          item.params.in.prevValue = initialValue;
+        } else {
+          newValue = initialValue;
+        }
+      }
+    }
+
+    // SET BACK
+    // Use prev value if it available
+    if (prevValue && allEnabledResultsObj[prevValue]) {
+      newValue = prevValue;
+      delete item.params.in.prevValue;
+    }
+
+    item.params.in.value = newValue;
+    return item;
+  };
+
+  return {
+    updateItem
+  };
+};
