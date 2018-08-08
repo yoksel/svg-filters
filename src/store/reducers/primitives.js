@@ -312,6 +312,8 @@ export const primitives = (state = initialState, action) => {
       newSwapList = swap(newSwapList, action.indexes);
     }
 
+    newSwapList = newSwapList.filter(item => item);
+
     return {
       list: newSwapList,
       swapSnapshot: action.swapSnapshot
