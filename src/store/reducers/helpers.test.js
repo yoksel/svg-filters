@@ -175,3 +175,37 @@ describe('store helpers', () => {
       ).toEqual(stateAfter);
     });
 });
+
+
+// getAllEnabledResultsObj
+// ------------------------------
+
+describe('store helpers', () => {
+  it(
+    'getAllEnabledResultsObj should results in object',
+    () => {
+      const stateBefore = [
+        {
+          id: 'blur'
+        },
+        {
+          id: 'turbulence',
+          disabled: true
+        },
+        {
+          id: 'blend'
+        }
+      ];
+
+      deepFreeze(stateBefore);
+
+      const stateAfter = {
+        blur: 'blur',
+        blend: 'blend'
+      };
+
+      expect(
+        helpers.getAllEnabledResultsObj(stateBefore)
+      ).toEqual(stateAfter);
+    });
+});

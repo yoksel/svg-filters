@@ -62,6 +62,19 @@ export const resetIdKeeper = (state) => {
   getId = idKeeper(state);
 };
 
+export const getAllEnabledResultsObj = (state) => {
+  const results = state.reduce((prev, item) => {
+    if (item.disabled) {
+      return prev;
+    }
+
+    prev[item.id] = item.id;
+    return prev;
+  }, {});
+
+  return results;
+};
+
 export const getLastResult = (state) => {
   let result = 'SourceGraphic';
   const newState = state.filter(item => !item.disabled);
