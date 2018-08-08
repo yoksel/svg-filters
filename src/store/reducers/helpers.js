@@ -157,7 +157,6 @@ export const getIn = (state) => {
   const updateItem = ({item, index, isChild}) => {
     item = deepClone(item);
     const previousItems = list.slice(0, index);
-    const prevItemId = list[index - 1] && list[index - 1].id;
     const initialValue = item.params.in.value;
     const prevValue = item.params.in.prevValue;
     const lastResult = getLastResult(previousItems);

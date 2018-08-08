@@ -4,8 +4,6 @@ import {
   resetIdKeeper,
   swap,
   getFilteredWithIndex,
-  getLastResult,
-  getAllEnabledResultsObj,
   getIn
 } from './helpers';
 
@@ -130,12 +128,6 @@ export const primitives = (state = initialState, action) => {
 
   case 'UPDATE_INS':
     const newIn = getIn(state);
-    const allEnabledResultsObj = getAllEnabledResultsObj(state.list);
-
-    const defaultSources = {
-      SourceGraphic: 'SourceGraphic',
-      SourceAlpha: 'SourceAlpha'
-    };
 
     let updateInsStateList = state.list.map((item, index) => {
 
