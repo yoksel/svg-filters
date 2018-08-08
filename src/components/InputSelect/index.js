@@ -20,7 +20,7 @@ class InputSelect extends Component {
 
     return React.createElement('select', {
       onChange: this.onChange,
-      defaultValue: value,
+      value: value,
       className: 'InputSelect'
     }, options);
   }
