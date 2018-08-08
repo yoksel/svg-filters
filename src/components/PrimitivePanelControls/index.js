@@ -5,9 +5,25 @@ import Icon from '../Icon';
 
 import './PrimitivePanelControls.css';
 
-const PrimitivePanelControls = ({duplicatePrimitive, removePrimitive}) => {
+const PrimitivePanelControls = ({
+  duplicatePrimitive,
+  removePrimitive,
+  togglePrimitive,
+  primitiveDisabled
+}) => {
   return (
     <div className="PrimitivePanelControls">
+
+      <button
+        className="PrimitivePanelControl PrimitivePanelControl--toggle"
+        onClick={togglePrimitive}
+        type="button"
+      >
+        <Icon
+          symbol={primitiveDisabled ? 'eye' : 'eye-blocked'}
+          color="currentColor"
+          size="16"/>
+      </button>
       <button
         className="PrimitivePanelControl PrimitivePanelControl--add"
         onClick={duplicatePrimitive}

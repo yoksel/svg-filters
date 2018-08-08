@@ -1,9 +1,12 @@
 import {connect} from 'react-redux';
 
-import {deletePrimitive, duplicatePrimitive} from '../../store/actions';
+import {deletePrimitive, duplicatePrimitive, togglePrimitive, updateIns} from '../../store/actions';
 
 import PrimitivePanelControlsTemplate from '../../components/PrimitivePanelControls';
 
+const mapStateToProps = (props) => {
+  return props;
+};
 const mapDispatchProps = (
   dispatch,
   props
@@ -22,16 +25,21 @@ const mapDispatchProps = (
   return {
     removePrimitive: () => {
       dispatch(deletePrimitive(params));
+      dispatch(updateIns());
     },
     duplicatePrimitive: () => {
-
       dispatch(duplicatePrimitive(params));
+      dispatch(updateIns());
+    },
+    togglePrimitive: () => {
+      dispatch(togglePrimitive(params));
+      dispatch(updateIns());
     }
   };
 };
 
 const PrimitivePanelControls = connect(
-  null,
+  mapStateToProps,
   mapDispatchProps
 )(PrimitivePanelControlsTemplate);
 

@@ -7,8 +7,8 @@
 }
 
 .PrimitivePanelControl {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   margin: 4px;
   padding: 0;
   display: flex;
@@ -32,5 +32,9 @@
 
   &--remove {
     color: crimson;
+  }
+
+  &--toggle {
+    color: #555;
   }
 }
