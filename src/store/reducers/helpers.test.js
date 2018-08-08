@@ -2,6 +2,9 @@ import deepFreeze from '../../helpers/deepFreeze';
 
 import * as helpers from './helpers';
 
+// idKeeper
+// ------------------------------
+
 describe('store helpers', () => {
   it(
     'idKeeper should return the same ID in it doesn\'t exist yet',
@@ -32,6 +35,9 @@ describe('store helpers', () => {
       ).toEqual(stateAfter);
     });
 });
+
+// swap
+// ------------------------------
 
 describe('store helpers', () => {
   it(
@@ -123,7 +129,6 @@ describe('store helpers', () => {
     });
 });
 
-
 // getLastResult
 // ------------------------------
 
@@ -175,7 +180,6 @@ describe('store helpers', () => {
       ).toEqual(stateAfter);
     });
 });
-
 
 // getAllEnabledResultsObj
 // ------------------------------
