@@ -1,4 +1,4 @@
-export const createAction = (type, propNames) => {
+export const createAction = (type, propNames = []) => {
   const action = (props, value) => {
     const result = {
       type: type
@@ -26,6 +26,8 @@ export const createAction = (type, propNames) => {
 const ADD_PRIMITIVE = 'ADD_PRIMITIVE';
 const DELETE_PRIMITIVE = 'DELETE_PRIMITIVE';
 const DUPLICATE_PRIMITIVE = 'DUPLICATE_PRIMITIVE';
+const TOGGLE_PRIMITIVE = 'TOGGLE_PRIMITIVE';
+const UPDATE_INS = 'UPDATE_INS';
 const CHANGE_PRIMITIVE_PROP = 'CHANGE_PRIMITIVE_PROP';
 const SWAP_PRIMITIVES = 'SWAP_PRIMITIVES';
 
@@ -49,6 +51,15 @@ export const deletePrimitive = createAction(
 export const duplicatePrimitive = createAction(
   DUPLICATE_PRIMITIVE,
   ['id', 'childId']
+);
+
+export const togglePrimitive = createAction(
+  TOGGLE_PRIMITIVE,
+  ['id', 'childId', 'disabled']
+);
+
+export const updateIns = createAction(
+  UPDATE_INS
 );
 
 export const changePrimitiveProp = createAction(

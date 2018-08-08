@@ -1,5 +1,13 @@
 import deepClone from '../../helpers/deepClone';
-import {updateUnicalProps, resetIdKeeper, swap, getFilteredWithIndex} from './helpers';
+import {
+  updateUnicalProps,
+  resetIdKeeper,
+  swap,
+  getFilteredWithIndex,
+  getLastResult,
+  getAllEnabledResultsObj,
+  getIn
+} from './helpers';
 
 const primitive = (state, action) => {
   switch (action.type) {
@@ -12,7 +20,8 @@ const primitive = (state, action) => {
       params: newAction.params,
       groupName: newAction.groupName,
       paramsValues: newAction.paramsValues,
-      children: newAction.children
+      children: newAction.children,
+      disabled: false
     };
 
   case 'DUPLICATE_PRIMITIVE':
@@ -88,6 +97,68 @@ export const primitives = (state = initialState, action) => {
     return {
       ...state,
       list: newStateDuplList
+    };
+
+  case 'TOGGLE_PRIMITIVE':
+    let newStateTogglePrimList = state.list.map(item => {
+
+      // Edit prop of child
+      if (item.id === action.id) {
+        item = deepClone(item);
+
+        if (action.childId !== undefined) {
+          item.children = item.children.map(child => {
+            if (child.id === action.childId) {
+              child = deepClone(child);
+              child.disabled = !child.disabled;
+            }
+
+            return child;
+          });
+        } else {
+          item.disabled = !item.disabled;
+        }
+      }
+
+      return item;
+    });
+
+    return {
+      ...state,
+      list: newStateTogglePrimList
+    };
+
+  case 'UPDATE_INS':
+    const newIn = getIn(state);
+    const allEnabledResultsObj = getAllEnabledResultsObj(state.list);
+
+    const defaultSources = {
+      SourceGraphic: 'SourceGraphic',
+      SourceAlpha: 'SourceAlpha'
+    };
+
+    let updateInsStateList = state.list.map((item, index) => {
+
+      if (item.params.in) {
+        item = newIn.updateItem({item, index});
+      }
+      if (item.children) {
+        const children = deepClone(item.children);
+        item.children = children.map((child, childIndex) => {
+          return newIn.updateItem({
+            item: child,
+            iindex: childIndex,
+            idChild: true
+          });
+        });
+      }
+
+      return item;
+    });
+
+    return {
+      ...state,
+      list: updateInsStateList
     };
 
   case 'DELETE_PRIMITIVE':

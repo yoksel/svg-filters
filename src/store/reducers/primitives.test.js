@@ -42,6 +42,7 @@ describe('reducers', () => {
           groupName: 'blur',
           justAdded: true,
           children: undefined,
+          disabled: false,
           params: {
             'stdDeviation': {
               'value': 4,
@@ -304,6 +305,143 @@ describe('reducers', () => {
   });
 });
 
+// TOGGLE_PRIMITIVE
+// ------------------------------
+
+describe('reducers', () => {
+  it('TOGGLE_PRIMITIVE: should toggle primitive status', () => {
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur1',
+          name: 'Hello',
+          groupName: 'blur',
+          disabled: false,
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'select'
+            },
+            result: {
+              value: 'blur1'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      type: 'TOGGLE_PRIMITIVE',
+      id: 'blur1',
+      disabled: true,
+    };
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur1',
+          name: 'Hello',
+          groupName: 'blur',
+          disabled: true,
+          params: {
+            mode: {
+              'value': 'multiply',
+              'type': 'select'
+            },
+            result: {
+              value: 'blur1'
+            }
+          }
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
+
+describe('reducers', () => {
+  it('TOGGLE_PRIMITIVE: should toggle child primitive status', () => {
+    const stateBefore = {
+      list: [
+        {
+          id: 'merge',
+          groupName: 'merge',
+          name: 'feMerge',
+          params: {
+            result: {
+              'value': 'merge'
+            }
+          },
+          'children': [
+            {
+              id: 'mergeNode',
+              groupName: 'mergeNode',
+              name: 'feMergeNode',
+              params: {
+                'in': {
+                  'value': 'SourceGraphic',
+                  'type': 'select'
+                },
+                result: {
+                  'value': 'mergeNode'
+                }
+              }
+            }
+          ]
+        }
+
+      ]
+    };
+    const action = {
+      type: 'TOGGLE_PRIMITIVE',
+      id: 'merge',
+      childId: 'mergeNode',
+      disabled: true,
+    };
+    const stateAfter = {
+      list: [
+        {
+          id: 'merge',
+          groupName: 'merge',
+          name: 'feMerge',
+          params: {
+            result: {
+              'value': 'merge'
+            }
+          },
+          'children': [
+            {
+              id: 'mergeNode',
+              groupName: 'mergeNode',
+              name: 'feMergeNode',
+              disabled: true,
+              params: {
+                'in': {
+                  'value': 'SourceGraphic',
+                  'type': 'select'
+                },
+                result: {
+                  'value': 'mergeNode'
+                }
+              }
+            }
+          ]
+        }
+
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
+
 describe('reducers', () => {
   it('TOGGLE_PROP: should toggle primitive param', () => {
     const stateBefore = {
@@ -425,6 +563,247 @@ describe('reducers', () => {
               'multiply'
             ]
           ]
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
+
+// UPDATE_INS
+// ------------------------------
+
+describe('reducers', () => {
+  it('0️⃣  UPDATE_INS: should update attributes `in`', () => {
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          disabled: true,
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              'value': 'blur',
+              'type': 'select'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      type: 'UPDATE_INS'
+    };
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          disabled: true,
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'prevValue': 'blur',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              'value': 'blend',
+              'prevValue': 'blur',
+              'type': 'select'
+            }
+          }
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
+
+describe('reducers', () => {
+  it('1️⃣  UPDATE_INS: should keep previous attribute `in`', () => {
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          disabled: true,
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              'value': 'blur',
+              'type': 'select'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      type: 'UPDATE_INS'
+    };
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          disabled: true,
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'prevValue': 'blur',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              'value': 'blend',
+              'prevValue': 'blur',
+              'type': 'select'
+            }
+          }
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
+
+describe('reducers', () => {
+  it('2️⃣  UPDATE_INS: should place previous attribute `in` if it available again', () => {
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'prevValue': 'blur',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              'value': 'blend',
+              'prevValue': 'blur',
+              'type': 'select'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      type: 'UPDATE_INS'
+    };
+    const stateAfter = {
+      list: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur',
+              'type': 'select'
+            }
+          }
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              'value': 'blur',
+              'type': 'select'
+            }
+          }
         }
       ]
     };
