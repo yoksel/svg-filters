@@ -37,11 +37,17 @@
 }
 
 .PrimitivePanel__tag {
-  width: 100%;
+  margin: 2px 0;
+  margin-right: 8px;
+
+  .PrimitivePanel--has-children & {
+    width: 100%;
+    margin-right: 0;
+  }
 }
 
 .PrimitivePanel__label {
-  margin-left: 8px;
+  margin: 2px 8px 2px 0;
   white-space: nowrap;
   pointer-events: all;
 }

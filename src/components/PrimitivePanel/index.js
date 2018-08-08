@@ -55,13 +55,18 @@ class PrimitivePanel extends Component {
 
     if (!primitive.children) {
       return (
+
         <div className="PrimitivePanel">
           <fieldset
             className="PrimitivePanel__fieldset"
             {...fieldsetProps}
           >
             <div className="PrimitivePanel__content">
-              &lt;{primitive.name}{params}&#8203;/>
+              <div className="PrimitivePanel__tag">
+                &lt;{primitive.name}
+              </div>
+              {params}&#8203;/>
+
               {primitive.children}
             </div>
           </fieldset>
