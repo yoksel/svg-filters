@@ -61,7 +61,11 @@ class PrimitivePanel extends Component {
             className="PrimitivePanel__fieldset"
             {...fieldsetProps}
           >
-            <div className="PrimitivePanel__content">
+            <div
+              className="
+                PrimitivePanel__content
+                PrimitivePanel__content--no-children
+              ">
               <div className="PrimitivePanel__tag">
                 &lt;{primitive.name}
               </div>
@@ -86,7 +90,11 @@ class PrimitivePanel extends Component {
           className="PrimitivePanel__fieldset"
           {...fieldsetProps}
         >
-          <div className="PrimitivePanel__content">
+          <div
+            className="
+              PrimitivePanel__content
+              PrimitivePanel__content--has-children
+            ">
             <div className="PrimitivePanel__tag">
               &lt;{primitive.name}{params}&#8203;>
             </div>

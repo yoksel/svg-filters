@@ -25,9 +25,11 @@
 }
 
 .PrimitivePanel__content {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  &--no-children {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
 }
 
 .PrimitivePanel--has-children {
