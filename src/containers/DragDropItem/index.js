@@ -134,8 +134,7 @@ class DragDropItem extends Component {
   }
 
   render() {
-    const {dragDrop, justAdded} = this.props;
-
+    const {dragDrop} = this.props;
     const isDragging = this.isDragging();
     const position = this.getPosition();
     const status = this.getStatus(position);
