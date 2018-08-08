@@ -122,3 +122,56 @@ describe('store helpers', () => {
       ).toEqual(stateAfter);
     });
 });
+
+
+// getLastResult
+// ------------------------------
+
+describe('store helpers', () => {
+  it(
+    'getLastResult should return last result',
+    () => {
+      const stateBefore = [
+        {
+          id: 'blur'
+        },
+        {
+          id: 'turbulence'
+        },
+        {
+          id: 'blend'
+        }
+      ];
+
+      const stateAfter = 'blend';
+
+      expect(
+        helpers.getLastResult(stateBefore)
+      ).toEqual(stateAfter);
+    });
+});
+
+describe('store helpers', () => {
+  it(
+    'getLastResult should return last result without disabled',
+    () => {
+      const stateBefore = [
+        {
+          id: 'blur'
+        },
+        {
+          id: 'turbulence'
+        },
+        {
+          id: 'blend',
+          disabled: true
+        }
+      ];
+
+      const stateAfter = 'turbulence';
+
+      expect(
+        helpers.getLastResult(stateBefore)
+      ).toEqual(stateAfter);
+    });
+});
