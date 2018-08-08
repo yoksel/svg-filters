@@ -14,6 +14,16 @@
   user-select: none;
 }
 
+.PrimitivePanel__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  &:disabled {
+    opacity: .3;
+  }
+}
+
 .PrimitivePanel__content {
   display: flex;
   align-items: flex-start;
