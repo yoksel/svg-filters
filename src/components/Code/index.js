@@ -31,18 +31,22 @@ const getPrimitiveCode = (primitive, level = 1) => {
 };
 
 const getAllPrimitivesCode = (primitives) => {
-  return primitives.map(primitive => {
-    primitive = deepClone(primitive);
+  return primitives
+    .filter(primitive => !primitive.disabled)
+    .map(primitive => {
+      primitive = deepClone(primitive);
 
-    if (primitive.children) {
-      primitive.children = primitive.children.map(item => {
+      if (primitive.children) {
+        primitive.children = primitive.children
+          .filter(child => !child.disabled)
+          .map(child => {
 
-        return getPrimitiveCode(item, 2);
-      });
-    }
+            return getPrimitiveCode(child, 2);
+          });
+      }
 
-    return getPrimitiveCode(primitive);
-  });
+      return getPrimitiveCode(primitive);
+    });
 };
 
 class Code extends Component {

@@ -9,9 +9,16 @@ const Filter = ({primitives}) => (
   <filter id="filter">
     {primitives.map(primitive => {
 
+      if (primitive.disabled) {
+        return null;
+      }
+
       if (primitive.children) {
         primitive = deepClone(primitive);
         primitive.children = primitive.children.map(item => {
+          if (item.disabled) {
+            return null;
+          }
 
           return (
             <Primitive
