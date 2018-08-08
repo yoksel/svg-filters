@@ -2,6 +2,9 @@ import deepFreeze from '../../helpers/deepFreeze';
 
 import * as primitivesReducers from './primitives';
 
+// ADD_PRIMITIVE
+// ------------------------------
+
 describe('reducers', () => {
   it('ADD_PRIMITIVE: should add primitive to state', () => {
     const stateBefore = {
@@ -73,6 +76,9 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+// DUPLICATE_PRIMITIVE
+// ------------------------------
 
 describe('reducers', () => {
   it('DUPLICATE_PRIMITIVE: should duplicate primitive in state', () => {
@@ -157,6 +163,9 @@ describe('reducers', () => {
   });
 });
 
+// DELETE_PRIMITIVE
+// ------------------------------
+
 describe('reducers', () => {
   it('DELETE_PRIMITIVE: should delete primitive from state by ID', () => {
     const stateBefore = {
@@ -239,6 +248,9 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+// CHANGE_PRIMITIVE_PROP
+// ------------------------------
 
 describe('reducers', () => {
   it('CHANGE_PRIMITIVE_PROP: should change primitive param value', () => {
@@ -442,6 +454,9 @@ describe('reducers', () => {
   });
 });
 
+// TOGGLE_PROP
+// ------------------------------
+
 describe('reducers', () => {
   it('TOGGLE_PROP: should toggle primitive param', () => {
     const stateBefore = {
@@ -508,6 +523,9 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+// CHANGE_PROP_TYPE
+// ------------------------------
 
 describe('reducers', () => {
   it('CHANGE_PROP_TYPE: should change primitive param type', () => {
