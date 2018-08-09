@@ -1,0 +1,133 @@
+{
+  "id": "stroke",
+  "name": "Stroke",
+  "primitives": [
+    {
+      "id": "morphology",
+      "name": "feMorphology",
+      "params": {
+        "operator": {
+          "value": "dilate",
+          "type": "select"
+        },
+        "radius": {
+          "value": "5",
+          "min": 0,
+          "type": "number"
+        },
+        "in": {
+          "value": "SourceAlpha",
+          "type": "select"
+        },
+        "result": {
+          "value": "morphology"
+        }
+      },
+      "groupName": "morphology",
+      "paramsValues": {
+        "operator": [
+          "erode",
+          "dilate"
+        ]
+      },
+      "disabled": false,
+      "justAdded": false,
+      "nativeEvent": null
+    },
+    {
+      "id": "flood",
+      "name": "feFlood",
+      "params": {
+        "floodColor": {
+          "value": "#c380ff",
+          "type": "color",
+          "name": "flood-color"
+        },
+        "floodOpacity": {
+          "value": "1",
+          "type": "number",
+          "step": 0.1,
+          "min": 0,
+          "max": 1,
+          "name": "flood-opacity"
+        },
+        "result": {
+          "value": "flood"
+        }
+      },
+      "groupName": "flood",
+      "disabled": false,
+      "justAdded": false,
+      "nativeEvent": {}
+    },
+    {
+      "id": "composite",
+      "name": "feComposite",
+      "params": {
+        "in": {
+          "value": "flood",
+          "type": "select"
+        },
+        "in2": {
+          "value": "morphology",
+          "type": "select",
+          "valuesKey": "in"
+        },
+        "operator": {
+          "value": "in",
+          "type": "select"
+        },
+        "result": {
+          "value": "composite"
+        }
+      },
+      "groupName": "composite",
+      "disabled": false,
+      "justAdded": false,
+      "nativeEvent": {}
+    },
+    {
+      "id": "merge",
+      "name": "feMerge",
+      "params": {
+        "result": {
+          "value": "merge"
+        }
+      },
+      "groupName": "merge",
+      "children": [
+        {
+          "id": "mergeNode",
+          "groupName": "mergeNode",
+          "name": "feMergeNode",
+          "params": {
+            "in": {
+              "value": "composite",
+              "type": "select"
+            },
+            "result": {
+              "value": "mergeNode"
+            }
+          }
+        },
+        {
+          "id": "mergeNode1",
+          "groupName": "mergeNode",
+          "name": "feMergeNode",
+          "params": {
+            "in": {
+              "value": "SourceGraphic",
+              "type": "select"
+            },
+            "result": {
+              "value": "mergeNode1"
+            }
+          }
+        }
+      ],
+      "disabled": false,
+      "justAdded": false,
+      "nativeEvent": {}
+    }
+  ]
+}
