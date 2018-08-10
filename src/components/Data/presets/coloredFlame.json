@@ -1,0 +1,278 @@
+{
+  "id": "colored-flame",
+  "name": "Colored flame",
+  "primitives": [
+    {
+      "id": "turbulence",
+      "name": "feTurbulence",
+      "params": {
+        "type": {
+          "value": "fractalNoise",
+          "type": "select"
+        },
+        "baseFrequency": {
+          "value": "0.035 0.008",
+          "min": 0,
+          "step": 0.001,
+          "type": "number",
+          "double": true
+        },
+        "numOctaves": {
+          "value": "1",
+          "min": 0,
+          "type": "number"
+        },
+        "seed": {
+          "value": "2",
+          "min": 0,
+          "type": "number"
+        },
+        "stitchTiles": {
+          "value": "stitch",
+          "type": "select"
+        },
+        "result": {
+          "value": "turbulence"
+        }
+      },
+      "groupName": "turbulence",
+      "disabled": false,
+      "justAdded": false
+    },
+    {
+      "id": "turbulence1",
+      "name": "feTurbulence",
+      "params": {
+        "type": {
+          "value": "fractalNoise",
+          "type": "select"
+        },
+        "baseFrequency": {
+          "value": "0.035 0.012",
+          "min": 0,
+          "step": 0.001,
+          "type": "number",
+          "double": true
+        },
+        "numOctaves": {
+          "value": "1",
+          "min": 0,
+          "type": "number"
+        },
+        "seed": {
+          "value": "1",
+          "min": 0,
+          "type": "number"
+        },
+        "stitchTiles": {
+          "value": "stitch",
+          "type": "select"
+        },
+        "result": {
+          "value": "turbulence1"
+        }
+      },
+      "groupName": "turbulence",
+      "disabled": false,
+      "justAdded": false
+    },
+    {
+      "id": "merge",
+      "name": "feMerge",
+      "params": {
+        "result": {
+          "value": "merge"
+        }
+      },
+      "groupName": "merge",
+      "children": [
+        {
+          "id": "mergeNode",
+          "groupName": "mergeNode",
+          "name": "feMergeNode",
+          "params": {
+            "in": {
+              "value": "turbulence1",
+              "type": "select"
+            },
+            "result": {
+              "value": "mergeNode"
+            }
+          },
+          "disabled": false
+        },
+        {
+          "id": "mergeNode1",
+          "groupName": "mergeNode",
+          "name": "feMergeNode",
+          "params": {
+            "in": {
+              "value": "turbulence",
+              "type": "select"
+            },
+            "result": {
+              "value": "mergeNode1"
+            }
+          },
+          "disabled": false
+        }
+      ],
+      "disabled": false,
+      "justAdded": false
+    },
+    {
+      "id": "colormatrix",
+      "name": "feColorMatrix",
+      "params": {
+        "type": {
+          "value": "saturate",
+          "type": "select"
+        },
+        "values": {
+          "value": "10",
+          "type": "number",
+          "variants": {
+            "key": "type",
+            "values": {
+              "saturate": "10",
+              "hueRotate": 180,
+              "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 500 -20",
+              "luminanceToAlpha": "disabled"
+            },
+            "types": {
+              "saturate": "number",
+              "hueRotate": "number",
+              "matrix": "textarea"
+            }
+          }
+        },
+        "in": {
+          "value": "merge",
+          "type": "select"
+        },
+        "result": {
+          "value": "colormatrix"
+        }
+      },
+      "groupName": "colormatrix",
+      "paramsValues": {
+        "type": [
+          "saturate",
+          "hueRotate",
+          "matrix",
+          "luminanceToAlpha"
+        ]
+      },
+      "disabled": false,
+      "justAdded": false
+    },
+    {
+      "id": "colormatrix1",
+      "name": "feColorMatrix",
+      "params": {
+        "type": {
+          "value": "matrix",
+          "type": "select"
+        },
+        "values": {
+          "value": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 10 0",
+          "type": "textarea",
+          "variants": {
+            "key": "type",
+            "values": {
+              "saturate": 5,
+              "hueRotate": 180,
+              "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 10 0",
+              "luminanceToAlpha": "disabled"
+            },
+            "types": {
+              "saturate": "number",
+              "hueRotate": "number",
+              "matrix": "textarea"
+            }
+          },
+          "disabled": false
+        },
+        "in": {
+          "value": "colormatrix",
+          "type": "select"
+        },
+        "result": {
+          "value": "colormatrix1"
+        }
+      },
+      "groupName": "colormatrix",
+      "paramsValues": {
+        "type": [
+          "saturate",
+          "hueRotate",
+          "matrix",
+          "luminanceToAlpha"
+        ]
+      },
+      "disabled": false,
+      "justAdded": false
+    },
+    {
+      "id": "displacementMap",
+      "name": "feDisplacementMap",
+      "params": {
+        "in": {
+          "value": "colormatrix1",
+          "type": "select"
+        },
+        "in2": {
+          "value": "colormatrix",
+          "type": "select",
+          "valuesKey": "in"
+        },
+        "scale": {
+          "value": "40",
+          "min": 0,
+          "type": "number"
+        },
+        "xChannelSelector": {
+          "value": "R",
+          "type": "select",
+          "valuesKey": "ChannelSelector"
+        },
+        "yChannelSelector": {
+          "value": "G",
+          "type": "select",
+          "valuesKey": "ChannelSelector"
+        },
+        "result": {
+          "value": "displacementMap"
+        }
+      },
+      "groupName": "displacementMap",
+      "disabled": false,
+      "justAdded": false
+    },
+    {
+      "id": "composite1",
+      "name": "feComposite",
+      "params": {
+        "in": {
+          "value": "displacementMap",
+          "type": "select"
+        },
+        "in2": {
+          "value": "SourceAlpha",
+          "type": "select",
+          "valuesKey": "in"
+        },
+        "operator": {
+          "value": "in",
+          "type": "select"
+        },
+        "result": {
+          "value": "composite1"
+        }
+      },
+      "groupName": "composite",
+      "disabled": false,
+      "justAdded": false
+    }
+  ]
+}
