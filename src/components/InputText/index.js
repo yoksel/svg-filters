@@ -22,8 +22,6 @@ class InputText extends Component {
       size = 35;
     }
 
-    console.log(value.length);
-
     return React.createElement('input', {
       value: value,
       type: type,
