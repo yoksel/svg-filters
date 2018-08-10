@@ -52,6 +52,7 @@ class PrimitivePanelInputSelect extends Component {
       key={primitive.id}
       param={paramKey}
       value={actualValue}
+      secondValue={secondValue}
       valuesList={actualOptionsList}
       parentId={parentId}
       tiedValues={tiedValues}
