@@ -17,15 +17,22 @@ class InputText extends Component {
 
   render() {
     let {value, type, step, min, max} = this.props;
+    let size = value.length;
+    if (size > 35) {
+      size = 35;
+    }
+
+    console.log(value.length);
 
     return React.createElement('input', {
       value: value,
       type: type,
       step: step,
+      size: size,
       min: min,
       max: max,
       onChange: this.onChange,
-      className: 'InputText'
+      className: `InputText InputText--${type}`
     });
   }
 }
