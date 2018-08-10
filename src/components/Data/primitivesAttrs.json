@@ -24,5 +24,30 @@
     "G",
     "B",
     "A"
+  ],
+  "crossOrigin": [
+    "anonymous",
+    "use-credentials"
+  ],
+  "preserveAspectRatio": [
+    "xMidYMid slice",
+    "xMidYMid meet"
+  ],
+  "align": [
+    "xMinYMin",
+    "xMinYMid",
+    "xMinYMax",
+
+    "xMidYMin",
+    "xMidYMid",
+    "xMidYMax",
+
+    "xMaxYMin",
+    "xMaxYMid",
+    "xMaxYMax"
+  ],
+  "meetOrSlice": [
+    "meet",
+    "slice"
   ]
 }

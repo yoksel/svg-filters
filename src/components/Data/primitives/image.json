@@ -1,0 +1,29 @@
+{
+  "id": "image",
+  "groupName": "image",
+  "name": "feImage",
+  "params": {
+    "xlinkHref": {
+      "value": "https://placekitten.com/800/500",
+      "type": "text",
+      "name": "xlink:href",
+      "valuesKey": "xlinkHref"
+    },
+    "preserveAspectRatio": {
+      "value": "xMidYMid meet",
+      "type": "select",
+      "double": true,
+      "valuesKeys": [
+        "align",
+        "meetOrSlice"
+      ]
+    },
+    "crossOrigin": {
+      "value": "anonymous",
+      "type": "select"
+    },
+    "result": {
+      "value": "image"
+    }
+  }
+}

@@ -8,12 +8,14 @@ import displacementMap from './displacementMap';
 import turbulence from './turbulence';
 import composite from './composite';
 import merge from './merge';
+import image from './image';
 
 export default [
   blur,
   blend,
   offset,
   colormatrix,
+  image,
   flood,
   morphology,
   displacementMap,
