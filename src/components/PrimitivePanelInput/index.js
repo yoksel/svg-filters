@@ -13,7 +13,6 @@ class PrimitivePanelInput extends Component {
 
     const type = primitive.params[paramKey].type;
 
-
     if (type === 'textarea') {
       return (
         <PrimitivePanelInputTextarea {...this.props}/>

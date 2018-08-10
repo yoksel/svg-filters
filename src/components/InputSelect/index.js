@@ -5,7 +5,15 @@ import './InputSelect.css';
 
 class InputSelect extends Component {
   onChange = (event) => {
-    this.props.onChange(event.target.value);
+    let value = event.target.value;
+    const {secondValue, firstValue} = this.props;
+
+    if (secondValue) {
+      value = `${value} ${secondValue}`;
+    } else if (firstValue) {
+      value = `${firstValue} ${value}`;
+    }
+    this.props.onChange(value);
   }
 
   render() {
