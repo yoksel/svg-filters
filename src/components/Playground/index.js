@@ -19,33 +19,27 @@ const Playground = ({filterId}) => {
           style={{background: `url(${grayCells})`}}>
 
           <defs>
-            <Filter/>
-          </defs>
-
-          <image
-            x="20" y="20"
-            width="360" height="160"
-            preserveAspectRatio="xMidYMid slice"
-            xlinkHref="http://placekitten.com/250/160"
-            filter={filterUrl}
-          />
-
-          <g filter={filterUrl}>
-            <rect x="275" y="210"
-              width="100" height="100"
-              fill="teal"
-              stroke="lightseagreen" strokeWidth="10"/>
-
-            <circle r="50" cx="70" cy="260"
+            <circle id="circle"
+              r="50" cx="70" cy="260"
               fill="gold"
               stroke="darkorange"
               strokeWidth="10"
             />
-          </g>
+
+            <Filter/>
+          </defs>
+
+          <image
+            x="0" y="20"
+            width="100%" height="200"
+            preserveAspectRatio="xMidYMid meet"
+            xlinkHref="http://placekitten.com/400/200"
+            filter={filterUrl}
+          />
 
           <g filter={filterUrl}>
             <text
-              x="50%" y="280"
+              x="50%" y="320"
               textAnchor="middle">Text</text>
           </g>
         </svg>
