@@ -7,32 +7,6 @@
     "SourceGraphic",
     "SourceAlpha"
   ],
-  "operator": [
-    "over",
-    "in",
-    "out",
-    "atop",
-    "xor",
-    "arithmetic"
-  ],
-  "stitchTiles": [
-    "stitch",
-    "noStitch"
-  ],
-  "ChannelSelector": [
-    "R",
-    "G",
-    "B",
-    "A"
-  ],
-  "crossOrigin": [
-    "anonymous",
-    "use-credentials"
-  ],
-  "preserveAspectRatio": [
-    "xMidYMid slice",
-    "xMidYMid meet"
-  ],
   "align": [
     "xMinYMin",
     "xMinYMid",
@@ -46,8 +20,55 @@
     "xMaxYMid",
     "xMaxYMax"
   ],
+  "channelSelector": [
+    "R",
+    "G",
+    "B",
+    "A"
+  ],
+  "crossOrigin": [
+    "anonymous",
+    "use-credentials"
+  ],
+  "matrixType": [
+    "saturate",
+    "hueRotate",
+    "matrix",
+    "luminanceToAlpha"
+  ],
   "meetOrSlice": [
     "meet",
     "slice"
+  ],
+  "mode": [
+    "normal",
+    "multiply",
+    "screen",
+    "darken",
+    "lighten"
+  ],
+  "operator": [
+    "over",
+    "in",
+    "out",
+    "atop",
+    "xor",
+    "arithmetic"
+  ],
+  "morphologyOperator": [
+    "erode",
+    "dilate"
+  ],
+  "preserveAspectRatio": [
+    "xMidYMid slice",
+    "xMidYMid meet"
+  ],
+  "stitchTiles": [
+    "stitch",
+    "noStitch"
+  ],
+  "type": [
+    "turbulence",
+    "fractalNoise"
   ]
 }
