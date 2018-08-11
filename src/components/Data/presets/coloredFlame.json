@@ -223,8 +223,7 @@
         },
         "in2": {
           "value": "colormatrix",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "scale": {
           "value": "40",
@@ -233,13 +232,11 @@
         },
         "xChannelSelector": {
           "value": "R",
-          "type": "select",
-          "valuesKey": "ChannelSelector"
+          "type": "select"
         },
         "yChannelSelector": {
           "value": "G",
-          "type": "select",
-          "valuesKey": "ChannelSelector"
+          "type": "select"
         },
         "result": {
           "value": "displacementMap"
@@ -259,8 +256,7 @@
         },
         "in2": {
           "value": "SourceAlpha",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",

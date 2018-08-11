@@ -3,7 +3,7 @@
   "name": "Shadow",
   "primitives": [
     {
-      "id": "offset1",
+      "id": "offset",
       "name": "feOffset",
       "params": {
         "dx": {
@@ -19,7 +19,7 @@
           "type": "select"
         },
         "result": {
-          "value": "offset1"
+          "value": "offset"
         }
       },
       "groupName": "offset"
@@ -36,7 +36,7 @@
           "double": true
         },
         "in": {
-          "value": "offset1",
+          "value": "offset",
           "type": "select"
         },
         "result": {
@@ -78,8 +78,7 @@
         },
         "in2": {
           "value": "blur",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",

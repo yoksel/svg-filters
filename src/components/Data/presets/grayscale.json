@@ -17,8 +17,14 @@
             "key": "type",
             "values": {
               "saturate": "0",
-              "hueRotate": 50,
-              "luminanceToAlpha": false
+              "hueRotate": 180,
+              "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 500 -20",
+              "luminanceToAlpha": "disabled"
+            },
+            "types": {
+              "saturate": "number",
+              "hueRotate": "number",
+              "matrix": "textarea"
             }
           }
         },
@@ -30,14 +36,7 @@
           "value": "colormatrix"
         }
       },
-      "groupName": "colormatrix",
-      "paramsValues": {
-        "type": [
-          "saturate",
-          "hueRotate",
-          "luminanceToAlpha"
-        ]
-      }
+      "groupName": "colormatrix"
     }
   ]
 }

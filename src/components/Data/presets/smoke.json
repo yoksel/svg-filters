@@ -35,13 +35,7 @@
           "value": "turbulence"
         }
       },
-      "groupName": "turbulence",
-      "paramsValues": {
-        "type": [
-          "turbulence",
-          "fractalNoise"
-        ]
-      }
+      "groupName": "turbulence"
     },
     {
       "id": "flood",
@@ -76,8 +70,7 @@
         },
         "in2": {
           "value": "turbulence",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",
@@ -99,8 +92,7 @@
         },
         "in2": {
           "value": "SourceAlpha",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",

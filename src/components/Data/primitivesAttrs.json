@@ -7,68 +7,92 @@
     "SourceGraphic",
     "SourceAlpha"
   ],
-  "align": [
-    "xMinYMin",
-    "xMinYMid",
-    "xMinYMax",
+  "in2": [
+    "SourceGraphic",
+    "SourceAlpha"
+  ],
+  "blend": {
+    "mode": [
+      "normal",
+      "multiply",
+      "screen",
+      "darken",
+      "lighten"
+    ]
+  },
+  "colormatrix": {
+    "type": [
+      "saturate",
+      "hueRotate",
+      "matrix",
+      "luminanceToAlpha"
+    ]
+  },
+  "composite": {
+    "operator": [
+      "over",
+      "in",
+      "out",
+      "atop",
+      "xor",
+      "arithmetic"
+    ]
+  },
+  "displacementMap": {
+    "xChannelSelector": [
+      "R",
+      "G",
+      "B",
+      "A"
+    ],
+    "yChannelSelector": [
+      "R",
+      "G",
+      "B",
+      "A"
+    ]
+  },
+  "image": {
+    "align": [
+      "xMinYMin",
+      "xMinYMid",
+      "xMinYMax",
 
-    "xMidYMin",
-    "xMidYMid",
-    "xMidYMax",
+      "xMidYMin",
+      "xMidYMid",
+      "xMidYMax",
 
-    "xMaxYMin",
-    "xMaxYMid",
-    "xMaxYMax"
-  ],
-  "channelSelector": [
-    "R",
-    "G",
-    "B",
-    "A"
-  ],
-  "crossOrigin": [
-    "anonymous",
-    "use-credentials"
-  ],
-  "matrixType": [
-    "saturate",
-    "hueRotate",
-    "matrix",
-    "luminanceToAlpha"
-  ],
-  "meetOrSlice": [
-    "meet",
-    "slice"
-  ],
-  "mode": [
-    "normal",
-    "multiply",
-    "screen",
-    "darken",
-    "lighten"
-  ],
-  "operator": [
-    "over",
-    "in",
-    "out",
-    "atop",
-    "xor",
-    "arithmetic"
-  ],
-  "morphologyOperator": [
-    "erode",
-    "dilate"
-  ],
-  "preserveAspectRatio": [
-    "xMidYMid slice",
-    "xMidYMid meet"
-  ],
-  "stitchTiles": [
-    "stitch",
-    "noStitch"
-  ],
-  "type": [
-    "turbulence",
-    "fractalNoise"
-  ]
+      "xMaxYMin",
+      "xMaxYMid",
+      "xMaxYMax"
+    ],
+    "crossOrigin": [
+      "anonymous",
+      "use-credentials"
+    ],
+    "meetOrSlice": [
+      "meet",
+      "slice"
+    ],
+    "preserveAspectRatio": [
+      "xMidYMid slice",
+      "xMidYMid meet"
+    ]
+  },
+  "morphology": {
+    "operator": [
+      "erode",
+      "dilate"
+    ]
+  },
+  "turbulence": {
+    "type": [
+      "turbulence",
+      "fractalNoise"
+    ],
+    "stitchTiles": [
+      "stitch",
+      "noStitch"
+    ]
+  }
 }

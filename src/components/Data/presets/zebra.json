@@ -35,15 +35,7 @@
           "value": "turbulence"
         }
       },
-      "groupName": "turbulence",
-      "paramsValues": {
-        "type": [
-          "turbulence",
-          "fractalNoise"
-        ]
-      },
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "turbulence"
     },
     {
       "id": "colormatrix1",
@@ -69,8 +61,7 @@
               "hueRotate": "number",
               "matrix": "textarea"
             }
-          },
-          "disabled": false
+          }
         },
         "in": {
           "value": "turbulence",
@@ -80,17 +71,7 @@
           "value": "colormatrix1"
         }
       },
-      "groupName": "colormatrix",
-      "paramsValues": {
-        "type": [
-          "saturate",
-          "hueRotate",
-          "matrix",
-          "luminanceToAlpha"
-        ]
-      },
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "colormatrix"
     },
     {
       "id": "flood",
@@ -113,9 +94,7 @@
           "value": "flood"
         }
       },
-      "groupName": "flood",
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "flood"
     },
     {
       "id": "composite",
@@ -127,8 +106,7 @@
         },
         "in2": {
           "value": "colormatrix1",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",
@@ -138,9 +116,7 @@
           "value": "composite"
         }
       },
-      "groupName": "composite",
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "composite"
     },
     {
       "id": "composite1",
@@ -152,8 +128,7 @@
         },
         "in2": {
           "value": "SourceGraphic",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",
@@ -163,9 +138,7 @@
           "value": "composite1"
         }
       },
-      "groupName": "composite",
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "composite"
     }
   ]
 }

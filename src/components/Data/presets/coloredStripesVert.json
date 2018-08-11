@@ -59,7 +59,8 @@
             "values": {
               "saturate": "20",
               "hueRotate": 50,
-              "luminanceToAlpha": false
+              "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 10 0",
+              "luminanceToAlpha": "disabled"
             }
           }
         },
@@ -71,14 +72,7 @@
           "value": "colormatrix"
         }
       },
-      "groupName": "colormatrix",
-      "paramsValues": {
-        "type": [
-          "saturate",
-          "hueRotate",
-          "luminanceToAlpha"
-        ]
-      }
+      "groupName": "colormatrix"
     },
     {
       "id": "flood",
@@ -113,8 +107,7 @@
         },
         "in2": {
           "value": "SourceGraphic",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",
@@ -136,8 +129,7 @@
         },
         "in2": {
           "value": "SourceGraphic",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",

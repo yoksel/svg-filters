@@ -23,16 +23,7 @@
           "value": "morphology"
         }
       },
-      "groupName": "morphology",
-      "paramsValues": {
-        "operator": [
-          "erode",
-          "dilate"
-        ]
-      },
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "morphology"
     },
     {
       "id": "flood",
@@ -55,10 +46,7 @@
           "value": "flood"
         }
       },
-      "groupName": "flood",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "flood"
     },
     {
       "id": "composite",
@@ -70,8 +58,7 @@
         },
         "in2": {
           "value": "morphology",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",
@@ -81,10 +68,7 @@
           "value": "composite"
         }
       },
-      "groupName": "composite",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "composite"
     },
     {
       "id": "composite1",
@@ -96,8 +80,7 @@
         },
         "in2": {
           "value": "SourceAlpha",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "out",
@@ -107,10 +90,7 @@
           "value": "composite1"
         }
       },
-      "groupName": "composite",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "composite"
     },
     {
       "id": "turbulence",
@@ -145,16 +125,7 @@
           "value": "turbulence"
         }
       },
-      "groupName": "turbulence",
-      "paramsValues": {
-        "type": [
-          "turbulence",
-          "fractalNoise"
-        ]
-      },
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "turbulence"
     },
     {
       "id": "displacementMap",
@@ -166,8 +137,7 @@
         },
         "in2": {
           "value": "turbulence",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "scale": {
           "value": "17",
@@ -176,22 +146,17 @@
         },
         "xChannelSelector": {
           "value": "A",
-          "type": "select",
-          "valuesKey": "ChannelSelector"
+          "type": "select"
         },
         "yChannelSelector": {
           "value": "A",
-          "type": "select",
-          "valuesKey": "ChannelSelector"
+          "type": "select"
         },
         "result": {
           "value": "displacementMap"
         }
       },
-      "groupName": "displacementMap",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "displacementMap"
     },
     {
       "id": "merge",
@@ -231,10 +196,7 @@
             }
           }
         }
-      ],
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      ]
     }
   ]
 }

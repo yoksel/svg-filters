@@ -9,8 +9,7 @@
     },
     "in2": {
       "value": "SourceAlpha",
-      "type": "select",
-      "valuesKey": "in"
+      "type": "select"
     },
     "scale": {
       "value": 20,
@@ -19,13 +18,11 @@
     },
     "xChannelSelector": {
       "value": "R",
-      "type": "select",
-      "valuesKey": "ChannelSelector"
+      "type": "select"
     },
     "yChannelSelector": {
       "value": "A",
-      "type": "select",
-      "valuesKey": "ChannelSelector"
+      "type": "select"
     },
     "result": {
       "value": "displacementMap"

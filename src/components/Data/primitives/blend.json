@@ -14,14 +14,5 @@
     "result": {
       "value": "blend"
     }
-  },
-  "paramsValues": {
-    "mode": [
-      "normal",
-      "multiply",
-      "screen",
-      "darken",
-      "lighten"
-    ]
   }
 }

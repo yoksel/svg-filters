@@ -70,8 +70,7 @@
         },
         "in2": {
           "value": "morphology",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",
@@ -96,8 +95,7 @@
         },
         "in2": {
           "value": "SourceAlpha",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "out",

@@ -19,11 +19,5 @@
     "result": {
       "value": "morphology"
     }
-  },
-  "paramsValues": {
-    "operator": [
-      "erode",
-      "dilate"
-    ]
   }
 }

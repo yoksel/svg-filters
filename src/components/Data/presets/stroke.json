@@ -23,16 +23,7 @@
           "value": "morphology"
         }
       },
-      "groupName": "morphology",
-      "paramsValues": {
-        "operator": [
-          "erode",
-          "dilate"
-        ]
-      },
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": null
+      "groupName": "morphology"
     },
     {
       "id": "flood",
@@ -55,10 +46,7 @@
           "value": "flood"
         }
       },
-      "groupName": "flood",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "flood"
     },
     {
       "id": "composite",
@@ -70,8 +58,7 @@
         },
         "in2": {
           "value": "morphology",
-          "type": "select",
-          "valuesKey": "in"
+          "type": "select"
         },
         "operator": {
           "value": "in",
@@ -81,10 +68,7 @@
           "value": "composite"
         }
       },
-      "groupName": "composite",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "composite"
     },
     {
       "id": "merge",
@@ -124,10 +108,7 @@
             }
           }
         }
-      ],
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      ]
     }
   ]
 }

@@ -31,11 +31,5 @@
     "result": {
       "value": "turbulence"
     }
-  },
-  "paramsValues": {
-    "type": [
-      "turbulence",
-      "fractalNoise"
-    ]
   }
 }
