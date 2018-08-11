@@ -24,10 +24,9 @@ class PrimitivePanelInputSelect extends Component {
     const optionsForGroup = primitivesAttrs[groupName];
 
     if (!actualOptionsList) {
-      if(optionsForGroup && optionsForGroup[paramKey]) {
+      if (optionsForGroup && optionsForGroup[paramKey]) {
         actualOptionsList = optionsForGroup[paramKey];
-      }
-      else {
+      } else {
         actualOptionsList = primitivesAttrs[paramKey];
       }
     }
