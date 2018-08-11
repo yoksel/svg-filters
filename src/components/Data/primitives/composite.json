@@ -4,16 +4,13 @@
   "name": "feComposite",
   "params": {
     "in": {
-      "value": "SourceGraphic",
-      "type": "select"
+      "value": "SourceGraphic"
     },
     "in2": {
-      "value": "SourceGraphic",
-      "type": "select"
+      "value": "SourceGraphic"
     },
     "operator": {
-      "value": "in",
-      "type": "select"
+      "value": "in"
     },
     "result": {
       "value": "composite"

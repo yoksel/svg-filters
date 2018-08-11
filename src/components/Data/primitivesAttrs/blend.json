@@ -1,0 +1,17 @@
+{
+  "inputsData": {
+    "mode": {
+      "type": "select"
+    },
+    "in": {
+      "type": "select"
+    }
+  },
+  "mode": [
+    "normal",
+    "multiply",
+    "screen",
+    "darken",
+    "lighten"
+  ]
+}

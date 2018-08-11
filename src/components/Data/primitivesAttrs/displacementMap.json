@@ -1,0 +1,32 @@
+{
+  "inputsData": {
+    "in": {
+      "type": "select"
+    },
+    "in2": {
+      "type": "select"
+    },
+    "scale": {
+      "min": 0,
+      "type": "number"
+    },
+    "xChannelSelector": {
+      "type": "select"
+    },
+    "yChannelSelector": {
+      "type": "select"
+    }
+  },
+  "xChannelSelector": [
+    "R",
+    "G",
+    "B",
+    "A"
+  ],
+  "yChannelSelector": [
+    "R",
+    "G",
+    "B",
+    "A"
+  ]
+}

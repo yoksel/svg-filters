@@ -1,0 +1,18 @@
+{
+  "inputsData": {
+    "operator": {
+      "type": "select"
+    },
+    "radius" : {
+      "min": 0,
+      "type": "number"
+    },
+    "in": {
+      "type": "select"
+    }
+  },
+  "operator": [
+    "erode",
+    "dilate"
+  ]
+}

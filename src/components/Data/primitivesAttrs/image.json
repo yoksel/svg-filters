@@ -1,0 +1,40 @@
+{
+  "inputsData": {
+    "xlinkHref": {
+      "type": "text",
+      "name": "xlink:href"
+    },
+    "preserveAspectRatio": {
+      "type": "select",
+      "double": true,
+      "valuesKeys": [
+        "align",
+        "meetOrSlice"
+      ]
+    },
+    "crossOrigin": {
+      "type": "select"
+    }
+  },
+  "align": [
+    "xMinYMin",
+    "xMinYMid",
+    "xMinYMax",
+
+    "xMidYMin",
+    "xMidYMid",
+    "xMidYMax",
+
+    "xMaxYMin",
+    "xMaxYMid",
+    "xMaxYMax"
+  ],
+  "crossOrigin": [
+    "anonymous",
+    "use-credentials"
+  ],
+  "meetOrSlice": [
+    "meet",
+    "slice"
+  ]
+}

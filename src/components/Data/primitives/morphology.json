@@ -4,17 +4,13 @@
   "name": "feMorphology",
   "params": {
     "operator": {
-      "value": "erode",
-      "type": "select"
+      "value": "erode"
     },
     "radius" : {
-      "value": 3,
-      "min": 0,
-      "type": "number"
+      "value": 3
     },
     "in": {
-      "value": "SourceAlpha",
-      "type": "select"
+      "value": "SourceAlpha"
     },
     "result": {
       "value": "morphology"

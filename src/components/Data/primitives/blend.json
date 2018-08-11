@@ -4,12 +4,10 @@
   "name": "feBlend",
   "params": {
     "mode": {
-      "value": "multiply",
-      "type": "select"
+      "value": "multiply"
     },
     "in": {
-      "value": "SourceGraphic",
-      "type": "select"
+      "value": "SourceGraphic"
     },
     "result": {
       "value": "blend"

@@ -4,16 +4,13 @@
   "name": "feOffset",
   "params": {
     "dx": {
-      "value": 15,
-      "type": "number"
+      "value": 15
     },
     "dy": {
-      "value": 15,
-      "type": "number"
+      "value": 15
     },
     "in": {
-      "value": "SourceGraphic",
-      "type": "select"
+      "value": "SourceGraphic"
     },
     "result": {
       "value": "offset"

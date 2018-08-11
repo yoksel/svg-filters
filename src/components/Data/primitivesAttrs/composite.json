@@ -1,0 +1,21 @@
+{
+  "inputsData": {
+    "in": {
+      "type": "select"
+    },
+    "in2": {
+      "type": "select"
+    },
+    "operator": {
+      "type": "select"
+    }
+  },
+  "operator": [
+    "over",
+    "in",
+    "out",
+    "atop",
+    "xor",
+    "arithmetic"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "inputsData": {
+    "stdDeviation": {
+      "min": 0,
+      "step": 1,
+      "type": "number",
+      "double": true
+    },
+    "in": {
+      "type": "select"
+    }
+  }
+}

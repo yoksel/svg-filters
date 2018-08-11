@@ -1,0 +1,13 @@
+{
+  "inputsData": {
+    "dx": {
+      "type": "number"
+    },
+    "dy": {
+      "type": "number"
+    },
+    "in": {
+      "type": "select"
+    }
+  }
+}

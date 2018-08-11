@@ -8,7 +8,7 @@ class PrimitivePanelInputSelect extends Component {
     const {primitive, paramKey, resultsList, parentId} = this.props;
 
     const param = primitive.params[paramKey];
-    const {value, double} = param;
+    const {value} = param;
     let input;
     let input2;
 
@@ -16,23 +16,20 @@ class PrimitivePanelInputSelect extends Component {
     let secondValue = 0;
 
     const {paramsValues, groupName} = primitive;
+
     let actualOptionsList = paramsValues && paramsValues[paramKey];
     let secondOptionsList = [];
-    const valuesKeys = param.valuesKeys;
     let tiedValues = {};
     let tiedTypes = {};
     const optionsForGroup = primitivesAttrs[groupName];
-
-    if (!actualOptionsList) {
-      if (optionsForGroup && optionsForGroup[paramKey]) {
-        actualOptionsList = optionsForGroup[paramKey];
-      } else {
-        actualOptionsList = primitivesAttrs[paramKey];
-      }
-    }
+    const {inputsData} = optionsForGroup;
+    const {double, valuesKeys} = inputsData[paramKey];
 
     if (paramKey === 'in' || paramKey === 'in2') {
+      actualOptionsList = primitivesAttrs[paramKey];
       actualOptionsList = actualOptionsList.concat(resultsList);
+    } else if (!actualOptionsList) {
+      actualOptionsList = optionsForGroup[paramKey];
     }
 
     if (double) {
@@ -46,9 +43,9 @@ class PrimitivePanelInputSelect extends Component {
       }
     }
 
-    if (primitive.params.values) {
-      tiedValues = primitive.params.values.variants.values;
-      tiedTypes = primitive.params.values.variants.types;
+    if (inputsData.values) {
+      tiedValues = inputsData.values.variants.values;
+      tiedTypes = inputsData.values.variants.types;
     }
 
     input = <InputSelect

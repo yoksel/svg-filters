@@ -4,25 +4,19 @@
   "name": "feDisplacementMap",
   "params": {
     "in": {
-      "value": "SourceAlpha",
-      "type": "select"
+      "value": "SourceAlpha"
     },
     "in2": {
-      "value": "SourceAlpha",
-      "type": "select"
+      "value": "SourceAlpha"
     },
     "scale": {
-      "value": 20,
-      "min": 0,
-      "type": "number"
+      "value": 20
     },
     "xChannelSelector": {
-      "value": "R",
-      "type": "select"
+      "value": "R"
     },
     "yChannelSelector": {
-      "value": "A",
-      "type": "select"
+      "value": "A"
     },
     "result": {
       "value": "displacementMap"

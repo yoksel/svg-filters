@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import PrimitivePanelInputText from '../../components/PrimitivePanelInputText';
-import PrimitivePanelInputSelect from '../../components/PrimitivePanelInputSelect';
-import PrimitivePanelInputTextarea from '../../components/PrimitivePanelInputTextarea';
+import {primitivesAttrs} from '../Data';
+
+import PrimitivePanelInputText from '../PrimitivePanelInputText';
+import PrimitivePanelInputSelect from '../PrimitivePanelInputSelect';
+import PrimitivePanelInputTextarea from '../PrimitivePanelInputTextarea';
 
 import './PrimitivePanelInput.css';
 
 class PrimitivePanelInput extends Component {
   render() {
     const {primitive, paramKey} = this.props;
+    const optionsForGroup = primitivesAttrs[primitive.groupName];
+    let type = optionsForGroup.inputsData[paramKey].type;
 
-    const type = primitive.params[paramKey].type;
+    if (primitive.params[paramKey].type) {
+      // to get switched types in colormatrix
+      type = primitive.params[paramKey].type;
+    }
 
     if (type === 'textarea') {
       return (

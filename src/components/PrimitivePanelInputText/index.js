@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {primitivesAttrs} from '../Data';
+
 import InputText from '../../containers/InputText';
 
 class PrimitivePanelInputText extends Component {
@@ -7,7 +9,9 @@ class PrimitivePanelInputText extends Component {
     const {primitive, paramKey} = this.props;
 
     const param = primitive.params[paramKey];
-    const {value, step, min, max, variants, double, type} = param;
+    const {value} = param;
+    const optionsForGroup = primitivesAttrs[primitive.groupName];
+    const {step, min, max, variants, double, type} = optionsForGroup.inputsData[paramKey];
     let input;
     let input2;
 

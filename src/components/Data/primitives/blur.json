@@ -4,15 +4,10 @@
   "name": "feGaussianBlur",
   "params": {
     "stdDeviation": {
-      "value": "3 10",
-      "min": 0,
-      "step": 1,
-      "type": "number",
-      "double": true
+      "value": "3 10"
     },
     "in": {
-      "value": "SourceGraphic",
-      "type": "select"
+      "value": "SourceGraphic"
     },
     "result": {
       "value": "blur"
