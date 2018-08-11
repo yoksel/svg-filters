@@ -6,8 +6,7 @@
     "xlinkHref": {
       "value": "https://placekitten.com/800/500",
       "type": "text",
-      "name": "xlink:href",
-      "valuesKey": "xlinkHref"
+      "name": "xlink:href"
     },
     "preserveAspectRatio": {
       "value": "xMidYMid meet",
