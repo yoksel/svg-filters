@@ -13,7 +13,7 @@ const getResultsList = (primitives, index) => {
     .map(item => item.id);
 };
 
-const Contsructor = ({primitives, dragDrop}) => {
+const Contsructor = ({primitives, dragDrop, purgePrimitives}) => {
   let items = {
     main: []
   };
@@ -21,6 +21,10 @@ const Contsructor = ({primitives, dragDrop}) => {
   return (
     <div className="Contsructor">
       &lt;filter id="#filter">
+      <button
+        className="Contsructor__purge-button"
+        onClick={purgePrimitives}
+      >Clear</button>
       <div
         className="Contsructor__container">
         {primitives.map((primitive, index) => {

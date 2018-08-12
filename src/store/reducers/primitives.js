@@ -176,6 +176,12 @@ export const primitives = (state = initialState, action) => {
       list: filteredDel
     };
 
+  case 'PURGE_PRIMITIVES':
+    return {
+      ...state,
+      list: []
+    };
+
   case 'CHANGE_PRIMITIVE_PROP':
     let newStateChangPropList = state.list.map(item => {
 

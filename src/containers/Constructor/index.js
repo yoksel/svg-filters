@@ -1,4 +1,7 @@
 import {connect} from 'react-redux';
+
+import {purgePrimitives} from '../../store/actions';
+
 import ConstructorTemplate from '../../components/Constructor';
 
 const mapStateToProps = (state) => {
@@ -8,9 +11,17 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchProps = (dispatch) => {
+  return {
+    purgePrimitives: () => {
+      dispatch(purgePrimitives());
+    }
+  };
+};
+
 const Constructor = connect(
   mapStateToProps,
-  null
+  mapDispatchProps
 )(ConstructorTemplate);
 
 export default Constructor;

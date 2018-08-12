@@ -25,6 +25,7 @@ export const createAction = (type, propNames = []) => {
 
 const ADD_PRIMITIVE = 'ADD_PRIMITIVE';
 const DELETE_PRIMITIVE = 'DELETE_PRIMITIVE';
+const PURGE_PRIMITIVES = 'PURGE_PRIMITIVES';
 const DUPLICATE_PRIMITIVE = 'DUPLICATE_PRIMITIVE';
 const TOGGLE_PRIMITIVE = 'TOGGLE_PRIMITIVE';
 const UPDATE_INS = 'UPDATE_INS';
@@ -46,6 +47,10 @@ export const addPrimitive = createAction(
 export const deletePrimitive = createAction(
   DELETE_PRIMITIVE,
   ['id', 'childId']
+);
+
+export const purgePrimitives = createAction(
+  PURGE_PRIMITIVES
 );
 
 export const duplicatePrimitive = createAction(
