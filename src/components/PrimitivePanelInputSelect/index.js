@@ -9,27 +9,26 @@ class PrimitivePanelInputSelect extends Component {
 
     const param = primitive.params[paramKey];
     const {value} = param;
+    const values = primitive.params.values;
     let input;
     let input2;
 
     let actualValue = value;
     let secondValue = 0;
 
-    const {paramsValues, groupName} = primitive;
+    const {groupName} = primitive;
 
-    let actualOptionsList = paramsValues && paramsValues[paramKey];
     let secondOptionsList = [];
     let tiedValues = {};
     let tiedTypes = {};
     const optionsForGroup = primitivesAttrs[groupName];
     const {inputsData} = optionsForGroup;
     const {double, valuesKeys} = inputsData[paramKey];
+    let actualOptionsList = optionsForGroup[paramKey];
 
     if (paramKey === 'in' || paramKey === 'in2') {
       actualOptionsList = primitivesAttrs[paramKey];
       actualOptionsList = actualOptionsList.concat(resultsList);
-    } else if (!actualOptionsList) {
-      actualOptionsList = optionsForGroup[paramKey];
     }
 
     if (double) {
@@ -46,6 +45,13 @@ class PrimitivePanelInputSelect extends Component {
     if (inputsData.values) {
       tiedValues = inputsData.values.variants.values;
       tiedTypes = inputsData.values.variants.types;
+
+      if (values.variants) {
+        tiedValues = {
+          ...tiedValues,
+          ...values.variants.values
+        };
+      }
     }
 
     input = <InputSelect

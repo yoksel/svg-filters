@@ -202,6 +202,9 @@ export const primitives = (state = initialState, action) => {
           if (param.variants) {
             const propByKey = item.params[param.variants.key];
             const keyValue = propByKey.value;
+            if (!param.variants.values) {
+              param.variants.values = {};
+            }
             param.variants.values[keyValue] = action.value;
           }
         }

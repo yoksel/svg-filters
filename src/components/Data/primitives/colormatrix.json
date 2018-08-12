@@ -7,7 +7,10 @@
       "value": "saturate"
     },
     "values": {
-      "value": 5
+      "value": 5,
+      "variants": {
+        "key": "type"
+      }
     },
     "in": {
       "value": "SourceGraphic"

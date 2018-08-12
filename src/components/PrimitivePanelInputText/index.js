@@ -11,22 +11,13 @@ class PrimitivePanelInputText extends Component {
     const param = primitive.params[paramKey];
     const {value} = param;
     const optionsForGroup = primitivesAttrs[primitive.groupName];
-    const {step, min, max, variants, double, type} = optionsForGroup.inputsData[paramKey];
+    const {step, min, max, double, type} = optionsForGroup.inputsData[paramKey];
     let input;
     let input2;
 
     let actualValue = value;
     let valuesList = [];
     let secondValue = 0;
-
-    if (variants) {
-      const propByKey = primitive.params[variants.key];
-
-      if (propByKey) {
-        const keyValue = propByKey.value;
-        actualValue = variants.values[keyValue];
-      }
-    }
 
     if (!actualValue) {
       actualValue = '';
