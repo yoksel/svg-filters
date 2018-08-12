@@ -5,11 +5,11 @@ import composite from './composite.json';
 import displacementMap from './displacementMap.json';
 import flood from './flood.json';
 import image from './image.json';
-import tile from './tile.json';
 import merge from './merge.json';
 import mergeNode from './mergeNode.json';
 import morphology from './morphology.json';
 import offset from './offset.json';
+import tile from './tile.json';
 import turbulence from './turbulence.json';
 
 export default {
@@ -25,17 +25,17 @@ export default {
     'SourceGraphic',
     'SourceAlpha'
   ],
-  'blend': blend,
-  'blur': blur,
-  'colormatrix': colormatrix,
-  'composite': composite,
-  'displacementMap': displacementMap,
-  'flood': flood,
-  'image': image,
-  'tile': tile,
-  'merge': merge,
-  'mergeNode': mergeNode,
-  'morphology': morphology,
-  'offset': offset,
-  'turbulence': turbulence
+  blend,
+  blur,
+  colormatrix,
+  composite,
+  displacementMap,
+  flood,
+  image,
+  tile,
+  merge,
+  mergeNode,
+  morphology,
+  offset,
+  turbulence
 };
