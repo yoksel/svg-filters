@@ -14,23 +14,15 @@ describe('reducers', () => {
       type: 'ADD_PRIMITIVE',
       item: {
         id: 'blur',
-        name: 'Hello',
         groupName: 'blur',
         params: {
           'stdDeviation': {
-            'value': 4,
-            'type': 'number'
+            'value': 4
           },
           result: {
             value: 'blur'
           }
-        },
-        paramsValues: [
-          'mode': [
-            'normal',
-            'multiply'
-          ]
-        ]
+        }
       },
       nativeEvent: {
         'offsetX': 108,
@@ -41,26 +33,18 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           justAdded: true,
           children: undefined,
           disabled: false,
           params: {
             'stdDeviation': {
-              'value': 4,
-              'type': 'number'
+              'value': 4
             },
             result: {
               value: 'blur'
             }
           },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ],
           nativeEvent: {
             'offsetX': 108,
             'offsetY': 12
@@ -86,23 +70,15 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             'stdDeviation': {
-              'value': 4,
-              'type': 'number'
+              'value': 4
             },
             result: {
               value: 'blur'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply',
-            ]
-          ]
+          }
         }
       ]
     };
@@ -114,43 +90,27 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             'stdDeviation': {
-              'value': 4,
-              'type': 'number'
+              'value': 4
             },
             result: {
               value: 'blur'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         },
         {
           id: 'blur1',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             'stdDeviation': {
-              'value': 4,
-              'type': 'number'
+              'value': 4
             },
             result: {
               value: 'blur1'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -172,43 +132,27 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             'stdDeviation': {
-              'value': 4,
-              'type': 'number'
+              'value': 4
             },
             result: {
               value: 'blur'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         },
         {
           id: 'blur1',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             'stdDeviation': {
-              'value': 4,
-              'type': 'number'
+              'value': 4
             },
             result: {
               value: 'blur1'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -220,23 +164,15 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             'stdDeviation': {
-              'value': 4,
-              'type': 'number'
+              'value': 4
             },
             result: {
               value: 'blur'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -258,23 +194,15 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur1',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             mode: {
-              'value': 'multiply',
-              'type': 'select'
+              'value': 'multiply'
             },
             result: {
               value: 'blur1'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -288,23 +216,15 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur1',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             mode: {
-              'value': 'screen',
-              'type': 'select'
+              'value': 'screen'
             },
             result: {
               value: 'blur1'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -326,13 +246,11 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur1',
-          name: 'Hello',
           groupName: 'blur',
           disabled: false,
           params: {
             mode: {
-              'value': 'multiply',
-              'type': 'select'
+              'value': 'multiply'
             },
             result: {
               value: 'blur1'
@@ -350,13 +268,11 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur1',
-          name: 'Hello',
           groupName: 'blur',
           disabled: true,
           params: {
             mode: {
-              'value': 'multiply',
-              'type': 'select'
+              'value': 'multiply'
             },
             result: {
               value: 'blur1'
@@ -381,7 +297,6 @@ describe('reducers', () => {
         {
           id: 'merge',
           groupName: 'merge',
-          name: 'feMerge',
           params: {
             result: {
               'value': 'merge'
@@ -391,11 +306,9 @@ describe('reducers', () => {
             {
               id: 'mergeNode',
               groupName: 'mergeNode',
-              name: 'feMergeNode',
               params: {
                 'in': {
-                  'value': 'SourceGraphic',
-                  'type': 'select'
+                  'value': 'SourceGraphic'
                 },
                 result: {
                   'value': 'mergeNode'
@@ -418,7 +331,6 @@ describe('reducers', () => {
         {
           id: 'merge',
           groupName: 'merge',
-          name: 'feMerge',
           params: {
             result: {
               'value': 'merge'
@@ -428,12 +340,10 @@ describe('reducers', () => {
             {
               id: 'mergeNode',
               groupName: 'mergeNode',
-              name: 'feMergeNode',
               disabled: true,
               params: {
                 'in': {
-                  'value': 'SourceGraphic',
-                  'type': 'select'
+                  'value': 'SourceGraphic'
                 },
                 result: {
                   'value': 'mergeNode'
@@ -463,23 +373,15 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             mode: {
-              'value': 'multiply',
-              'type': 'select'
+              'value': 'multiply'
             },
             result: {
               value: 'blur'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -494,24 +396,16 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             mode: {
               'value': 'multiply',
-              'type': 'select',
               'disabled': true
             },
             result: {
               value: 'blur'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -533,7 +427,6 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             mode: {
@@ -543,13 +436,7 @@ describe('reducers', () => {
             result: {
               value: 'blur'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -564,7 +451,6 @@ describe('reducers', () => {
       list: [
         {
           id: 'blur',
-          name: 'Hello',
           groupName: 'blur',
           params: {
             mode: {
@@ -574,13 +460,7 @@ describe('reducers', () => {
             result: {
               value: 'blur'
             }
-          },
-          paramsValues: [
-            'mode': [
-              'normal',
-              'multiply'
-            ]
-          ]
+          }
         }
       ]
     };
@@ -605,8 +485,7 @@ describe('reducers', () => {
           disabled: true,
           params: {
             in: {
-              'value': 'SourceGraphic',
-              'type': 'select'
+              'value': 'SourceGraphic'
             }
           }
         },
@@ -614,8 +493,7 @@ describe('reducers', () => {
           id: 'blend',
           params: {
             in: {
-              'value': 'blur',
-              'type': 'select'
+              'value': 'blur'
             }
           }
         },
@@ -623,8 +501,7 @@ describe('reducers', () => {
           id: 'matrix',
           params: {
             in: {
-              'value': 'blur',
-              'type': 'select'
+              'value': 'blur'
             }
           }
         }
@@ -640,8 +517,7 @@ describe('reducers', () => {
           disabled: true,
           params: {
             in: {
-              'value': 'SourceGraphic',
-              'type': 'select'
+              'value': 'SourceGraphic'
             }
           }
         },
@@ -650,8 +526,7 @@ describe('reducers', () => {
           params: {
             in: {
               'value': 'SourceGraphic',
-              'prevValue': 'blur',
-              'type': 'select'
+              'prevValue': 'blur'
             }
           }
         },
@@ -660,8 +535,7 @@ describe('reducers', () => {
           params: {
             in: {
               'value': 'blend',
-              'prevValue': 'blur',
-              'type': 'select'
+              'prevValue': 'blur'
             }
           }
         }
@@ -685,8 +559,7 @@ describe('reducers', () => {
           disabled: true,
           params: {
             in: {
-              'value': 'SourceGraphic',
-              'type': 'select'
+              'value': 'SourceGraphic'
             }
           }
         },
@@ -694,8 +567,7 @@ describe('reducers', () => {
           id: 'blend',
           params: {
             in: {
-              'value': 'blur',
-              'type': 'select'
+              'value': 'blur'
             }
           }
         },
@@ -703,8 +575,7 @@ describe('reducers', () => {
           id: 'matrix',
           params: {
             in: {
-              'value': 'blur',
-              'type': 'select'
+              'value': 'blur'
             }
           }
         }
@@ -720,8 +591,7 @@ describe('reducers', () => {
           disabled: true,
           params: {
             in: {
-              'value': 'SourceGraphic',
-              'type': 'select'
+              'value': 'SourceGraphic'
             }
           }
         },
@@ -730,8 +600,7 @@ describe('reducers', () => {
           params: {
             in: {
               'value': 'SourceGraphic',
-              'prevValue': 'blur',
-              'type': 'select'
+              'prevValue': 'blur'
             }
           }
         },
@@ -740,8 +609,7 @@ describe('reducers', () => {
           params: {
             in: {
               'value': 'blend',
-              'prevValue': 'blur',
-              'type': 'select'
+              'prevValue': 'blur'
             }
           }
         }
@@ -764,8 +632,7 @@ describe('reducers', () => {
           id: 'blur',
           params: {
             in: {
-              'value': 'SourceGraphic',
-              'type': 'select'
+              'value': 'SourceGraphic'
             }
           }
         },
@@ -774,8 +641,7 @@ describe('reducers', () => {
           params: {
             in: {
               'value': 'SourceGraphic',
-              'prevValue': 'blur',
-              'type': 'select'
+              'prevValue': 'blur'
             }
           }
         },
@@ -784,8 +650,7 @@ describe('reducers', () => {
           params: {
             in: {
               'value': 'blend',
-              'prevValue': 'blur',
-              'type': 'select'
+              'prevValue': 'blur'
             }
           }
         }
@@ -800,8 +665,7 @@ describe('reducers', () => {
           id: 'blur',
           params: {
             in: {
-              'value': 'SourceGraphic',
-              'type': 'select'
+              'value': 'SourceGraphic'
             }
           }
         },
@@ -809,8 +673,7 @@ describe('reducers', () => {
           id: 'blend',
           params: {
             in: {
-              'value': 'blur',
-              'type': 'select'
+              'value': 'blur'
             }
           }
         },
@@ -818,8 +681,7 @@ describe('reducers', () => {
           id: 'matrix',
           params: {
             in: {
-              'value': 'blur',
-              'type': 'select'
+              'value': 'blur'
             }
           }
         }
