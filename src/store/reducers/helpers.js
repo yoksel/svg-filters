@@ -102,14 +102,17 @@ export const updateUnicalProps = (state, action, actionType) => {
       newAction.params.result.value = newIdAdd;
     }
 
-    if (actionType === 'DUPLICATE_PRIMITIVE') {
-      // Don't change in & in2
-      newIn = newAction.params.in.value;
-    } else {
+    if (actionType !== 'DUPLICATE_PRIMITIVE') {
       if (newAction.params.in2) {
         // In + In2
         newAction.params.in.value = 'SourceGraphic';
         newAction.params.in2.value = newIn;
+
+        if (newAction.groupName === 'composite') {
+          newAction.params.in.value = newIn;
+          newAction.params.in2.value = 'SourceAlpha';
+        }
+
       } else if (newAction.params.in) {
         // In only
         newAction.params.in.value = newIn;
