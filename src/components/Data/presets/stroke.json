@@ -7,17 +7,13 @@
       "name": "feMorphology",
       "params": {
         "operator": {
-          "value": "dilate",
-          "type": "select"
+          "value": "dilate"
         },
         "radius": {
-          "value": "5",
-          "min": 0,
-          "type": "number"
+          "value": "5"
         },
         "in": {
-          "value": "SourceAlpha",
-          "type": "select"
+          "value": "SourceAlpha"
         },
         "result": {
           "value": "morphology"
@@ -30,17 +26,10 @@
       "name": "feFlood",
       "params": {
         "floodColor": {
-          "value": "#c380ff",
-          "type": "color",
-          "name": "flood-color"
+          "value": "#c380ff"
         },
         "floodOpacity": {
-          "value": "1",
-          "type": "number",
-          "step": 0.1,
-          "min": 0,
-          "max": 1,
-          "name": "flood-opacity"
+          "value": "1"
         },
         "result": {
           "value": "flood"
@@ -53,16 +42,13 @@
       "name": "feComposite",
       "params": {
         "in": {
-          "value": "flood",
-          "type": "select"
+          "value": "flood"
         },
         "in2": {
-          "value": "morphology",
-          "type": "select"
+          "value": "morphology"
         },
         "operator": {
-          "value": "in",
-          "type": "select"
+          "value": "in"
         },
         "result": {
           "value": "composite"
@@ -86,8 +72,7 @@
           "name": "feMergeNode",
           "params": {
             "in": {
-              "value": "composite",
-              "type": "select"
+              "value": "composite"
             },
             "result": {
               "value": "mergeNode"
@@ -100,8 +85,7 @@
           "name": "feMergeNode",
           "params": {
             "in": {
-              "value": "SourceGraphic",
-              "type": "select"
+              "value": "SourceGraphic"
             },
             "result": {
               "value": "mergeNode1"

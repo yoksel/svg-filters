@@ -7,29 +7,19 @@
       "name": "feTurbulence",
       "params": {
         "type": {
-          "value": "turbulence",
-          "type": "select"
+          "value": "turbulence"
         },
         "baseFrequency": {
-          "value": "0.01 0.05",
-          "min": 0,
-          "step": 0.001,
-          "type": "number",
-          "double": true
+          "value": "0.01 0.05"
         },
         "numOctaves": {
-          "value": "2",
-          "min": 0,
-          "type": "number"
+          "value": "2"
         },
         "seed": {
-          "value": "2",
-          "min": 0,
-          "type": "number"
+          "value": "2"
         },
         "stitchTiles": {
-          "value": "noStitch",
-          "type": "select"
+          "value": "noStitch"
         },
         "result": {
           "value": "turbulence"
@@ -42,25 +32,19 @@
       "name": "feDisplacementMap",
       "params": {
         "in": {
-          "value": "SourceGraphic",
-          "type": "select"
+          "value": "SourceGraphic"
         },
         "in2": {
-          "value": "turbulence",
-          "type": "select"
+          "value": "turbulence"
         },
         "scale": {
-          "value": "20",
-          "min": 0,
-          "type": "number"
+          "value": "20"
         },
         "xChannelSelector": {
-          "value": "G",
-          "type": "select"
+          "value": "G"
         },
         "yChannelSelector": {
-          "value": "A",
-          "type": "select"
+          "value": "A"
         },
         "result": {
           "value": "displacementMap"

@@ -7,108 +7,73 @@
       "name": "feMorphology",
       "params": {
         "operator": {
-          "value": "dilate",
-          "type": "select"
+          "value": "dilate"
         },
         "radius": {
-          "value": "3",
-          "min": 0,
-          "type": "number"
+          "value": "3"
         },
         "in": {
-          "value": "SourceAlpha",
-          "type": "select"
+          "value": "SourceAlpha"
         },
         "result": {
           "value": "morphology"
         }
       },
-      "groupName": "morphology",
-      "paramsValues": {
-        "operator": [
-          "erode",
-          "dilate"
-        ]
-      },
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "morphology"
     },
     {
       "id": "flood",
       "name": "feFlood",
       "params": {
         "floodColor": {
-          "value": "#476dff",
-          "type": "color",
-          "name": "flood-color"
+          "value": "#476dff"
         },
         "floodOpacity": {
-          "value": "1",
-          "type": "number",
-          "step": 0.1,
-          "min": 0,
-          "max": 1,
-          "name": "flood-opacity"
+          "value": "1"
         },
         "result": {
           "value": "flood"
         }
       },
-      "groupName": "flood",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "flood"
     },
     {
       "id": "composite",
       "name": "feComposite",
       "params": {
         "in": {
-          "value": "flood",
-          "type": "select"
+          "value": "flood"
         },
         "in2": {
-          "value": "morphology",
-          "type": "select"
+          "value": "morphology"
         },
         "operator": {
-          "value": "in",
-          "type": "select"
+          "value": "in"
         },
         "result": {
           "value": "composite"
         }
       },
-      "groupName": "composite",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "composite"
     },
     {
       "id": "composite1",
       "name": "feComposite",
       "params": {
         "in": {
-          "value": "composite",
-          "type": "select"
+          "value": "composite"
         },
         "in2": {
-          "value": "SourceAlpha",
-          "type": "select"
+          "value": "SourceAlpha"
         },
         "operator": {
-          "value": "out",
-          "type": "select"
+          "value": "out"
         },
         "result": {
           "value": "composite1"
         }
       },
-      "groupName": "composite",
-      "disabled": false,
-      "justAdded": false,
-      "nativeEvent": {}
+      "groupName": "composite"
     }
   ]
 }

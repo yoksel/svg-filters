@@ -3,23 +3,19 @@
   "name": "Blur",
   "primitives": [
     {
-    "id": "blur",
-    "name": "feGaussianBlur",
-    "groupName": "blur",
-    "params": {
-      "stdDeviation":{
-        "value": "3 10",
-        "min": 0,
-        "step": 1,
-        "type": "number",
-        "double":true
-      },
-      "in":{
-        "value": "SourceGraphic",
-        "type": "select"
-      },
-      "result":{
-        "value": "blur"}
+      "id": "blur",
+      "name": "feGaussianBlur",
+      "groupName": "blur",
+      "params": {
+        "stdDeviation":{
+          "value": "3 10"
+        },
+        "in":{
+          "value": "SourceGraphic"
+        },
+        "result":{
+          "value": "blur"
+        }
       }
     }
   ]
