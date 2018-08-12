@@ -27,7 +27,7 @@
 .PrimitivePanel__content {
   &--no-children {
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     flex-wrap: wrap;
   }
 }
