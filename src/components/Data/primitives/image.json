@@ -1,7 +1,6 @@
 {
   "id": "image",
   "groupName": "image",
-  "name": "feImage",
   "params": {
     "xlinkHref": {
       "value": "https://placekitten.com/800/500"

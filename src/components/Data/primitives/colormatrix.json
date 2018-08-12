@@ -1,7 +1,6 @@
 {
   "id": "colormatrix",
   "groupName": "colormatrix",
-  "name": "feColorMatrix",
   "params": {
     "type": {
       "value": "saturate"

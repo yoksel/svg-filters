@@ -1,7 +1,6 @@
 {
   "id": "blur",
   "groupName": "blur",
-  "name": "feGaussianBlur",
   "params": {
     "stdDeviation": {
       "value": "3 10"

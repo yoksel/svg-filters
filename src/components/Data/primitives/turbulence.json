@@ -1,7 +1,6 @@
 {
   "id": "turbulence",
   "groupName": "turbulence",
-  "name": "feTurbulence",
   "params": {
     "type": {
       "value": "turbulence"

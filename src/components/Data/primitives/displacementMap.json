@@ -1,7 +1,6 @@
 {
   "id": "displacementMap",
   "groupName": "displacementMap",
-  "name": "feDisplacementMap",
   "params": {
     "in": {
       "value": "SourceAlpha"

@@ -1,7 +1,6 @@
 {
   "id": "offset",
   "groupName": "offset",
-  "name": "feOffset",
   "params": {
     "dx": {
       "value": 15

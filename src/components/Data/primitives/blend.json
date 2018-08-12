@@ -1,7 +1,6 @@
 {
   "id": "blend",
   "groupName": "blend",
-  "name": "feBlend",
   "params": {
     "mode": {
       "value": "multiply"

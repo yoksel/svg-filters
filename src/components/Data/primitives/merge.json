@@ -1,7 +1,6 @@
 {
   "id": "merge",
   "groupName": "merge",
-  "name": "feMerge",
   "params": {
     "result": {
       "value": "merge"
@@ -11,11 +10,9 @@
     {
       "id": "mergeNode",
       "groupName": "mergeNode",
-      "name": "feMergeNode",
       "params": {
         "in": {
-          "value": "SourceGraphic",
-          "type": "select"
+          "value": "SourceGraphic"
         },
         "result": {
           "value": "mergeNode"
@@ -25,11 +22,9 @@
     {
       "id": "mergeNode1",
       "groupName": "mergeNode",
-      "name": "feMergeNode",
       "params": {
         "in": {
-          "value": "SourceGraphic",
-          "type": "select"
+          "value": "SourceGraphic"
         },
         "result": {
           "value": "mergeNode1"

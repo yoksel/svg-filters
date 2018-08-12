@@ -1,7 +1,6 @@
 {
   "id": "flood",
   "groupName": "flood",
-  "name": "feFlood",
   "params": {
     "floodColor": {
       "value": "#FFCC99"
