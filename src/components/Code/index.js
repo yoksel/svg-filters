@@ -2,18 +2,23 @@ import React, {Component} from 'react';
 
 import deepClone from '../../helpers/deepClone';
 
+import {primitivesAttrs} from '../Data';
+
 import './Code.css';
 
 const getPrimitiveCode = (primitive, level = 1) => {
+  const groupData = primitivesAttrs[primitive.groupName];
   const paramsKeys = Object.keys(primitive.params);
   const prefix = level === 2 ? '\t\t' : '\t';
+  const primitiveName = groupData.name;
 
   const params = paramsKeys.reduce((prev, paramName) => {
     const param = primitive.params[paramName];
+    const inputData = groupData.inputsData && groupData.inputsData[paramName];
     let value = param.value;
 
-    if (param.name) {
-      paramName = param.name;
+    if (inputData && inputData.name) {
+      paramName = inputData.name;
     }
 
     prev.push(`${paramName}="${value}"`);
@@ -22,12 +27,12 @@ const getPrimitiveCode = (primitive, level = 1) => {
   }, []);
 
   if (primitive.children) {
-    return `${prefix}<${primitive.name} ${params.join(' ')}>
+    return `${prefix}<${primitiveName} ${params.join(' ')}>
     ${primitive.children.join('\n')}
-  ${prefix}</${primitive.name}>`;
+  ${prefix}</${primitiveName}>`;
   }
 
-  return `${prefix}<${primitive.name} ${params.join(' ')}/>`;
+  return `${prefix}<${primitiveName} ${params.join(' ')}/>`;
 };
 
 const getAllPrimitivesCode = (primitives) => {

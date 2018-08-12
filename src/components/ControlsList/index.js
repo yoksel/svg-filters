@@ -2,12 +2,20 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import {primitivesAttrs} from '../Data';
+
 import './ControlsList.css';
 
 const ControlsList = ({items, control, onAddPrimitive}) => {
   return (
     <div className="ControlsList">
       {items.map((item, index) => {
+        const groupData = primitivesAttrs[item.groupName];
+        let name = item.name;
+        if (item.groupName) {
+          // primitives
+          name = groupData.name;
+        }
 
         if (control === 'NavLink') {
           const url = `${process.env.PUBLIC_URL}/presets/${item.id}`;
@@ -18,7 +26,7 @@ const ControlsList = ({items, control, onAddPrimitive}) => {
               to={url}
             >
               <span className="Control Control--navlink">
-                {item.name}
+                {name}
               </span>
             </NavLink>
           );
@@ -40,7 +48,7 @@ const ControlsList = ({items, control, onAddPrimitive}) => {
               });
             }}
           >
-            {item.name}
+            {name}
           </button>
         );
       })}

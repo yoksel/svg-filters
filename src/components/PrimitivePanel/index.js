@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
 
+import {primitivesAttrs} from '../Data';
+
 import PrimitivePanelInput from '../PrimitivePanelInput';
 import ResultAttribute from '../ResultAttribute';
 
@@ -17,6 +19,8 @@ class PrimitivePanel extends Component {
     } = this.props;
 
     const primitiveDisabled = primitive.disabled;
+    const groupData = primitivesAttrs[primitive.groupName];
+    const primitiveName = groupData.name;
     const fieldsetProps = {};
 
     if (primitiveDisabled) {
@@ -67,7 +71,7 @@ class PrimitivePanel extends Component {
                 PrimitivePanel__content--no-children
               ">
               <div className="PrimitivePanel__tag">
-                &lt;{primitive.name}
+                &lt;{primitiveName}
               </div>
               {params}&#8203;/>
 
@@ -96,11 +100,11 @@ class PrimitivePanel extends Component {
               PrimitivePanel__content--has-children
             ">
             <div className="PrimitivePanel__tag">
-              &lt;{primitive.name}{params}&#8203;>
+              &lt;{primitiveName}{params}&#8203;>
             </div>
             {primitive.children}
             <div className="PrimitivePanel__tag">
-              &lt;/{primitive.name}&#8203;>
+              &lt;/{primitiveName}&#8203;>
             </div>
           </div>
         </fieldset>

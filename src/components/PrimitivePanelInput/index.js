@@ -12,8 +12,8 @@ import './PrimitivePanelInput.css';
 class PrimitivePanelInput extends Component {
   render() {
     const {primitive, paramKey} = this.props;
-    const optionsForGroup = primitivesAttrs[primitive.groupName];
-    let type = optionsForGroup.inputsData[paramKey].type;
+    const groupData = primitivesAttrs[primitive.groupName];
+    let type = groupData.inputsData[paramKey].type;
 
     if (primitive.params[paramKey].type) {
       // to get switched types in colormatrix

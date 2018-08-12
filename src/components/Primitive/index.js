@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {primitivesAttrs} from '../Data';
+
 const Primitive = ({primitive}) => {
+  const groupData = primitivesAttrs[primitive.groupName];
   const paramsKeys = Object.keys(primitive.params);
   const params = paramsKeys.reduce((prev, param) => {
     let value = primitive.params[param].value;
@@ -12,9 +15,9 @@ const Primitive = ({primitive}) => {
   }, {});
 
   return (
-    <primitive.name {...params}>
+    <groupData.name {...params}>
       {primitive.children}
-    </primitive.name>
+    </groupData.name>
   );
 };
 
