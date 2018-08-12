@@ -1,4 +1,5 @@
 {
+  "name": "feFlood",
   "inputsData": {
     "floodColor": {
       "type": "color",

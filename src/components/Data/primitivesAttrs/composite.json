@@ -1,4 +1,5 @@
 {
+  "name": "feComposite",
   "inputsData": {
     "in": {
       "type": "select"

@@ -1,4 +1,5 @@
 {
+  "name": "feMergeNode",
   "inputsData": {
     "in": {
       "type": "select"

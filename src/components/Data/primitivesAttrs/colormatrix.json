@@ -1,4 +1,5 @@
 {
+  "name": "feColorMatrix",
   "inputsData": {
     "type": {
       "type": "select"

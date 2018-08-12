@@ -1,4 +1,5 @@
 {
+  "name": "feGaussianBlur",
   "inputsData": {
     "stdDeviation": {
       "min": 0,

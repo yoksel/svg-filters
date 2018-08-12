@@ -1,4 +1,5 @@
 {
+  "name": "feOffset",
   "inputsData": {
     "dx": {
       "type": "number"

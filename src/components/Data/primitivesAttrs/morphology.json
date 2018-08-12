@@ -1,4 +1,5 @@
 {
+  "name": "feMorphology",
   "inputsData": {
     "operator": {
       "type": "select"

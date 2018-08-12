@@ -1,4 +1,5 @@
 {
+  "name": "feBlend",
   "inputsData": {
     "mode": {
       "type": "select"

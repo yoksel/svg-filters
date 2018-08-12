@@ -1,4 +1,5 @@
 {
+  "name": "feDisplacementMap",
   "inputsData": {
     "in": {
       "type": "select"
