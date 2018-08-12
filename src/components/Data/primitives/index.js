@@ -9,6 +9,7 @@ import turbulence from './turbulence';
 import composite from './composite';
 import merge from './merge';
 import image from './image';
+import tile from './tile';
 
 export default [
   blur,
@@ -16,6 +17,7 @@ export default [
   offset,
   colormatrix,
   image,
+  tile,
   flood,
   morphology,
   displacementMap,

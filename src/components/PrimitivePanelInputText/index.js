@@ -20,7 +20,11 @@ class PrimitivePanelInputText extends Component {
     let secondValue = 0;
 
     if (!actualValue) {
-      actualValue = '';
+      if (type === 'text') {
+        actualValue = '';
+      } else {
+        actualValue = 0;
+      }
     }
 
     if (double) {

@@ -15,6 +15,18 @@
     },
     "crossOrigin": {
       "type": "select"
+    },
+    "x":{
+      "type": "number"
+    },
+    "y":{
+      "type": "number"
+    },
+    "width":{
+      "type": "number"
+    },
+    "height":{
+      "type": "number"
     }
   },
   "align": [
