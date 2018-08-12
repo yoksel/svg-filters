@@ -86,7 +86,7 @@ export const getLastResult = (state) => {
   return result;
 };
 
-export const updateUnicalProps = (state, action) => {
+export const updateUnicalProps = (state, action, actionType) => {
   if (!getId) {
     getId = idKeeper(state);
   }
@@ -102,13 +102,18 @@ export const updateUnicalProps = (state, action) => {
       newAction.params.result.value = newIdAdd;
     }
 
-    if (newAction.params.in2) {
-      // In + In2
-      newAction.params.in.value = 'SourceGraphic';
-      newAction.params.in2.value = newIn;
-    } else if (newAction.params.in) {
-      // In only
-      newAction.params.in.value = newIn;
+    if (actionType === 'DUPLICATE_PRIMITIVE') {
+      // Don't change in & in2
+      newIn = newAction.params.in.value;
+    } else {
+      if (newAction.params.in2) {
+        // In + In2
+        newAction.params.in.value = 'SourceGraphic';
+        newAction.params.in2.value = newIn;
+      } else if (newAction.params.in) {
+        // In only
+        newAction.params.in.value = newIn;
+      }
     }
   }
 

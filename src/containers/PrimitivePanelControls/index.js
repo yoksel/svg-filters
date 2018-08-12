@@ -29,7 +29,6 @@ const mapDispatchProps = (
     },
     duplicatePrimitive: () => {
       dispatch(duplicatePrimitive(params));
-      dispatch(updateIns());
     },
     togglePrimitive: () => {
       dispatch(togglePrimitive(params));

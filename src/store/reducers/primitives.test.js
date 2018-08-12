@@ -75,6 +75,12 @@ describe('reducers', () => {
             'stdDeviation': {
               'value': 4
             },
+            in: {
+              value: 'blend'
+            },
+            in2: {
+              value: 'flood'
+            },
             result: {
               value: 'blur'
             }
@@ -95,6 +101,12 @@ describe('reducers', () => {
             'stdDeviation': {
               'value': 4
             },
+            in: {
+              value: 'blend'
+            },
+            in2: {
+              value: 'flood'
+            },
             result: {
               value: 'blur'
             }
@@ -106,6 +118,12 @@ describe('reducers', () => {
           params: {
             'stdDeviation': {
               'value': 4
+            },
+            in: {
+              value: 'blend'
+            },
+            in2: {
+              value: 'flood'
             },
             result: {
               value: 'blur1'
