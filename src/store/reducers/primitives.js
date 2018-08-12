@@ -137,6 +137,10 @@ export const primitives = (state = initialState, action) => {
       if (item.children) {
         const children = deepClone(item.children);
         item.children = children.map((child, childIndex) => {
+          if (!child.params.in) {
+            return child;
+          }
+
           return newIn.updateItem({
             item: child,
             iindex: childIndex,
