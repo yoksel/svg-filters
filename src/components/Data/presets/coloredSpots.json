@@ -4,7 +4,6 @@
   "primitives": [
     {
       "id": "turbulence",
-      "name": "feTurbulence",
       "params": {
         "type": {
           "value": "turbulence"
@@ -29,7 +28,6 @@
     },
     {
       "id": "morphology",
-      "name": "feMorphology",
       "params": {
         "operator": {
           "value": "dilate"
@@ -48,7 +46,6 @@
     },
     {
       "id": "colormatrix",
-      "name": "feColorMatrix",
       "params": {
         "type": {
           "value": "matrix"
@@ -71,7 +68,6 @@
     },
     {
       "id": "colormatrix1",
-      "name": "feColorMatrix",
       "params": {
         "type": {
           "value": "saturate"
@@ -94,7 +90,6 @@
     },
     {
       "id": "composite",
-      "name": "feComposite",
       "params": {
         "in": {
           "value": "colormatrix1"

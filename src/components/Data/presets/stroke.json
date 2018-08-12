@@ -4,7 +4,6 @@
   "primitives": [
     {
       "id": "morphology",
-      "name": "feMorphology",
       "params": {
         "operator": {
           "value": "dilate"
@@ -23,7 +22,6 @@
     },
     {
       "id": "flood",
-      "name": "feFlood",
       "params": {
         "floodColor": {
           "value": "#c380ff"
@@ -39,7 +37,6 @@
     },
     {
       "id": "composite",
-      "name": "feComposite",
       "params": {
         "in": {
           "value": "flood"
@@ -58,7 +55,6 @@
     },
     {
       "id": "merge",
-      "name": "feMerge",
       "params": {
         "result": {
           "value": "merge"
@@ -69,7 +65,6 @@
         {
           "id": "mergeNode",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite"
@@ -82,7 +77,6 @@
         {
           "id": "mergeNode1",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "SourceGraphic"

@@ -4,7 +4,6 @@
   "primitives": [
     {
       "id": "turbulence",
-      "name": "feTurbulence",
       "params": {
         "type": {
           "value": "turbulence"
@@ -29,7 +28,6 @@
     },
     {
       "id": "displacementMap",
-      "name": "feDisplacementMap",
       "params": {
         "in": {
           "value": "SourceGraphic"

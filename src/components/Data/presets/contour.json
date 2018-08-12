@@ -4,7 +4,6 @@
   "primitives": [
     {
       "id": "morphology",
-      "name": "feMorphology",
       "params": {
         "operator": {
           "value": "dilate"
@@ -23,7 +22,6 @@
     },
     {
       "id": "flood",
-      "name": "feFlood",
       "params": {
         "floodColor": {
           "value": "#476dff"
@@ -39,7 +37,6 @@
     },
     {
       "id": "composite",
-      "name": "feComposite",
       "params": {
         "in": {
           "value": "flood"
@@ -58,7 +55,6 @@
     },
     {
       "id": "composite1",
-      "name": "feComposite",
       "params": {
         "in": {
           "value": "composite"

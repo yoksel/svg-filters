@@ -4,7 +4,6 @@
   "primitives": [
     {
       "id": "turbulence",
-      "name": "feTurbulence",
       "params": {
         "type": {
           "value": "fractalNoise"
@@ -29,7 +28,6 @@
     },
     {
       "id": "turbulence1",
-      "name": "feTurbulence",
       "params": {
         "type": {
           "value": "fractalNoise"
@@ -54,7 +52,6 @@
     },
     {
       "id": "merge",
-      "name": "feMerge",
       "params": {
         "result": {
           "value": "merge"
@@ -65,7 +62,6 @@
         {
           "id": "mergeNode",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "turbulence1"
@@ -78,7 +74,6 @@
         {
           "id": "mergeNode1",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "turbulence"
@@ -92,7 +87,6 @@
     },
     {
       "id": "colormatrix",
-      "name": "feColorMatrix",
       "params": {
         "type": {
           "value": "saturate"
@@ -114,7 +108,6 @@
     },
     {
       "id": "colormatrix1",
-      "name": "feColorMatrix",
       "params": {
         "type": {
           "value": "matrix"
@@ -137,7 +130,6 @@
     },
     {
       "id": "displacementMap",
-      "name": "feDisplacementMap",
       "params": {
         "in": {
           "value": "colormatrix1"
@@ -162,7 +154,6 @@
     },
     {
       "id": "composite1",
-      "name": "feComposite",
       "params": {
         "in": {
           "value": "displacementMap"

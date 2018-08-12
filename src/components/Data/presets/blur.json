@@ -4,7 +4,6 @@
   "primitives": [
     {
       "id": "blur",
-      "name": "feGaussianBlur",
       "groupName": "blur",
       "params": {
         "stdDeviation":{

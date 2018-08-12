@@ -4,33 +4,18 @@
   "primitives": [
     {
       "id": "colormatrix",
-      "name": "feColorMatrix",
       "params": {
         "type": {
-          "value": "saturate",
-          "type": "select"
+          "value": "saturate"
         },
         "values": {
           "value": "0",
-          "type": "number",
           "variants": {
-            "key": "type",
-            "values": {
-              "saturate": "0",
-              "hueRotate": 180,
-              "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 500 -20",
-              "luminanceToAlpha": "disabled"
-            },
-            "types": {
-              "saturate": "number",
-              "hueRotate": "number",
-              "matrix": "textarea"
-            }
+            "key": "type"
           }
         },
         "in": {
-          "value": "SourceGraphic",
-          "type": "select"
+          "value": "SourceGraphic"
         },
         "result": {
           "value": "colormatrix"

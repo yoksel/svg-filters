@@ -4,7 +4,6 @@
   "primitives": [
     {
       "id": "turbulence",
-      "name": "feTurbulence",
       "params": {
         "type": {
           "value": "turbulence"
@@ -29,7 +28,6 @@
     },
     {
       "id": "colormatrix",
-      "name": "feColorMatrix",
       "params": {
         "type": {
           "value": "saturate"
@@ -51,7 +49,6 @@
     },
     {
       "id": "flood",
-      "name": "feFlood",
       "params": {
         "floodColor": {
           "value": "#ffeb00"
@@ -67,7 +64,6 @@
     },
     {
       "id": "composite",
-      "name": "feComposite",
       "params": {
         "in": {
           "value": "flood"
@@ -86,7 +82,6 @@
     },
     {
       "id": "composite1",
-      "name": "feComposite",
       "params": {
         "in": {
           "value": "colormatrix"
@@ -105,7 +100,6 @@
     },
     {
       "id": "merge",
-      "name": "feMerge",
       "params": {
         "result": {
           "value": "merge"
@@ -116,7 +110,6 @@
         {
           "id": "mergeNode",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite"
@@ -129,7 +122,6 @@
         {
           "id": "mergeNode1",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite1"
@@ -142,7 +134,6 @@
         {
           "id": "mergeNode2",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite1"
@@ -155,7 +146,6 @@
         {
           "id": "mergeNode3",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite1"
@@ -168,7 +158,6 @@
         {
           "id": "mergeNode4",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite1"
@@ -181,7 +170,6 @@
         {
           "id": "mergeNode5",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite1"
@@ -194,7 +182,6 @@
         {
           "id": "mergeNode6",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite1"

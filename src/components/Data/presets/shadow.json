@@ -4,7 +4,6 @@
   "primitives": [
     {
       "id": "offset",
-      "name": "feOffset",
       "params": {
         "dx": {
           "value": 10
@@ -23,7 +22,6 @@
     },
     {
       "id": "blur",
-      "name": "feGaussianBlur",
       "params": {
         "stdDeviation": {
           "value": "5 5"
@@ -39,7 +37,6 @@
     },
     {
       "id": "flood",
-      "name": "feFlood",
       "params": {
         "floodColor": {
           "value": "#0f4b70"
@@ -55,7 +52,6 @@
     },
     {
       "id": "composite",
-      "name": "feComposite",
       "params": {
         "in": {
           "value": "flood"
@@ -74,7 +70,6 @@
     },
     {
       "id": "merge",
-      "name": "feMerge",
       "params": {
         "result": {
           "value": "merge"
@@ -85,7 +80,6 @@
         {
           "id": "mergeNode",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "composite"
@@ -98,7 +92,6 @@
         {
           "id": "mergeNode1",
           "groupName": "mergeNode",
-          "name": "feMergeNode",
           "params": {
             "in": {
               "value": "SourceGraphic"
