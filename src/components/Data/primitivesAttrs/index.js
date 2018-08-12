@@ -5,6 +5,7 @@ import composite from './composite.json';
 import displacementMap from './displacementMap.json';
 import flood from './flood.json';
 import image from './image.json';
+import merge from './merge.json';
 import mergeNode from './mergeNode.json';
 import morphology from './morphology.json';
 import offset from './offset.json';
@@ -30,6 +31,7 @@ export default {
   'displacementMap': displacementMap,
   'flood': flood,
   'image': image,
+  'merge': merge,
   'mergeNode': mergeNode,
   'morphology': morphology,
   'offset': offset,
