@@ -6,7 +6,7 @@ import InputText from '../../containers/InputText';
 
 class PrimitivePanelInputText extends Component {
   render() {
-    const {primitive, paramKey} = this.props;
+    const {primitive, paramKey, parentId} = this.props;
 
     const param = primitive.params[paramKey];
     const {value} = param;
@@ -43,6 +43,7 @@ class PrimitivePanelInputText extends Component {
       min={min}
       max={max}
       type={type}
+      parentId={parentId}
     />;
 
     if (double) {
@@ -56,6 +57,7 @@ class PrimitivePanelInputText extends Component {
         min={min}
         max={max}
         type={type}
+        parentId={parentId}
       />;
     }
 
