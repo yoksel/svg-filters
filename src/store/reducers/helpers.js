@@ -86,45 +86,45 @@ export const getLastResult = (state) => {
   return result;
 };
 
-export const updateUnicalProps = (state, action, actionType) => {
+export const updateUnicalProps = (state, primitive, actionType) => {
   if (!getId) {
     getId = idKeeper(state);
   }
 
-  const newAction = deepClone(action);
-  let newIdAdd = getId(newAction.groupName);
+  const newPrimitive = deepClone(primitive);
+  let newIdAdd = getId(newPrimitive.groupName);
   let newIn = getLastResult(state);
 
-  newAction.id = newIdAdd;
+  newPrimitive.id = newIdAdd;
 
-  if (newAction.params) {
-    if (newAction.params.result) {
-      newAction.params.result.value = newIdAdd;
+  if (newPrimitive.params) {
+    if (newPrimitive.params.result) {
+      newPrimitive.params.result.value = newIdAdd;
     }
 
     if (actionType !== 'DUPLICATE_PRIMITIVE') {
-      if (newAction.params.in2) {
+      if (newPrimitive.params.in2) {
         // In + In2
-        newAction.params.in.value = 'SourceGraphic';
-        newAction.params.in2.value = newIn;
+        newPrimitive.params.in.value = 'SourceGraphic';
+        newPrimitive.params.in2.value = newIn;
 
-        if (newAction.groupName === 'composite') {
-          newAction.params.in.value = newIn;
-          newAction.params.in2.value = 'SourceAlpha';
+        if (newPrimitive.groupName === 'composite') {
+          newPrimitive.params.in.value = newIn;
+          newPrimitive.params.in2.value = 'SourceAlpha';
         }
 
-      } else if (newAction.params.in) {
+      } else if (newPrimitive.params.in) {
         // In only
-        newAction.params.in.value = newIn;
+        newPrimitive.params.in.value = newIn;
       }
     }
   }
 
-  if (newAction.children) {
-    newAction.children = newAction.children.map(item => updateUnicalProps(state, item));
+  if (newPrimitive.children) {
+    newPrimitive.children = newPrimitive.children.map(item => updateUnicalProps(state, item));
   }
 
-  return newAction;
+  return newPrimitive;
 };
 
 export const swap = (items, positions) => {
