@@ -1,15 +1,15 @@
 import blur from './blur';
 import blend from './blend';
-import offset from './offset';
 import colormatrix from './colormatrix';
-import flood from './flood';
-import morphology from './morphology';
-import displacementMap from './displacementMap';
-import turbulence from './turbulence';
 import composite from './composite';
-import merge from './merge';
+import displacementMap from './displacementMap';
+import flood from './flood';
 import image from './image';
+import merge from './merge';
+import morphology from './morphology';
+import offset from './offset';
 import tile from './tile';
+import turbulence from './turbulence';
 
 export default [
   blur,
