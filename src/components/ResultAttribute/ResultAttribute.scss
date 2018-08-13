@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .ResultAttribute {
   white-space: nowrap;
 }
@@ -5,5 +7,5 @@
 .ResultAttribute__name {
   padding: 0 3px;
   border-radius: 3px;
-  background: hsl(60, 100%, 70%);
+  background: $hlt-gold;
 }
