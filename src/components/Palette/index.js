@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 import './Palette.css';
 
@@ -8,11 +7,11 @@ class Palette extends Component {
     return (
       <div className="Palette">
         <ul>
-          <li className="hlgt hlgt--red">hlgt--red</li>
-          <li className="hlgt hlgt--orange">hlgt--orange</li>
-          <li className="hlgt hlgt--gold">hlgt--gold</li>
-          <li className="hlgt hlgt--green">hlgt--green</li>
-          <li className="hlgt hlgt--blue">hlgt--blue</li>
+          <li className="hlt hlt--red">hlt--red</li>
+          <li className="hlt hlt--orange">hlt--orange</li>
+          <li className="hlt hlt--gold">hlt--gold</li>
+          <li className="hlt hlt--green">hlt--green</li>
+          <li className="hlt hlt--blue">hlgt--blue</li>
         </ul>
       </div>
     );
@@ -20,7 +19,3 @@ class Palette extends Component {
 }
 
 export default Palette;
-
-Palette.propTypes = {
-
-};
