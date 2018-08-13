@@ -37,3 +37,25 @@
     background: $hlt-blue;
   }
 }
+
+.color-text {
+  &--red {
+    color: $color-text-red;
+  }
+
+  &--orange {
+    color: $color-text-orange;
+  }
+
+  &--gold {
+    color: $color-text-gold;
+  }
+
+  &--green {
+    color: $color-text-green;
+  }
+
+  &--blue {
+    color: $color-text-blue;
+  }
+}
