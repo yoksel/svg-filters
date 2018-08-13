@@ -30,8 +30,8 @@ const Playground = ({filterId}) => {
           </defs>
 
           <image
-            x="0" y="20"
-            width="100%" height="200"
+            x="5%" y="20"
+            width="90%" height="200"
             preserveAspectRatio="xMidYMid meet"
             xlinkHref="http://placekitten.com/400/200"
             filter={filterUrl}
