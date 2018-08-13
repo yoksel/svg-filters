@@ -25,11 +25,9 @@
 }
 
 .PrimitivePanel__content {
-  &--no-children {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .PrimitivePanel--has-children {
@@ -41,11 +39,7 @@
 .PrimitivePanel__tag {
   margin: 2px 0;
   margin-right: 8px;
-
-  .PrimitivePanel--has-children & {
-    width: 100%;
-    margin-right: 0;
-  }
+  font-weight: bold;
 }
 
 .PrimitivePanel__label {

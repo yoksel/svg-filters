@@ -19,7 +19,8 @@ class PrimitivePanel extends Component {
     } = this.props;
 
     const primitiveDisabled = primitive.disabled;
-    const groupData = primitivesAttrs[primitive.groupName];
+    const groupName = primitive.groupName;
+    const groupData = primitivesAttrs[groupName];
     const primitiveName = groupData.name;
     const fieldsetProps = {};
 
@@ -57,59 +58,30 @@ class PrimitivePanel extends Component {
       );
     });
 
-    if (!primitive.children) {
-      return (
-
-        <div className="PrimitivePanel">
-          <fieldset
-            className="PrimitivePanel__fieldset"
-            {...fieldsetProps}
-          >
-            <div
-              className="
-                PrimitivePanel__content
-                PrimitivePanel__content--no-children
-              ">
-              <div className="PrimitivePanel__tag">
-                &lt;{primitiveName}
-              </div>
-              {params}&#8203;/>
-
-              {primitive.children}
-            </div>
-          </fieldset>
-
-          <PrimitivePanelControls
-            id={primitive.id}
-            parentId={parentId}
-            primitiveDisabled={primitiveDisabled}
-          />
-        </div>
-      );
-    }
+    const hasChildren = primitive.children ? 'has-children' : 'no-children';
+    const PrimitivePanelClass = `PrimitivePanel PrimitivePanel--${hasChildren}`
+    const PrimitivePanelContentClass = `PrimitivePanel__content PrimitivePanel__content--${hasChildren}`
 
     return (
-      <div className="PrimitivePanel PrimitivePanel--has-children">
+
+      <div className={PrimitivePanelClass}>
         <fieldset
           className="PrimitivePanel__fieldset"
           {...fieldsetProps}
         >
-          <div
-            className="
-              PrimitivePanel__content
-              PrimitivePanel__content--has-children
-            ">
+          <div className={PrimitivePanelContentClass}>
             <div className="PrimitivePanel__tag">
-              &lt;{primitiveName}{params}&#8203;>
+              {primitiveName}
             </div>
+            {params}
+
             {primitive.children}
-            <div className="PrimitivePanel__tag">
-              &lt;/{primitiveName}&#8203;>
-            </div>
           </div>
         </fieldset>
+
         <PrimitivePanelControls
           id={primitive.id}
+          parentId={parentId}
           primitiveDisabled={primitiveDisabled}
         />
       </div>
