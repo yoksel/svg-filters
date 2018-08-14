@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
 import App from '../../containers/App';
-import Code from '../../containers/Code';
 import configureStore from './configureStore';
 
 const store = configureStore();

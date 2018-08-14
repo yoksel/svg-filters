@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.section === 'presets') {
+    if (this.props.section === 'presets') {
       if (prevProps.id !== this.props.id) {
         this.setPreset();
       }
