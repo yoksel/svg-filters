@@ -8,14 +8,14 @@ import AppTemplate from '../../components/App';
 
 class App extends Component {
   setPreset = () => {
-    const {section, id} = this.props.match.params;
+    const {presetId} = this.props;
 
-    if (!id || section !== 'presets') {
+    if (!presetId) {
       return null;
     }
 
     const presets = this.props.presetControls;
-    const currentPreset = presets.filter(item => item.id === id)[0];
+    const currentPreset = presets.filter(item => item.id === presetId)[0];
 
     if (currentPreset) {
       this.props.addPreset(currentPreset);
@@ -27,12 +27,9 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.section === 'presets') {
-      if (prevProps.id !== this.props.id) {
-        this.setPreset();
-      }
+    if (prevProps.presetId !== this.props.presetId) {
+      this.setPreset();
     }
-
   }
 
   render() {
@@ -43,10 +40,15 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, {match}) => {
+  const {section, id} = match.params;
+  let presetId;
+  if (section === 'presets' && id) {
+    presetId = id;
+  }
   return {
     presetControls: state.presetControls,
-    id: match.params.id,
-    section: match.params.section
+    presetId: presetId,
+    section: section
   };
 };
 
