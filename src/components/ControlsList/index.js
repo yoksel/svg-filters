@@ -6,7 +6,7 @@ import {primitivesAttrs} from '../Data';
 
 import './ControlsList.css';
 
-const ControlsList = ({items, control, onAddPrimitive}) => {
+const ControlsList = ({items, control, addPrimitive}) => {
   return (
     <div className="ControlsList">
       {items.map((item, index) => {
@@ -42,7 +42,7 @@ const ControlsList = ({items, control, onAddPrimitive}) => {
                 offsetY: event.nativeEvent.offsetY
               };
 
-              onAddPrimitive({
+              addPrimitive({
                 item,
                 nativeEvent
               });

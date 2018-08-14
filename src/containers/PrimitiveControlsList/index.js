@@ -12,10 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchProps = (dispatch) => {
   return {
-    onClick: (primitive) => {
-      dispatch(addPrimitive(primitive));
-    },
-    onAddPrimitive: ({item, nativeEvent}) => {
+    addPrimitive: ({item, nativeEvent}) => {
       dispatch(addPrimitive({
         item,
         nativeEvent
