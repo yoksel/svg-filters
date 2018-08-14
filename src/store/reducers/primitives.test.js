@@ -61,6 +61,71 @@ describe('reducers', () => {
   });
 });
 
+// DISCOVERY_PRIMITIVE
+// ------------------------------
+
+describe('reducers', () => {
+  it('DISCOVERY_PRIMITIVE: should add primitive to state and replace existed', () => {
+    const stateBefore = {
+      list: [
+        {
+          id: 'blur',
+          groupName: 'blur',
+          children: undefined,
+          disabled: false,
+          params: {
+            'stdDeviation': {
+              'value': 4
+            },
+            result: {
+              value: 'blur'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      type: 'DISCOVERY_PRIMITIVE',
+      item: {
+        id: 'blend',
+        groupName: 'blend',
+        params: {
+          'mode': {
+            'value': 'multiply'
+          },
+          result: {
+            value: 'blend'
+          }
+        }
+      }
+    };
+    const stateAfter = {
+      list: [
+        {
+          id: 'blend',
+          groupName: 'blend',
+          children: undefined,
+          disabled: false,
+          params: {
+            'mode': {
+              'value': 'multiply'
+            },
+            result: {
+              value: 'blend'
+            }
+          }
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
+
 // DUPLICATE_PRIMITIVE
 // ------------------------------
 

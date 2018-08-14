@@ -14,11 +14,20 @@ const primitive = (state, action) => {
 
     return {
       id: newAction.id,
-      name: newAction.name,
       params: newAction.params,
       groupName: newAction.groupName,
-      paramsValues: newAction.paramsValues,
       children: newAction.children,
+      disabled: false
+    };
+
+  case 'DISCOVERY_PRIMITIVE':
+    const newPrimitiveDiscovery = updateUnicalProps(state, action);
+
+    return {
+      id: newPrimitiveDiscovery.id,
+      params: newPrimitiveDiscovery.params,
+      groupName: newPrimitiveDiscovery.groupName,
+      children: newPrimitiveDiscovery.children,
       disabled: false
     };
 
@@ -63,6 +72,20 @@ export const primitives = (state = initialState, action) => {
       list: [
         ...state.list,
         newPrimitiveAdded
+      ]
+    };
+
+  case 'DISCOVERY_PRIMITIVE':
+    const actionToNewPrimitiveDiscovered = {
+      type: action.type,
+      ...action.item
+    };
+    const newPrimitiveDiscovered = primitive(state.list, actionToNewPrimitiveDiscovered);
+
+    return {
+      ...state,
+      list: [
+        newPrimitiveDiscovered
       ]
     };
 

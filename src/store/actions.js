@@ -24,6 +24,7 @@ export const createAction = (type, propNames = []) => {
 };
 
 const ADD_PRIMITIVE = 'ADD_PRIMITIVE';
+const DISCOVERY_PRIMITIVE = 'DISCOVERY_PRIMITIVE';
 const DELETE_PRIMITIVE = 'DELETE_PRIMITIVE';
 const PURGE_PRIMITIVES = 'PURGE_PRIMITIVES';
 const DUPLICATE_PRIMITIVE = 'DUPLICATE_PRIMITIVE';
@@ -42,6 +43,11 @@ const SWITCH_OFF_LAST_ADDED = 'SWITCH_OFF_LAST_ADDED';
 export const addPrimitive = createAction(
   ADD_PRIMITIVE,
   ['item', 'nativeEvent']
+);
+
+export const discoveryPrimitive = createAction(
+  DISCOVERY_PRIMITIVE,
+  ['item']
 );
 
 export const deletePrimitive = createAction(
