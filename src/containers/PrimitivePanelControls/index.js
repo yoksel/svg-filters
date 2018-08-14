@@ -4,9 +4,6 @@ import {deletePrimitive, duplicatePrimitive, togglePrimitive, updateIns} from '.
 
 import PrimitivePanelControlsTemplate from '../../components/PrimitivePanelControls';
 
-const mapStateToProps = (props) => {
-  return props;
-};
 const mapDispatchProps = (
   dispatch,
   props
@@ -38,7 +35,7 @@ const mapDispatchProps = (
 };
 
 const PrimitivePanelControls = connect(
-  mapStateToProps,
+  null,
   mapDispatchProps
 )(PrimitivePanelControlsTemplate);
 
