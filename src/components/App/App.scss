@@ -4,7 +4,7 @@
 }
 
 .App__container {
-  padding: 1rem;
+  padding: 2.5rem 1rem 1rem;
   box-sizing: border-box;
   flex-basis: 20%;
   border-left: 1px solid #DDD;
@@ -20,7 +20,7 @@
 
   &--playground {
     flex-grow: 1;
-    flex-basis: 40%;
+    flex-basis: 35%;
   }
 }
 
