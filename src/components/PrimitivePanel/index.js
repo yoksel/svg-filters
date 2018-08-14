@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router';
 
 import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
 
@@ -15,9 +16,11 @@ class PrimitivePanel extends Component {
     const {
       primitive,
       parentId,
-      resultsList
+      resultsList,
+      match
     } = this.props;
 
+    const {section} = match.params;
     const primitiveDisabled = primitive.disabled;
     const groupName = primitive.groupName;
     const groupData = primitivesAttrs[groupName];
@@ -54,8 +57,8 @@ class PrimitivePanel extends Component {
         >{key}=<PrimitivePanelInput
             primitive={primitive}
             paramKey={key}
-            resultsList={resultsList}
             parentId={parentId}
+            resultsList={resultsList}
           />
         </label>
       );
@@ -77,17 +80,18 @@ class PrimitivePanel extends Component {
           </div>
         </fieldset>
 
-        <PrimitivePanelControls
+        {section !== 'discovery' && <PrimitivePanelControls
           id={primitive.id}
           parentId={parentId}
+          groupName={groupName}
           primitiveDisabled={primitiveDisabled}
-        />
+        />}
       </div>
     );
   }
 }
 
-export default PrimitivePanel;
+export default withRouter(PrimitivePanel);
 
 PrimitivePanel.propTypes = {
   primitive: PropTypes.object,
