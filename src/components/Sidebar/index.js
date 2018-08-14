@@ -1,26 +1,17 @@
 import React from 'react';
+import {withRouter} from 'react-router';
 
 import PrimitiveControlsList from '../../containers/PrimitiveControlsList';
 import PresetsList from '../../containers/PresetsList';
-import Tabs from '../../containers/Tabs';
 
 const Sidebar = ({match}) => {
-  return (
-    <Tabs
-      items={[
-        {
-          id: 'primitives',
-          name: 'Primitives',
-          content: PrimitiveControlsList
-        },
-        {
-          id: 'presets',
-          name: 'Presets',
-          content: PresetsList
-        }
-      ]}
-    />
-  );
+  const {section} = match.params;
+
+  if (section === 'presets') {
+    return <PresetsList/>;
+  }
+
+  return <PrimitiveControlsList/>;
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);
