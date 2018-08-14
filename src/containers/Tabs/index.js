@@ -9,13 +9,13 @@ class Tabs extends Component {
   };
 
   setActive = () => {
-    let {sidebarList} = this.props.match.params;
-    if (!sidebarList) {
-      sidebarList = 'primitives';
+    let {section} = this.props.match.params;
+    if (!section) {
+      section = 'primitives';
     }
 
     this.setState({
-      active: sidebarList
+      active: section
     });
   };
 
@@ -24,7 +24,7 @@ class Tabs extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.sidebarList !== this.props.match.params.sidebarList) {
+    if (prevProps.match.params.section !== this.props.match.params.section) {
       this.setActive();
     }
   }
