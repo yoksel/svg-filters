@@ -1,12 +1,12 @@
 @import "../../variables.scss";
 
 .DragDropItem {
-  margin-bottom: 12px;
+  margin-top: 10px;
   pointer-events: all;
   user-select: none;
 
-  .Contsructor__item:last-child > & {
-    margin-bottom: 0;
+  .Contsructor__item:first-of-type > & {
+    margin-top: 0;
   }
 }
 
