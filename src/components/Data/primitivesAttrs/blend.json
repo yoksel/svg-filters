@@ -6,6 +6,9 @@
     },
     "in": {
       "type": "select"
+    },
+    "in2": {
+      "type": "select"
     }
   },
   "mode": [

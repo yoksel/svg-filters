@@ -8,6 +8,9 @@
     "in": {
       "value": "SourceGraphic"
     },
+    "in2": {
+      "value": "SourceGraphic"
+    },
     "result": {
       "value": "blend"
     }
