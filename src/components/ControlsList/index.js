@@ -1,12 +1,15 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router';
 
 import {primitivesAttrs} from '../Data';
 
 import './ControlsList.css';
 
-const ControlsList = ({items, control, addPrimitive}) => {
+const ControlsList = ({items, control, addPrimitive, match}) => {
+  const {section} = match.params;
+
   return (
     <div className="ControlsList">
       {items.map((item, index) => {
@@ -18,7 +21,7 @@ const ControlsList = ({items, control, addPrimitive}) => {
         }
 
         if (control === 'NavLink') {
-          const url = `${process.env.PUBLIC_URL}/presets/${item.id}`;
+          const url = `${process.env.PUBLIC_URL}/${section}/${item.id}`;
 
           return (
             <NavLink
@@ -56,7 +59,7 @@ const ControlsList = ({items, control, addPrimitive}) => {
   );
 };
 
-export default ControlsList;
+export default withRouter(ControlsList);
 
 ControlsList.propTypes = {
   items: PropTypes.array
