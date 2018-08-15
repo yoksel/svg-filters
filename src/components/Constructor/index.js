@@ -14,10 +14,6 @@ const getResultsList = (primitives, index) => {
 };
 
 const Contsructor = ({primitives, dragDrop, purgePrimitives}) => {
-  let items = {
-    main: []
-  };
-
   return (
     <div className="Contsructor">
       &lt;filter id="#filter">
@@ -31,7 +27,6 @@ const Contsructor = ({primitives, dragDrop, purgePrimitives}) => {
 
           if (primitive.children && primitive.children.length > 0) {
             primitive = deepClone(primitive);
-            items[primitive.id] = [];
 
             primitive.children = primitive.children.map((item, childIndex) => {
               return (
@@ -39,7 +34,6 @@ const Contsructor = ({primitives, dragDrop, purgePrimitives}) => {
                   key={item.id}
                   id={item.id}
                   className="Contsructor__item"
-                  ref={node => items[primitive.id].push(node)}
                 >
                   <DragDropItem
                     id={item.id}
@@ -66,7 +60,6 @@ const Contsructor = ({primitives, dragDrop, purgePrimitives}) => {
               key={primitive.id}
               id={primitive.id}
               className="Contsructor__item"
-              ref={node => items.main.push(node)}
             >
               <DragDropItem
                 id={primitive.id}
