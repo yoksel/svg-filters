@@ -7,7 +7,11 @@ const Primitive = ({primitive}) => {
   const groupData = primitivesAttrs[primitive.groupName];
   const paramsKeys = Object.keys(primitive.params);
   const params = paramsKeys.reduce((prev, param) => {
-    let value = primitive.params[param].value;
+    let {value, disabled} = primitive.params[param];
+
+    if (disabled) {
+      return prev;
+    }
 
     prev[param] = value;
 

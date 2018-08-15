@@ -15,7 +15,11 @@ const getPrimitiveCode = (primitive, level = 1) => {
   const params = paramsKeys.reduce((prev, paramName) => {
     const param = primitive.params[paramName];
     const inputData = groupData.inputsData && groupData.inputsData[paramName];
-    let value = param.value;
+    let {value, disabled} = param;
+
+    if (disabled) {
+      return prev;
+    }
 
     if (inputData && inputData.name) {
       paramName = inputData.name;
