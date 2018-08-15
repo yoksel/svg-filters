@@ -19,7 +19,7 @@
       "double": true
     },
     "numOctaves": {
-      "min": 0,
+      "min": 1,
       "type": "number"
     },
     "seed": {
