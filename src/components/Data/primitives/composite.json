@@ -2,6 +2,22 @@
   "id": "composite",
   "groupName": "composite",
   "params": {
+    "k1": {
+      "value": 0,
+      "disabled": true
+    },
+    "k2": {
+      "value": 8,
+      "disabled": true
+    },
+    "k3": {
+      "value": -0.5,
+      "disabled": true
+    },
+    "k4": {
+      "value": -0.5,
+      "disabled": true
+    },
     "in": {
       "value": "SourceGraphic"
     },
