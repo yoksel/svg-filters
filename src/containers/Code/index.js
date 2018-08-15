@@ -3,7 +3,8 @@ import CodeTemplate from '../../components/Code';
 
 const mapStateToProps = (state) => {
   return {
-    primitives: state.primitives.list
+    primitives: state.primitives.list,
+    filterData: state.primitives.filter
   };
 };
 

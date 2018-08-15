@@ -5,8 +5,8 @@ import deepClone from '../../helpers/deepClone';
 
 import Primitive from '../Primitive';
 
-const Filter = ({primitives}) => (
-  <filter id="filter">
+const Filter = ({primitives, filterData}) => (
+  <filter id="filter" {...filterData}>
     {primitives.map(primitive => {
 
       if (primitive.disabled) {

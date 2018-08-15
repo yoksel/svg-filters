@@ -53,7 +53,15 @@ const primitive = (state, action) => {
 
 const initialState = {
   list: [],
-  swapSnapshot: ''
+  swapSnapshot: '',
+  filter: {
+    x: '-10%',
+    y: '-10%',
+    width: '120%',
+    height: '120%',
+    filterUnits: 'userSpaceOnUse',
+    primitiveUnits: 'userSpaceOnUse'
+  }
 };
 
 export const primitives = (state = initialState, action) => {

@@ -58,8 +58,22 @@ const getAllPrimitivesCode = (primitives) => {
     });
 };
 
+const getFilterAttrs = (filterData) => {
+  const attrsList = Object.keys(filterData).reduce((prev, attrName) => {
+    const value = filterData[attrName];
+    prev.push(`${attrName}="${value}"`);
+
+    return prev;
+  }, []);
+
+  return attrsList.join(' ');
+};
+
 class Code extends Component {
   render() {
+    const filterData = this.props.filterData;
+    const filterAttrs = getFilterAttrs(filterData);
+
     const {primitives} = this.props;
     const primitivesCode = getAllPrimitivesCode(primitives).join('\n');
 
@@ -71,7 +85,7 @@ class Code extends Component {
     }
 
     const value = primitivesCode ?
-      `<filter id="filter">\n${primitivesCode}\n</filter>` :
+      `<filter id="filter" ${filterAttrs}>\n${primitivesCode}\n</filter>` :
       '';
 
     return (
