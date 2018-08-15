@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
 import ControlsListTemplate from '../../components/ControlsList';
 
@@ -14,4 +15,4 @@ const PresetsList = connect(
   null
 )(ControlsListTemplate);
 
-export default PresetsList;
+export default withRouter(PresetsList);
