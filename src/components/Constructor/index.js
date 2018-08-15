@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import deepClone from '../../helpers/deepClone';
 
-import PrimitivePanel from '../../components/PrimitivePanel';
 import DragDropItem from '../../containers/DragDropItem';
+import PrimitivePanel from '../PrimitivePanel';
+import ContsructorPlaceholder from '../ContsructorPlaceholder';
 
 import './Constructor.css';
 
@@ -13,7 +14,7 @@ const getResultsList = (primitives, index) => {
     .map(item => item.id);
 };
 
-const Contsructor = ({primitives, dragDrop, purgePrimitives}) => {
+const Contsructor = ({primitives, dragDrop, purgePrimitives, section}) => {
   return (
     <div className="Contsructor">
       &lt;filter id="#filter">
@@ -23,6 +24,8 @@ const Contsructor = ({primitives, dragDrop, purgePrimitives}) => {
       >Clear</button>
       <div
         className="Contsructor__container">
+        {!primitives.length && <ContsructorPlaceholder section={section}/>}
+
         {primitives.map((primitive, index) => {
 
           if (primitive.children && primitive.children.length > 0) {

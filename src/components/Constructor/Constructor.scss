@@ -11,9 +11,12 @@
 }
 
 .Contsructor__container {
-  flex-basis: 100%;
   min-height: 80px;
   padding: 12px;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 2px dashed;
   border-radius: $border-radius;
 }
