@@ -2,7 +2,11 @@
   "name": "feColorMatrix",
   "inputsData": {
     "type": {
-      "type": "select"
+      "type": "select",
+      "dependencies": {
+        "value": "luminanceToAlpha",
+        "disable": ["values"]
+      }
     },
     "values": {
       "type": "number",
@@ -11,8 +15,7 @@
         "values": {
           "saturate": 5,
           "hueRotate": 180,
-          "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 500 -20",
-          "luminanceToAlpha": "disabled"
+          "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 500 -20"
         },
         "types": {
           "saturate": "number",
