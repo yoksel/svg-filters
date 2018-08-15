@@ -9,10 +9,44 @@ const mapDispatchProps = (
 ) => {
   return {
     onChange: (value) => {
+      const {dependencies, tiedValues, tiedTypes} = props;
+
+      // Change initial prop value
       dispatch(changePrimitiveProp(props, value));
 
-      if (props.tiedValues) {
-        const newValue = props.tiedValues[value];
+      // Enable/disable dependencies
+      if (dependencies) {
+        let isDepsDisabled = value !== dependencies.value;
+        const enable = dependencies.enable || [];
+        const disable = dependencies.disable || [];
+
+        if (dependencies.disable) {
+          isDepsDisabled = !isDepsDisabled;
+        }
+
+        const listToHandle = [
+          ...enable,
+          ...disable
+        ];
+
+        listToHandle.map(depsItem => {
+          const depsItemProps = {
+            ...props,
+            param: depsItem
+          };
+
+          dispatch({
+            type: 'TOGGLE_PROP',
+            ...depsItemProps,
+            disabled: isDepsDisabled
+          });
+        });
+      }
+
+      // Change tied values
+      if (tiedValues) {
+        const newValue = tiedValues[value];
+        const disabled = newValue === 'disabled';
 
         if (!newValue) {
           return null;
@@ -25,25 +59,21 @@ const mapDispatchProps = (
         };
 
         // Disable/enable values
-        if (newValue === 'disabled') {
-          dispatch({
-            type: 'TOGGLE_PROP',
-            ...valueProps,
-            disabled: true
-          });
-        } else {
-          dispatch({
-            type: 'TOGGLE_PROP',
-            ...valueProps,
-            disabled: false
-          });
+        dispatch({
+          type: 'TOGGLE_PROP',
+          ...valueProps,
+          disabled
+        });
 
-          dispatch(changePrimitiveProp(valueProps, props.tiedValues[value]));
+        if (newValue !== 'disabled') {
+          // Change prop value
+          dispatch(changePrimitiveProp(valueProps, tiedValues[value]));
         }
       }
 
-      if (props.tiedTypes) {
-        const propType = props.tiedTypes[value];
+      // Change tied types
+      if (tiedTypes) {
+        const propType = tiedTypes[value];
 
         if (!propType) {
           return null;
