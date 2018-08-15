@@ -2,33 +2,34 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
-import {addPreset} from '../../store/actions';
+import {addPreset, discoveryPrimitive} from '../../store/actions';
 
 import AppTemplate from '../../components/App';
 
 class App extends Component {
-  setPreset = () => {
-    const {presetId} = this.props;
+  itemFromPath = () => {
+    const {id, section, handlerName} = this.props;
+    const currentSet = this.props[section];
+    const handler = this.props[handlerName];
 
-    if (!presetId) {
+    if (!id) {
       return null;
     }
 
-    const presets = this.props.presetControls;
-    const currentPreset = presets.filter(item => item.id === presetId)[0];
+    const currentItem = currentSet.filter(item => item.id === id)[0];
 
-    if (currentPreset) {
-      this.props.addPreset(currentPreset);
+    if (currentItem) {
+      handler(currentItem);
     }
   };
 
   componentDidMount() {
-    this.setPreset();
+    this.itemFromPath();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.presetId !== this.props.presetId) {
-      this.setPreset();
+    if (prevProps.id !== this.props.id) {
+      this.itemFromPath();
     }
   }
 
@@ -40,15 +41,22 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, {match}) => {
+  const {presetControls, primitiveControls} = state;
   const {section, id} = match.params;
-  let presetId;
+  let handlerName;
+
   if (section === 'presets' && id) {
-    presetId = id;
+    handlerName = 'addPreset';
+  } else if (section === 'docs' && id) {
+    handlerName = 'discoveryPrimitive';
   }
+
   return {
-    presetControls: state.presetControls,
-    presetId: presetId,
-    section: section
+    id,
+    section,
+    handlerName,
+    docs: primitiveControls,
+    presets: presetControls,
   };
 };
 
@@ -56,6 +64,9 @@ const mapDispatchProps = (dispatch, props) => {
   return {
     addPreset: (preset) => {
       dispatch(addPreset(preset));
+    },
+    discoveryPrimitive: (item) => {
+      dispatch(discoveryPrimitive({item}));
     }
   };
 };
