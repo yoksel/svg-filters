@@ -332,12 +332,13 @@ export const primitives = (state = initialState, action) => {
 
     return {
       ...state,
-      list: addPresetList
+      presets: addPresetList
     };
 
   case 'SWAP_PRIMITIVES':
     const parentId = action.parentId;
-    let swapPrimitivesList = Array.from(state.list);
+    const swapSection = action.section;
+    let swapPrimitivesList = Array.from(state[swapSection]);
 
     if (state.swapSnapshot && state.swapSnapshot === action.swapSnapshot) {
       return state;
@@ -358,16 +359,20 @@ export const primitives = (state = initialState, action) => {
 
     swapPrimitivesList = swapPrimitivesList.filter(item => item);
 
-    return {
-      list: swapPrimitivesList,
+    const result = {
+      ...state,
       swapSnapshot: action.swapSnapshot
     };
 
+    result[swapSection] = swapPrimitivesList;
+
+    return result;
+
   case 'SWITCH_OFF_LAST_ADDED':
     let switchOffLastList = [];
-    const {section} = action;
+    const switchOffLastSection = action.section;
 
-    switchOffLastList = state[section].map(item => {
+    switchOffLastList = state[switchOffLastSection].map(item => {
       if (item.id === action.id) {
         item = deepClone(item);
         item.justAdded = false;
@@ -378,7 +383,7 @@ export const primitives = (state = initialState, action) => {
     });
 
     const switchOffLastResult = {...state};
-    switchOffLastResult[section] = switchOffLastList;
+    switchOffLastResult[switchOffLastSection] = switchOffLastList;
 
     return switchOffLastResult;
 

@@ -99,10 +99,10 @@ export const stopDrag = createAction(
 
 export const switchOffLastAdded = createAction(
   SWITCH_OFF_LAST_ADDED,
-  ['id']
+  ['id', 'section']
 );
 
 export const swapPrimitives = createAction(
   SWAP_PRIMITIVES,
-  ['parentId', 'indexes', 'swapSnapshot']
+  ['parentId', 'indexes', 'swapSnapshot', 'section']
 );

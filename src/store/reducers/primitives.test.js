@@ -838,3 +838,61 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+describe('reducers', () => {
+  it('SWAP_PRIMITIVES: should swap primitives', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      indexes: {from: 0, to: 1},
+      section: 'playground',
+      swapSnapshot: 'blur-0,blend-1',
+      type: 'SWAP_PRIMITIVES'
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        },
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          }
+        }
+      ],
+      'swapSnapshot': 'blur-0,blend-1'
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
