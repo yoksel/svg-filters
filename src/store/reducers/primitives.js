@@ -67,43 +67,43 @@ const initialState = {
 export const primitives = (state = initialState, action) => {
   switch (action.type) {
   case 'ADD_PRIMITIVE':
-    const actionToNewPrimitive = {
+    const addPrimitiveData = {
       type: action.type,
       ...action.item
     };
-    const newPrimitiveAdded = primitive(state.list, actionToNewPrimitive);
-    newPrimitiveAdded.justAdded = true;
-    newPrimitiveAdded.nativeEvent = action.nativeEvent;
+    const addPrimitiveNew = primitive(state.list, addPrimitiveData);
+    addPrimitiveNew.justAdded = true;
+    addPrimitiveNew.nativeEvent = action.nativeEvent;
 
     return {
       ...state,
       list: [
         ...state.list,
-        newPrimitiveAdded
+        addPrimitiveNew
       ]
     };
 
   case 'DISCOVERY_PRIMITIVE':
-    const actionToNewPrimitiveDiscovered = {
+    const discoverPrimitiveData = {
       type: action.type,
       ...action.item
     };
-    const newPrimitiveDiscovered = primitive(state.list, actionToNewPrimitiveDiscovered);
+    const discoverPrimitiveNew = primitive(state.list, discoverPrimitiveData);
 
     return {
       ...state,
       list: [
-        newPrimitiveDiscovered
+        discoverPrimitiveNew
       ]
     };
 
   case 'DUPLICATE_PRIMITIVE':
     const {newPrimitive, pos} = primitive(state.list, action);
-    let newStateDuplList = [];
+    let duplicatePrimitiveList = [];
 
     if (action.childId !== undefined) {
       // Inner list
-      newStateDuplList = state.list.map(item => {
+      duplicatePrimitiveList = state.list.map(item => {
         if (item.id === action.id) {
           item.children = [
             ...item.children.slice(0, pos + 1),
@@ -116,7 +116,7 @@ export const primitives = (state = initialState, action) => {
       });
     } else {
       // Top level list
-      newStateDuplList = [
+      duplicatePrimitiveList = [
         ...state.list.slice(0, pos + 1),
         newPrimitive,
         ...state.list.slice(pos + 1)
@@ -125,11 +125,11 @@ export const primitives = (state = initialState, action) => {
 
     return {
       ...state,
-      list: newStateDuplList
+      list: duplicatePrimitiveList
     };
 
   case 'TOGGLE_PRIMITIVE':
-    let newStateTogglePrimList = state.list.map(item => {
+    let togglePrimitiveList = state.list.map(item => {
 
       // Edit prop of child
       if (item.id === action.id) {
@@ -154,13 +154,13 @@ export const primitives = (state = initialState, action) => {
 
     return {
       ...state,
-      list: newStateTogglePrimList
+      list: togglePrimitiveList
     };
 
   case 'UPDATE_INS':
     const newIn = getIn(state);
 
-    let updateInsStateList = state.list.map((item, index) => {
+    let updateInsList = state.list.map((item, index) => {
 
       if (item.params.in) {
         item = newIn.updateItem({item, index});
@@ -185,15 +185,15 @@ export const primitives = (state = initialState, action) => {
 
     return {
       ...state,
-      list: updateInsStateList
+      list: updateInsList
     };
 
   case 'DELETE_PRIMITIVE':
-    let filteredDel = {};
+    let deletePrimitiveList = [];
 
     if (action.childId) {
       // Inner list
-      filteredDel = state.list.map(item => {
+      deletePrimitiveList = state.list.map(item => {
         if (item.id === action.id) {
           item = deepClone(item);
           item.children = item.children.filter(child => child.id !== action.childId);
@@ -203,12 +203,12 @@ export const primitives = (state = initialState, action) => {
       });
     } else {
       // Top level list
-      filteredDel = state.list.filter(item => item.id !== action.id);
+      deletePrimitiveList = state.list.filter(item => item.id !== action.id);
     }
 
     return {
       ...state,
-      list: filteredDel
+      list: deletePrimitiveList
     };
 
   case 'PURGE_PRIMITIVES':
@@ -218,7 +218,7 @@ export const primitives = (state = initialState, action) => {
     };
 
   case 'CHANGE_PRIMITIVE_PROP':
-    let newStateChangPropList = state.list.map(item => {
+    let changePrimitivePropList = state.list.map(item => {
 
       // Edit prop of child
       if (item.id === action.parentId) {
@@ -256,11 +256,11 @@ export const primitives = (state = initialState, action) => {
 
     return {
       ...state,
-      list: newStateChangPropList
+      list: changePrimitivePropList
     };
 
   case 'TOGGLE_PROP':
-    let newStateDisablePropList = state.list.map(item => {
+    let togglePropList = state.list.map(item => {
 
       // Edit prop of child
       if (item.id === action.parentId) {
@@ -288,11 +288,11 @@ export const primitives = (state = initialState, action) => {
 
     return {
       ...state,
-      list: newStateDisablePropList
+      list: togglePropList
     };
 
   case 'CHANGE_PROP_TYPE':
-    let newStateChangePropTypeList = state.list.map(item => {
+    let chahgePropTypeList = state.list.map(item => {
 
       if (item.id === action.parentId) {
         // Edit prop type of child
@@ -320,31 +320,31 @@ export const primitives = (state = initialState, action) => {
 
     return {
       ...state,
-      list: newStateChangePropTypeList
+      list: chahgePropTypeList
     };
 
   case 'ADD_PRESET':
-    const newPresetList = [
+    const addPresetList = [
       ...action.primitives
     ];
 
-    resetIdKeeper(newPresetList);
+    resetIdKeeper(addPresetList);
 
     return {
       ...state,
-      list: newPresetList
+      list: addPresetList
     };
 
   case 'SWAP_PRIMITIVES':
     const parentId = action.parentId;
-    let newSwapList = Array.from(state.list);
+    let swapPrimitivesList = Array.from(state.list);
 
     if (state.swapSnapshot && state.swapSnapshot === action.swapSnapshot) {
       return state;
     }
 
     if (parentId) {
-      newSwapList = newSwapList.map(item => {
+      swapPrimitivesList = swapPrimitivesList.map(item => {
         if (item.id === parentId) {
           const children = deepClone(item).children;
           item.children = swap(children, action.indexes);
@@ -353,20 +353,20 @@ export const primitives = (state = initialState, action) => {
         return item;
       });
     } else {
-      newSwapList = swap(newSwapList, action.indexes);
+      swapPrimitivesList = swap(swapPrimitivesList, action.indexes);
     }
 
-    newSwapList = newSwapList.filter(item => item);
+    swapPrimitivesList = swapPrimitivesList.filter(item => item);
 
     return {
-      list: newSwapList,
+      list: swapPrimitivesList,
       swapSnapshot: action.swapSnapshot
     };
 
   case 'SWITCH_OFF_LAST_ADDED':
-    let newSwitchList = {};
+    let switchOffLastList = [];
 
-    newSwitchList = state.list.map(item => {
+    switchOffLastList = state.list.map(item => {
       if (item.id === action.id) {
         item = deepClone(item);
         item.justAdded = false;
@@ -378,7 +378,7 @@ export const primitives = (state = initialState, action) => {
 
     return {
       ...state,
-      list: newSwitchList
+      list: switchOffLastList
     };
 
   default:
