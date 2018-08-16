@@ -5,9 +5,16 @@ import {addPrimitive} from '../../store/actions';
 
 import ControlsListTemplate from '../../components/ControlsList';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, {match}) => {
+  const {section} = match.params;
+  let control;
+  if (section === 'docs') {
+    control = 'NavLink';
+  }
+
   return {
-    items: state.primitiveControls
+    items: state.primitiveControls,
+    control
   };
 };
 
