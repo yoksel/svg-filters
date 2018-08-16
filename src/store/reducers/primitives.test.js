@@ -68,7 +68,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('DISCOVERY_PRIMITIVE: should add primitive to state and replace existed', () => {
     const stateBefore = {
-      list: [
+      docs: [
         {
           id: 'blur',
           groupName: 'blur',
@@ -101,7 +101,7 @@ describe('reducers', () => {
       }
     };
     const stateAfter = {
-      list: [
+      docs: [
         {
           id: 'blend',
           groupName: 'blend',
