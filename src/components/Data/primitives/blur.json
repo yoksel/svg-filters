@@ -8,6 +8,9 @@
     "in": {
       "value": "SourceGraphic"
     },
+    "edgeMode": {
+      "value": "none"
+    },
     "result": {
       "value": "blur"
     }

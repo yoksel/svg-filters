@@ -7,8 +7,16 @@
       "type": "number",
       "double": true
     },
+    "edgeMode": {
+      "type": "select"
+    },
     "in": {
       "type": "select"
     }
-  }
+  },
+  "edgeMode": [
+    "none",
+    "duplicate",
+    "wrap"
+  ]
 }
