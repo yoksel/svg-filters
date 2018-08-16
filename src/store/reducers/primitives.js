@@ -304,7 +304,8 @@ export const primitives = (state = initialState, action) => {
     return togglePropResult;
 
   case 'CHANGE_PROP_TYPE':
-    let chahgePropTypeList = state.list.map(item => {
+    const changePropTypeSection = action.section;
+    let changePropTypeList = state[changePropTypeSection].map(item => {
 
       if (item.id === action.parentId) {
         // Edit prop type of child
@@ -330,10 +331,10 @@ export const primitives = (state = initialState, action) => {
       return item;
     });
 
-    return {
-      ...state,
-      list: chahgePropTypeList
-    };
+    const changePropTypeResult = {...state};
+    changePropTypeResult[changePropTypeSection] = changePropTypeList;
+
+    return changePropTypeResult;
 
   case 'ADD_PRESET':
     const addPresetList = [

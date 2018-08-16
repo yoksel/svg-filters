@@ -514,7 +514,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('CHANGE_PROP_TYPE: should change primitive param type', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',
@@ -532,13 +532,14 @@ describe('reducers', () => {
     };
     const action = {
       type: 'CHANGE_PROP_TYPE',
+      section: 'playground',
       id: 'blur',
       param: 'mode',
       value: 'screen',
       propType: 'string'
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',
