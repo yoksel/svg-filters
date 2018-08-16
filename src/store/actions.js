@@ -62,7 +62,7 @@ export const purgePrimitives = createAction(
 
 export const duplicatePrimitive = createAction(
   DUPLICATE_PRIMITIVE,
-  ['id', 'childId']
+  ['id', 'childId', 'section']
 );
 
 export const togglePrimitive = createAction(

@@ -133,7 +133,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('DUPLICATE_PRIMITIVE: should duplicate primitive in state', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',
@@ -156,10 +156,11 @@ describe('reducers', () => {
     };
     const action = {
       type: 'DUPLICATE_PRIMITIVE',
-      id: 'blur'
+      id: 'blur',
+      section: 'playground'
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',

@@ -99,12 +99,14 @@ export const primitives = (state = initialState, action) => {
     };
 
   case 'DUPLICATE_PRIMITIVE':
-    const {newPrimitive, pos} = primitive(state.list, action);
-    let duplicatePrimitiveList = [];
+    const duplicateSection = action.section;
+    const duplicateStateList = state[duplicateSection];
+    const {newPrimitive, pos} = primitive(duplicateStateList, action);
+    let duplicateList = [];
 
     if (action.childId !== undefined) {
       // Inner list
-      duplicatePrimitiveList = state.list.map(item => {
+      duplicateList = state[duplicateSection].map(item => {
         if (item.id === action.id) {
           item.children = [
             ...item.children.slice(0, pos + 1),
@@ -117,17 +119,17 @@ export const primitives = (state = initialState, action) => {
       });
     } else {
       // Top level list
-      duplicatePrimitiveList = [
-        ...state.list.slice(0, pos + 1),
+      duplicateList = [
+        ...duplicateStateList.slice(0, pos + 1),
         newPrimitive,
-        ...state.list.slice(pos + 1)
+        ...duplicateStateList.slice(pos + 1)
       ];
     }
 
-    return {
-      ...state,
-      list: duplicatePrimitiveList
-    };
+    const duplicateResult = {...state};
+    duplicateResult[duplicateSection] = duplicateList;
+
+    return duplicateResult;
 
   case 'TOGGLE_PRIMITIVE':
     const toggleSection = action.section;
