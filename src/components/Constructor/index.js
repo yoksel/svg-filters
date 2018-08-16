@@ -14,14 +14,26 @@ const getResultsList = (primitives, index) => {
     .map(item => item.id);
 };
 
+const getPurgeButton = (section, purgePrimitives) => {
+  if (section !== 'playground') {
+    return null;
+  }
+
+  return (
+    <button
+      className="Contsructor__purge-button"
+      onClick={purgePrimitives}
+    >Clear</button>
+  );
+};
+
 const Contsructor = ({primitives, dragDrop, purgePrimitives, section}) => {
   return (
     <div className="Contsructor">
-      &lt;filter id="#filter">
-      <button
-        className="Contsructor__purge-button"
-        onClick={purgePrimitives}
-      >Clear</button>
+      <div className="Contsructor__tag Contsructor__tag--open">
+        &lt;filter id="#filter">
+        {getPurgeButton(section, purgePrimitives)}
+      </div>
       <div
         className="Contsructor__container">
         {!primitives.length && <ContsructorPlaceholder section={section}/>}
@@ -82,7 +94,7 @@ const Contsructor = ({primitives, dragDrop, purgePrimitives, section}) => {
         })}
       </div>
 
-      &lt;/filter>
+      <div className="Contsructor__tag Contsructor__tag--close">&lt;/filter></div>
     </div>
   );
 };

@@ -3,10 +3,6 @@
 .Contsructor {
   min-width: 350px;
   margin-bottom: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
   color: $color-lightgray;
 }
 
@@ -21,8 +17,21 @@
   border-radius: $border-radius;
 }
 
-.Contsructor__purge-button {
+.Contsructor__tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.Contsructor__tag--open {
   margin-bottom: .5em;
+}
+
+.Contsructor__tag--close {
+  margin-top: .5em;
+}
+
+.Contsructor__purge-button {
   padding: 2px 4px;
   background: none;
   border: none;
