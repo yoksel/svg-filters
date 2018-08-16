@@ -365,8 +365,9 @@ export const primitives = (state = initialState, action) => {
 
   case 'SWITCH_OFF_LAST_ADDED':
     let switchOffLastList = [];
+    const {section} = action;
 
-    switchOffLastList = state.list.map(item => {
+    switchOffLastList = state[section].map(item => {
       if (item.id === action.id) {
         item = deepClone(item);
         item.justAdded = false;
@@ -376,10 +377,10 @@ export const primitives = (state = initialState, action) => {
       return item;
     });
 
-    return {
-      ...state,
-      list: switchOffLastList
-    };
+    const switchOffLastResult = {...state};
+    switchOffLastResult[section] = switchOffLastList;
+
+    return switchOffLastResult;
 
   default:
     return state;

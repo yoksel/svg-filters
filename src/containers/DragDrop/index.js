@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
 import {moveDrag, stopDrag, swapPrimitives, switchOffLastAdded} from '../../store/actions';
 
@@ -102,7 +103,9 @@ const mapStateToProps = (state, {match}) => {
   };
 };
 
-const mapDispatchProps = (dispatch, props) => {
+const mapDispatchProps = (dispatch, {match}) => {
+  const {section = 'playground'} = match.params;
+
   return {
     onMoveDrag: (coords) => {
       dispatch(moveDrag({coords}));
@@ -120,14 +123,14 @@ const mapDispatchProps = (dispatch, props) => {
     },
     onStopDrag: (id) => {
       dispatch(stopDrag());
-      dispatch(switchOffLastAdded({id}));
+      dispatch(switchOffLastAdded({id, section}));
     }
   };
 };
 
-DragDrop = connect(
+DragDrop = withRouter(connect(
   mapStateToProps,
   mapDispatchProps
-)(DragDrop);
+)(DragDrop));
 
 export default DragDrop;

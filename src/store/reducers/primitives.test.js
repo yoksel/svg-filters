@@ -778,3 +778,63 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+describe('reducers', () => {
+  it('SWITCH_OFF_LAST_ADDED: should switch off prop by primitive id', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          },
+          justAdded: true,
+          nativeEvent: {offsetX: 113, offsetY: 18}
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      id: 'blur',
+      section: 'playground',
+      type: 'SWITCH_OFF_LAST_ADDED'
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          },
+          justAdded: false,
+          nativeEvent: null
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
