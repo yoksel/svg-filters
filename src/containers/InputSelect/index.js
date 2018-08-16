@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
-import {changePrimitiveProp} from '../../store/actions';
+import {changePrimitiveProp, changePropType, toggleProp} from '../../store/actions';
 import InputSelectTemplate from '../../components/InputSelect';
 
 const mapDispatchProps = (
@@ -9,12 +10,22 @@ const mapDispatchProps = (
 ) => {
   return {
     onChange: (value) => {
-      const {dependencies, tiedValues, tiedTypes} = props;
+      const {id, parentId, param, dependencies, tiedValues, tiedTypes, match} = props;
+      const {section = 'playground'} = match.params;
+
+      const initialProps = {
+        id,
+        parentId,
+        param,
+        value,
+        section
+      };
 
       // Change initial prop value
-      dispatch(changePrimitiveProp(props, value));
+      dispatch(changePrimitiveProp(initialProps));
 
       // Enable/disable dependencies
+      // k-attributes in composite
       if (dependencies) {
         let isDepsDisabled = value !== dependencies.value;
         const enable = dependencies.enable || [];
@@ -31,19 +42,17 @@ const mapDispatchProps = (
 
         listToHandle.map(depsItem => {
           const depsItemProps = {
-            ...props,
-            param: depsItem
+            ...initialProps,
+            param: depsItem,
+            disabled: isDepsDisabled
           };
 
-          dispatch({
-            type: 'TOGGLE_PROP',
-            ...depsItemProps,
-            disabled: isDepsDisabled
-          });
+          dispatch(toggleProp(depsItemProps));
         });
       }
 
       // Change tied values
+      // colormatrix
       if (tiedValues) {
         const newValue = tiedValues[value];
         const disabled = newValue === 'disabled';
@@ -54,24 +63,25 @@ const mapDispatchProps = (
 
         // Override handling param
         const valueProps = {
-          ...props,
-          param: 'values'
+          ...initialProps,
+          param: 'values',
+          disabled
         };
 
         // Disable/enable values
-        dispatch({
-          type: 'TOGGLE_PROP',
-          ...valueProps,
-          disabled
-        });
+        dispatch(toggleProp(valueProps));
 
         if (newValue !== 'disabled') {
           // Change prop value
-          dispatch(changePrimitiveProp(valueProps, tiedValues[value]));
+          dispatch(changePrimitiveProp({
+            ...valueProps,
+            value: tiedValues[value]
+          }));
         }
       }
 
       // Change tied types
+      // matrix in colormatrix
       if (tiedTypes) {
         const propType = tiedTypes[value];
 
@@ -80,23 +90,20 @@ const mapDispatchProps = (
         }
 
         const typeProps = {
-          ...props,
-          param: 'values'
+          ...initialProps,
+          param: 'values',
+          propType
         };
 
-        dispatch({
-          type: 'CHANGE_PROP_TYPE',
-          ...typeProps,
-          propType
-        });
+        dispatch(changePropType(typeProps));
       }
     }
   };
 };
 
-const InputSelect = connect(
+const InputSelect = withRouter(connect(
   null,
   mapDispatchProps
-)(InputSelectTemplate);
+)(InputSelectTemplate));
 
 export default InputSelect;
