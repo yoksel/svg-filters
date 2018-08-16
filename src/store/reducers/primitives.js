@@ -89,11 +89,11 @@ export const primitives = (state = initialState, action) => {
       type: action.type,
       ...action.item
     };
-    const discoverPrimitiveNew = primitive(state.list, discoverPrimitiveData);
+    const discoverPrimitiveNew = primitive(state.docs, discoverPrimitiveData);
 
     return {
       ...state,
-      list: [
+      docs: [
         discoverPrimitiveNew
       ]
     };
