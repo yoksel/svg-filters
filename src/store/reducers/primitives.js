@@ -52,7 +52,9 @@ const primitive = (state, action) => {
 };
 
 const initialState = {
-  list: [],
+  playground: [],
+  presets: [],
+  docs: [],
   swapSnapshot: '',
   filter: {
     x: '-10%',
@@ -270,7 +272,6 @@ export const primitives = (state = initialState, action) => {
     return changePrimitivePropResult;
 
   case 'TOGGLE_PROP':
-    console.log(action);
     const togglePropSection = action.section;
     let togglePropList = state[togglePropSection].map(item => {
 
