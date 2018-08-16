@@ -52,10 +52,15 @@ const configureStore = () => {
   store.subscribe(throttle(
     () => {
       const primitivesToSave = deepClone(store.getState().primitives);
-      primitivesToSave.swapSnapshot = '';
+      const primitivesCleared = {
+        ...primitivesToSave,
+        playground: primitivesToSave.playground,
+        presets: [],
+        docs: []
+      };
 
       saveState({
-        primitives: primitivesToSave
+        primitives: primitivesCleared
       });
     }
   ), 1000);
