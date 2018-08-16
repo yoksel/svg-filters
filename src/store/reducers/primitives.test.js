@@ -563,7 +563,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('0️⃣  UPDATE_INS: should update attributes `in`', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur',
           disabled: true,
@@ -592,10 +592,11 @@ describe('reducers', () => {
       ]
     };
     const action = {
-      type: 'UPDATE_INS'
+      type: 'UPDATE_INS',
+      section: 'playground',
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur',
           disabled: true,
@@ -637,7 +638,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('1️⃣  UPDATE_INS: should keep previous attribute `in`', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur',
           disabled: true,
@@ -666,10 +667,11 @@ describe('reducers', () => {
       ]
     };
     const action = {
-      type: 'UPDATE_INS'
+      type: 'UPDATE_INS',
+      section: 'playground',
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur',
           disabled: true,
@@ -711,7 +713,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('2️⃣  UPDATE_INS: should place previous attribute `in` if it available again', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur',
           params: {
@@ -741,10 +743,11 @@ describe('reducers', () => {
       ]
     };
     const action = {
-      type: 'UPDATE_INS'
+      type: 'UPDATE_INS',
+      section: 'playground',
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur',
           params: {

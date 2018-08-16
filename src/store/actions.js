@@ -71,7 +71,8 @@ export const togglePrimitive = createAction(
 );
 
 export const updateIns = createAction(
-  UPDATE_INS
+  UPDATE_INS,
+  ['section']
 );
 
 export const changePrimitiveProp = createAction(

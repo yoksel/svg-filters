@@ -159,9 +159,10 @@ export const primitives = (state = initialState, action) => {
     };
 
   case 'UPDATE_INS':
-    const newIn = getIn(state);
+    const updateInsSection = action.section;
+    const newIn = getIn(state, updateInsSection);
 
-    let updateInsList = state.list.map((item, index) => {
+    let updateInsList = state[updateInsSection].map((item, index) => {
 
       if (item.params.in) {
         item = newIn.updateItem({item, index});
@@ -184,10 +185,10 @@ export const primitives = (state = initialState, action) => {
       return item;
     });
 
-    return {
-      ...state,
-      list: updateInsList
-    };
+    const updateInsResult = {...state};
+    updateInsResult[updateInsSection] = updateInsList;
+
+    return updateInsResult;
 
   case 'DELETE_PRIMITIVE':
     let deletePrimitiveList = [];

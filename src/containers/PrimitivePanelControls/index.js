@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
 import {deletePrimitive, duplicatePrimitive, togglePrimitive, updateIns} from '../../store/actions';
 
@@ -6,37 +7,40 @@ import PrimitivePanelControlsTemplate from '../../components/PrimitivePanelContr
 
 const mapDispatchProps = (
   dispatch,
-  props
+  {id, parentId, match}
 ) => {
+  const {section = 'playground'} = match.params;
   let params = {
-    id: props.id
+    id: id
   };
 
-  if (props.parentId) {
+  if (parentId) {
     params = {
-      id: props.parentId,
-      childId: props.id
+      id: parentId,
+      childId: id
     };
   }
+
+  params.section = section;
 
   return {
     removePrimitive: () => {
       dispatch(deletePrimitive(params));
-      dispatch(updateIns());
+      dispatch(updateIns({section}));
     },
     duplicatePrimitive: () => {
       dispatch(duplicatePrimitive(params));
     },
     togglePrimitive: () => {
       dispatch(togglePrimitive(params));
-      dispatch(updateIns());
+      dispatch(updateIns({section}));
     }
   };
 };
 
-const PrimitivePanelControls = connect(
+const PrimitivePanelControls = withRouter(connect(
   null,
   mapDispatchProps
-)(PrimitivePanelControlsTemplate);
+)(PrimitivePanelControlsTemplate));
 
 export default PrimitivePanelControls;

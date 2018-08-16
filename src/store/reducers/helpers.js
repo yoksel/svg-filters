@@ -153,8 +153,8 @@ export const getFilteredWithIndex = (list, id) => {
   };
 };
 
-export const getIn = (state) => {
-  const list = state.list;
+export const getIn = (state, section) => {
+  const list = state[section];
   const allEnabledResultsObj = getAllEnabledResultsObj(list);
 
   const defaultSources = {
