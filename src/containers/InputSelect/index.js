@@ -40,7 +40,7 @@ const mapDispatchProps = (
           ...disable
         ];
 
-        listToHandle.map(depsItem => {
+        listToHandle.forEach(depsItem => {
           const depsItemProps = {
             ...initialProps,
             param: depsItem,
