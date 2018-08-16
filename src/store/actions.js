@@ -67,7 +67,7 @@ export const duplicatePrimitive = createAction(
 
 export const togglePrimitive = createAction(
   TOGGLE_PRIMITIVE,
-  ['id', 'childId', 'disabled']
+  ['id', 'childId', 'disabled', 'section']
 );
 
 export const updateIns = createAction(

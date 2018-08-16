@@ -327,7 +327,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('TOGGLE_PRIMITIVE: should toggle primitive status', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur1',
           groupName: 'blur',
@@ -345,11 +345,12 @@ describe('reducers', () => {
     };
     const action = {
       type: 'TOGGLE_PRIMITIVE',
+      section: 'playground',
       id: 'blur1',
       disabled: true,
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur1',
           groupName: 'blur',
@@ -377,7 +378,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('TOGGLE_PRIMITIVE: should toggle child primitive status', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'merge',
           groupName: 'merge',
@@ -406,12 +407,13 @@ describe('reducers', () => {
     };
     const action = {
       type: 'TOGGLE_PRIMITIVE',
+      section: 'playground',
       id: 'merge',
       childId: 'mergeNode',
       disabled: true,
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'merge',
           groupName: 'merge',

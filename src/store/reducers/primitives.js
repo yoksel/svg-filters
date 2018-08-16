@@ -130,7 +130,8 @@ export const primitives = (state = initialState, action) => {
     };
 
   case 'TOGGLE_PRIMITIVE':
-    let togglePrimitiveList = state.list.map(item => {
+    const toggleSection = action.section;
+    let togglePrimitiveList = state[toggleSection].map(item => {
 
       // Edit prop of child
       if (item.id === action.id) {
@@ -153,10 +154,10 @@ export const primitives = (state = initialState, action) => {
       return item;
     });
 
-    return {
-      ...state,
-      list: togglePrimitiveList
-    };
+    const toggleResult = {...state};
+    toggleResult[toggleSection] = togglePrimitiveList;
+
+    return toggleResult;
 
   case 'UPDATE_INS':
     const updateInsSection = action.section;
