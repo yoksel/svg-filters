@@ -270,7 +270,9 @@ export const primitives = (state = initialState, action) => {
     return changePrimitivePropResult;
 
   case 'TOGGLE_PROP':
-    let togglePropList = state.list.map(item => {
+    console.log(action);
+    const togglePropSection = action.section;
+    let togglePropList = state[togglePropSection].map(item => {
 
       // Edit prop of child
       if (item.id === action.parentId) {
@@ -296,10 +298,10 @@ export const primitives = (state = initialState, action) => {
       return item;
     });
 
-    return {
-      ...state,
-      list: togglePropList
-    };
+    const togglePropResult = {...state};
+    togglePropResult[togglePropSection] = togglePropList;
+
+    return togglePropResult;
 
   case 'CHANGE_PROP_TYPE':
     let chahgePropTypeList = state.list.map(item => {

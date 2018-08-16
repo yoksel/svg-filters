@@ -459,7 +459,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('TOGGLE_PROP: should toggle primitive param', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',
@@ -476,13 +476,14 @@ describe('reducers', () => {
     };
     const action = {
       type: 'TOGGLE_PROP',
+      section: 'playground',
       id: 'blur',
       param: 'mode',
       value: 'screen',
       disabled: true
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',
