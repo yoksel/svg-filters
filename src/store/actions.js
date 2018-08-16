@@ -31,6 +31,8 @@ const DUPLICATE_PRIMITIVE = 'DUPLICATE_PRIMITIVE';
 const TOGGLE_PRIMITIVE = 'TOGGLE_PRIMITIVE';
 const UPDATE_INS = 'UPDATE_INS';
 const CHANGE_PRIMITIVE_PROP = 'CHANGE_PRIMITIVE_PROP';
+const CHANGE_PROP_TYPE = 'CHANGE_PROP_TYPE';
+const TOGGLE_PROP = 'TOGGLE_PROP';
 const SWAP_PRIMITIVES = 'SWAP_PRIMITIVES';
 
 const ADD_PRESET = 'ADD_PRESET';
@@ -78,6 +80,16 @@ export const updateIns = createAction(
 export const changePrimitiveProp = createAction(
   CHANGE_PRIMITIVE_PROP,
   ['id', 'param', 'parentId', 'tiedValues']
+);
+
+export const changePropType = createAction(
+  CHANGE_PROP_TYPE,
+  ['id', 'parentId', 'param', 'propType', 'section']
+);
+
+export const toggleProp = createAction(
+  TOGGLE_PROP,
+  ['id', 'parentId', 'param', 'disabled', 'section']
 );
 
 export const addPreset = createAction(
