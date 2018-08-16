@@ -79,7 +79,7 @@ export const updateIns = createAction(
 
 export const changePrimitiveProp = createAction(
   CHANGE_PRIMITIVE_PROP,
-  ['id', 'param', 'parentId', 'tiedValues']
+  ['id', 'parentId', 'param', 'value', 'section']
 );
 
 export const changePropType = createAction(

@@ -277,7 +277,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('CHANGE_PRIMITIVE_PROP: should change primitive param value', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur1',
           groupName: 'blur',
@@ -294,12 +294,13 @@ describe('reducers', () => {
     };
     const action = {
       type: 'CHANGE_PRIMITIVE_PROP',
+      section: 'playground',
       id: 'blur1',
       param: 'mode',
       value: 'screen'
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur1',
           groupName: 'blur',

@@ -227,7 +227,8 @@ export const primitives = (state = initialState, action) => {
     return purgeResult;
 
   case 'CHANGE_PRIMITIVE_PROP':
-    let changePrimitivePropList = state.list.map(item => {
+    const changePrimitivePropSection = action.section;
+    let changePrimitivePropList = state[changePrimitivePropSection].map(item => {
 
       // Edit prop of child
       if (item.id === action.parentId) {
@@ -263,10 +264,10 @@ export const primitives = (state = initialState, action) => {
       return item;
     });
 
-    return {
-      ...state,
-      list: changePrimitivePropList
-    };
+    const changePrimitivePropResult = {...state};
+    changePrimitivePropResult[changePrimitivePropSection] = changePrimitivePropList;
+
+    return changePrimitivePropResult;
 
   case 'TOGGLE_PROP':
     let togglePropList = state.list.map(item => {
