@@ -52,7 +52,7 @@ export const discoveryPrimitive = createAction(
 
 export const deletePrimitive = createAction(
   DELETE_PRIMITIVE,
-  ['id', 'childId']
+  ['id', 'childId', 'section']
 );
 
 export const purgePrimitives = createAction(

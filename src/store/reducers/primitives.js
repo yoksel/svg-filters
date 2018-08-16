@@ -194,11 +194,13 @@ export const primitives = (state = initialState, action) => {
     return updateInsResult;
 
   case 'DELETE_PRIMITIVE':
-    let deletePrimitiveList = [];
+    const deleteSection = action.section;
+    const deleteStateList = state[deleteSection];
+    let deleteList = [];
 
     if (action.childId) {
       // Inner list
-      deletePrimitiveList = state.list.map(item => {
+      deleteList = deleteStateList.map(item => {
         if (item.id === action.id) {
           item = deepClone(item);
           item.children = item.children.filter(child => child.id !== action.childId);
@@ -208,13 +210,13 @@ export const primitives = (state = initialState, action) => {
       });
     } else {
       // Top level list
-      deletePrimitiveList = state.list.filter(item => item.id !== action.id);
+      deleteList = deleteStateList.filter(item => item.id !== action.id);
     }
 
-    return {
-      ...state,
-      list: deletePrimitiveList
-    };
+    const deleteResult = {...state};
+    deleteResult[deleteSection] = deleteList;
+
+    return deleteResult;
 
   case 'PURGE_PRIMITIVES':
     const purgeSection = action.section;

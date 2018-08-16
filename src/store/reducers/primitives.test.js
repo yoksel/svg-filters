@@ -214,7 +214,7 @@ describe('reducers', () => {
 describe('reducers', () => {
   it('DELETE_PRIMITIVE: should delete primitive from state by ID', () => {
     const stateBefore = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',
@@ -243,10 +243,11 @@ describe('reducers', () => {
     };
     const action = {
       type: 'DELETE_PRIMITIVE',
+      section: 'playground',
       id: 'blur1'
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',
