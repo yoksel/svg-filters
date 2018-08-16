@@ -1,0 +1,5 @@
+{
+  "name": "result",
+  "value": "<filter-primitive-reference>",
+  "desc": "&lt;filter-primitive-reference> is an <a href=\"https://www.w3.org/TR/css3-values/#custom-idents\">&lt;custom-ident></a> and an assigned name for this filter primitive. If supplied, then graphics that result from processing this filter primitive can be referenced by an in attribute on a subsequent filter primitive within the same filter element. If no value is provided, the output will only be available for re-use as the implicit input into the next filter primitive if that filter primitive provides no value for its in attribute."
+}
