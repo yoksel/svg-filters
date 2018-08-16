@@ -359,14 +359,14 @@ export const primitives = (state = initialState, action) => {
 
     swapPrimitivesList = swapPrimitivesList.filter(item => item);
 
-    const result = {
+    const swapResult = {
       ...state,
       swapSnapshot: action.swapSnapshot
     };
 
-    result[swapSection] = swapPrimitivesList;
+    swapResult[swapSection] = swapPrimitivesList;
 
-    return result;
+    return swapResult;
 
   case 'SWITCH_OFF_LAST_ADDED':
     let switchOffLastList = [];
