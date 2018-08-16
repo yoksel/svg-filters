@@ -896,3 +896,41 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+describe('reducers', () => {
+  it('PURGE_PRIMITIVES: should purge given list', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      section: 'playground',
+      type: 'PURGE_PRIMITIVES'
+    };
+    const stateAfter = {
+      playground: []
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});

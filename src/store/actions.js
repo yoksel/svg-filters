@@ -56,7 +56,8 @@ export const deletePrimitive = createAction(
 );
 
 export const purgePrimitives = createAction(
-  PURGE_PRIMITIVES
+  PURGE_PRIMITIVES,
+  ['section']
 );
 
 export const duplicatePrimitive = createAction(

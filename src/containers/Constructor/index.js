@@ -15,10 +15,12 @@ const mapStateToProps = (state, {match}) => {
   };
 };
 
-const mapDispatchProps = (dispatch) => {
+const mapDispatchProps = (dispatch, {match}) => {
+  const {section = 'playground'} = match.params;
+
   return {
     purgePrimitives: () => {
-      dispatch(purgePrimitives());
+      dispatch(purgePrimitives({section}));
     }
   };
 };

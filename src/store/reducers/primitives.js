@@ -212,10 +212,12 @@ export const primitives = (state = initialState, action) => {
     };
 
   case 'PURGE_PRIMITIVES':
-    return {
-      ...state,
-      list: []
-    };
+    const purgeSection = action.section;
+
+    const purgeResult = {...state};
+    purgeResult[purgeSection] = [];
+
+    return purgeResult;
 
   case 'CHANGE_PRIMITIVE_PROP':
     let changePrimitivePropList = state.list.map(item => {
