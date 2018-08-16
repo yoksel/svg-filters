@@ -8,10 +8,11 @@ import * as primitivesReducers from './primitives';
 describe('reducers', () => {
   it('ADD_PRIMITIVE: should add primitive to state', () => {
     const stateBefore = {
-      list: []
+      playground: []
     };
     const action = {
       type: 'ADD_PRIMITIVE',
+      section: 'playground',
       item: {
         id: 'blur',
         groupName: 'blur',
@@ -30,7 +31,7 @@ describe('reducers', () => {
       }
     };
     const stateAfter = {
-      list: [
+      playground: [
         {
           id: 'blur',
           groupName: 'blur',

@@ -71,17 +71,18 @@ export const primitives = (state = initialState, action) => {
       type: action.type,
       ...action.item
     };
-    const addPrimitiveNew = primitive(state.list, addPrimitiveData);
+    const addPrimitiveSection = action.section;
+    const addPrimitiveNew = primitive(state[addPrimitiveSection], addPrimitiveData);
     addPrimitiveNew.justAdded = true;
     addPrimitiveNew.nativeEvent = action.nativeEvent;
 
-    return {
-      ...state,
-      list: [
-        ...state.list,
-        addPrimitiveNew
-      ]
-    };
+    const addPrimitiveResult = {...state};
+    addPrimitiveResult[addPrimitiveSection] = [
+      ...state[addPrimitiveSection],
+      addPrimitiveNew
+    ];
+
+    return addPrimitiveResult;
 
   case 'DISCOVERY_PRIMITIVE':
     const discoverPrimitiveData = {

@@ -42,7 +42,7 @@ const SWITCH_OFF_LAST_ADDED = 'SWITCH_OFF_LAST_ADDED';
 
 export const addPrimitive = createAction(
   ADD_PRIMITIVE,
-  ['item', 'nativeEvent']
+  ['item', 'nativeEvent', 'section']
 );
 
 export const discoveryPrimitive = createAction(

@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
 import {addPrimitive} from '../../store/actions';
 
@@ -10,20 +11,27 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchProps = (dispatch) => {
+const mapDispatchProps = (dispatch, {match}) => {
+  const {section = 'playground'} = match.params;
+
+  if (section === 'docs') {
+    return {};
+  }
+
   return {
     addPrimitive: ({item, nativeEvent}) => {
       dispatch(addPrimitive({
         item,
-        nativeEvent
+        nativeEvent,
+        section
       }));
     }
   };
 };
 
-const PrimitiveControlsList = connect(
+const PrimitiveControlsList = withRouter(connect(
   mapStateToProps,
   mapDispatchProps
-)(ControlsListTemplate);
+)(ControlsListTemplate));
 
 export default PrimitiveControlsList;
