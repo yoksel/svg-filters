@@ -1,17 +1,20 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
 import PlaygroundTemplate from '../../components/Playground';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, {match}) => {
+  const {section = 'playground'} = match.params;
+
   return {
-    filterId: state.primitives.list.length ? 'filter' : ''
+    filterId: state.primitives[section].length ? 'filter' : ''
   };
 };
 
-const Playground = connect(
+const Playground = withRouter(connect(
   mapStateToProps,
   null
-)(PlaygroundTemplate);
+)(PlaygroundTemplate));
 
 
 export default Playground;

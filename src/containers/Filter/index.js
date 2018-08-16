@@ -1,16 +1,20 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
+
 import FilterTemplate from '../../components/Filter';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, {match}) => {
+  const {section = 'playground'} = match.params;
+
   return {
-    primitives: state.primitives.list,
+    primitives: state.primitives[section],
     filterData: state.primitives.filter
   };
 };
 
-const Filter = connect(
+const Filter = withRouter(connect(
   mapStateToProps,
   null
-)(FilterTemplate);
+)(FilterTemplate));
 
 export default Filter;

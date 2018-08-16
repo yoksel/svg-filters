@@ -9,7 +9,7 @@ const mapStateToProps = (state, {match}) => {
   const {section = 'playground'} = match.params;
 
   return {
-    primitives: state.primitives.list,
+    primitives: state.primitives[section],
     dragDrop: state.dragDrop,
     section
   };

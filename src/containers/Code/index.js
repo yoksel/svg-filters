@@ -1,16 +1,20 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
+
 import CodeTemplate from '../../components/Code';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, {match}) => {
+  const {section = 'playground'} = match.params;
+
   return {
-    primitives: state.primitives.list,
+    primitives: state.primitives[section],
     filterData: state.primitives.filter
   };
 };
 
-const Code = connect(
+const Code = withRouter(connect(
   mapStateToProps,
   null
-)(CodeTemplate);
+)(CodeTemplate));
 
 export default Code;
