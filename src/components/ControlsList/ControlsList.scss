@@ -1,22 +1,81 @@
 @import "../../variables.scss";
 
 .ControlsList {
-  A {
-    display: block;
-  }
+  min-width: 185px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .Control {
-  display: block;
+  position: relative;
   margin-bottom: 1rem;
   padding: 4px 20px;
   background: #FFF;
   border: 1px dashed;
   border-radius: $border-radius;
+  text-decoration: none;
   font: inherit;
   color: $color-darkgray;
+  cursor: pointer;
 
-  &--navlink {
-    display: inline-block;
+  &-playground {
+    outline: none;
+
+    &:focus {
+      box-shadow: 0 0 5px 3px gold, 0 0 5px 3px gold inset;
+    }
   }
+
+  &-presets {
+    border-color: transparent;
+    padding-left: 18px;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: -2px;
+      right: 0;
+      bottom: -2px;
+      left: 0;
+      border: 1px solid;
+      border-radius: inherit;
+    }
+
+    &::after {
+      box-shadow: -5px 0 0 0;
+    }
+
+    &--current::before {
+      left: -5px;
+      background: $hlt-blue;
+      box-shadow: 0 0 0 5px $hlt-blue;
+    }
+  }
+
+  &-docs {
+    border-color: transparent;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      right: 0;
+      bottom: -2px;
+      left: 0;
+      border: 1px solid;
+      border-radius: inherit;
+      transform: skewX(-15deg);
+    }
+
+    &--current::before {
+      background: $hlt-green;
+      box-shadow: 0 0 0 5px $hlt-green;
+    }
+  }
+}
+
+.Control__text {
+  position: relative;
 }

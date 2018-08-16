@@ -7,13 +7,31 @@ import {primitivesAttrs} from '../Data';
 
 import './ControlsList.css';
 
-const ControlsList = ({items, control, addPrimitive, match}) => {
-  const {section} = match.params;
+const ControlsList = ({items, control = 'button', addPrimitive, match}) => {
+  const {section = 'playground', id} = match.params;
+  const ControlsListClass = [
+    'ControlsList',
+    `ControlsList--${section}`
+  ].join(' ');
+
 
   return (
-    <div className="ControlsList">
+    <div className={ControlsListClass}>
       {items.map((item, index) => {
         const groupData = primitivesAttrs[item.groupName];
+        const ControlClassList = [
+          'Control',
+          `Control--${control}`,
+          `Control-${section}`
+        ];
+
+        if (id === item.id) {
+          ControlClassList.push('Control--current');
+          ControlClassList.push(`Control-${section}--current`);
+        }
+
+        const ControlClass = ControlClassList.join(' ');
+
         let name = item.name;
         if (item.groupName) {
           // primitives
@@ -27,8 +45,9 @@ const ControlsList = ({items, control, addPrimitive, match}) => {
             <NavLink
               key={item.id}
               to={url}
+              className={ControlClass}
             >
-              <span className="Control Control--navlink">
+              <span className="Control__text">
                 {name}
               </span>
             </NavLink>
@@ -37,7 +56,7 @@ const ControlsList = ({items, control, addPrimitive, match}) => {
 
         return (
           <button
-            className="Control"
+            className={ControlClass}
             key={item.id}
             onMouseDown={(event) => {
               const nativeEvent = {
