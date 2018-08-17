@@ -25,6 +25,7 @@ class PrimitivePanel extends Component {
     const groupName = primitive.groupName;
     const groupData = primitivesAttrs[groupName];
     const primitiveName = groupData.name;
+    const inputsData = groupData.inputsData;
     const fieldsetProps = {};
     const hasChildren = primitive.children ? 'has-children' : 'no-children';
     const PrimitivePanelClass = `PrimitivePanel PrimitivePanel--${hasChildren}`;
@@ -37,6 +38,11 @@ class PrimitivePanel extends Component {
     const params = Object.keys(primitive.params).map((key) => {
       const param = primitive.params[key];
       const {value} = param;
+      let name = key;
+
+      if (inputsData[key] && inputsData[key].name) {
+        name = inputsData[key].name;
+      }
 
       if (key === 'result') {
         return (
@@ -54,7 +60,7 @@ class PrimitivePanel extends Component {
         <label
           key={key}
           className="PrimitivePanel__label"
-        >{key}=<PrimitivePanelInput
+        >{name}=<PrimitivePanelInput
             primitive={primitive}
             paramKey={key}
             parentId={parentId}
