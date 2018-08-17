@@ -57,11 +57,11 @@ const initialState = {
   docs: [],
   swapSnapshot: '',
   filter: {
-    x: '-10%',
-    y: '-10%',
-    width: '120%',
-    height: '120%',
-    filterUnits: 'userSpaceOnUse',
+    x: '-20%',
+    y: '-20%',
+    width: '140%',
+    height: '140%',
+    filterUnits: 'objectBoundingBox',
     primitiveUnits: 'userSpaceOnUse'
   }
 };
