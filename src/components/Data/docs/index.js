@@ -2,8 +2,10 @@
 
 import blend from './blend.json';
 import blur from './blur.json';
+import colormatrix from './colormatrix.json';
 import flood from './flood.json';
 import image from './image.json';
+import offset from './offset.json';
 import tile from './tile.json';
 import inProp from './in.json';
 import result from './result.json';
@@ -32,8 +34,10 @@ export default {
 
   blend,
   blur,
+  colormatrix,
   flood,
   image,
+  offset,
   tile,
   'xlink:href': href
 };

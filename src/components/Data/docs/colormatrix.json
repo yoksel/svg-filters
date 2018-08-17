@@ -1,0 +1,23 @@
+{
+  "name": "feColorMatrix",
+  "link": "https://www.w3.org/TR/filter-effects/#elementdef-fecolormatrix",
+  "desc": "This filter applies a matrix transformation on the RGBA color and alpha values of every pixel on the input graphics to produce a result with a new set of RGBA color and alpha values.",
+  "props": [
+    {
+      "name": "type",
+      "value": "matrix | saturate | hueRotate | luminanceToAlpha",
+      "desc": "Indicates the type of matrix operation. The keyword <code>matrix</code> indicates that a full 5x4 matrix of values will be provided. The other keywords represent convenience shortcuts to allow commonly used color operations to be performed without specifying a complete matrix. The lacuna value for type is <code>matrix</code>."
+    },
+    {
+      "name": "values",
+      "value": "list of <number>s",
+      "desc": "<p>The contents of values depends on the value of attribute type:</p><ul><li><p>For <code>matrix</code>, values is a list of 20 matrix values, separated by whitespace and/or a comma.</p></li><li><p>For <code>saturate</code>, values is a single real number value.</p><p>Note: A value of 0 produces a fully desaturated (grayscale) filter result, while a value of 1 passes the filter input image through unchanged. Values outside the 0..1 range under- or oversaturates the filter input image respectively.</p></li><li><p>For <code>hueRotate</code>, values is a single one real number value (degrees).</li><li>For <code>luminanceToAlpha</code>, values is not applicable.</p></li></ul><p>If the attribute is not specified, then the default behavior depends on the value of attribute type. If <code>matrix</code>, then this attribute defaults to the identity matrix. If <code>saturate</code>, then this attribute defaults to the value 1, which results in the identity matrix. If <code>hueRotate</code>, then this attribute defaults to the value 0, which results in the identity matrix.</p>"
+    },
+    {
+      "name": "in"
+    },
+    {
+      "name": "result"
+    }
+  ]
+}
