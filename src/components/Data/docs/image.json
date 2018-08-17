@@ -9,7 +9,7 @@
     {
       "name": "preserveAspectRatio",
       "value": "<align> [<meetOrSlice>]",
-      "desc": "<p>indicates how referenced images should be fitted with respect to the reference rectangle and whether the aspect ratio of the referenced image should be preserved with respect to the current user coordinate system.</p><p>The lacuna value for <code>preserveAspectRatio</code> is <code>xMidYMid meet</code>.</p>"
+      "desc": "<p>indicates how referenced images should be fitted with respect to the reference rectangle and whether the aspect ratio of the referenced image should be preserved with respect to the current user coordinate system.</p><p>Read more in <a href=\"https://www.w3.org/TR/2011/REC-SVG11-20110816/coords.html#PreserveAspectRatioAttribute\" target=\"_blank\">Coordinate Systems, Transformations and Units</a>.</p><p>The lacuna value for <code>preserveAspectRatio</code> is <code>xMidYMid meet</code>.</p>"
     },
     {
       "name": "crossorigin",
