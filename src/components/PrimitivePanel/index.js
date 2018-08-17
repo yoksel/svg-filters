@@ -86,7 +86,7 @@ class PrimitivePanel extends Component {
           </div>
         </fieldset>
 
-        {section !== 'discovery' && <PrimitivePanelControls
+        {section !== 'docs' && <PrimitivePanelControls
           id={primitive.id}
           parentId={parentId}
           groupName={groupName}
