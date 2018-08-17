@@ -32,5 +32,6 @@ export default {
   blend,
   blur,
   image,
+  tile,
   'xlink:href': href
 };

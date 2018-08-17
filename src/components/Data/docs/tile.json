@@ -1,0 +1,25 @@
+{
+  "name": "feTile",
+  "link": "https://www.w3.org/TR/filter-effects/#feTileElement",
+  "desc": "This filter primitive fills a target rectangle with a repeated, tiled pattern of an input image. The target rectangle is as large as the <a href=\"https://www.w3.org/TR/filter-effects/#filter-primitive-subregion\" target=\"\">filter primitive subregion</a> established by the <code>feTile</code> element.",
+  "props": [
+    {
+      "name": "in"
+    },
+    {
+      "name": "x"
+    },
+    {
+      "name": "y"
+    },
+    {
+      "name": "width"
+    },
+    {
+      "name": "height"
+    },
+    {
+      "name": "result"
+    }
+  ]
+}
