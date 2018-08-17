@@ -1,0 +1,25 @@
+{
+  "name": "feImage",
+  "link": "https://www.w3.org/TR/filter-effects/#elementdef-feimage",
+  "desc": "<p>This filter primitive refers to a graphic external to this filter element, which is loaded or rendered into an RGBA raster and becomes the result of the filter primitive.</p><p>This filter primitive can refer to an external image or can be a reference to another piece of SVG. It produces an image similar to the built-in image source SourceGraphic except that the graphic comes from an external source.</p><p>If the <code>xlink:href</code> references a stand-alone image resource such as a JPEG, PNG or SVG file, then the image resource is rendered according to the behavior of the <image> element; otherwise, the referenced resource is rendered according to the behavior of the <use> element. In either case, the current user coordinate system depends on the value of attribute primitiveUnits on the filter element. The processing of the <code>preserveAspectRatio</code> attribute on the feImage element is identical to that of the <image> element.</p><p>A <code>xlink:href</code> reference that is an empty image (zero width or zero height), that fails to download, is non-existent, or that cannot be displayed (e.g. because it is not in a supported image format) fills the filter primitive subregion with transparent black.</p>",
+  "props": [
+    {
+      "name": "xlink:href"
+    },
+    {
+      "name": "preserveAspectRatio",
+      "value": "<align> [<meetOrSlice>]",
+      "desc": "<p>indicates how referenced images should be fitted with respect to the reference rectangle and whether the aspect ratio of the referenced image should be preserved with respect to the current user coordinate system.</p><p>The lacuna value for <code>preserveAspectRatio</code> is <code>xMidYMid meet</code>.</p>"
+    },
+    {
+      "name": "crossorigin",
+      "value": "anonymous | use-credentials",
+      "desc": "The crossorigin attribute is a CORS settings attribute. Its purpose is to allow images from third-party sites that allow cross-origin access to be used with <code>feDisplacementMap</code>. For the defintion see <a href=\"https://www.w3.org/TR/html5/infrastructure.html#cors-settings-attribute\" target=\"_blank\">crossorigin</a> attribute for the &lt;img> tag and the <a href=\"https://www.w3.org/TR/filter-effects/#security\" target=\"_blank\">security section</a> in specification."
+    }
+  ],
+  "commonProps": [
+    "in",
+    "in2",
+    "result"
+  ]
+}
