@@ -5,6 +5,7 @@ import blur from './blur.json';
 import colormatrix from './colormatrix.json';
 import flood from './flood.json';
 import image from './image.json';
+import morphology from './morphology.json';
 import offset from './offset.json';
 import tile from './tile.json';
 import inProp from './in.json';
@@ -37,6 +38,7 @@ export default {
   colormatrix,
   flood,
   image,
+  morphology,
   offset,
   tile,
   'xlink:href': href
