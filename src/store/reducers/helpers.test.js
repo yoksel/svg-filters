@@ -12,10 +12,10 @@ describe('store helpers', () => {
       const stateBefore = {};
       const groupName = 'blur';
       const stateAfter = 'blur';
-      const getId = helpers.idKeeper();
+      const keeperTools = helpers.idKeeper();
 
       expect(
-        getId(groupName)
+        keeperTools.getId(groupName)
       ).toEqual(stateAfter);
     });
 });
@@ -27,11 +27,11 @@ describe('store helpers', () => {
       const stateBefore = {};
       const groupName = 'blur';
       const stateAfter = 'blur1';
-      const getId = helpers.idKeeper();
-      getId(groupName);
+      const keeperTools = helpers.idKeeper();
+      keeperTools.getId(groupName);
 
       expect(
-        getId(groupName)
+        keeperTools.getId(groupName)
       ).toEqual(stateAfter);
     });
 });

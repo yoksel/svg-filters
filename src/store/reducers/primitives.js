@@ -1,16 +1,23 @@
 import deepClone from '../../helpers/deepClone';
 import {
   updateUnicalProps,
-  resetIdKeeper,
+  resetIdKeeperSection,
+  purgeIdKeeperSection,
   swap,
   getFilteredWithIndex,
   getIn
 } from './helpers';
 
 const primitive = (state, action) => {
+  const {section} = action;
+
   switch (action.type) {
   case 'ADD_PRIMITIVE':
-    const newAction = updateUnicalProps(state, action);
+    const newAction = updateUnicalProps({
+      state,
+      primitive: action,
+      section
+    });
 
     return {
       id: newAction.id,
@@ -21,7 +28,11 @@ const primitive = (state, action) => {
     };
 
   case 'DISCOVERY_PRIMITIVE':
-    const newPrimitiveDiscovery = updateUnicalProps(state, action);
+    const newPrimitiveDiscovery = updateUnicalProps({
+      state,
+      primitive: action,
+      section
+    });
 
     return {
       id: newPrimitiveDiscovery.id,
@@ -39,7 +50,12 @@ const primitive = (state, action) => {
       filteredWithIndex = getFilteredWithIndex(children, action.childId);
     }
 
-    const duplAction = updateUnicalProps(state, filteredWithIndex.filtered, action.type);
+    const duplAction = updateUnicalProps({
+      state,
+      primitive: filteredWithIndex.filtered,
+      actionType: action.type,
+      section
+    });
 
     return {
       pos: filteredWithIndex.pos,
@@ -69,11 +85,12 @@ const initialState = {
 export const primitives = (state = initialState, action) => {
   switch (action.type) {
   case 'ADD_PRIMITIVE':
+    const addPrimitiveSection = action.section;
     const addPrimitiveData = {
       type: action.type,
-      ...action.item
+      ...action.item,
+      section: addPrimitiveSection
     };
-    const addPrimitiveSection = action.section;
     const addPrimitiveNew = primitive(state[addPrimitiveSection], addPrimitiveData);
     addPrimitiveNew.justAdded = true;
     addPrimitiveNew.nativeEvent = action.nativeEvent;
@@ -89,7 +106,8 @@ export const primitives = (state = initialState, action) => {
   case 'DISCOVERY_PRIMITIVE':
     const discoverPrimitiveData = {
       type: action.type,
-      ...action.item
+      ...action.item,
+      section: 'docs'
     };
     const discoverPrimitiveNew = primitive(state.docs, discoverPrimitiveData);
 
@@ -226,6 +244,11 @@ export const primitives = (state = initialState, action) => {
     const purgeResult = {...state};
     purgeResult[purgeSection] = [];
 
+    if (purgeSection !== 'docs') {
+      // Docs not using unical Id
+      purgeIdKeeperSection(purgeSection);
+    }
+
     return purgeResult;
 
   case 'CHANGE_PRIMITIVE_PROP':
@@ -338,11 +361,12 @@ export const primitives = (state = initialState, action) => {
     return changePropTypeResult;
 
   case 'ADD_PRESET':
+    const addPresetSection = 'presets';
     const addPresetList = [
       ...action.primitives
     ];
 
-    resetIdKeeper(addPresetList);
+    resetIdKeeperSection(addPresetList, addPresetSection);
 
     return {
       ...state,

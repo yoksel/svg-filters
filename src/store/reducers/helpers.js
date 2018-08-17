@@ -25,7 +25,7 @@ const reduceStateToCounterObj = (state) => {
   }, {});
 };
 
-// Fill counter with state from storage
+// Fill counter with state for section
 const fillCounter = (state) => {
   let counterObj = {};
 
@@ -36,30 +36,56 @@ const fillCounter = (state) => {
   return counterObj;
 };
 
-export const idKeeper = (state) => {
-  // If state was filled from localStorage,
-  // need fill groupIdCounter with existed IDs
-  const groupIdCounter = fillCounter(state);
+export const idKeeper = () => {
+  const groupIdCounter = {};
 
-  const getId = (groupName) => {
+  const addSection = (state, section) => {
+    // If state was filled from localStorage,
+    // need fill groupIdCounter with existed IDs
+    groupIdCounter[section] = fillCounter(state, section);
+  };
+
+  const purgeSection = (section) => {
+    // Drop counters after purging section
+    groupIdCounter[section] = {};
+  };
+
+  const checkSection = (section) => {
+    return Boolean(groupIdCounter[section]);
+  };
+
+  const getId = (groupName, section) => {
     let newId = groupName;
 
-    if (groupIdCounter[groupName] !== undefined) {
-      newId += ++groupIdCounter[groupName];
+    if (!groupIdCounter[section]) {
+      groupIdCounter[section] = {};
+    }
+
+    if (groupIdCounter[section][groupName] !== undefined) {
+      newId += ++groupIdCounter[section][groupName];
     } else {
-      groupIdCounter[groupName] = 0;
+      groupIdCounter[section][groupName] = 0;
     }
 
     return newId;
   };
 
-  return getId;
+  return {
+    addSection,
+    checkSection,
+    purgeSection,
+    getId
+  };
 };
 
-let getId;
+const keeperTools = idKeeper();
 
-export const resetIdKeeper = (state) => {
-  getId = idKeeper(state);
+export const resetIdKeeperSection = (state, section) => {
+  keeperTools.addSection(state, section);
+};
+
+export const purgeIdKeeperSection = (section) => {
+  keeperTools.purgeSection(section);
 };
 
 export const getAllEnabledResultsObj = (state) => {
@@ -86,14 +112,18 @@ export const getLastResult = (state) => {
   return result;
 };
 
-export const updateUnicalProps = (state, primitive, actionType) => {
-  if (!getId) {
-    getId = idKeeper(state);
+export const updateUnicalProps = ({state, primitive, actionType, section}) => {
+  if (!keeperTools.checkSection(section)) {
+    keeperTools.addSection(state, section);
   }
 
   const newPrimitive = deepClone(primitive);
-  let newIdAdd = getId(newPrimitive.groupName);
   let newIn = getLastResult(state);
+  let newIdAdd = newPrimitive.id;
+
+  if (section !== 'docs') {
+    newIdAdd = keeperTools.getId(newPrimitive.groupName, section);
+  }
 
   newPrimitive.id = newIdAdd;
 
