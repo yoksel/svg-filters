@@ -2,6 +2,7 @@
 
 import blend from './blend.json';
 import blur from './blur.json';
+import flood from './flood.json';
 import image from './image.json';
 import tile from './tile.json';
 import inProp from './in.json';
@@ -31,6 +32,7 @@ export default {
 
   blend,
   blur,
+  flood,
   image,
   tile,
   'xlink:href': href

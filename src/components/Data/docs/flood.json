@@ -1,0 +1,20 @@
+{
+  "name": "feFlood",
+  "link": "https://www.w3.org/TR/filter-effects/#elementdef-feflood",
+  "desc": "This filter primitive creates a rectangle filled with the color and opacity values from properties <code>flood-color</code> and <code>flood-opacity</code>. The rectangle is as large as the <a href=\"https://www.w3.org/TR/filter-effects/#filter-primitive-subregion\" target=\"_blank\">filter primitive subregion</a> established by the <code>feFlood</code> element.",
+  "props": [
+    {
+      "name": "flood-color",
+      "value": "<color>",
+      "desc": "The <code>flood-color</code> property indicates what color to used to flood the current filter primitive subregion."
+    },
+    {
+      "name": "flood-opacity",
+      "value": "<number> | <percentage>",
+      "desc": "The <code>flood-opacity</code> property defines the opacity value to use across the entire filter primitive subregion. If the <code>flood-color</code> value includes an alpha channel, the alpha channel gets multiplied with the computed value of the <code>flood-opacity</code> property."
+    },
+    {
+      "name": "result"
+    }
+  ]
+}
