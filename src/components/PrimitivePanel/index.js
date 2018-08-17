@@ -40,7 +40,7 @@ class PrimitivePanel extends Component {
       const {value} = param;
       let name = key;
 
-      if (inputsData[key] && inputsData[key].name) {
+      if (inputsData && inputsData[key] && inputsData[key].name) {
         name = inputsData[key].name;
       }
 
