@@ -2,11 +2,19 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
-import {addPreset, discoveryPrimitive} from '../../store/actions';
+import {addPreset, discoveryPrimitive, purgePrimitives} from '../../store/actions';
 
 import AppTemplate from '../../components/App';
 
 class App extends Component {
+  purgePrev = (prevSection) => {
+    const {id, section} = this.props;
+    if (!prevSection) {
+      return null;
+    }
+    this.props.purgePrimitives(prevSection);
+  };
+
   itemFromPath = () => {
     const {id, section, handlerName} = this.props;
     const currentSet = this.props[section];
@@ -28,8 +36,13 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.id !== this.props.id) {
+    const {id, section} = this.props;
+
+    if (prevProps.id !== id) {
       this.itemFromPath();
+    }
+    if (prevProps.section !== section) {
+      this.purgePrev(prevProps.section);
     }
   }
 
@@ -67,6 +80,9 @@ const mapDispatchProps = (dispatch, props) => {
     },
     discoveryPrimitive: (item) => {
       dispatch(discoveryPrimitive({item}));
+    },
+    purgePrimitives: (section) => {
+      dispatch(purgePrimitives({section}));
     }
   };
 };
