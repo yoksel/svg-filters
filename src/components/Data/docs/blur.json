@@ -6,17 +6,18 @@
     {
       "name": "stdDeviation",
       "value": "<number-optional-number>",
-      "desc": "<p>The standard deviation for the blur operation. If two <number> s are provided, the first number represents a standard deviation value along the x-axis of the coordinate system established by attribute primitiveUnits on the filter element. The second value represents a standard deviation in Y. If one number is provided, then that value is used for both X and Y.</p><p>A negative value or a value of zero disables the effect of the given filter primitive (i.e., the result is the filter input image).</p><p>If stdDeviation is 0 in only one of X or Y, then the effect is that the blur is only applied in the direction that has a non-zero value.</p><p>The lacuna value for stdDeviation is 0.</p>"
+      "desc": "<p>The standard deviation for the blur operation. If two &lt;number>s are provided, the first number represents a standard deviation value along the x-axis of the coordinate system established by attribute primitiveUnits on the filter element. The second value represents a standard deviation in Y. If one number is provided, then that value is used for both X and Y.</p><p>A negative value or a value of zero disables the effect of the given filter primitive (i.e., the result is the filter input image).</p><p>If <code>stdDeviation</code> is 0 in only one of X or Y, then the effect is that the blur is only applied in the direction that has a non-zero value.</p><p>The lacuna value for <code>stdDeviation</code> is 0.</p>"
     },
     {
       "name": "edgeMode",
       "value": "duplicate | wrap | none",
-      "desc": "<p>Determines how to extend the input image as necessary with color values so that the matrix operations can be applied when the kernel is positioned at or near the edge of the input image.</p><p><code>duplicate</code> indicates that the input image is extended along each of its borders as necessary by duplicating the color values at the given edge of the input image.</p><p><code>wrap</code> indicates that the input image is extended by taking the color values from the opposite edge of the image.</p><p>The value <code>none</code> indicates that the input image is extended with pixel values of zero for R, G, B and A.</p><p>The lacuna value for edgeMode is none.</p>"
+      "desc": "<p>Determines how to extend the input image as necessary with color values so that the matrix operations can be applied when the kernel is positioned at or near the edge of the input image.</p><p><code>duplicate</code> indicates that the input image is extended along each of its borders as necessary by duplicating the color values at the given edge of the input image.</p><p><code>wrap</code> indicates that the input image is extended by taking the color values from the opposite edge of the image.</p><p>The value <code>none</code> indicates that the input image is extended with pixel values of zero for R, G, B and A.</p><p>The lacuna value for <code>edgeMode</code> is none.</p>"
+    },
+    {
+      "name": "in"
+    },
+    {
+      "name": "result"
     }
-  ],
-  "commonProps": [
-    "in",
-    "in2",
-    "result"
   ]
 }
