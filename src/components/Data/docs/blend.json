@@ -6,17 +6,22 @@
     {
       "name": "mode",
       "value": "<blend-mode>",
-      "desc": "One of the blend modes defined by <a href=\"https://www.w3.org/TR/compositing-1/#ltblendmodegt\">Compositing and Blending Level&nbsp;1</a>. The lacuna value for mode is normal."
+      "desc": "One of the blend modes defined by <a href=\"https://www.w3.org/TR/compositing-1/#ltblendmodegt\">Compositing and Blending Level&nbsp;1</a>. The lacuna value for <code>mode</code> is normal."
     },
     {
+      "disable": true,
       "name": "no-composite",
       "value": "no-composite",
       "desc": "If the no-composite attribute is present, the specified blend mode must not use alpha compositing. The necessary modifications are defined by <a href=\"https://www.w3.org/TR/compositing-1/\">Compositing and Blending Level&nbsp;1</a>"
+    },
+    {
+      "name": "in"
+    },
+    {
+      "name": "in2"
+    },
+    {
+      "name": "result"
     }
-  ],
-  "commonProps": [
-    "in",
-    "in2",
-    "result"
   ]
 }
