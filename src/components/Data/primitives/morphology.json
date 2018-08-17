@@ -6,7 +6,7 @@
       "value": "erode"
     },
     "radius" : {
-      "value": 3
+      "value": "3 3"
     },
     "in": {
       "value": "SourceAlpha"

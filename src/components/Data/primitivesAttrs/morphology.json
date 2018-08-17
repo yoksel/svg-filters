@@ -6,7 +6,8 @@
     },
     "radius" : {
       "min": 0,
-      "type": "number"
+      "type": "number",
+      "double": true
     },
     "in": {
       "type": "select"
