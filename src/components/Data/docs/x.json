@@ -1,0 +1,6 @@
+{
+  "name": "x",
+  "link": "https://www.w3.org/TR/filter-effects/#element-attrdef-filter-primitive-x",
+  "value": "<length> | <percentage>",
+  "desc": "<p>The minimum x coordinate for the subregion which restricts calculation and rendering of the given filter primitive. See <a href=\"https://www.w3.org/TR/filter-effects/#filter-primitive-subregion\" target=\"_blank\">filter primitive subregion</a>.</p><p>The lacuna value for <code>x</code> is 0%.</p></div>"
+}

@@ -3,11 +3,16 @@
 import blend from './blend.json';
 import blur from './blur.json';
 import image from './image.json';
+import tile from './tile.json';
 import inProp from './in.json';
 import result from './result.json';
+import x from './x.json';
+import y from './y.json';
+import width from './width.json';
+import height from './height.json';
 
 const in2 = {
-  desc: 'See <b>in</b>'
+  desc: 'See <code>in</code>'
 };
 
 const href = {
@@ -18,6 +23,10 @@ const href = {
 export default {
   in: inProp,
   in2: in2,
+  x,
+  y,
+  width,
+  height,
   result,
 
   blend,

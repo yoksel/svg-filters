@@ -1,0 +1,5 @@
+{
+  "name": "y",
+  "value": "<length> | <percentage>",
+  "desc": "<p>The minimum y coordinate for the subregion which restricts calculation and rendering of the given filter primitive. See <a href=\"https://www.w3.org/TR/filter-effects/#filter-primitive-subregion\" target=\"_blank\">filter primitive subregion</a>.</p><p>The lacuna value for <code>y</code> is 0%.</p>"
+}
