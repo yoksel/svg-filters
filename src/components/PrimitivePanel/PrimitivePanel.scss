@@ -13,6 +13,10 @@
   pointer-events: none;
   color: $color-darkgray;
   user-select: none;
+
+  &--no-result {
+    min-height: 40px;
+  }
 }
 
 .PrimitivePanel__fieldset {

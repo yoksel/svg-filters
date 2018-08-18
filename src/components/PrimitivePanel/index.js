@@ -28,8 +28,17 @@ class PrimitivePanel extends Component {
     const inputsData = groupData.inputsData;
     const fieldsetProps = {};
     const hasChildren = primitive.children ? 'has-children' : 'no-children';
-    const PrimitivePanelClass = `PrimitivePanel PrimitivePanel--${hasChildren}`;
     const PrimitivePanelContentClass = `PrimitivePanel__content PrimitivePanel__content--${hasChildren}`;
+    const hasResult = Boolean(primitive.params.result);
+
+    const PrimitivePanelClassList = [
+      'PrimitivePanel',
+      `PrimitivePanel--${hasChildren}`
+    ];
+
+    if (!hasResult) {
+      PrimitivePanelClassList.push('PrimitivePanel--no-result');
+    }
 
     if (primitiveDisabled) {
       fieldsetProps.disabled = true;
@@ -71,7 +80,7 @@ class PrimitivePanel extends Component {
     });
 
     return (
-      <div className={PrimitivePanelClass}>
+      <div className={PrimitivePanelClassList.join(' ')}>
         <fieldset
           className="PrimitivePanel__fieldset"
           {...fieldsetProps}
@@ -91,6 +100,7 @@ class PrimitivePanel extends Component {
           parentId={parentId}
           groupName={groupName}
           primitiveDisabled={primitiveDisabled}
+          hasResult={hasResult}
         />}
       </div>
     );
