@@ -7,6 +7,7 @@ import composite from './composite.json';
 import displacementMap from './displacementMap.json';
 import flood from './flood.json';
 import image from './image.json';
+import merge from './merge.json';
 import morphology from './morphology.json';
 import offset from './offset.json';
 import tile from './tile.json';
@@ -43,6 +44,7 @@ export default {
   displacementMap,
   flood,
   image,
+  merge,
   morphology,
   offset,
   tile,
