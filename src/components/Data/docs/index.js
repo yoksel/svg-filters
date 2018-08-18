@@ -18,7 +18,7 @@ import width from './width.json';
 import height from './height.json';
 
 const in2 = {
-  desc: 'See <code>in</code>.'
+  desc: 'The second input image. See <code>in</code>.'
 };
 
 const href = {
