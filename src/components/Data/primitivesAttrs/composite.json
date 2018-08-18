@@ -37,6 +37,7 @@
     "out",
     "atop",
     "xor",
+    "lighter",
     "arithmetic"
   ]
 }
