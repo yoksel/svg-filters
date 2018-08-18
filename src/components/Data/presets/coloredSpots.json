@@ -33,7 +33,7 @@
           "value": "dilate"
         },
         "radius": {
-          "value": "35"
+          "value": "35 35"
         },
         "in": {
           "value": "turbulence"

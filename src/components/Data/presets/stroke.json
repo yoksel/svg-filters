@@ -9,7 +9,7 @@
           "value": "dilate"
         },
         "radius": {
-          "value": "5"
+          "value": "5 5"
         },
         "in": {
           "value": "SourceAlpha"
