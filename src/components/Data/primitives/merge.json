@@ -13,9 +13,6 @@
       "params": {
         "in": {
           "value": "SourceGraphic"
-        },
-        "result": {
-          "value": "mergeNode"
         }
       }
     },
@@ -25,9 +22,6 @@
       "params": {
         "in": {
           "value": "SourceGraphic"
-        },
-        "result": {
-          "value": "mergeNode1"
         }
       }
     }
