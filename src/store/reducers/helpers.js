@@ -151,7 +151,13 @@ export const updateUnicalProps = ({state, primitive, actionType, section}) => {
   }
 
   if (newPrimitive.children) {
-    newPrimitive.children = newPrimitive.children.map(item => updateUnicalProps(state, item));
+    newPrimitive.children = newPrimitive.children.map(item => {
+      return updateUnicalProps({
+        state,
+        primitive: item,
+        section
+      });
+    });
   }
 
   return newPrimitive;
