@@ -9,10 +9,19 @@ const PrimitivePanelControls = ({
   duplicatePrimitive,
   removePrimitive,
   togglePrimitive,
-  primitiveDisabled
+  primitiveDisabled,
+  hasResult
 }) => {
+  const panelClassList = [
+    'PrimitivePanelControls'
+  ];
+
+  if (!hasResult) {
+    panelClassList.push('PrimitivePanelControls--no-result');
+  }
+
   return (
-    <div className="PrimitivePanelControls">
+    <div className={panelClassList.join(' ')}>
 
       <button
         className="PrimitivePanelControl PrimitivePanelControl--toggle"

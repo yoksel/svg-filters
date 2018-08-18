@@ -4,6 +4,11 @@
   justify-content: space-evenly;
   color: yellowgreen;
   pointer-events: all;
+
+  &--no-result {
+    flex-direction: row;
+    align-self: center;
+  }
 }
 
 .PrimitivePanelControl {
