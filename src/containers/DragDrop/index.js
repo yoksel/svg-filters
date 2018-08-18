@@ -87,6 +87,7 @@ let DragDrop = (props) => {
 
   return (
     <div
+      className="dragDrop"
       onMouseUp={onMouseUp}
       onMouseMove={onMouseMove}
     >
