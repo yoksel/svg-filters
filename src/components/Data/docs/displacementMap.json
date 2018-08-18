@@ -1,0 +1,31 @@
+{
+  "name": "feDisplacementMap",
+  "link": "https://www.w3.org/TR/filter-effects/#feDisplacementMapElement",
+  "desc": "This filter primitive uses the pixels values from the image from <code>in2</code> to spatially displace the image from <code>in</code>.",
+  "props": [
+    {
+      "name": "scale",
+      "value": "<number>",
+      "desc": "<p>Displacement scale factor. The amount is expressed in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>When the value of this attribute is <code>0</code>, this operation has no effect on the source image.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "xChannelSelector",
+      "value": "R | G | B | A",
+      "desc": "Indicates which channel from <code>in2</code> to use to displace the pixels in <code>in</code> along the x-axis. The lacuna value is <code>A</code>."
+    },
+    {
+      "name": "yChannelSelector",
+      "value": "R | G | B | A",
+      "desc": "Indicates which channel from <code>in2</code> to use to displace the pixels in <code>in</code> along the y-axis. The lacuna value is <code>A</code>."
+    },
+    {
+      "name": "in"
+    },
+    {
+      "name": "in2"
+    },
+    {
+      "name": "result"
+    }
+  ]
+}
