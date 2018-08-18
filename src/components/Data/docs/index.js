@@ -3,6 +3,7 @@
 import blend from './blend.json';
 import blur from './blur.json';
 import colormatrix from './colormatrix.json';
+import composite from './composite.json';
 import displacementMap from './displacementMap.json';
 import flood from './flood.json';
 import image from './image.json';
@@ -38,6 +39,7 @@ export default {
   blend,
   blur,
   colormatrix,
+  composite,
   displacementMap,
   flood,
   image,

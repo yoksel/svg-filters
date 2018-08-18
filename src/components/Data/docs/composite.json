@@ -1,0 +1,41 @@
+{
+  "name": "feComposite",
+  "link": "https://www.w3.org/TR/filter-effects/#feCompositeElement",
+  "desc": "<p>This filter performs the combination of the two input images pixel-wise in image space using one of the <a href=\"https://www.w3.org/TR/filter-effects/#biblio-porterduff\" target=\"_blank\">Porter-Duff</a> compositing operations: <code>over</code>, <code>in</code>, <code>atop</code>, <code>out</code>, <code>xor</code>, <code>lighter</code>. Additionally, a component-wise arithmetic operation (with the result clamped between [0..1]) can be applied.</p><p>The arithmetic operation is useful for combining the output from the feDiffuseLighting and feSpecularLighting filters with texture data. It is also useful for implementing dissolve.</p>",
+  "props": [
+    {
+      "name": "operator",
+      "value": "over | in | out | atop | xor | lighter | arithmetic",
+      "desc": "The compositing operation that is to be performed. The lacuna value is <code>over</code>."
+    },
+    {
+      "name": "k1",
+      "value": "<number>",
+      "desc": "<p>Only applicable if operator <code>arithmetic</code>.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "k2",
+      "value": "<number>",
+      "desc": "<p>Only applicable if operator <code>arithmetic</code>.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "k3",
+      "value": "<number>",
+      "desc": "<p>Only applicable if operator <code>arithmetic</code>.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "k4",
+      "value": "<number>",
+      "desc": "<p>Only applicable if operator <code>arithmetic</code>.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "in"
+    },
+    {
+      "name": "in2"
+    },
+    {
+      "name": "result"
+    }
+  ]
+}
