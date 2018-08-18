@@ -102,12 +102,10 @@ class DragDropItem extends Component {
 
     // If element was just added with dragDrop
     if (justAdded) {
-      const top = nativeEvent.offsetY;
       const left = nativeEvent.offsetX;
 
       this.coords = {
         left: left,
-        top: top
       };
 
       // Force moving duplicated element to cursor,

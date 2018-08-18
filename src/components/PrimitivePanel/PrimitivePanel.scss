@@ -58,6 +58,11 @@
   .PrimitivePanel {
     display: inline-block;
     min-height: auto;
+    padding: .2rem 1rem;
+  }
+
+  .PrimitivePanel__tag {
+    font-weight: normal;
   }
 
   .PrimitivePanel__label,
