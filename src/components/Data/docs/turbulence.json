@@ -1,0 +1,35 @@
+{
+  "name": "feTurbulence",
+  "link": "https://www.w3.org/TR/filter-effects/#elementdef-feturbulence",
+  "desc": "<p>This filter primitive creates an image using the Perlin turbulence function. It allows the synthesis of artificial textures like clouds or marble. The resulting image will fill the entire filter primitive subregion for this filter primitive.</p><p>It is possible to create bandwidth-limited noise by synthesizing only one octave.</p>",
+  "props": [
+    {
+      "name": "baseFrequency",
+      "value": "<number-optional-number>",
+      "desc": "<p>The base frequency (frequencies) parameter(s) for the noise function. If two &lt;number>s are provided, the first number represents a base frequency in the X direction and the second value represents a base frequency in the Y direction. If one number is provided, then that value is used for both X and Y.</p><p>The lacuna value is <code>0</code>.</p><p>Negative values are unsupported.</p>"
+    },
+    {
+      "name": "numOctaves",
+      "value": "<integer>",
+      "desc": "<p>The numOctaves parameter for the noise function.</p><p>The lacuna value is <code>1</code>.</p><p>Negative values are unsupported.</p>"
+    },
+    {
+      "name": "seed",
+      "value": "<number>",
+      "desc": "<p>The starting number for the pseudo random number generator.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "stitchTiles",
+      "value": "stitch | noStitch",
+      "desc": "<p>If value <code>noStitch</code>, no attempt is made to achieve smooth transitions at the border of tiles which contain a turbulence function. Sometimes the result will show clear discontinuities at the tile borders.</p><p>The lacuna value is <code>noStitch</code>.</p>"
+    },
+    {
+      "name": "type",
+      "value": "fractalNoise | turbulence",
+      "desc": "<p>Indicates whether the filter primitive should perform a noise or turbulence function.</p><p>The lacuna value is <code>turbulence</code>.</p>"
+    },
+    {
+      "name": "result"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ import image from './image.json';
 import morphology from './morphology.json';
 import offset from './offset.json';
 import tile from './tile.json';
+import turbulence from './turbulence.json';
 import inProp from './in.json';
 import result from './result.json';
 import x from './x.json';
@@ -43,5 +44,6 @@ export default {
   morphology,
   offset,
   tile,
+  turbulence,
   'xlink:href': href
 };
