@@ -6,7 +6,7 @@ class ConstructorPlaceholder extends Component {
   text = {
     playground: 'Drag primitives here to create filter',
     presets: 'Choose a preset to play with its primitives',
-    docs: 'Choose primitive to see docs and a live demos'
+    docs: 'Choose primitive to see docs and live demos'
   };
 
   render() {
