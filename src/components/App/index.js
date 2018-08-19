@@ -7,6 +7,7 @@ import Code from '../../containers/Code';
 
 import Icons from '../Icons';
 import Header from '../Header';
+import Footer from '../Footer';
 import Sidebar from '../Sidebar';
 
 import './App.css';
@@ -37,6 +38,8 @@ const App = () => {
             </div>
           </div>
         </main>
+
+        <Footer/>
       </div>
     </DragDrop>
   );
