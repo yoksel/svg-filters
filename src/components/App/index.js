@@ -15,21 +15,23 @@ const App = () => {
     <DragDrop
       listId="primitives_to_constructor">
       <div className="App">
-        <Icons/>
-        <div className="App__container App__container--list">
-          <div className="App__content App__content--sticky">
-            <Sidebar/>
+        <div className="App__inner">
+          <Icons/>
+          <div className="App__container App__container--controlsList">
+            <div className="App__content App__content--sticky">
+              <Sidebar/>
+            </div>
           </div>
-        </div>
 
         <div className="App__container App__container--constructor">
           <Constructor/>
         </div>
 
-        <div className="App__container App__container--playground">
-          <div className="App__content App__content--sticky">
-            <Playground/>
-            <Code/>
+          <div className="App__container App__container--playground">
+            <div className="App__content App__content--sticky">
+              <Playground/>
+              <Code/>
+            </div>
           </div>
         </div>
       </div>

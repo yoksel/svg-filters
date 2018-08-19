@@ -1,6 +1,9 @@
 .App {
+  min-width: 1000px;
+}
+
+.App__inner {
   display: flex;
-  // justify-content: space-between;
 }
 
 .App__container {
@@ -13,9 +16,14 @@
     border: none;
   }
 
+  &--controlsList {
+    max-width: 220px;
+  }
+
   &--constructor {
     flex-grow: 1;
     flex-basis: 40%;
+    max-width: 500px;
   }
 
   &--playground {
