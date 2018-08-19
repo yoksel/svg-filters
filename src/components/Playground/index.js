@@ -10,7 +10,8 @@ const Playground = ({filterId}) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
 
   return (
-    <div className="Playground">
+    <section className="Playground">
+      <h2 className="visuallyhidden">Live demo</h2>
       <div className="Playground__image">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +34,7 @@ const Playground = ({filterId}) => {
             x="5%" y="20"
             width="90%" height="200"
             preserveAspectRatio="xMidYMid meet"
-            xlinkHref="http://placekitten.com/400/200"
+            xlinkHref="https://placekitten.com/400/200"
             filter={filterUrl}
           />
 
@@ -44,7 +45,7 @@ const Playground = ({filterId}) => {
           </g>
         </svg>
       </div>
-    </div>
+    </section>
   );
 };
 

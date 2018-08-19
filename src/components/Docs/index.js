@@ -49,7 +49,8 @@ class Docs extends Component {
     });
 
     return (
-      <div className={DocsClass}>
+      <section className={DocsClass}>
+        <h2 className="visuallyhidden">Docs</h2>
         <div className="Docs__content">
           <h3 className="Docs__title">{name}</h3>
           {link}
@@ -58,7 +59,7 @@ class Docs extends Component {
           <h4 className="Docs__list-title">Attributes:</h4>
           <ul className="Docs__list">{props}</ul>
         </div>
-      </div>
+      </section>
     );
   }
 }

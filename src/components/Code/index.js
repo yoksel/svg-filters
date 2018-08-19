@@ -89,13 +89,14 @@ class Code extends Component {
       '';
 
     return (
-      <div className="Code">
+      <section className="Code">
+        <h2 className="visuallyhidden">Filter code</h2>
         <textarea
           className="Code__textarea"
           value={value}
           onChange={() => {}}
         />
-      </div>
+      </section>
     );
   }
 }

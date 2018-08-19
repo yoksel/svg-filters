@@ -16,7 +16,7 @@ const ControlsList = ({items, control = 'button', addPrimitive, match}) => {
 
 
   return (
-    <div className={ControlsListClass}>
+    <nav className={ControlsListClass}>
       {items.map((item, index) => {
         const groupData = primitivesAttrs[item.groupName];
         const ControlClassList = [
@@ -74,7 +74,7 @@ const ControlsList = ({items, control = 'button', addPrimitive, match}) => {
           </button>
         );
       })}
-    </div>
+    </nav>
   );
 };
 

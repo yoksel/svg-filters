@@ -29,7 +29,8 @@ const getPurgeButton = (section, purgePrimitives) => {
 
 const Constructor = ({primitives, dragDrop, purgePrimitives, section}) => {
   return (
-    <div className="Constructor">
+    <section className="Constructor">
+      <h2 className="visuallyhidden">Constructor</h2>
       <div className="Constructor__tag Constructor__tag--open">
         &lt;filter id="#filter">
         {getPurgeButton(section, purgePrimitives)}
@@ -95,7 +96,7 @@ const Constructor = ({primitives, dragDrop, purgePrimitives, section}) => {
       </div>
 
       <div className="Constructor__tag Constructor__tag--close">&lt;/filter></div>
-    </div>
+    </section>
   );
 };
 
