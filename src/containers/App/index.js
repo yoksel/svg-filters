@@ -8,7 +8,6 @@ import AppTemplate from '../../components/App';
 
 class App extends Component {
   purgePrev = (prevSection) => {
-    const {id, section} = this.props;
     if (!prevSection) {
       return null;
     }
