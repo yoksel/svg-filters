@@ -1,0 +1,46 @@
+@import "../../variables.scss";
+
+.Docs {
+  min-width: 0;
+  transition: min-width .3s;
+  font-size: 14px;
+
+  &--opened {
+    min-width: 300px;
+  }
+
+  CODE {
+    padding: 2px 4px;
+    border-radius: $border-radius;
+    background: $hlt-blue;
+  }
+}
+
+.Docs__title {
+  margin-top: 0;
+}
+
+.Docs__list-title {
+  margin: 1.5rem 0;
+}
+
+.Docs__list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.Doc-prop {
+  margin-bottom: 2rem;
+}
+
+.Doc-prop__name {
+  padding: 0 3px;
+  background: $hlt-green;
+  box-shadow: 0 0 0 3px $hlt-green;
+  border-radius: $border-radius - 3;
+}
+
+.Doc-prop__value,
+.Doc-prop__desc {
+  margin: .7rem 0;
+}

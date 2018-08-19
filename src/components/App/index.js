@@ -4,6 +4,7 @@ import DragDrop from '../../containers/DragDrop';
 import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
 import Code from '../../containers/Code';
+import Docs from '../../containers/Docs';
 
 import Icons from '../Icons';
 import Header from '../Header';
@@ -27,9 +28,10 @@ const App = () => {
             </div>
           </div>
 
-        <div className="App__container App__container--constructor">
-          <Constructor/>
-        </div>
+          <div className="App__container App__container--constructor">
+            <Constructor/>
+            <Docs/>
+          </div>
 
           <div className="App__container App__container--playground">
             <div className="App__content App__content--sticky">
