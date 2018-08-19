@@ -1,12 +1,12 @@
 @import "../../variables.scss";
 
-.Contsructor {
+.Constructor {
   min-width: 350px;
   margin-bottom: 1rem;
   color: $color-lightgray;
 }
 
-.Contsructor__container {
+.Constructor__container {
   min-height: 80px;
   padding: 12px;
   flex-basis: 100%;
@@ -17,21 +17,21 @@
   border-radius: $border-radius;
 }
 
-.Contsructor__tag {
+.Constructor__tag {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
-.Contsructor__tag--open {
+.Constructor__tag--open {
   margin-bottom: .5em;
 }
 
-.Contsructor__tag--close {
+.Constructor__tag--close {
   margin-top: .5em;
 }
 
-.Contsructor__purge-button {
+.Constructor__purge-button {
   padding: 2px 4px;
   background: none;
   border: none;
@@ -53,6 +53,6 @@
   }
 }
 
-.Contsructor__item {
+.Constructor__item {
   width: 100%;
 }

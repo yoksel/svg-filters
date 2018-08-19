@@ -5,7 +5,7 @@ import deepClone from '../../helpers/deepClone';
 
 import DragDropItem from '../../containers/DragDropItem';
 import PrimitivePanel from '../PrimitivePanel';
-import ContsructorPlaceholder from '../ContsructorPlaceholder';
+import ConstructorPlaceholder from '../ConstructorPlaceholder';
 
 import './Constructor.css';
 
@@ -21,22 +21,22 @@ const getPurgeButton = (section, purgePrimitives) => {
 
   return (
     <button
-      className="Contsructor__purge-button"
+      className="Constructor__purge-button"
       onClick={purgePrimitives}
     >Clear</button>
   );
 };
 
-const Contsructor = ({primitives, dragDrop, purgePrimitives, section}) => {
+const Constructor = ({primitives, dragDrop, purgePrimitives, section}) => {
   return (
-    <div className="Contsructor">
-      <div className="Contsructor__tag Contsructor__tag--open">
+    <div className="Constructor">
+      <div className="Constructor__tag Constructor__tag--open">
         &lt;filter id="#filter">
         {getPurgeButton(section, purgePrimitives)}
       </div>
       <div
-        className="Contsructor__container">
-        {!primitives.length && <ContsructorPlaceholder section={section}/>}
+        className="Constructor__container">
+        {!primitives.length && <ConstructorPlaceholder section={section}/>}
 
         {primitives.map((primitive, index) => {
 
@@ -48,7 +48,7 @@ const Contsructor = ({primitives, dragDrop, purgePrimitives, section}) => {
                 <div
                   key={item.id}
                   id={item.id}
-                  className="Contsructor__item"
+                  className="Constructor__item"
                 >
                   <DragDropItem
                     id={item.id}
@@ -74,7 +74,7 @@ const Contsructor = ({primitives, dragDrop, purgePrimitives, section}) => {
             <div
               key={primitive.id}
               id={primitive.id}
-              className="Contsructor__item"
+              className="Constructor__item"
             >
               <DragDropItem
                 id={primitive.id}
@@ -94,13 +94,13 @@ const Contsructor = ({primitives, dragDrop, purgePrimitives, section}) => {
         })}
       </div>
 
-      <div className="Contsructor__tag Contsructor__tag--close">&lt;/filter></div>
+      <div className="Constructor__tag Constructor__tag--close">&lt;/filter></div>
     </div>
   );
 };
 
-export default Contsructor;
+export default Constructor;
 
-Contsructor.propTypes = {
+Constructor.propTypes = {
   primitives: PropTypes.array.isRequired
 };

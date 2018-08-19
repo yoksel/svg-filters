@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-import './ContsructorPlaceholder.css';
+import './ConstructorPlaceholder.css';
 
-class ContsructorPlaceholder extends Component {
+class ConstructorPlaceholder extends Component {
   text = {
     playground: 'Drag primitives here to start',
     presets: 'Choose a preset to play with its primitives',
@@ -14,11 +14,11 @@ class ContsructorPlaceholder extends Component {
 
     return (
       <div
-        className="ContsructorPlaceholder"
+        className="ConstructorPlaceholder"
         dangerouslySetInnerHTML={{__html: this.text[section]}}>
       </div>
     );
   }
 }
 
-export default ContsructorPlaceholder;
+export default ConstructorPlaceholder;
