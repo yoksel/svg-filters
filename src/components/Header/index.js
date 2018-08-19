@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router';
 import {NavLink} from 'react-router-dom';
 
+import Wrapper from '../Wrapper';
+
 import './Header.css';
 
 class Header extends Component {
@@ -70,14 +72,20 @@ class Header extends Component {
 
     return (
       <header className="Header">
-        <NavLink
-          className="Header__logo"
-          {...logoLinkProps}
-        >SVG Filters</NavLink>
+        <Wrapper>
+          <div className="Header__content">
+            <h1 className="Header__title">
+              <NavLink
+                className="Header__logo"
+                {...logoLinkProps}
+              >SVG Filters</NavLink>
+            </h1>
 
-        <nav className="Header__nav">
-          {navItems}
-        </nav>
+            <nav className="Header__nav">
+              {navItems}
+            </nav>
+          </div>
+        </Wrapper>
       </header>
     );
   }

@@ -2,14 +2,7 @@
 
 .Header {
   position: relative;
-  padding: 1.5rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: #000;
-  font-family: Georgia, serif;
-  line-height: 1;
-  color: #FFF;
 
   &::after {
     content: "";
@@ -20,6 +13,21 @@
     height: 5px;
     background-color: gold;
   }
+}
+
+.Header__content {
+  padding: 1.5rem $offset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Georgia, serif;
+  line-height: 1;
+  color: #FFF;
+}
+
+.Header__title {
+  margin: 0;
+  font-weight: normal;
 }
 
 .Header__logo {

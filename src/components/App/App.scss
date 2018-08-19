@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .App {
   min-width: 1000px;
 }
@@ -7,7 +9,7 @@
 }
 
 .App__container {
-  padding: 2.5rem 1rem;
+  padding: 2.5rem $offset;
   box-sizing: border-box;
   flex-basis: 20%;
   border-left: 1px solid #DDD;
@@ -17,7 +19,7 @@
   }
 
   &--controlsList {
-    max-width: 220px;
+    max-width: 230px;
   }
 
   &--constructor {

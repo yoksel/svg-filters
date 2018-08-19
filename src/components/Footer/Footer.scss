@@ -1,6 +1,11 @@
+@import "../../variables.scss";
+
 .Footer {
+  border-top: 1px solid #DDD;
+  padding: 2rem $offset;
+}
+
+.Footer__content {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #DDD;
-  padding: 2rem 1rem;
 }
