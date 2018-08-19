@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
 import {changePrimitiveProp} from '../../store/actions';
 
@@ -10,14 +11,23 @@ const mapDispatchProps = (
 ) => {
   return {
     onChange: (value) => {
-      dispatch(changePrimitiveProp(props, value));
+      const {id, parentId, param, match} = props;
+      const {section = 'playground'} = match.params;
+      const initialProps = {
+        id,
+        parentId,
+        param,
+        value,
+        section
+      };
+      dispatch(changePrimitiveProp(initialProps));
     }
   };
 };
 
-const InputTextarea = connect(
+const InputTextarea = withRouter(connect(
   null,
   mapDispatchProps
-)(InputTextareaTemplate);
+)(InputTextareaTemplate));
 
 export default InputTextarea;
