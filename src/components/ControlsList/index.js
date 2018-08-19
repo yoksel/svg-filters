@@ -39,7 +39,7 @@ const ControlsList = ({items, control = 'button', addPrimitive, match}) => {
         }
 
         if (control === 'NavLink') {
-          const url = `${process.env.PUBLIC_URL}/${section}/${item.id}`;
+          const url = `/${section}/${item.id}`;
 
           return (
             <NavLink
