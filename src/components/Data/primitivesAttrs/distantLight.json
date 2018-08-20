@@ -1,0 +1,12 @@
+{
+  "name": "feDistantLight",
+  "oneOf": "lightSource",
+  "inputsData": {
+    "azimuth": {
+      "type": "number"
+    },
+    "elevation" : {
+      "type": "number"
+    }
+  }
+}

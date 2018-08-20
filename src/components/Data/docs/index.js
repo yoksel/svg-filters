@@ -47,6 +47,7 @@ export default {
   merge,
   morphology,
   offset,
+  specularLighting,
   tile,
   turbulence,
   'xlink:href': href

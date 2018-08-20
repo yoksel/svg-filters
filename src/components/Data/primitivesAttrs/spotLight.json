@@ -1,0 +1,29 @@
+{
+  "name": "feSpotLight",
+  "inputsData": {
+    "x": {
+      "type": "number"
+    },
+    "y": {
+      "type": "number"
+    },
+    "z": {
+      "type": "number"
+    },
+    "pointsAtX": {
+      "type": "number"
+    },
+    "pointsAtY": {
+      "type": "number"
+    },
+    "pointsAtZ": {
+      "type": "number"
+    },
+    "specularExponent": {
+      "type": "number"
+    },
+    "limitingConeAngle": {
+      "type": "number"
+    }
+  }
+}

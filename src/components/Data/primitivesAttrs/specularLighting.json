@@ -1,0 +1,28 @@
+{
+  "name": "feSpecularLighting",
+  "hasSingleChild": true,
+  "inputsData": {
+    "surfaceScale": {
+      "type": "number"
+    },
+    "specularConstant": {
+      "type": "number",
+      "step": 0.1,
+      "min": 0
+    },
+    "specularExponent": {
+      "type": "number"
+    },
+    "kernelUnitLength": {
+      "type": "number",
+      "double": true
+    },
+    "lightingColor": {
+      "type": "color",
+      "name": "lighting-color"
+    },
+    "in": {
+      "type": "select"
+    }
+  }
+}

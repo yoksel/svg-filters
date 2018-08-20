@@ -1,0 +1,88 @@
+{
+  "id": "specularLighting",
+  "groupName": "specularLighting",
+  "params": {
+    "surfaceScale": {
+      "value": 5
+    },
+    "specularConstant" : {
+      "value": 0.75
+    },
+    "specularExponent": {
+      "value": 20
+    },
+    "kernelUnitLength": {
+      "value": "3 5"
+    },
+    "lightingColor": {
+      "value": "#BBF900"
+    },
+    "in": {
+      "value": "SourceAlpha"
+    },
+    "result": {
+      "value": "specularLighting"
+    }
+  },
+  "children": [
+    {
+      "id": "distantLight",
+      "groupName": "distantLight",
+      "params": {
+        "azimuth": {
+          "value": 3
+        },
+        "elevation": {
+          "value": 3
+        }
+      }
+    },
+    {
+      "id": "pointLight",
+      "groupName": "pointLight",
+      "disabled": true,
+      "params": {
+        "x": {
+          "value": 3
+        },
+        "y": {
+          "value": 3
+        },
+        "z": {
+          "value": 3
+        }
+      }
+    },
+    {
+      "id": "spotLight",
+      "groupName": "spotLight",
+      "disabled": true,
+      "params": {
+        "x": {
+          "value": 250
+        },
+        "y": {
+          "value": 300
+        },
+        "z": {
+          "value": 50
+        },
+        "pointsAtX": {
+          "value": 0
+        },
+        "pointsAtY": {
+          "value": 0
+        },
+        "pointsAtZ": {
+          "value": 0
+        },
+        "specularExponent": {
+          "value": 1
+        },
+        "limitingConeAngle": {
+          "value": 60
+        }
+      }
+    }
+  ]
+}

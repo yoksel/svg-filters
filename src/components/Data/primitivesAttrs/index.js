@@ -2,13 +2,18 @@ import blend from './blend.json';
 import blur from './blur.json';
 import colormatrix from './colormatrix.json';
 import composite from './composite.json';
+import diffuseLighting from './diffuseLighting.json';
 import displacementMap from './displacementMap.json';
+import distantLight from './distantLight.json';
 import flood from './flood.json';
 import image from './image.json';
 import merge from './merge.json';
 import mergeNode from './mergeNode.json';
 import morphology from './morphology.json';
 import offset from './offset.json';
+import pointLight from './pointLight.json';
+import specularLighting from './specularLighting.json';
+import spotLight from './spotLight.json';
 import tile from './tile.json';
 import turbulence from './turbulence.json';
 
@@ -29,7 +34,9 @@ export default {
   blur,
   colormatrix,
   composite,
+  diffuseLighting,
   displacementMap,
+  distantLight,
   flood,
   image,
   tile,
@@ -37,5 +44,8 @@ export default {
   mergeNode,
   morphology,
   offset,
+  pointLight,
+  specularLighting,
+  spotLight,
   turbulence
 };

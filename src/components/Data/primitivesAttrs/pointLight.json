@@ -1,0 +1,15 @@
+{
+  "name": "fePointLight",
+  "oneOf": "lightSource",
+  "inputsData": {
+    "x": {
+      "type": "number"
+    },
+    "y" : {
+      "type": "number"
+    },
+    "z" : {
+      "type": "number"
+    }
+  }
+}
