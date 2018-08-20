@@ -790,6 +790,9 @@ describe('reducers', () => {
   });
 });
 
+// SWITCH_OFF_LAST_ADDED
+// ------------------------------
+
 describe('reducers', () => {
   it('SWITCH_OFF_LAST_ADDED: should switch off prop by primitive id', () => {
     const stateBefore = {
@@ -850,6 +853,9 @@ describe('reducers', () => {
   });
 });
 
+// SWAP_PRIMITIVES
+// ------------------------------
+
 describe('reducers', () => {
   it('SWAP_PRIMITIVES: should swap primitives', () => {
     const stateBefore = {
@@ -907,6 +913,9 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+// PURGE_PRIMITIVES
+// ------------------------------
 
 describe('reducers', () => {
   it('PURGE_PRIMITIVES: should purge given list', () => {
