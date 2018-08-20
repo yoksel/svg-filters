@@ -1,0 +1,39 @@
+@import "../../variables.scss";
+
+.PrimitivePanelSwitcher {
+  pointer-events: all;
+}
+
+.PrimitivePanelSwitcher__control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  border: 1px solid #DDD;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    border-color: $color-darkgray;
+
+    &::before {
+      background: $hlt-green;
+    }
+  }
+
+  :checked + & {
+    border-color: $color-lightgray;
+  }
+
+  :checked + &::before {
+    background: $color-midgray;
+  }
+}
