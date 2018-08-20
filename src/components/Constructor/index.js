@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import deepClone from '../../helpers/deepClone';
 
+import {primitivesAttrs} from '../Data';
+
 import DragDropItem from '../../containers/DragDropItem';
 import PrimitivePanel from '../PrimitivePanel';
 import ConstructorPlaceholder from '../ConstructorPlaceholder';
@@ -40,6 +42,7 @@ const Constructor = ({primitives, dragDrop, purgePrimitives, section}) => {
         {!primitives.length && <ConstructorPlaceholder section={section}/>}
 
         {primitives.map((primitive, index) => {
+          const groupData = primitivesAttrs[primitive.groupName];
 
           if (primitive.children && primitive.children.length > 0) {
             primitive = deepClone(primitive);
@@ -64,6 +67,7 @@ const Constructor = ({primitives, dragDrop, purgePrimitives, section}) => {
                       parentId={primitive.id}
                       primitive={item}
                       resultsList={getResultsList(primitives, index)}
+                      parentHasSingleChild={groupData.hasSingleChild}
                     />
                   </DragDropItem>
                 </div>
