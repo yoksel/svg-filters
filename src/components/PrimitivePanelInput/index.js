@@ -7,8 +7,6 @@ import PrimitivePanelInputText from '../PrimitivePanelInputText';
 import PrimitivePanelInputSelect from '../PrimitivePanelInputSelect';
 import PrimitivePanelInputTextarea from '../PrimitivePanelInputTextarea';
 
-import './PrimitivePanelInput.css';
-
 class PrimitivePanelInput extends Component {
   render() {
     const {primitive, paramKey} = this.props;
