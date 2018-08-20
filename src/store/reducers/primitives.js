@@ -425,6 +425,28 @@ export const primitives = (state = initialState, action) => {
 
     return switchOffLastResult;
 
+  case 'SWITCH_CHILD':
+    const {section: switchChildSection} = action;
+    let switchChildList = state[switchChildSection].map(item => {
+      if (item.id === action.parentId) {
+        item = deepClone(item);
+
+        item.children = item.children.map(child => {
+          child = deepClone(child);
+          child.disabled = !(child.id === action.id);
+
+          return child;
+        });
+      }
+
+      return item;
+    });
+
+    const switchChildResult = {...state};
+    switchChildResult[switchChildSection] = switchChildList;
+
+    return switchChildResult;
+
   default:
     return state;
   }

@@ -34,6 +34,7 @@ const CHANGE_PRIMITIVE_PROP = 'CHANGE_PRIMITIVE_PROP';
 const CHANGE_PROP_TYPE = 'CHANGE_PROP_TYPE';
 const TOGGLE_PROP = 'TOGGLE_PROP';
 const SWAP_PRIMITIVES = 'SWAP_PRIMITIVES';
+const SWITCH_CHILD = 'SWITCH_CHILD';
 
 const ADD_PRESET = 'ADD_PRESET';
 
@@ -119,4 +120,9 @@ export const switchOffLastAdded = createAction(
 export const swapPrimitives = createAction(
   SWAP_PRIMITIVES,
   ['parentId', 'indexes', 'swapSnapshot', 'section']
+);
+
+export const switchChild = createAction(
+  SWITCH_CHILD,
+  ['id', 'parentId', 'section']
 );

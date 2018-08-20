@@ -954,3 +954,65 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+// SWITCH_CHILD
+// ------------------------------
+
+describe('reducers', () => {
+  it('SWITCH_CHILD: should enable one child & disable others', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'diffuseLighting',
+          children: [
+            {
+              id: 'distantLight',
+              disabled: false
+            },
+            {
+              id: 'pointLight',
+              disabled: true
+            },
+            {
+              id: 'spotLight',
+              disabled: true
+            }
+          ]
+        }
+      ]
+    };
+    const action = {
+      id: 'pointLight',
+      parentId: 'diffuseLighting',
+      section: 'playground',
+      type: 'SWITCH_CHILD'
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'diffuseLighting',
+          children: [
+            {
+              id: 'distantLight',
+              disabled: true
+            },
+            {
+              id: 'pointLight',
+              disabled: false
+            },
+            {
+              id: 'spotLight',
+              disabled: true
+            }
+          ]
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
