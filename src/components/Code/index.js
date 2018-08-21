@@ -58,9 +58,22 @@ const getAllPrimitivesCode = (primitives) => {
     });
 };
 
+const getValueFromObject = (valueObj) => {
+  const valueList = Object.keys(valueObj).reduce((prev, valueKey) => {
+    prev.push(`${valueKey}: ${valueObj[valueKey]}`);
+
+    return prev;
+  }, []);
+
+  return valueList.join(';');
+};
+
 const getFilterAttrs = (filterData) => {
   const attrsList = Object.keys(filterData).reduce((prev, attrName) => {
-    const value = filterData[attrName];
+    let value = filterData[attrName];
+    if (typeof value === 'object') {
+      value = getValueFromObject(value);
+    }
     prev.push(`${attrName}="${value}"`);
 
     return prev;
