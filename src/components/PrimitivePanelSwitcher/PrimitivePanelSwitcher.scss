@@ -2,22 +2,23 @@
 
 .PrimitivePanelSwitcher {
   pointer-events: all;
+  align-self: flex-start;
 }
 
 .PrimitivePanelSwitcher__control {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.2em;
+  height: 1.2em;
   border-radius: 50%;
   border: 1px solid #DDD;
   cursor: pointer;
 
   &::before {
     content: "";
-    width: .8em;
-    height: .8em;
+    width: .6em;
+    height: .6em;
     border-radius: 50%;
   }
 
@@ -30,7 +31,7 @@
   }
 
   :checked + & {
-    border-color: $color-lightgray;
+    border-color: $color-gray;
   }
 
   :checked + &::before {
