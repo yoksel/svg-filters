@@ -1,6 +1,7 @@
-import blur from './blur';
 import grayscale from './grayscale';
 import smoke from './smoke';
+import paper from './paper';
+import watercolor from './watercolor';
 import stroke from './stroke';
 import dancingStroke from './dancingStroke';
 import contour from './contour';
@@ -13,7 +14,6 @@ import coloredStripesVert from './coloredStripesVert';
 import coloredFlame from './coloredFlame';
 
 export default [
-  blur,
   shadow,
   stroke,
   dancingStroke,
@@ -21,6 +21,8 @@ export default [
   grayscale,
   waves,
   smoke,
+  paper,
+  watercolor,
   zebra,
   coloredStripesHor,
   coloredStripesVert,
