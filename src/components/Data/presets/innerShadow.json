@@ -1,0 +1,154 @@
+{
+  "id": "innerShadow",
+  "name": "Inner shadow",
+  "primitives": [
+    {
+      "id": "flood",
+      "params": {
+        "floodColor": {
+          "value": "#000000"
+        },
+        "floodOpacity": {
+          "value": 1
+        },
+        "result": {
+          "value": "flood"
+        }
+      },
+      "groupName": "flood"
+    },
+    {
+      "id": "composite1",
+      "params": {
+        "k1": {
+          "value": 0,
+          "disabled": true
+        },
+        "k2": {
+          "value": 8,
+          "disabled": true
+        },
+        "k3": {
+          "value": -0.5,
+          "disabled": true
+        },
+        "k4": {
+          "value": -0.5,
+          "disabled": true
+        },
+        "in": {
+          "value": "flood"
+        },
+        "in2": {
+          "value": "SourceAlpha"
+        },
+        "operator": {
+          "value": "out"
+        },
+        "result": {
+          "value": "composite1"
+        }
+      },
+      "groupName": "composite"
+    },
+    {
+      "id": "offset",
+      "params": {
+        "dx": {
+          "value": "4"
+        },
+        "dy": {
+          "value": "4"
+        },
+        "in": {
+          "value": "composite1"
+        },
+        "result": {
+          "value": "offset"
+        }
+      },
+      "groupName": "offset"
+    },
+    {
+      "id": "blur",
+      "params": {
+        "stdDeviation": {
+          "value": "4 4"
+        },
+        "in": {
+          "value": "offset"
+        },
+        "edgeMode": {
+          "value": "none"
+        },
+        "result": {
+          "value": "blur"
+        }
+      },
+      "groupName": "blur"
+    },
+    {
+      "id": "composite2",
+      "params": {
+        "k1": {
+          "value": 0,
+          "disabled": true
+        },
+        "k2": {
+          "value": 8,
+          "disabled": true
+        },
+        "k3": {
+          "value": -0.5,
+          "disabled": true
+        },
+        "k4": {
+          "value": -0.5,
+          "disabled": true
+        },
+        "in": {
+          "value": "blur"
+        },
+        "in2": {
+          "value": "SourceAlpha"
+        },
+        "operator": {
+          "value": "in"
+        },
+        "result": {
+          "value": "composite2"
+        }
+      },
+      "groupName": "composite"
+    },
+    {
+      "id": "merge",
+      "params": {
+        "result": {
+          "value": "merge"
+        }
+      },
+      "groupName": "merge",
+      "children": [
+        {
+          "id": "mergeNode",
+          "groupName": "mergeNode",
+          "params": {
+            "in": {
+              "value": "SourceGraphic"
+            }
+          }
+        },
+        {
+          "id": "mergeNode1",
+          "groupName": "mergeNode",
+          "params": {
+            "in": {
+              "value": "composite2"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
