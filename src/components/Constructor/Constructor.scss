@@ -53,6 +53,10 @@
   }
 }
 
+.Constructor__button--move {
+  text-decoration: none;
+}
+
 .Constructor__button--purge {
   &:hover {
     color: crimson;
