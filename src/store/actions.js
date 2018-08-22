@@ -36,6 +36,7 @@ const TOGGLE_PROP = 'TOGGLE_PROP';
 const SWAP_PRIMITIVES = 'SWAP_PRIMITIVES';
 const SWITCH_CHILD = 'SWITCH_CHILD';
 const MOVE_TO_PLAYGROUND = 'MOVE_TO_PLAYGROUND';
+const TOGGLE_DOCS = 'TOGGLE_DOCS';
 
 const ADD_PRESET = 'ADD_PRESET';
 
@@ -131,4 +132,9 @@ export const switchChild = createAction(
 export const moveToPlayground = createAction(
   MOVE_TO_PLAYGROUND,
   ['section']
+);
+
+export const toggleDocs = createAction(
+  TOGGLE_DOCS,
+  ['id', 'childId', 'section']
 );

@@ -457,6 +457,35 @@ export const primitives = (state = initialState, action) => {
 
     return moveSetResult;
 
+  case 'TOGGLE_DOCS':
+    const {section: toggleDocsSection} = action;
+    let toggleDocsList = state[toggleDocsSection].map(item => {
+      if (item.id === action.id) {
+        item = deepClone(item);
+
+        if (action.childId) {
+          item.children = item.children.map(child => {
+            if (child.id === action.childId) {
+              child = deepClone(child);
+              child.showDocs = !child.showDocs;
+            }
+
+            return child;
+          });
+        } else {
+          item.showDocs = !item.showDocs;
+        }
+
+      }
+
+      return item;
+    });
+
+    const toggleDocsResult = {...state};
+    toggleDocsResult[toggleDocsSection] = toggleDocsList;
+
+    return toggleDocsResult;
+
   default:
     return state;
   }

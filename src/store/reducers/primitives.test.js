@@ -1093,3 +1093,137 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+// TOGGLE_DOCS
+// ------------------------------
+
+describe('reducers', () => {
+  it('0️⃣ TOGGLE_DOCS: should toggle docs for given item', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      section: 'playground',
+      id: 'blur',
+      type: 'TOGGLE_DOCS'
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          },
+          showDocs: true
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
+
+describe('reducers', () => {
+  it('1️⃣ TOGGLE_DOCS: should toggle docs for given child', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          },
+          children: [
+            {
+              id: 'mergeNode'
+            },
+            {
+              id: 'mergeNode1'
+            }
+          ]
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+    const action = {
+      section: 'playground',
+      id: 'blur',
+      childId: 'mergeNode1',
+      type: 'TOGGLE_DOCS'
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          },
+          children: [
+            {
+              id: 'mergeNode'
+            },
+            {
+              id: 'mergeNode1',
+              showDocs: true
+            }
+          ]
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});
