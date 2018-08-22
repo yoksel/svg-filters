@@ -3,7 +3,8 @@
   "hasSingleChild": true,
   "inputsData": {
     "surfaceScale": {
-      "type": "number"
+      "type": "number",
+      "step": 0.1
     },
     "diffuseConstant" : {
       "type": "number",
