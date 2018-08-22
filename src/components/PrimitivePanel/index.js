@@ -111,8 +111,9 @@ class PrimitivePanel extends Component {
               {primitiveName}
             </div>
             {params}
-
-            {primitive.children}
+            <div className="PrimitivePanel__children">
+              {primitive.children}
+            </div>
           </div>
         </fieldset>
 

@@ -5,7 +5,7 @@
   pointer-events: all;
   user-select: none;
 
-  .Contsructor__item:first-of-type > & {
+  .Constructor__item:first-child > & {
     margin-top: 0;
   }
 }
