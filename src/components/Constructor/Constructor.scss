@@ -31,7 +31,7 @@
   margin-top: .5em;
 }
 
-.Constructor__purge-button {
+.Constructor__button {
   padding: 2px 4px;
   background: none;
   border: none;
@@ -45,11 +45,17 @@
 
   &:hover {
     box-shadow: 0 0 0 2px transparent;
-    color: crimson;
+    color: lightseagreen;
   }
 
   &:focus {
     box-shadow: 0 0 0 2px;
+  }
+}
+
+.Constructor__button--purge {
+  &:hover {
+    color: crimson;
   }
 }
 

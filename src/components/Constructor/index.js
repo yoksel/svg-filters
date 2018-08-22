@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {NavLink} from 'react-router-dom';
 
 import deepClone from '../../helpers/deepClone';
 
@@ -16,26 +17,49 @@ const getResultsList = (primitives, index) => {
     .map(item => item.id);
 };
 
-const getPurgeButton = (section, purgePrimitives) => {
-  if (section !== 'playground') {
+const getPurgeButton = (section, purgePrimitives, count) => {
+  if (section !== 'playground' || count === 0) {
     return null;
   }
 
   return (
     <button
-      className="Constructor__purge-button"
+      className="Constructor__button Constructor__button--purge"
       onClick={purgePrimitives}
     >Clear</button>
   );
 };
 
-const Constructor = ({primitives, dragDrop, purgePrimitives, section}) => {
+const getMoveToPlaygroundButton = (section, moveToPlayground, count) => {
+  if (section === 'playground' || count === 0) {
+    return null;
+  }
+
+  return (
+    <span>
+      <NavLink
+        className="Constructor__button Constructor__button--move"
+        to="/"
+        onClick={moveToPlayground}
+      >Move to playground</NavLink>
+    </span>
+  );
+};
+
+const Constructor = ({
+  primitives,
+  dragDrop,
+  purgePrimitives,
+  moveToPlayground,
+  section
+}) => {
   return (
     <section className="Constructor">
       <h2 className="visuallyhidden">Constructor</h2>
       <div className="Constructor__tag Constructor__tag--open">
         &lt;filter id="#filter">
-        {getPurgeButton(section, purgePrimitives)}
+        {getPurgeButton(section, purgePrimitives, primitives.length)}
+        {getMoveToPlaygroundButton(section, moveToPlayground, primitives.length)}
       </div>
       <div
         className="Constructor__container">

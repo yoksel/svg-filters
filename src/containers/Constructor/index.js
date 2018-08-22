@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
-import {purgePrimitives} from '../../store/actions';
+import {purgePrimitives, moveToPlayground} from '../../store/actions';
 
 import ConstructorTemplate from '../../components/Constructor';
 
@@ -21,6 +21,9 @@ const mapDispatchProps = (dispatch, {match}) => {
   return {
     purgePrimitives: () => {
       dispatch(purgePrimitives({section}));
+    },
+    moveToPlayground: () => {
+      dispatch(moveToPlayground({section}));
     }
   };
 };
