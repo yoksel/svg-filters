@@ -11,6 +11,10 @@ class Icons extends Component {
           aria-hidden="true" version="1.1"
           xmlns="http://www.w3.org/2000/svg">
           <defs>
+            <symbol id="icon-doc" viewBox="0 0 14 15">
+              <title>doc</title>
+              <path d="M2 2v11h10V2H2zM1 0h12a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"/><path d="M4.308 6.357a1 1 0 1 1 0-2h5.384a1 1 0 0 1 0 2H4.308zm0 4.286a1 1 0 1 1 0-2h5.384a1 1 0 0 1 0 2H4.308z"/>
+            </symbol>
             <symbol id="icon-file-text" viewBox="0 0 15 16">
               <title>file-text</title>
               <path d="M13.5 0h-12c-0.825 0-1.5 0.675-1.5 1.5v13c0 0.825 0.675 1.5 1.5 1.5h12c0.825 0 1.5-0.675 1.5-1.5v-13c0-0.825-0.675-1.5-1.5-1.5zM13 14h-11v-12h11v12zM4 7h7v1h-7zM4 9h7v1h-7zM4 11h7v1h-7zM4 5h7v1h-7z"></path>
