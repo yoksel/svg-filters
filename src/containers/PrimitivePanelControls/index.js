@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
-import {deletePrimitive, duplicatePrimitive, togglePrimitive, updateIns} from '../../store/actions';
+import {deletePrimitive, duplicatePrimitive, togglePrimitive, toggleDocs, updateIns} from '../../store/actions';
 
 import PrimitivePanelControlsTemplate from '../../components/PrimitivePanelControls';
 
@@ -34,6 +34,9 @@ const mapDispatchProps = (
     togglePrimitive: () => {
       dispatch(togglePrimitive(params));
       dispatch(updateIns({section}));
+    },
+    toggleDocs: () => {
+      dispatch(toggleDocs(params));
     }
   };
 };

@@ -4,10 +4,7 @@
   min-width: 0;
   transition: min-width .3s;
   font-size: 14px;
-
-  &--opened {
-    min-width: 300px;
-  }
+  pointer-events: all;
 
   CODE {
     padding: 2px 4px;
@@ -37,10 +34,60 @@
   padding: 0 3px;
   background: $hlt-green;
   box-shadow: 0 0 0 3px $hlt-green;
+  border: none;
   border-radius: $border-radius - 3;
+  font: inherit;
 }
 
 .Doc-prop__value,
 .Doc-prop__desc {
   margin: .7rem 0;
+}
+
+.Docs--embeded {
+  margin-top: 5px;
+  padding: .5em;
+  border: 2px solid $color-lightsmoke;
+  border-radius: $border-radius;
+
+  .Docs__title,
+  .Docs__list-title {
+    display: none;
+  }
+
+  .Docs-props {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+
+  .Doc-prop__control {
+    margin: .5em 1em .5em 0;
+    outline: none;
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: 0 0 0 3px $hlt-green, 0 0 0 5px $color-darkgray;
+    }
+
+    &--current {
+      background: $color-darkgray;
+      box-shadow: 0 0 0 3px $color-darkgray;
+      color: #FFF;
+
+      &:focus {
+        box-shadow: 0 0 0 5px $color-darkgray;
+      }
+    }
+  }
+
+  .Doc-prop {
+    display: none;
+    margin-right: 1em;
+    margin-bottom: 0;
+  }
+
+  .Doc-prop--current {
+    display: block;
+  }
 }

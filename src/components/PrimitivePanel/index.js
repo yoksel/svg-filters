@@ -9,6 +9,7 @@ import {primitivesAttrs} from '../Data';
 import PrimitivePanelSwitcher from '../PrimitivePanelSwitcher';
 import PrimitivePanelInput from '../PrimitivePanelInput';
 import ResultAttribute from '../ResultAttribute';
+import Docs from '../Docs';
 
 import './PrimitivePanel.css';
 
@@ -111,6 +112,9 @@ class PrimitivePanel extends Component {
               {primitiveName}
             </div>
             {params}
+
+            {primitive.showDocs && <Docs docId={primitive.id} embeded/>}
+
             <div className="PrimitivePanel__children">
               {primitive.children}
             </div>

@@ -31,6 +31,10 @@
   box-shadow: 0 0 0 2px transparent;
   transition: box-shadow .25s;
 
+  &:hover {
+    box-shadow: 0 0 0 1px #CCC;
+  }
+
   &:focus {
     box-shadow: 0 0 0 2px;
   }
@@ -41,5 +45,13 @@
 
   &--toggle {
     color: #555;
+  }
+
+  &--docs {
+    color: lightseagreen;
+
+    .icon {
+      width: 12px;
+    }
   }
 }
