@@ -1016,3 +1016,80 @@ describe('reducers', () => {
     ).toEqual(stateAfter);
   });
 });
+
+// MOVE_TO_PLAYGROUND
+// ------------------------------
+
+describe('reducers', () => {
+  it('MOVE_TO_PLAYGROUND: should move given section items to playground', () => {
+    const stateBefore = {
+      presets: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ],
+      playground: []
+    };
+    const action = {
+      section: 'presets',
+      type: 'MOVE_TO_PLAYGROUND'
+    };
+    const stateAfter = {
+      presets: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ],
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              'value': 'SourceGraphic'
+            }
+          }
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              'value': 'blur'
+            }
+          }
+        }
+      ]
+    };
+
+    deepFreeze(stateBefore);
+
+    expect(
+      primitivesReducers.primitives(stateBefore, action)
+    ).toEqual(stateAfter);
+  });
+});

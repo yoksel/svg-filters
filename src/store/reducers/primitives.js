@@ -448,6 +448,15 @@ export const primitives = (state = initialState, action) => {
 
     return switchChildResult;
 
+  case 'MOVE_TO_PLAYGROUND':
+    const {section: moveSetSection} = action;
+    let moveSetList = state[moveSetSection];
+
+    const moveSetResult = {...state};
+    moveSetResult['playground'] = moveSetList;
+
+    return moveSetResult;
+
   default:
     return state;
   }

@@ -35,6 +35,7 @@ const CHANGE_PROP_TYPE = 'CHANGE_PROP_TYPE';
 const TOGGLE_PROP = 'TOGGLE_PROP';
 const SWAP_PRIMITIVES = 'SWAP_PRIMITIVES';
 const SWITCH_CHILD = 'SWITCH_CHILD';
+const MOVE_TO_PLAYGROUND = 'MOVE_TO_PLAYGROUND';
 
 const ADD_PRESET = 'ADD_PRESET';
 
@@ -125,4 +126,9 @@ export const swapPrimitives = createAction(
 export const switchChild = createAction(
   SWITCH_CHILD,
   ['id', 'parentId', 'section']
+);
+
+export const moveToPlayground = createAction(
+  MOVE_TO_PLAYGROUND,
+  ['section']
 );
