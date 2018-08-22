@@ -4,6 +4,7 @@ import colormatrix from './colormatrix';
 import composite from './composite';
 import diffuseLighting from './diffuseLighting.json';
 import displacementMap from './displacementMap';
+import dropShadow from './dropShadow';
 import flood from './flood';
 import image from './image';
 import merge from './merge';
@@ -15,6 +16,7 @@ import turbulence from './turbulence';
 
 export default [
   blur,
+  dropShadow,
   blend,
   colormatrix,
   image,

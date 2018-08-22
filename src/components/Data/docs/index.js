@@ -5,6 +5,7 @@ import blur from './blur.json';
 import colormatrix from './colormatrix.json';
 import composite from './composite.json';
 import displacementMap from './displacementMap.json';
+import dropShadow from './dropShadow.json';
 import flood from './flood.json';
 import image from './image.json';
 import merge from './merge.json';
@@ -42,6 +43,7 @@ export default {
   colormatrix,
   composite,
   displacementMap,
+  dropShadow,
   flood,
   image,
   merge,

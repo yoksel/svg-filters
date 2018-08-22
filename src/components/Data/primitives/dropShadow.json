@@ -1,0 +1,27 @@
+{
+  "id": "dropShadow",
+  "groupName": "dropShadow",
+  "params": {
+    "stdDeviation": {
+      "value": "5 5"
+    },
+    "in": {
+      "value": "SourceGraphic"
+    },
+    "dx": {
+      "value": "10"
+    },
+    "dy": {
+      "value": "10"
+    },
+    "floodColor": {
+      "value": "#1F3646"
+    },
+    "floodOpacity": {
+      "value": 1
+    },
+    "result": {
+      "value": "dropShadow"
+    }
+  }
+}

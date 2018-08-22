@@ -5,6 +5,7 @@ import composite from './composite.json';
 import diffuseLighting from './diffuseLighting.json';
 import displacementMap from './displacementMap.json';
 import distantLight from './distantLight.json';
+import dropShadow from './dropShadow.json';
 import flood from './flood.json';
 import image from './image.json';
 import merge from './merge.json';
@@ -37,6 +38,7 @@ export default {
   diffuseLighting,
   displacementMap,
   distantLight,
+  dropShadow,
   flood,
   image,
   tile,

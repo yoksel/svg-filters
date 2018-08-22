@@ -1,0 +1,38 @@
+{
+  "name": "feDropShadow",
+  "link": "https://www.w3.org/TR/filter-effects/#feDropShadowElement",
+  "desc": "This filter creates a drop shadow of the input image. It is a shorthand filter, and is defined in terms of combinations of other filter primitives. ",
+  "props": [
+    {
+      "name": "stdDeviation",
+      "value": "<number-optional-number>",
+      "desc": "<p>The standard deviation for the blur operation in the drop shadow.</p><p>This attribute is forwarded to the <code>stdDeviation</code> attribute of the internal feGaussianBlur element.</p><p>The lacuna value is <code>2</code>.</p>"
+    },
+    {
+      "name": "dx",
+      "value": "<number>",
+      "desc": "<p>The x offset of the drop shadow. This attribute is forwarded to the <code>dx</code> attribute of the internal feOffset element.</p><p>The lacuna value is <code>2</code>.</p>"
+    },
+    {
+      "name": "dy",
+      "value": "<number>",
+      "desc": "<p>The y offset of the drop shadow. This attribute is forwarded to the <code>dy</code> attribute of the internal feOffset element.</p><p>The lacuna value is <code>2</code>.</p>"
+    },
+    {
+      "name": "flood-color",
+      "value": "<color>",
+      "desc": "The color of the drop shadow. This attribute is forwarded to the <code>flood-color</code> attribute of the internal feFlood element."
+    },
+    {
+      "name": "flood-opacity",
+      "value": "<number> | <percentage>",
+      "desc": "The opacity of the drop shadow. This attribute is forwarded to the <code>flood-opacity</code> attribute of the internal feFlood element."
+    },
+    {
+      "name": "in"
+    },
+    {
+      "name": "result"
+    }
+  ]
+}
