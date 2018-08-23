@@ -1,6 +1,7 @@
 import blur from './blur';
 import blend from './blend';
 import colormatrix from './colormatrix';
+import componentTransfer from './componentTransfer';
 import composite from './composite';
 import convolveMatrix from './convolveMatrix';
 import diffuseLighting from './diffuseLighting.json';
@@ -17,6 +18,7 @@ import turbulence from './turbulence';
 
 export default [
   blur,
+  componentTransfer,
   dropShadow,
   blend,
   colormatrix,

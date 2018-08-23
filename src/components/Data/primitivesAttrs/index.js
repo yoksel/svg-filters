@@ -1,6 +1,7 @@
 import blend from './blend.json';
 import blur from './blur.json';
 import colormatrix from './colormatrix.json';
+import componentTransfer from './componentTransfer.json';
 import composite from './composite.json';
 import convolveMatrix from './convolveMatrix.json';
 import diffuseLighting from './diffuseLighting.json';
@@ -8,6 +9,9 @@ import displacementMap from './displacementMap.json';
 import distantLight from './distantLight.json';
 import dropShadow from './dropShadow.json';
 import flood from './flood.json';
+import funcR from './funcR.json';
+import funcG from './funcG.json';
+import funcB from './funcB.json';
 import image from './image.json';
 import merge from './merge.json';
 import mergeNode from './mergeNode.json';
@@ -35,6 +39,7 @@ export default {
   blend,
   blur,
   colormatrix,
+  componentTransfer,
   convolveMatrix,
   composite,
   diffuseLighting,
@@ -42,6 +47,9 @@ export default {
   distantLight,
   dropShadow,
   flood,
+  funcR,
+  funcG,
+  funcB,
   image,
   tile,
   merge,
