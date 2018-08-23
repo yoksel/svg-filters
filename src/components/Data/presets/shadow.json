@@ -39,7 +39,7 @@
       "id": "flood",
       "params": {
         "floodColor": {
-          "value": "#0f4b70"
+          "value": "#172841"
         },
         "floodOpacity": {
           "value": "0.7"
