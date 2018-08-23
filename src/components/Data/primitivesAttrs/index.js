@@ -2,6 +2,7 @@ import blend from './blend.json';
 import blur from './blur.json';
 import colormatrix from './colormatrix.json';
 import composite from './composite.json';
+import convolveMatrix from './convolveMatrix.json';
 import diffuseLighting from './diffuseLighting.json';
 import displacementMap from './displacementMap.json';
 import distantLight from './distantLight.json';
@@ -34,6 +35,7 @@ export default {
   blend,
   blur,
   colormatrix,
+  convolveMatrix,
   composite,
   diffuseLighting,
   displacementMap,

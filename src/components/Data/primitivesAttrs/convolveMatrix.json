@@ -1,0 +1,47 @@
+{
+  "name": "feConvolveMatrix",
+  "inputsData": {
+    "order": {
+      "type": "number",
+      "double": true,
+      "min": 1
+    },
+    "kernelMatrix": {
+      "type": "textarea"
+    },
+    "divisor": {
+      "type": "number"
+    },
+    "bias": {
+      "type": "number",
+      "step": 0.1
+    },
+    "targetX": {
+      "type": "number"
+    },
+    "targetY": {
+      "type": "number"
+    },
+    "edgeMode": {
+      "type": "select"
+    },
+    "preserveAlpha": {
+      "type": "select"
+    },
+    "in": {
+      "type": "select"
+    },
+    "in2": {
+      "type": "select"
+    }
+  },
+  "edgeMode": [
+    "duplicate",
+    "wrap",
+    "none"
+  ],
+  "preserveAlpha": [
+    "false",
+    "true"
+  ]
+}

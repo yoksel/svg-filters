@@ -1,0 +1,53 @@
+{
+  "name": "feConvolveMatrix",
+  "link": "https://www.w3.org/TR/filter-effects/#elementdef-feconvolvematrix",
+  "desc": "<p>FeConvolveMatrix applies a matrix convolution filter effect. A convolution combines pixels in the input image with neighboring pixels to produce a resulting image. A wide variety of imaging operations can be achieved through convolutions, including blurring, edge detection, sharpening, embossing and beveling.</p><p>A matrix convolution is based on an n-by-m matrix (the convolution kernel) which describes how a given pixel value in the input image is combined with its neighboring pixel values to produce a resulting pixel value. Each result pixel is determined by applying the kernel matrix to the corresponding source pixel and its neighboring pixels.</p> ",
+  "props": [
+    {
+      "name": "order",
+      "value": "<number-optional-number>",
+      "desc": "<p>Indicates the number of cells in each dimension for kernelMatrix. The values provided must be &lt;integer> s greater than zero. Values that are not integers will be truncated, i.e. rounded to the closest integer value towards zero. The first number, &lt;orderX>, indicates the number of columns in the matrix. The second number, &lt;orderY>, indicates the number of rows in the matrix. If &lt;orderY> is not provided, it defaults to &lt;orderX>.</p><p>It is recommended that only small values (e.g., 3) be used; higher values may result in very high CPU overhead and usually do not produce results that justify the impact on performance.</p><p>The lacuna value for order is <code>3</code>.</p>"
+    },
+    {
+      "name": "kernelMatrix",
+      "value": "<list of numbers>",
+      "desc": "The list of <number> s that make up the kernel matrix for the convolution. Values are separated by space characters and/or a comma. The number of entries in the list must equal &lt;orderX> times &lt;orderY>."
+    },
+    {
+      "name": "divisor",
+      "value": "<number>",
+      "desc": "<p>After applying the kernelMatrix to the input image to yield a number, that number is divided by divisor to yield the final destination color value. A divisor that is the sum of all the matrix values tends to have an evening effect on the overall color intensity of the result. If the specified divisor is zero then the default value will be used instead.</p><p>The lacuna value is the sum of all values in kernelMatrix, with the exception that if the sum is zero, then the divisor is set to <code>1</code>.</p>"
+    },
+    {
+      "name": "bias",
+      "value": "<number>",
+      "desc": "<p>After applying the kernelMatrix to the input image to yield a number and applying the divisor, the bias attribute is added to each component. One application of bias is when it is desirable to have .5 gray value be the zero response of the filter. The bias property shifts the range of the filter. This allows representation of values that would otherwise be clamped to 0 or 1.</p><p>The lacuna value for bias is <code>0</code>.</p>"
+    },
+    {
+      "name": "targetX",
+      "value": "<integer>",
+      "desc": "Determines the positioning in X of the convolution matrix relative to a given target pixel in the input image. The leftmost column of the matrix is column number zero. The value must be such that: 0 <= targetX < orderX. By default, the convolution matrix is centered in X over each pixel of the input image (i.e., targetX = floor ( orderX / 2 ))."
+    },
+    {
+      "name": "targetY",
+      "value": "<integer>",
+      "desc": "Determines the positioning in Y of the convolution matrix relative to a given target pixel in the input image. The topmost row of the matrix is row number zero. The value must be such that: 0 <= targetY < orderY. By default, the convolution matrix is centered in Y over each pixel of the input image (i.e., targetY = floor ( orderY / 2 ))."
+    },
+    {
+      "name": "edgeMode",
+      "value": "duplicate | wrap | none",
+      "desc": "<p>Determines how to extend the input image as necessary with color values so that the matrix operations can be applied when the kernel is positioned at or near the edge of the input image.</p><p><code>duplicate</code> indicates that the input image is extended along each of its borders as necessary by duplicating the color values at the given edge of the input image.</p><p><code>wrap</code> indicates that the input image is extended by taking the color values from the opposite edge of the image.</p><p>The value <code>none</code> indicates that the input image is extended with pixel values of zero for R, G, B and A.</p><p>The lacuna value for edgeMode is <code>duplicate</code>.</p>"
+    },
+    {
+      "name": "preserveAlpha",
+      "value": "false | true",
+      "desc": "<p>A value of <code>false</code> indicates that the convolution will apply to all channels, including the alpha channel.</p><p>A value of <code>true</code> indicates that the convolution will only apply to the color channels. In this case, the filter will temporarily unpremultiply the color component values and apply the kernel.</p></ul><p>The lacuna value for preserveAlpha is <code>false</code>.</p>"
+    },
+    {
+      "name": "in"
+    },
+    {
+      "name": "result"
+    }
+  ]
+}

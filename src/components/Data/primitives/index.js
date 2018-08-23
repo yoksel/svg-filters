@@ -2,6 +2,7 @@ import blur from './blur';
 import blend from './blend';
 import colormatrix from './colormatrix';
 import composite from './composite';
+import convolveMatrix from './convolveMatrix';
 import diffuseLighting from './diffuseLighting.json';
 import displacementMap from './displacementMap';
 import dropShadow from './dropShadow';
@@ -19,8 +20,6 @@ export default [
   dropShadow,
   blend,
   colormatrix,
-  image,
-  tile,
   flood,
   offset,
   specularLighting,
@@ -29,5 +28,8 @@ export default [
   displacementMap,
   turbulence,
   composite,
-  merge
+  merge,
+  image,
+  tile,
+  convolveMatrix,
 ];
