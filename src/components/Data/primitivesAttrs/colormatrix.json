@@ -3,10 +3,12 @@
   "inputsData": {
     "type": {
       "type": "select",
-      "dependencies": {
-        "value": "luminanceToAlpha",
-        "disable": ["values"]
-      }
+      "dependencies": [
+        {
+          "value": "luminanceToAlpha",
+          "disable": ["values"]
+        }
+      ]
     },
     "values": {
       "type": "number",

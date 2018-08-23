@@ -9,10 +9,12 @@
     },
     "operator": {
       "type": "select",
-      "dependencies": {
-        "value": "arithmetic",
-        "enable": ["k1", "k2", "k3", "k4"]
-      }
+      "dependencies": [
+        {
+          "value": "arithmetic",
+          "enable": ["k1", "k2", "k3", "k4"]
+        }
+      ]
     },
     "k1": {
       "type": "number",
