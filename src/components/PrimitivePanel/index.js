@@ -113,7 +113,7 @@ class PrimitivePanel extends Component {
             </div>
             {params}
 
-            {primitive.showDocs && <Docs docId={primitive.id} embeded/>}
+            {primitive.showDocs && <Docs docId={primitive.groupName} embeded/>}
 
             <div className="PrimitivePanel__children">
               {primitive.children}

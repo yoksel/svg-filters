@@ -22,6 +22,7 @@
 }
 
 .Docs__list {
+  margin: 0;
   padding: 0;
   list-style-type: none;
 }
@@ -47,7 +48,7 @@
 .Docs--embeded {
   margin-top: 5px;
   padding: .5em;
-  border: 2px solid $color-lightsmoke;
+  border: 2px solid $hlt-orange;
   border-radius: $border-radius;
 
   .Docs__title,
