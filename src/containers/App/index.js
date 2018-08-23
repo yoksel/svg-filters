@@ -4,6 +4,8 @@ import {withRouter} from 'react-router';
 
 import {addPreset, discoveryPrimitive, purgePrimitives} from '../../store/actions';
 
+import {docsData} from '../../components/Data';
+
 import AppTemplate from '../../components/App';
 
 class App extends Component {
@@ -18,15 +20,26 @@ class App extends Component {
     const {id, section, handlerName} = this.props;
     const currentSet = this.props[section];
     const handler = this.props[handlerName];
+    let currentItems = [];
 
     if (!id) {
       return null;
     }
 
-    const currentItem = currentSet.filter(item => item.id === id)[0];
+    if (section === 'docs') {
+      if (docsData[id] && docsData[id].primitives) {
+        // Doc contains set of primitives for demo
+        currentItems = docsData[id].primitives;
+      } else {
+        // No presets, take from primitiveControls
+        currentItems = currentSet.filter(item => item.id === id);
+      }
+    } else {
+      currentItems = currentSet.filter(item => item.id === id);
+    }
 
-    if (currentItem) {
-      handler(currentItem);
+    if (currentItems) {
+      handler(currentItems);
     }
   };
 
@@ -74,11 +87,11 @@ const mapStateToProps = (state, {match}) => {
 
 const mapDispatchProps = (dispatch, props) => {
   return {
-    addPreset: (preset) => {
-      dispatch(addPreset(preset));
+    addPreset: (presets) => {
+      dispatch(addPreset(presets[0]));
     },
-    discoveryPrimitive: (item) => {
-      dispatch(discoveryPrimitive({item}));
+    discoveryPrimitive: (primitives) => {
+      dispatch(discoveryPrimitive({primitives}));
     },
     purgePrimitives: (section) => {
       dispatch(purgePrimitives({section}));
