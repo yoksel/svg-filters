@@ -9,7 +9,7 @@
       "value": "3 3"
     },
     "in": {
-      "value": "SourceAlpha"
+      "value": "SourceGraphic"
     },
     "result": {
       "value": "morphology"
