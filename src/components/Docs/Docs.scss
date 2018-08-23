@@ -32,11 +32,10 @@
 }
 
 .Doc-prop__name {
-  padding: 0 3px;
+  padding: 2px 6px;
   background: $hlt-green;
-  box-shadow: 0 0 0 3px $hlt-green;
   border: none;
-  border-radius: $border-radius - 3;
+  border-radius: $border-radius;
   font: inherit;
 }
 
@@ -69,25 +68,33 @@
   }
 
   .Doc-prop__control {
-    margin: .5em 1em .5em 0;
+    position: relative;
+    margin: .5em 1em 0 0;
     outline: none;
     cursor: pointer;
 
-    &:hover {
-      box-shadow: 0 0 0 3px $hlt-green, 0 0 0 5px $color-darkgray;
-    }
-
+    &:hover,
     &:focus {
-      box-shadow: 0 0 0 3px $hlt-green, 0 0 0 5px $color-darkgray;
+      box-shadow: 0 0 0 2px $color-darkgray;
     }
 
     &--current {
       background: $color-darkgray;
-      box-shadow: 0 0 0 3px $color-darkgray;
+      box-shadow: 0 0 0 2px $color-darkgray;
       color: #FFF;
 
-      &:focus {
-        box-shadow: 0 0 0 5px $color-darkgray;
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 0;
+        margin: auto;
+        border: 7px solid transparent;
+        border-top-color: $color-darkgray;
+        border-bottom: 0;
       }
     }
   }
@@ -96,9 +103,10 @@
     display: none;
     margin-right: 1em;
     margin-bottom: 0;
-  }
 
-  .Doc-prop--current {
-    display: block;
+    &--current {
+      display: block;
+      margin-top: 1em;
+    }
   }
 }
