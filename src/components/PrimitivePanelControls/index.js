@@ -11,11 +11,17 @@ const PrimitivePanelControls = ({
   togglePrimitive,
   primitiveDisabled,
   toggleDocs,
-  hasResult
+  hasResult,
+  groupName
 }) => {
   const panelClassList = [
     'PrimitivePanelControls'
   ];
+  let showDocs = true;
+
+  if (groupName === 'mergeNode') {
+    showDocs = false;
+  }
 
   if (!hasResult) {
     panelClassList.push('PrimitivePanelControls--no-result');
@@ -56,7 +62,7 @@ const PrimitivePanelControls = ({
           size="13"/>
       </button>
 
-      <button
+      {showDocs && <button
         className="PrimitivePanelControl PrimitivePanelControl--docs"
         type="button"
         onClick={toggleDocs}
@@ -65,7 +71,7 @@ const PrimitivePanelControls = ({
           symbol="doc"
           color="currentColor"
           size="15"/>
-      </button>
+      </button>}
     </div>
   );
 };
