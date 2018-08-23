@@ -45,6 +45,12 @@
   margin: .7rem 0;
 }
 
+.Doc-prop__desc {
+  UL {
+    padding-left: 20px;
+  }
+}
+
 .Docs--embeded {
   margin-top: 5px;
   padding: .5em;
@@ -66,6 +72,10 @@
     margin: .5em 1em .5em 0;
     outline: none;
     cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 0 3px $hlt-green, 0 0 0 5px $color-darkgray;
+    }
 
     &:focus {
       box-shadow: 0 0 0 3px $hlt-green, 0 0 0 5px $color-darkgray;
