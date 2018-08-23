@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
+import PrimitivePanelSwitcher from '../PrimitivePanelSwitcher';
 
 import './PrimitivePanelControls.css';
 
@@ -12,19 +13,60 @@ const PrimitivePanelControls = ({
   primitiveDisabled,
   toggleDocs,
   hasResult,
-  groupName
+  section,
+  id,
+  parentId,
+  groupName,
+  parentHasSingleChild
 }) => {
   const panelClassList = [
     'PrimitivePanelControls'
   ];
   let showDocs = true;
 
-  if (groupName === 'mergeNode') {
+  if (groupName === 'mergeNode' || section === 'docs') {
     showDocs = false;
   }
 
   if (!hasResult) {
     panelClassList.push('PrimitivePanelControls--no-result');
+  }
+
+  const getDocsButton = () => {
+    if (!showDocs) {
+      return;
+    }
+
+    return (
+      <button
+        className="PrimitivePanelControl PrimitivePanelControl--docs"
+        type="button"
+        onClick={toggleDocs}
+      >
+        <Icon
+          symbol="doc"
+          color="currentColor"
+          size="15"/>
+      </button>
+    );
+  };
+
+  if (parentHasSingleChild) {
+    return (
+      <div className={panelClassList.join(' ')}>
+        <PrimitivePanelSwitcher
+          id={id}
+          parentId={parentId}
+          primitiveDisabled={primitiveDisabled}
+        />
+        {getDocsButton()}
+      </div>
+    );
+  }
+
+  // Hide toggle, duplicate, delete controls in docs
+  if (section === 'docs') {
+    return null;
   }
 
   return (
@@ -62,16 +104,7 @@ const PrimitivePanelControls = ({
           size="13"/>
       </button>
 
-      {showDocs && <button
-        className="PrimitivePanelControl PrimitivePanelControl--docs"
-        type="button"
-        onClick={toggleDocs}
-      >
-        <Icon
-          symbol="doc"
-          color="currentColor"
-          size="15"/>
-      </button>}
+      {getDocsButton()}
     </div>
   );
 };
