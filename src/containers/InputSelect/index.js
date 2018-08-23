@@ -27,27 +27,42 @@ const mapDispatchProps = (
       // Enable/disable dependencies
       // k-attributes in composite
       if (dependencies) {
-        let isDepsDisabled = value !== dependencies.value;
-        const enable = dependencies.enable || [];
-        const disable = dependencies.disable || [];
+        const justEnabled = {};
 
-        if (dependencies.disable) {
-          isDepsDisabled = !isDepsDisabled;
-        }
+        dependencies.forEach(oneDep => {
+          let isDepsDisabled = value !== oneDep.value;
+          const enable = oneDep.enable || [];
+          const disable = oneDep.disable || [];
 
-        const listToHandle = [
-          ...enable,
-          ...disable
-        ];
+          if (oneDep.disable) {
+            isDepsDisabled = !isDepsDisabled;
+          }
 
-        listToHandle.forEach(depsItem => {
-          const depsItemProps = {
-            ...initialProps,
-            param: depsItem,
-            disabled: isDepsDisabled
-          };
+          const listToHandle = [
+            ...enable,
+            ...disable
+          ];
 
-          dispatch(toggleProp(depsItemProps));
+          listToHandle.forEach(depsItem => {
+            const depsItemProps = {
+              ...initialProps,
+              param: depsItem,
+              disabled: isDepsDisabled
+            };
+
+            if (isDepsDisabled === false) {
+              justEnabled[depsItem] = depsItem;
+            }
+
+            if (isDepsDisabled === true) {
+              // Prevent disabling just enabled items
+              if (!justEnabled[depsItem]) {
+                dispatch(toggleProp(depsItemProps));
+              }
+            } else {
+              dispatch(toggleProp(depsItemProps));
+            }
+          });
         });
       }
 
