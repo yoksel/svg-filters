@@ -4,7 +4,7 @@ import InputTextarea from '../../containers/InputTextarea';
 
 class PrimitivePanelInputTextarea extends Component {
   render() {
-    const {primitive, paramKey} = this.props;
+    const {primitive, paramKey, parentId} = this.props;
 
     const param = primitive.params[paramKey];
     const {value, type} = param;
@@ -18,6 +18,7 @@ class PrimitivePanelInputTextarea extends Component {
 
     input = <InputTextarea
       id={primitive.id}
+      parentId={parentId}
       key={primitive.id}
       param={paramKey}
       value={actualValue}
