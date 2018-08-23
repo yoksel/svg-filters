@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {docsData} from '../Data';
+
 import Icon from '../Icon';
 import PrimitivePanelSwitcher from '../PrimitivePanelSwitcher';
 
@@ -24,7 +26,7 @@ const PrimitivePanelControls = ({
   ];
   let showDocs = true;
 
-  if (groupName === 'mergeNode' || section === 'docs') {
+  if (!docsData[groupName] || section === 'docs') {
     showDocs = false;
   }
 
