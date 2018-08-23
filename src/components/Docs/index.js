@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {NavLink} from 'react-router-dom';
 
 import {docsData} from '../Data';
 
@@ -99,9 +100,8 @@ class Docs extends Component {
   }
 
   render() {
-    const docId = this.props.docId;
+    const {docId, embeded, toggleDocs} = this.props;
     const currentDoc = docsData[docId];
-    const embeded = this.props.embeded;
 
     const DocsClass = [
       'Docs',
@@ -114,11 +114,17 @@ class Docs extends Component {
     }
 
     const {name, desc} = currentDoc;
-    const link = <a
+    const specLink = <a
       className="Docs__link"
       href={currentDoc.link}
       target="_blank"
       rel="noopener noreferrer">Specification</a>;
+
+    const docLink = embeded && <NavLink
+      className="Docs__link Docs__link--docs"
+      to={`/docs/${docId}`}
+      onClick={toggleDocs}
+    >View in docs</NavLink>;
 
     const propsList = this.getPropsList(currentDoc.props);
 
@@ -127,7 +133,10 @@ class Docs extends Component {
         <h2 className="visuallyhidden">Docs</h2>
         <div className="Docs__content">
           <h3 className="Docs__title">{name}</h3>
-          {link}
+          <div className="Docs__links">
+            {specLink}
+            {docLink}
+          </div>
           <p className="Docs__desc" dangerouslySetInnerHTML={{__html: desc}}></p>
 
           <h4 className="Docs__list-title">Attributes:</h4>

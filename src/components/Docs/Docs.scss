@@ -17,6 +17,26 @@
   margin-top: 0;
 }
 
+.Docs__links {
+  padding: .3em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Docs__link {
+  line-height: 1;
+}
+
+.Docs__link--docs {
+  text-decoration: dashed;
+  text-decoration-line: underline;
+  color: inherit;
+
+  &:hover {
+    color: lightseagreen;
+  }
+}
+
 .Docs__list-title {
   margin: 1.5rem 0;
 }

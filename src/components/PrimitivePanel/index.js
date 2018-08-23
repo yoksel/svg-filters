@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {withRouter} from 'react-router';
 
 import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
+import Docs from '../../containers/Docs';
 
 import {primitivesAttrs} from '../Data';
 
 import PrimitivePanelInput from '../PrimitivePanelInput';
 import ResultAttribute from '../ResultAttribute';
-import Docs from '../Docs';
 
 import './PrimitivePanel.css';
 
@@ -105,7 +105,12 @@ class PrimitivePanel extends Component {
             </div>
             {params}
 
-            {primitive.showDocs && <Docs docId={primitive.groupName} embeded/>}
+            {primitive.showDocs && <Docs
+              docId={primitive.groupName}
+              id={primitive.id}
+              parentId={parentId}
+              embeded/>
+            }
 
             <div className="PrimitivePanel__children">
               {primitive.children}
