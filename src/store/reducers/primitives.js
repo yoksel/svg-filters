@@ -105,18 +105,16 @@ export const primitives = (state = initialState, action) => {
     return addPrimitiveResult;
 
   case 'DISCOVERY_PRIMITIVE':
-    const discoverPrimitiveData = {
-      type: action.type,
-      ...action.item,
-      section: 'docs'
-    };
-    const discoverPrimitiveNew = primitive(state.docs, discoverPrimitiveData);
+    const discoverPrimitiveSection = 'docs';
+    const discoverPrimitiveList = [
+      ...action.primitives
+    ];
+
+    resetIdKeeperSection(discoverPrimitiveList, discoverPrimitiveSection);
 
     return {
       ...state,
-      docs: [
-        discoverPrimitiveNew
-      ]
+      docs: discoverPrimitiveList
     };
 
   case 'DUPLICATE_PRIMITIVE':

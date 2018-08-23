@@ -52,7 +52,7 @@ export const addPrimitive = createAction(
 
 export const discoveryPrimitive = createAction(
   DISCOVERY_PRIMITIVE,
-  ['item']
+  ['primitives']
 );
 
 export const deletePrimitive = createAction(

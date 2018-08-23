@@ -72,8 +72,6 @@ describe('reducers', () => {
         {
           id: 'blur',
           groupName: 'blur',
-          children: undefined,
-          disabled: false,
           params: {
             'stdDeviation': {
               'value': 4
@@ -87,26 +85,26 @@ describe('reducers', () => {
     };
     const action = {
       type: 'DISCOVERY_PRIMITIVE',
-      item: {
-        id: 'blend',
-        groupName: 'blend',
-        params: {
-          'mode': {
-            'value': 'multiply'
-          },
-          result: {
-            value: 'blend'
+      primitives: [
+        {
+          id: 'blend',
+          groupName: 'blend',
+          params: {
+            'mode': {
+              'value': 'multiply'
+            },
+            result: {
+              value: 'blend'
+            }
           }
         }
-      }
+      ]
     };
     const stateAfter = {
       docs: [
         {
           id: 'blend',
           groupName: 'blend',
-          children: undefined,
-          disabled: false,
           params: {
             'mode': {
               'value': 'multiply'
