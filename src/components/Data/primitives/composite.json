@@ -2,6 +2,15 @@
   "id": "composite",
   "groupName": "composite",
   "params": {
+    "in": {
+      "value": "SourceGraphic"
+    },
+    "in2": {
+      "value": "SourceGraphic"
+    },
+    "operator": {
+      "value": "in"
+    },
     "k1": {
       "value": 0,
       "disabled": true
@@ -17,15 +26,6 @@
     "k4": {
       "value": -0.5,
       "disabled": true
-    },
-    "in": {
-      "value": "SourceGraphic"
-    },
-    "in2": {
-      "value": "SourceGraphic"
-    },
-    "operator": {
-      "value": "in"
     },
     "result": {
       "value": "composite"
