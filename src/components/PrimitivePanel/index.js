@@ -6,7 +6,6 @@ import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
 
 import {primitivesAttrs} from '../Data';
 
-import PrimitivePanelSwitcher from '../PrimitivePanelSwitcher';
 import PrimitivePanelInput from '../PrimitivePanelInput';
 import ResultAttribute from '../ResultAttribute';
 import Docs from '../Docs';
@@ -83,22 +82,15 @@ class PrimitivePanel extends Component {
     });
 
     const getPanelControls = () => {
-      if (parentHasSingleChild) {
-        return <PrimitivePanelSwitcher
-          id={primitive.id}
-          parentId={parentId}
-          primitiveDisabled={primitiveDisabled}
-        />;
-      }
-      if (section !== 'docs') {
-        return <PrimitivePanelControls
-          id={primitive.id}
-          parentId={parentId}
-          groupName={groupName}
-          primitiveDisabled={primitiveDisabled}
-          hasResult={hasResult}
-        />;
-      }
+      return <PrimitivePanelControls
+        id={primitive.id}
+        parentId={parentId}
+        groupName={groupName}
+        section={section}
+        primitiveDisabled={primitiveDisabled}
+        hasResult={hasResult}
+        parentHasSingleChild={parentHasSingleChild}
+      />;
     };
 
     return (
