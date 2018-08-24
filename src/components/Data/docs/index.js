@@ -3,6 +3,7 @@
 import blend from './blend.json';
 import blur from './blur.json';
 import colormatrix from './colormatrix.json';
+import componentTransfer from './componentTransfer.json';
 import composite from './composite.json';
 import convolveMatrix from './convolveMatrix.json';
 import displacementMap from './displacementMap.json';
@@ -14,6 +15,9 @@ import morphology from './morphology.json';
 import offset from './offset.json';
 import tile from './tile.json';
 import turbulence from './turbulence.json';
+
+import funcRGBA from './funcRGBA.json';
+
 import inProp from './in.json';
 import result from './result.json';
 import x from './x.json';
@@ -39,10 +43,13 @@ export default {
   height,
   result,
 
+  funcRGBA: funcRGBA,
+
   blend,
   blur,
   colormatrix,
   composite,
+  componentTransfer,
   convolveMatrix,
   displacementMap,
   dropShadow,

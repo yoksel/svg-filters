@@ -1,0 +1,37 @@
+{
+  "name": "Transfer function elements attributes",
+  "link": "https://www.w3.org/TR/filter-effects/#transfer-function-element",
+  "desc": "",
+  "props": [
+    {
+      "name": "tableValues",
+      "value": "list of <number>s",
+      "desc": "When type <code>table</code>, the list of &lt;number>, separated by white space and/or a comma, which define the lookup table. An empty list results in an identity transfer function. If the attribute is not specified, then the effect is as if an empty list were provided."
+    },
+    {
+      "name": "slope",
+      "value": "<number>",
+      "desc": "<p>When type <code>linear</code>, the slope of the linear function.</p><p>The lacuna value is <code>1</code>.</p>"
+    },
+    {
+      "name": "intercept",
+      "value": "<number>",
+      "desc": "<p>When type <code>linear</code>, the intercept of the linear function.</p><p>The lacuna value for is <code>0</code>.</p>"
+    },
+    {
+      "name": "amplitude",
+      "value": "<number>",
+      "desc": "<p>When type <code>gamma</code>, the amplitude of the gamma function.</p><p>The lacuna value is <code>1</code>.</p>"
+    },
+    {
+      "name": "exponent",
+      "value": "<number>",
+      "desc": "<p>When type <code>gamma</code>, the exponent of the gamma function.</p><p>The lacuna value  is <code>1</code>.</p>"
+    },
+    {
+      "name": "offset",
+      "value": "<number>",
+      "desc": "<p>When type <code>gamma</code>, the offset of the gamma function.</p><p>The lacuna value  is <code>0</code>.</p>"
+    }
+  ]
+}
