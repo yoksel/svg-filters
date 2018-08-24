@@ -105,6 +105,38 @@
           "disabled": true
         }
       }
+    },
+    {
+      "id": "funcA",
+      "groupName": "funcA",
+      "params": {
+        "type": {
+          "value": "table"
+        },
+        "tableValues": {
+          "value": "0 1"
+        },
+        "slope": {
+          "value": "1",
+          "disabled": true
+        },
+        "intercept": {
+          "value": "0",
+          "disabled": true
+        },
+        "amplitude": {
+          "value": "1",
+          "disabled": true
+        },
+        "exponent": {
+          "value": "1",
+          "disabled": true
+        },
+        "offset": {
+          "value": "0",
+          "disabled": true
+        }
+      }
     }
   ]
 }

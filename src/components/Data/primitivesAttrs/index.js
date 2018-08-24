@@ -12,6 +12,7 @@ import flood from './flood.json';
 import funcR from './funcR.json';
 import funcG from './funcG.json';
 import funcB from './funcB.json';
+import funcA from './funcA.json';
 import image from './image.json';
 import merge from './merge.json';
 import mergeNode from './mergeNode.json';
@@ -50,6 +51,7 @@ export default {
   funcR,
   funcG,
   funcB,
+  funcA,
   image,
   tile,
   merge,
