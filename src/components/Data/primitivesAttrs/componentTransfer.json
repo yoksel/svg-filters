@@ -1,6 +1,6 @@
 {
   "name": "feComponentTransfer",
-  "hasSingleChild": true,
+  "noChangesForChildren": true,
   "inputsData": {
     "in": {
       "type": "select"
