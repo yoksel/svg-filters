@@ -11,10 +11,6 @@
       "step": 0.1,
       "min": 0
     },
-    "kernelUnitLength": {
-      "type": "number",
-      "double": true
-    },
     "lightingColor": {
       "type": "color",
       "name": "lighting-color"

@@ -8,9 +8,6 @@
     "diffuseConstant" : {
       "value": 0.75
     },
-    "kernelUnitLength": {
-      "value": "3 5"
-    },
     "lightingColor": {
       "value": "#BBF900"
     },
