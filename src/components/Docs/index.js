@@ -99,6 +99,33 @@ class Docs extends Component {
     return <ul className="Docs__list Docs-props">{propsList}</ul>;
   }
 
+  getChildrenList = (currentDocChildren) => {
+    const childrenList = currentDocChildren.map(childId => {
+      const childData = docsData[childId];
+      if (!childData) {
+        return null;
+      }
+
+      let childDesc = null;
+
+      if (childData.desc) {
+        childDesc = <div className="Docs__desc" dangerouslySetInnerHTML={{__html: childData.desc}}></div>;
+      }
+
+      const childPropsList = this.getPropsList(childData.props);
+
+      return (
+        <div key={childId}>
+          <h4 className="Docs__list-title">{childData.name}</h4>
+          {childDesc}
+          {childPropsList}
+        </div>
+      );
+    });
+
+    return childrenList;
+  }
+
   render() {
     const {docId, embeded, toggleDocs} = this.props;
     const currentDoc = docsData[docId];
@@ -128,6 +155,8 @@ class Docs extends Component {
 
     const propsList = this.getPropsList(currentDoc.props);
 
+    const children = this.getChildrenList(currentDoc.children);
+
     return (
       <section className={DocsClass}>
         <h2 className="visuallyhidden">Docs</h2>
@@ -137,10 +166,12 @@ class Docs extends Component {
             {specLink}
             {docLink}
           </div>
-          <p className="Docs__desc" dangerouslySetInnerHTML={{__html: desc}}></p>
+          <div className="Docs__desc" dangerouslySetInnerHTML={{__html: desc}}></div>
 
-          <h4 className="Docs__list-title">Attributes:</h4>
+          <h4 className="Docs__list-title">Attributes</h4>
           {propsList}
+
+          {children}
         </div>
       </section>
     );

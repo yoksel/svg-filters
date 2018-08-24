@@ -15,6 +15,8 @@
 
 .Docs__title {
   margin-top: 0;
+  margin-bottom: .5em;
+  font-size: 1.3em;
 }
 
 .Docs__links {
@@ -38,7 +40,8 @@
 }
 
 .Docs__list-title {
-  margin: 1.5rem 0;
+  margin: 2em 0 1em;
+  font-size: 1.2em;
 }
 
 .Docs__list {
@@ -64,7 +67,8 @@
   margin: .7rem 0;
 }
 
-.Doc-prop__desc {
+.Docs__desc,
+.Docs-prop__desc {
   UL {
     padding-left: 20px;
   }
@@ -76,9 +80,12 @@
   border: 2px solid $hlt-orange;
   border-radius: $border-radius;
 
-  .Docs__title,
-  .Docs__list-title {
+  .Docs__title {
     display: none;
+  }
+
+  .Docs__list-title {
+    margin: 1rem 0 .5rem;
   }
 
   .Docs-props {
