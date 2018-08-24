@@ -1,0 +1,46 @@
+{
+  "name": "feSpotLight attributes",
+  "link": "https://www.w3.org/TR/filter-effects/#elementdef-fespotlight",
+  "props": [
+    {
+      "name": "x",
+      "value": "<number>",
+      "desc": "<p>X location for the light source in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "y",
+      "value": "<number>",
+      "desc": "<p>Y location for the light source in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "z",
+      "value": "<number>",
+      "desc": "<p>Z location for the light source in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element, assuming that, in the initial coordinate system, the positive Z-axis comes out towards the person viewing the content and assuming that one unit along the Z-axis equals one unit in X and Y.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "pointsAtX",
+      "value": "<number>",
+      "desc": "<p>X location in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element of the point at which the light source is pointing.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "pointsAtY",
+      "value": "<number>",
+      "desc": "<p>Y location in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element of the point at which the light source is pointing.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "pointsAtZ",
+      "value": "<number>",
+      "desc": "<p>Z location in the coordinate system established by the attribute <code>primitiveUnits</code> on the filter element of the point at which the light source is pointing, assuming that, in the initial coordinate system, the positive Z-axis comes out towards the person viewing the content and assuming that one unit along the Z-axis equals one unit in X and Y.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "specularExponent",
+      "value": "<number>",
+      "desc": "<p>Exponent value controlling the focus for the light source.</p><p>The lacuna value is 1.</p><p>Note: <code>specularExponent</code> for <code>feSpotLight</code> serves a different use case than specularExponent for feSpecularLighting.</p>"
+    },
+    {
+      "name": "limitingConeAngle",
+      "value": "<number>",
+      "desc": "<p>A limiting cone which restricts the region where the light is projected. No light is projected outside the cone. <code>limitingConeAngle</code> represents the angle in degrees between the spot light axis (i.e. the axis between the light source and the point to which it is pointing at) and the spot light cone. User agents should apply a smoothing technique such as anti-aliasing at the boundary of the cone.</p><p>If no value is specified, then no limiting cone will be applied.</p>"
+    }
+  ]
+}

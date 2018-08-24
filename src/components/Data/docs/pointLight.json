@@ -1,0 +1,21 @@
+{
+  "name": "fePointLight attributes",
+  "link": "https://www.w3.org/TR/filter-effects/#elementdef-fepointlight",
+  "props": [
+    {
+      "name": "x",
+      "value": "<number>",
+      "desc": "<p>X location for the light source in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "y",
+      "value": "<number>",
+      "desc": "<p>Y location for the light source in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>The lacuna value is <code>0</code>.</p>"
+    },
+    {
+      "name": "z",
+      "value": "<number>",
+      "desc": "<p>Z location for the light source in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element, assuming that, in the initial coordinate system, the positive Z-axis comes out towards the person viewing the content and assuming that one unit along the Z-axis equals one unit in X and Y.</p><p>The lacuna value is <code>0</code>.</p>"
+    }
+  ]
+}

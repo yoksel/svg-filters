@@ -1,0 +1,16 @@
+{
+  "name": "feDistantLight attributes",
+  "link": "https://www.w3.org/TR/filter-effects/#elementdef-fedistantlight",
+  "props": [
+    {
+      "name": "azimuth",
+      "value": "<number>",
+      "desc": "<p>Direction angle for the light source on the XY plane (clockwise), in degrees from the x axis.</p><p>The lacuna value <code>for azimuth </code>is 0.</p>"
+    },
+    {
+      "name": "elevation",
+      "value": "<number>",
+      "desc": "<p>Direction angle for the light source from the XY plane towards the Z-axis, in degrees. Note that the positive Z-axis points towards the viewer.</p><p>The lacuna value for elevation is <code>0</code>.</p>"
+    }
+  ]
+}

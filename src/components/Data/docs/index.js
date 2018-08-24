@@ -16,6 +16,10 @@ import offset from './offset.json';
 import tile from './tile.json';
 import turbulence from './turbulence.json';
 
+import distantLightLS from './distantLight.json';
+import pointLightLS from './pointLight.json';
+import spotLightLS from './spotLight.json';
+
 import funcRGBA from './funcRGBA.json';
 
 import inProp from './in.json';
@@ -43,7 +47,10 @@ export default {
   height,
   result,
 
-  funcRGBA: funcRGBA,
+  funcRGBA,
+  distantLightLS,
+  pointLightLS,
+  spotLightLS,
 
   blend,
   blur,
