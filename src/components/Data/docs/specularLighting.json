@@ -1,0 +1,43 @@
+{
+  "name": "feSpecularLighting",
+  "link": "https://www.w3.org/TR/filter-effects/#feSpecularLightingElement",
+  "desc": "<p>This filter primitive lights a source graphic using the alpha channel as a bump map. The resulting image is an RGBA image based on the light color. The lighting calculation follows the standard specular component of the Blinn-Phong lighting model. The resulting image depends on the light color, light position and surface geometry of the input bump map. The result of the lighting calculation is added. The filter primitive assumes that the viewer is at infinity in the z direction (i.e., the unit vector in the eye direction is (0,0,1) everywhere).</p><p>Note: This filter primitive produces an image which contains the specular reflection part of the lighting calculation. Such a map is intended to be combined with a texture from a second filter primitive using the add term of the arithmetic <code>feComposite</code> method. Multiple light sources can be simulated by adding several of these light maps before applying it to the texture image.</p><p>The light source is defined by one of the child elements <code>feDistantLight</code>, <code>fePointLight</code> or <code>feSpotLight</code>. The light color is specified by property <code>lighting-color</code>.</p>",
+  "props": [
+    {
+      "name": "surfaceScale",
+      "value": "<number>",
+      "desc": "<p>Height of surface.</p><p>If the attribute is not specified, then the effect is as if a value of <code>1</code> were specified.</p>"
+    },
+    {
+      "name": "specularConstant",
+      "value": "<number>",
+      "desc": "<p>Any non-negative number.</p><p>If the attribute is not specified, then the effect is as if a value of <code>1</code> were specified.</p>"
+    },
+    {
+      "name": "specularExponent",
+      "value": "<number>",
+      "desc": "<p>Exponent for specular term, larger is more \"shiny\".</p><p>If the attribute is not specified, then the effect is as if a value of <code>1</code> were specified.</p>"
+    },
+    {
+      "name": "kernelUnitLength",
+      "value": "<number-optional-number>",
+      "desc": "<p>The first number is the lt;dx> value. The second number is thelt;y> value. If the lt;dy> value is not specified, it defaults to the same value as lt;dx>. Indicates the intended distance in current filter units (i.e., units as determined by the value of attribute primitiveUnits) for dx and dy, respectively, in the surface normal calculation formulas.</p><p>By specifying value(s) for <code>kernelUnitLength</code>, the kernel becomes defined in a scalable, abstract coordinate system. If <code>kernelUnitLength</code> is not specified, the dx and dy values should represent very small deltas relative to a given (x,y) position, which might be implemented in some cases as one pixel in the intermediate image offscreen bitmap, which is a pixel-based coordinate system, and thus potentially not scalable. For some level of consistency across display media and user agents, it is necessary that a value be provided for <code>kernelUnitLength</code>.</p>"
+    },
+    {
+      "name": "flood-color",
+      "value": "<color>",
+      "desc": "The light color."
+    },
+    {
+      "name": "in"
+    },
+    {
+      "name": "result"
+    }
+  ],
+  "children": [
+    "distantLightLS",
+    "pointLightLS",
+    "spotLightLS"
+  ]
+}
