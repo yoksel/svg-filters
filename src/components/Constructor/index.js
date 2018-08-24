@@ -92,6 +92,7 @@ const Constructor = ({
                       primitive={item}
                       resultsList={getResultsList(primitives, index)}
                       parentHasSingleChild={groupData.hasSingleChild}
+                      noChangesForChildren={groupData.noChangesForChildren}
                     />
                   </DragDropItem>
                 </div>

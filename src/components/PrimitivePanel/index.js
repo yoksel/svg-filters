@@ -19,6 +19,7 @@ class PrimitivePanel extends Component {
       parentId,
       resultsList,
       parentHasSingleChild,
+      noChangesForChildren,
       match
     } = this.props;
 
@@ -90,6 +91,7 @@ class PrimitivePanel extends Component {
         primitiveDisabled={primitiveDisabled}
         hasResult={hasResult}
         parentHasSingleChild={parentHasSingleChild}
+        noChangesForChildren={noChangesForChildren}
       />;
     };
 
