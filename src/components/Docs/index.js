@@ -100,6 +100,10 @@ class Docs extends Component {
   }
 
   getChildrenList = (currentDocChildren) => {
+    if (!currentDocChildren) {
+      return null;
+    }
+
     const childrenList = currentDocChildren.map(childId => {
       const childData = docsData[childId];
       if (!childData) {
