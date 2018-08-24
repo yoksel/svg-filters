@@ -10,7 +10,6 @@ import shadow from './shadow';
 import innerShadow from './innerShadow';
 import waves from './waves';
 import coloredSpots from './coloredSpots';
-import coloredStripesHor from './coloredStripesHor';
 import coloredStripesVert from './coloredStripesVert';
 import coloredFlame from './coloredFlame';
 
@@ -26,7 +25,6 @@ export default [
   paper,
   watercolor,
   zebra,
-  coloredStripesHor,
   coloredStripesVert,
   coloredSpots,
   coloredFlame,
