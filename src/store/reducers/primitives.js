@@ -79,7 +79,7 @@ const initialState = {
     height: '140%',
     filterUnits: 'objectBoundingBox',
     primitiveUnits: 'userSpaceOnUse',
-    style: {'colorInterpolationFilters': 'srgb'}
+    style: {'colorInterpolationFilters': 'linearrgb'}
   }
 };
 
