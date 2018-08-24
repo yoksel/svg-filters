@@ -6,12 +6,12 @@
     {
       "name": "dx",
       "value": "<number>",
-      "desc": "<p>The amount to offset the input graphic along the x-axis. The offset amount is expressed in the coordinate system established by attribute primitiveUnits on the filter element.</p><p>If the attribute is not specified, then the effect is as if a value of 0 were specified.</p>"
+      "desc": "<p>The amount to offset the input graphic along the x-axis. The offset amount is expressed in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>If the attribute is not specified, then the effect is as if a value of <code>0</code> were specified.</p>"
     },
     {
       "name": "dy",
       "value": "<number>",
-      "desc": "<p>The amount to offset the input graphic along the y-axis. The offset amount is expressed in the coordinate system established by attribute primitiveUnits on the filter element.</p><p>If the attribute is not specified, then the effect is as if a value of 0 were specified.</p>"
+      "desc": "<p>The amount to offset the input graphic along the y-axis. The offset amount is expressed in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>If the attribute is not specified, then the effect is as if a value of <code>0</code> were specified.</p>"
     },
     {
       "name": "in"

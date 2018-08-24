@@ -1,12 +1,12 @@
 {
   "name": "feMorphology",
   "link": "https://www.w3.org/TR/filter-effects/#feMorphologyElement",
-  "desc": "<p>This filter primitive performs \"fattening\" or \"thinning\" of artwork. It is particularly useful for fattening or thinning an alpha channel.</p><p>The dilation (or erosion) kernel is a rectangle with a width of 2*x-radius and a height of 2*y-radius. In dilation, the output pixel is the individual component-wise maximum of the corresponding R,G,B,A values in the input image’s kernel rectangle. In erosion, the output pixel is the individual component-wise minimum of the corresponding R,G,B,A values in the input image’s kernel rectangle.</p><p>Frequently this operation will take place on alpha-only images, such as that produced by the built-in input, SourceAlpha. In that case, the implementation might want to optimize the single channel case. This optimization must be omitted if it leads to privacy concerns of any matter.</p><p>If the input has infinite extent and is constant (e.g FillPaint where the fill is a solid color), this operation has no effect. If the input has infinite extent and the filter result is the input to an <code>feTile</code>, the filter is evaluated with periodic boundary conditions.</p>",
+  "desc": "<p>This filter primitive performs \"fattening\" or \"thinning\" of artwork. It is particularly useful for fattening or thinning an alpha channel.</p><p>The dilation (or erosion) kernel is a rectangle with a width of 2*x-radius and a height of 2*y-radius. In dilation, the output pixel is the individual component-wise maximum of the corresponding R,G,B,A values in the input image’s kernel rectangle. In erosion, the output pixel is the individual component-wise minimum of the corresponding R,G,B,A values in the input image’s kernel rectangle.</p>",
   "props": [
     {
       "name": "operator",
       "value": "erode | dilate",
-      "desc": "<p>A keyword indicating whether to erode (i.e., thin) or dilate (fatten) the source graphic.</p><p>The lacuna value for operator is <code>erode</code></p>."
+      "desc": "<p>A keyword indicating whether to erode (i.e., thin) or dilate (fatten) the source graphic.</p><p>The lacuna value for operator is <code>erode</code>.</p>"
     },
     {
       "name": "radius",

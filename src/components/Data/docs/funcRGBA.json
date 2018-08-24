@@ -16,7 +16,7 @@
     {
       "name": "intercept",
       "value": "<number>",
-      "desc": "<p>When type <code>linear</code>, the intercept of the linear function.</p><p>The lacuna value for is <code>0</code>.</p>"
+      "desc": "<p>When type <code>linear</code>, the intercept of the linear function.</p><p>The lacuna value is <code>0</code>.</p>"
     },
     {
       "name": "amplitude",
@@ -26,12 +26,12 @@
     {
       "name": "exponent",
       "value": "<number>",
-      "desc": "<p>When type <code>gamma</code>, the exponent of the gamma function.</p><p>The lacuna value  is <code>1</code>.</p>"
+      "desc": "<p>When type <code>gamma</code>, the exponent of the gamma function.</p><p>The lacuna value is <code>1</code>.</p>"
     },
     {
       "name": "offset",
       "value": "<number>",
-      "desc": "<p>When type <code>gamma</code>, the offset of the gamma function.</p><p>The lacuna value  is <code>0</code>.</p>"
+      "desc": "<p>When type <code>gamma</code>, the offset of the gamma function.</p><p>The lacuna value is <code>0</code>.</p>"
     }
   ]
 }

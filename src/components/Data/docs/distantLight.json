@@ -5,7 +5,7 @@
     {
       "name": "azimuth",
       "value": "<number>",
-      "desc": "<p>Direction angle for the light source on the XY plane (clockwise), in degrees from the x axis.</p><p>The lacuna value <code>for azimuth </code>is 0.</p>"
+      "desc": "<p>Direction angle for the light source on the XY plane (clockwise), in degrees from the x axis.</p><p>The lacuna value is <code>0</code>.</p>"
     },
     {
       "name": "elevation",

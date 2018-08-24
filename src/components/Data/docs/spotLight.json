@@ -35,12 +35,12 @@
     {
       "name": "specularExponent",
       "value": "<number>",
-      "desc": "<p>Exponent value controlling the focus for the light source.</p><p>The lacuna value is 1.</p><p>Note: <code>specularExponent</code> for <code>feSpotLight</code> serves a different use case than specularExponent for feSpecularLighting.</p>"
+      "desc": "<p>Exponent value controlling the focus for the light source.</p><p>The lacuna value is <code>1</code>.</p><p>Note: <code>specularExponent</code> for <code>feSpotLight</code> serves a different use case than <code>specularExponent</code> for <code>feSpecularLighting</code>.</p>"
     },
     {
       "name": "limitingConeAngle",
       "value": "<number>",
-      "desc": "<p>A limiting cone which restricts the region where the light is projected. No light is projected outside the cone. <code>limitingConeAngle</code> represents the angle in degrees between the spot light axis (i.e. the axis between the light source and the point to which it is pointing at) and the spot light cone. User agents should apply a smoothing technique such as anti-aliasing at the boundary of the cone.</p><p>If no value is specified, then no limiting cone will be applied.</p>"
+      "desc": "<p>A limiting cone which restricts the region where the light is projected. No light is projected outside the cone. <code>limitingConeAngle</code> represents the angle in degrees between the spot light axis (i.e. the axis between the light source and the point to which it is pointing at) and the spot light cone.</p><p>If no value is specified, then no limiting cone will be applied.</p>"
     }
   ]
 }
