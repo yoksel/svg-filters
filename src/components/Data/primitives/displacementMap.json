@@ -3,10 +3,10 @@
   "groupName": "displacementMap",
   "params": {
     "in": {
-      "value": "SourceAlpha"
+      "value": "SourceGraphic"
     },
     "in2": {
-      "value": "SourceAlpha"
+      "value": "SourceGraphic"
     },
     "scale": {
       "value": 20
@@ -15,7 +15,7 @@
       "value": "R"
     },
     "yChannelSelector": {
-      "value": "A"
+      "value": "B"
     },
     "result": {
       "value": "displacementMap"
