@@ -30,7 +30,7 @@
           "value": 3
         },
         "elevation": {
-          "value": 3
+          "value": 100
         }
       }
     },
@@ -40,13 +40,13 @@
       "disabled": true,
       "params": {
         "x": {
-          "value": 3
+          "value": 200
         },
         "y": {
-          "value": 3
+          "value": 150
         },
         "z": {
-          "value": 3
+          "value": 200
         }
       }
     },
@@ -56,22 +56,22 @@
       "disabled": true,
       "params": {
         "x": {
-          "value": 250
+          "value": 350
         },
         "y": {
-          "value": 300
+          "value": 250
         },
         "z": {
-          "value": 50
+          "value": 100
         },
         "pointsAtX": {
-          "value": 0
+          "value": 100
         },
         "pointsAtY": {
-          "value": 0
+          "value": 100
         },
         "pointsAtZ": {
-          "value": 0
+          "value": 100
         },
         "specularExponent": {
           "value": 1
