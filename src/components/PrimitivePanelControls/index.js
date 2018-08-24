@@ -77,7 +77,11 @@ const PrimitivePanelControls = ({
 
   // Hide toggle, duplicate, delete controls for componentTransfer
   if (noChangesForChildren) {
-    return getDocsButton();
+    return (
+      <div className={panelClassList.join(' ')}>
+        {getDocsButton()}
+      </div>
+    );
   }
 
   return (
