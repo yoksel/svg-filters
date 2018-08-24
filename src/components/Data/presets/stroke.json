@@ -24,7 +24,7 @@
       "id": "flood",
       "params": {
         "floodColor": {
-          "value": "#c380ff"
+          "value": "#30597E"
         },
         "floodOpacity": {
           "value": "1"
