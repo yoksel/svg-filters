@@ -186,6 +186,10 @@ export const primitives = (state = initialState, action) => {
 
     let updateInsList = state[updateInsSection].map((item, index) => {
 
+      if (item.disabled) {
+        return item;
+      }
+
       if (item.params.in) {
         item = newIn.updateItem({item, index});
       }
