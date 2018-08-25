@@ -6,12 +6,12 @@
     {
       "name": "surfaceScale",
       "value": "<number>",
-      "desc": "<p>Height of surface.</p><p>If the attribute is not specified, then the effect is as if a value of 1 were specified.</p>"
+      "desc": "<p>Height of surface.</p><p>If the attribute is not specified, then the effect is as if a value of <code>1</code> were specified.</p>"
     },
     {
       "name": "diffuseConstant",
       "value": "<number>",
-      "desc": "<p>kd in Phong lighting model. This can be any non-negative number.</p><p>If the attribute is not specified, then the effect is as if a value of 1 were specified.</p>"
+      "desc": "<p>kd in Phong lighting model. This can be any non-negative number.</p><p>If the attribute is not specified, then the effect is as if a value of <code>1</code> were specified.</p>"
     },
     {
       "name": "flood-color",

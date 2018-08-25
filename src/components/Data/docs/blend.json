@@ -6,7 +6,7 @@
     {
       "name": "mode",
       "value": "<blend-mode>",
-      "desc": "One of the blend modes defined by <a href=\"https://www.w3.org/TR/compositing-1/#ltblendmodegt\">Compositing and Blending Level&nbsp;1</a>. The lacuna value for <code>mode</code> is normal."
+      "desc": "One of the blend modes defined by <a href=\"https://www.w3.org/TR/compositing-1/#ltblendmodegt\">Compositing and Blending Level&nbsp;1</a>. The lacuna value is <code>normal</code>."
     },
     {
       "disable": true,

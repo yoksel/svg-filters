@@ -1,5 +1,5 @@
 {
   "name": "height",
   "value": "<length> | <percentage>",
-  "desc": "<p>The height of the subregion which restricts calculation and rendering of the given filter primitive. See <a href=\"https://www.w3.org/TR/filter-effects/#filter-primitive-subregion\" target=\"_blank\">filter primitive subregion</a>.</p><p>A negative or zero value disables the effect of the given filter primitive (i.e., the result is a transparent black image).</p><p>The lacuna value for <code>height</code> is 0%.</p>"
+  "desc": "<p>The height of the subregion which restricts calculation and rendering of the given filter primitive. See <a href=\"https://www.w3.org/TR/filter-effects/#filter-primitive-subregion\" target=\"_blank\">filter primitive subregion</a>.</p><p>A negative or zero value disables the effect of the given filter primitive (i.e., the result is a transparent black image).</p><p>The lacuna value is <code>0%</code>.</p>"
 }

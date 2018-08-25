@@ -10,7 +10,7 @@
     {
       "name": "elevation",
       "value": "<number>",
-      "desc": "<p>Direction angle for the light source from the XY plane towards the Z-axis, in degrees. Note that the positive Z-axis points towards the viewer.</p><p>The lacuna value for elevation is <code>0</code>.</p>"
+      "desc": "<p>Direction angle for the light source from the XY plane towards the Z-axis, in degrees. Note that the positive Z-axis points towards the viewer.</p><p>The lacuna value is <code>0</code>.</p>"
     }
   ]
 }

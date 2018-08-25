@@ -6,7 +6,7 @@
     {
       "name": "order",
       "value": "<number-optional-number>",
-      "desc": "<p>Indicates the number of cells in each dimension for kernelMatrix. The values provided must be &lt;integer> s greater than zero. Values that are not integers will be truncated, i.e. rounded to the closest integer value towards zero. The first number, &lt;orderX>, indicates the number of columns in the matrix. The second number, &lt;orderY>, indicates the number of rows in the matrix. If &lt;orderY> is not provided, it defaults to &lt;orderX>.</p><p>It is recommended that only small values (e.g., 3) be used; higher values may result in very high CPU overhead and usually do not produce results that justify the impact on performance.</p><p>The lacuna value for order is <code>3</code>.</p>"
+      "desc": "<p>Indicates the number of cells in each dimension for kernelMatrix. The values provided must be &lt;integer> s greater than zero. Values that are not integers will be truncated, i.e. rounded to the closest integer value towards zero. The first number, &lt;orderX>, indicates the number of columns in the matrix. The second number, &lt;orderY>, indicates the number of rows in the matrix. If &lt;orderY> is not provided, it defaults to &lt;orderX>.</p><p>It is recommended that only small values (e.g., 3) be used; higher values may result in very high CPU overhead and usually do not produce results that justify the impact on performance.</p><p>The lacuna value is <code>3</code>.</p>"
     },
     {
       "name": "kernelMatrix",
@@ -21,7 +21,7 @@
     {
       "name": "bias",
       "value": "<number>",
-      "desc": "<p>After applying the kernelMatrix to the input image to yield a number and applying the divisor, the bias attribute is added to each component. One application of bias is when it is desirable to have .5 gray value be the zero response of the filter. The bias property shifts the range of the filter. This allows representation of values that would otherwise be clamped to 0 or 1.</p><p>The lacuna value for bias is <code>0</code>.</p>"
+      "desc": "<p>After applying the kernelMatrix to the input image to yield a number and applying the divisor, the bias attribute is added to each component. One application of bias is when it is desirable to have .5 gray value be the zero response of the filter. The bias property shifts the range of the filter. This allows representation of values that would otherwise be clamped to 0 or 1.</p><p>The lacuna value is <code>0</code>.</p>"
     },
     {
       "name": "targetX",
@@ -36,12 +36,12 @@
     {
       "name": "edgeMode",
       "value": "duplicate | wrap | none",
-      "desc": "<p>Determines how to extend the input image as necessary with color values so that the matrix operations can be applied when the kernel is positioned at or near the edge of the input image.</p><p><code>duplicate</code> indicates that the input image is extended along each of its borders as necessary by duplicating the color values at the given edge of the input image.</p><p><code>wrap</code> indicates that the input image is extended by taking the color values from the opposite edge of the image.</p><p>The value <code>none</code> indicates that the input image is extended with pixel values of zero for R, G, B and A.</p><p>The lacuna value for edgeMode is <code>duplicate</code>.</p>"
+      "desc": "<p>Determines how to extend the input image as necessary with color values so that the matrix operations can be applied when the kernel is positioned at or near the edge of the input image.</p><p><code>duplicate</code> indicates that the input image is extended along each of its borders as necessary by duplicating the color values at the given edge of the input image.</p><p><code>wrap</code> indicates that the input image is extended by taking the color values from the opposite edge of the image.</p><p>The value <code>none</code> indicates that the input image is extended with pixel values of zero for R, G, B and A.</p><p>The lacuna value is <code>duplicate</code>.</p>"
     },
     {
       "name": "preserveAlpha",
       "value": "false | true",
-      "desc": "<p>A value of <code>false</code> indicates that the convolution will apply to all channels, including the alpha channel.</p><p>A value of <code>true</code> indicates that the convolution will only apply to the color channels. In this case, the filter will temporarily unpremultiply the color component values and apply the kernel.</p></ul><p>The lacuna value for preserveAlpha is <code>false</code>.</p>"
+      "desc": "<p>A value of <code>false</code> indicates that the convolution will apply to all channels, including the alpha channel.</p><p>A value of <code>true</code> indicates that the convolution will only apply to the color channels. In this case, the filter will temporarily unpremultiply the color component values and apply the kernel.</p></ul><p>The lacuna value is <code>false</code>.</p>"
     },
     {
       "name": "in"

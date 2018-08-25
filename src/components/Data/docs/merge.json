@@ -1,7 +1,7 @@
 {
   "name": "feMerge",
   "link": "https://www.w3.org/TR/filter-effects/#elementdef-femerge",
-  "desc": "<p>This filter primitive composites input image layers on top of each other using the over operator with Input1 (corresponding to the first feMergeNode child element) on the bottom and the last specified input, InputN (corresponding to the last feMergeNode child element), on top.</p><p>Many effects produce a number of intermediate layers in order to create the final output image. This filter allows us to collapse those into a single image. Although this could be done by using n-1 Composite-filters, it is more convenient to have this common operation available in this form, and offers the implementation some additional flexibility.</p><p>Each feMerge element can have any number of feMergeNode subelements, each of which has an <code>in</code> attribute.</p>",
+  "desc": "<p>This filter primitive composites input image layers on top of each other using the over operator with Input1 (corresponding to the first feMergeNode child element) on the bottom and the last specified input, InputN (corresponding to the last feMergeNode child element), on top.</p><p>Many effects produce a number of intermediate layers in order to create the final output image. This filter allows us to collapse those into a single image. Although this could be done by using n-1 Composite-filters, it is more convenient to have this common operation available in this form, and offers the implementation some additional flexibility.</p><p>Each <code>feMerge</code> element can have any number of <code>feMergeNode</code> subelements, each of which has an <code>in</code> attribute.</p>",
   "props": [
     {
       "name": "result"

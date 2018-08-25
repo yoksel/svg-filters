@@ -6,12 +6,12 @@
     {
       "name": "operator",
       "value": "erode | dilate",
-      "desc": "<p>A keyword indicating whether to erode (i.e., thin) or dilate (fatten) the source graphic.</p><p>The lacuna value for operator is <code>erode</code>.</p>"
+      "desc": "<p>A keyword indicating whether to erode (i.e., thin) or dilate (fatten) the source graphic.</p><p>The lacuna value is <code>erode</code>.</p>"
     },
     {
       "name": "radius",
       "value": "<number-optional-number>",
-      "desc": "<p>The radius (or radii) for the operation. If two &lt;number> s are provided, the first number represents a x-radius and the second value represents a y-radius. If one number is provided, then that value is used for both X and Y. The values are in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>A negative or zero value disables the effect of the given filter primitive (i.e., the result is the filter input image).</p><p>If the attribute is not specified, then the effect is as if a value of 0 were specified.</p>"
+      "desc": "<p>The radius (or radii) for the operation. If two &lt;number> s are provided, the first number represents a x-radius and the second value represents a y-radius. If one number is provided, then that value is used for both X and Y. The values are in the coordinate system established by attribute <code>primitiveUnits</code> on the filter element.</p><p>A negative or zero value disables the effect of the given filter primitive (i.e., the result is the filter input image).</p><p>If the attribute is not specified, then the effect is as if a value of <code>0</code> were specified.</p>"
     },
     {
       "name": "in"
