@@ -90,8 +90,8 @@ class Docs extends Component {
     if (embeded) {
       return (
         <div className="Docs-tabs">
-          <div className="Docs__list Docs-tabs__controls">{propsList.map(item => item.name)}</div>
-          <ul className="Docs__list Docs-tabs__content">{propsList.map(item => item.body)}</ul>
+          <div className="Docs__list Docs-tabs__controls">{propsList.map(item => item && item.name)}</div>
+          <ul className="Docs__list Docs-tabs__content">{propsList.map(item => item && item.body)}</ul>
         </div>
       );
     }
