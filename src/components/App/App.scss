@@ -19,7 +19,8 @@
   }
 
   &--controlsList {
-    max-width: 250px;
+    min-width: 250px;
+    flex-shrink: 0;
   }
 
   &--constructor {
