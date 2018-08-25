@@ -1,7 +1,7 @@
 {
   "name": "feColorMatrix",
   "link": "https://www.w3.org/TR/filter-effects/#elementdef-fecolormatrix",
-  "desc": "This filter applies a matrix transformation on the RGBA color and alpha values of every pixel on the input graphics to produce a result with a new set of RGBA color and alpha values.",
+  "desc": "<p>This filter applies a matrix transformation on the RGBA color and alpha values of every pixel on the input graphics to produce a result with a new set of RGBA color and alpha values.</p>",
   "props": [
     {
       "name": "type",

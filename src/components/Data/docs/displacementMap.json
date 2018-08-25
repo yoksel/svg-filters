@@ -1,7 +1,7 @@
 {
   "name": "feDisplacementMap",
   "link": "https://www.w3.org/TR/filter-effects/#feDisplacementMapElement",
-  "desc": "This filter primitive uses the pixels values from the image from <code>in2</code> to spatially displace the image from <code>in</code>.",
+  "desc": "<p>This filter primitive uses the pixels values from the image from <code>in2</code> to spatially displace the image from <code>in</code>.</p>",
   "props": [
     {
       "name": "scale",

@@ -1,7 +1,7 @@
 {
   "name": "feBlend",
   "link": "https://www.w3.org/TR/filter-effects/#feBlendElement",
-  "desc": "This filter blends two objects together using commonly used imaging software blending modes. It performs a pixel-wise combination of two input images.",
+  "desc": "<p>This filter blends two objects together using commonly used imaging software blending modes. It performs a pixel-wise combination of two input images.</p>",
   "props": [
     {
       "name": "mode",

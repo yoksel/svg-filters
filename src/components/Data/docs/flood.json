@@ -1,7 +1,7 @@
 {
   "name": "feFlood",
   "link": "https://www.w3.org/TR/filter-effects/#elementdef-feflood",
-  "desc": "This filter primitive creates a rectangle filled with the color and opacity values from properties <code>flood-color</code> and <code>flood-opacity</code>. The rectangle is as large as the <a href=\"https://www.w3.org/TR/filter-effects/#filter-primitive-subregion\" target=\"_blank\">filter primitive subregion</a> established by the <code>feFlood</code> element.",
+  "desc": "<p>This filter primitive creates a rectangle filled with the color and opacity values from properties <code>flood-color</code> and <code>flood-opacity</code>. The rectangle is as large as the <a href=\"https://www.w3.org/TR/filter-effects/#filter-primitive-subregion\" target=\"_blank\">filter primitive subregion</a> established by the <code>feFlood</code> element.</p>",
   "props": [
     {
       "name": "flood-color",
