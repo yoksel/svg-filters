@@ -90,6 +90,7 @@ class PrimitivePanel extends Component {
         section={section}
         primitiveDisabled={primitiveDisabled}
         hasResult={hasResult}
+        hasChildrenMod={hasChildren}
         parentHasSingleChild={parentHasSingleChild}
         noChangesForChildren={noChangesForChildren}
       />;

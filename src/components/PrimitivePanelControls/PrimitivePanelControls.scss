@@ -1,24 +1,33 @@
 .PrimitivePanelControls {
-  min-width: 28px;
+  width: 28px;
   margin-left: .5rem;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   color: yellowgreen;
   pointer-events: all;
 
-  &--no-result {
+  &--no-children {
+    width: 56px;
     flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &--no-result {
+    width: 78px;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-self: center;
   }
 
   &--parentHasSingleChild {
+    width: 28px;
     align-self: flex-start;
   }
 }
 
 .PrimitivePanelControl {
-  width: 20px;
   height: 20px;
   margin: 4px;
   padding: 0;
@@ -34,6 +43,7 @@
   color: inherit;
   cursor: pointer;
   outline: none;
+  width: 20px;
   box-shadow: 0 0 0 2px transparent;
   transition: box-shadow .25s;
 

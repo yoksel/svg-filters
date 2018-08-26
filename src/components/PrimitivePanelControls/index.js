@@ -19,11 +19,13 @@ const PrimitivePanelControls = ({
   id,
   parentId,
   groupName,
+  hasChildrenMod,
   parentHasSingleChild,
   noChangesForChildren
 }) => {
   const panelClassList = [
-    'PrimitivePanelControls'
+    'PrimitivePanelControls',
+    `PrimitivePanelControls--${hasChildrenMod}`
   ];
   let showDocs = true;
 
