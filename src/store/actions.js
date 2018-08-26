@@ -97,7 +97,7 @@ export const toggleProp = createAction(
 
 export const addPreset = createAction(
   ADD_PRESET,
-  ['id', 'name', 'primitives']
+  ['id', 'name', 'primitives', 'colorInterpolationFilters']
 );
 
 export const startDrag = createAction(

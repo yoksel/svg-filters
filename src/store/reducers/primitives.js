@@ -369,10 +369,24 @@ export const primitives = (state = initialState, action) => {
       ...action.primitives
     ];
 
+    let colorInterpolationFilters = 'linearrgb';
+
+    if (action.colorInterpolationFilters) {
+      colorInterpolationFilters = action.colorInterpolationFilters;
+    }
+
+    let filter = {
+      ...state.filter,
+      style: {
+        colorInterpolationFilters
+      }
+    };
+
     resetIdKeeperSection(addPresetList, addPresetSection);
 
     return {
       ...state,
+      filter,
       presets: addPresetList
     };
 
