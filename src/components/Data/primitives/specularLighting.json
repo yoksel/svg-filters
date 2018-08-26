@@ -12,7 +12,8 @@
       "value": 20
     },
     "kernelUnitLength": {
-      "value": "3 5"
+      "value": "3 5",
+      "disabled": true
     },
     "lightingColor": {
       "value": "#BBF900"
