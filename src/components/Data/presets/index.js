@@ -2,6 +2,7 @@ import grayscale from './grayscale';
 import smoke from './smoke';
 import paper from './paper';
 import watercolor from './watercolor';
+import waterDrops from './waterDrops';
 import stroke from './stroke';
 import dancingStroke from './dancingStroke';
 import contour from './contour';
@@ -24,6 +25,7 @@ export default [
   waves,
   paper,
   watercolor,
+  waterDrops,
   zebra,
   coloredStripesVert,
   coloredSpots,
