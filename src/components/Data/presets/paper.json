@@ -1,6 +1,7 @@
 {
   "id": "paper",
   "name": "Paper",
+  "colorInterpolationFilters": "srgb",
   "primitives": [
     {
       "id": "turbulence",
@@ -31,10 +32,10 @@
       "groupName": "diffuseLighting",
       "params": {
         "surfaceScale": {
-          "value": "0.6"
+          "value": "0.3"
         },
         "diffuseConstant": {
-          "value": "2.8"
+          "value": "3.1"
         },
         "lightingColor": {
           "value": "#ffffff"

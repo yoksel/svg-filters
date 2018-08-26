@@ -1,5 +1,6 @@
 {
   "id": "watercolor",
+  "colorInterpolationFilters": "srgb",
   "name": "Watercolor",
   "primitives": [
     {
@@ -30,10 +31,10 @@
       "id": "diffuseLighting",
       "params": {
         "surfaceScale": {
-          "value": "0.6"
+          "value": "0.5"
         },
         "diffuseConstant": {
-          "value": "3"
+          "value": "3.2"
         },
         "lightingColor": {
           "value": "#ffffff"
