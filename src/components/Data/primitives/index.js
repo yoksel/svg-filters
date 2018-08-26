@@ -18,20 +18,24 @@ import turbulence from './turbulence';
 
 export default [
   blur,
-  componentTransfer,
   dropShadow,
-  blend,
-  colormatrix,
-  flood,
-  offset,
-  specularLighting,
-  diffuseLighting,
   morphology,
   displacementMap,
+
+  blend,
+  colormatrix,
+  convolveMatrix,
+  componentTransfer,
+
+  specularLighting,
+  diffuseLighting,
+
+  flood,
   turbulence,
-  composite,
-  merge,
   image,
   tile,
-  convolveMatrix,
+
+  offset,
+  composite,
+  merge,
 ];
