@@ -9,6 +9,7 @@ const store = configureStore();
 
 const Root = () => {
   const url = '/:section?/:id?';
+
   return (
     <Provider store={store}>
       <Router>
