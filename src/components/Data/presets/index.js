@@ -3,6 +3,7 @@ import smoke from './smoke';
 import paper from './paper';
 import watercolor from './watercolor';
 import waterDrops from './waterDrops';
+import paintDrops from './paintDrops';
 import stroke from './stroke';
 import dancingStroke from './dancingStroke';
 import contour from './contour';
@@ -26,6 +27,7 @@ export default [
   paper,
   watercolor,
   waterDrops,
+  paintDrops,
   zebra,
   coloredStripesVert,
   coloredSpots,
