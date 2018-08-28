@@ -1,6 +1,6 @@
 {
   "id": "waterDrops",
-  "colorInterpolationFilters": "srgb",
+  "colorInterpolationFilters": "sRGB",
   "name": "Water drops",
     "primitives": [
       {

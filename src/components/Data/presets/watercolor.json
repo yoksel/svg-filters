@@ -1,6 +1,6 @@
 {
   "id": "watercolor",
-  "colorInterpolationFilters": "srgb",
+  "colorInterpolationFilters": "sRGB",
   "name": "Watercolor",
   "primitives": [
     {

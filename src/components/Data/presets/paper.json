@@ -1,7 +1,7 @@
 {
   "id": "paper",
   "name": "Paper",
-  "colorInterpolationFilters": "srgb",
+  "colorInterpolationFilters": "sRGB",
   "primitives": [
     {
       "id": "turbulence",
