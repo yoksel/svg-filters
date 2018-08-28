@@ -37,6 +37,7 @@ const SWAP_PRIMITIVES = 'SWAP_PRIMITIVES';
 const SWITCH_CHILD = 'SWITCH_CHILD';
 const MOVE_TO_PLAYGROUND = 'MOVE_TO_PLAYGROUND';
 const SET_PLAYGROUND_TYPE = 'SET_PLAYGROUND_TYPE';
+const SET_COLOR_INTERPOL_FILTERS = 'SET_COLOR_INTERPOL_FILTERS';
 const TOGGLE_DOCS = 'TOGGLE_DOCS';
 
 const ADD_PRESET = 'ADD_PRESET';
@@ -138,6 +139,11 @@ export const moveToPlayground = createAction(
 export const setPlaygroundType = createAction(
   SET_PLAYGROUND_TYPE,
   ['playgroundType']
+);
+
+export const setColorInterpolFilters = createAction(
+  SET_COLOR_INTERPOL_FILTERS,
+  ['colorInterpolationFilters']
 );
 
 export const toggleDocs = createAction(

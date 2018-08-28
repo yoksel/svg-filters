@@ -80,7 +80,7 @@ const initialState = {
     height: '140%',
     filterUnits: 'objectBoundingBox',
     primitiveUnits: 'userSpaceOnUse',
-    style: {'colorInterpolationFilters': 'linearrgb'}
+    colorInterpolationFilters: 'linearRGB'
   }
 };
 
@@ -370,24 +370,22 @@ export const primitives = (state = initialState, action) => {
       ...action.primitives
     ];
 
-    let colorInterpolationFilters = 'linearrgb';
+    let colorInterpolationFilters = 'linearRGB';
 
     if (action.colorInterpolationFilters) {
       colorInterpolationFilters = action.colorInterpolationFilters;
     }
 
-    let filter = {
+    const addPresetFilter = {
       ...state.filter,
-      style: {
-        colorInterpolationFilters
-      }
+      colorInterpolationFilters
     };
 
     resetIdKeeperSection(addPresetList, addPresetSection);
 
     return {
       ...state,
-      filter,
+      filter: addPresetFilter,
       presets: addPresetList
     };
 
@@ -510,6 +508,19 @@ export const primitives = (state = initialState, action) => {
     };
 
     return setPlaygroundTypeResult;
+
+  case 'SET_COLOR_INTERPOL_FILTERS':
+    const setColorInterpolFilter = {
+      ...state.filter,
+      colorInterpolationFilters: action.colorInterpolationFilters
+    };
+
+    const setColorInterpolResult = {
+      ...state,
+      filter: setColorInterpolFilter
+    };
+
+    return setColorInterpolResult;
 
   default:
     return state;
