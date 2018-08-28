@@ -1,3 +1,3 @@
 # Header
 
-## Props
+Page header, contains logo & nav

@@ -1,5 +1,7 @@
 # DragDrop
 
-Handles logic for drag&drop
+Component handles logic for drag and drop items to Constructor & inside it.
 
-## Props
+It wraps all App content.
+
+To make single items draggable is using [DragItem](#dragitem) component.

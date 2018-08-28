@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {withRouter} from 'react-router';
 
 import {changePrimitiveProp, changePropType, toggleProp} from '../../store/actions';
@@ -122,3 +123,21 @@ const InputSelect = withRouter(connect(
 )(InputSelectTemplate));
 
 export default InputSelect;
+
+InputSelect.propTypes = {
+  id: PropTypes.string,
+  param: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  secondValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  valuesList: PropTypes.array,
+  parentId: PropTypes.string,
+  tiedValues: PropTypes.object,
+  tiedTypes: PropTypes.object,
+  dependencies: PropTypes.array
+};

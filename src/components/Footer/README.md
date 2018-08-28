@@ -1,3 +1,7 @@
 # Footer
 
-## Props
+Page footer
+
+```
+<Footer/>
+```

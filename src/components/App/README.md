@@ -1,8 +1,9 @@
-Root component for app.
+Main component for app. It contains [DragDrop](#dragdrop) wrapper & page layout for:
 
-It contains page layout, DragDropContext wrapper (enables dragging items between lists) & actions for data manipulations:
-
-* `addPrimitive` — copy privitive to new instance
-* `removePrimitive` — delete privitive
-* `onDragEnd` — save state after dragging items between lists
-* `onChange` — save data from inputs to state
+* [Header](#header)
+* [Footer](#footer)
+* [Sidebar](#sidebar)
+* [Constructor](#constructor-1)
+* [Docs](#docs-1)
+* [Playground](#playground-1)
+* [Code](#code-1)
