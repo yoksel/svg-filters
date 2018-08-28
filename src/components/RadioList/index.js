@@ -7,10 +7,12 @@ import './RadioList.css';
 
 class RadioList extends Component {
   render() {
-    const {list, current, onChange} = this.props;
+    const {list, current, name, onChange} = this.props;
 
     return (
       <div className="RadioList">
+        {name && <b className="RadioList__name">{name}:</b>}
+
         {list.map((type) => {
           return (
             <label
@@ -38,7 +40,8 @@ class RadioList extends Component {
 export default RadioList;
 
 RadioList.propTypes = {
-  list: PropTypes.array,
   current: PropTypes.string,
+  list: PropTypes.array,
+  name: PropTypes.string,
   onChange: PropTypes.func
 };

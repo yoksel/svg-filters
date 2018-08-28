@@ -3,24 +3,24 @@
 .RadioList {
   margin-bottom: .5rem;
   text-align: right;
-  color: $color-lightgray;
 }
 
 .RadioList__label {
-  margin-left: .5rem;
+  margin-left: .25rem;
+  color: $color-lightgray;
 }
 
 .RadioList__label-text {
-  padding: .25em;
+  padding: .25em .35em;
   border-radius: $border-radius;
   cursor: pointer;
 
   &:hover {
-    background: $hlt-orange;
     color: #000;
   }
 
   :checked + & {
+    background: $hlt-orange;
     color: #000;
     pointer-events: none;
   }
