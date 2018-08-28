@@ -79,5 +79,6 @@ const Playground = ({filterId, playgroundType}) => {
 export default Playground;
 
 Playground.propTypes = {
-  filterId: PropTypes.string
+  filterId: PropTypes.string,
+  playgroundType: PropTypes.string
 };

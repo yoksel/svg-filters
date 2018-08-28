@@ -1,7 +1,5 @@
 # Playground
 
-Demo-content for testing filters. Contains image, shapes & text.
+Demo-content for testing filters. Contains image & text.
 
-## Props
-
-`filterId` — ID of filter if filter exists.
+Uses [PlaygroundSwitcher](#playgroundswitcher) & [Filter](#filter-1).
