@@ -72,6 +72,7 @@ const initialState = {
   presets: [],
   docs: [],
   swapSnapshot: '',
+  playgroundType: 'image-and-text',
   filter: {
     x: '-20%',
     y: '-20%',
@@ -501,6 +502,14 @@ export const primitives = (state = initialState, action) => {
     toggleDocsResult[toggleDocsSection] = toggleDocsList;
 
     return toggleDocsResult;
+
+  case 'SET_PLAYGROUND_TYPE':
+    const setPlaygroundTypeResult = {
+      ...state,
+      playgroundType: action.playgroundType
+    };
+
+    return setPlaygroundTypeResult;
 
   default:
     return state;
