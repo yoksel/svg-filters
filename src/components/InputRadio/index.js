@@ -31,6 +31,11 @@ class InputRadio extends Component {
 export default InputRadio;
 
 InputRadio.propTypes = {
+  id: PropTypes.string,
+  parentId: PropTypes.string,
+  name: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func
+  checked: PropTypes.bool,
+  hidden: PropTypes.bool,
+  onChange: PropTypes.func,
 };
