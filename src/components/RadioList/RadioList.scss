@@ -1,0 +1,27 @@
+@import "../../variables.scss";
+
+.RadioList {
+  margin-bottom: .5rem;
+  text-align: right;
+  color: $color-lightgray;
+}
+
+.RadioList__label {
+  margin-left: .5rem;
+}
+
+.RadioList__label-text {
+  padding: .25em;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &:hover {
+    background: $hlt-orange;
+    color: #000;
+  }
+
+  :checked + & {
+    color: #000;
+    pointer-events: none;
+  }
+}
