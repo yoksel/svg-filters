@@ -4,6 +4,8 @@ import deepClone from '../../helpers/deepClone';
 
 import {primitivesAttrs} from '../Data';
 
+import ColorInterpolFiltersSwitcher from '../../containers/ColorInterpolFiltersSwitcher';
+
 import './Code.css';
 
 const getPrimitiveCode = (primitive, level = 1) => {
@@ -69,11 +71,19 @@ const getValueFromObject = (valueObj) => {
 };
 
 const getFilterAttrs = (filterData) => {
+  if (filterData.style) {
+    delete filterData.style;
+  }
+
   const attrsList = Object.keys(filterData).reduce((prev, attrName) => {
     let value = filterData[attrName];
     if (typeof value === 'object') {
       value = getValueFromObject(value);
     }
+    if (attrName === 'colorInterpolationFilters') {
+      attrName = 'color-interpolation-filters';
+    }
+
     prev.push(`${attrName}="${value}"`);
 
     return prev;
@@ -104,6 +114,7 @@ class Code extends Component {
     return (
       <section className="Code">
         <h2 className="visuallyhidden">Filter code</h2>
+        <ColorInterpolFiltersSwitcher/>
         <textarea
           className="Code__textarea"
           value={value}

@@ -6,9 +6,15 @@ import FilterTemplate from '../../components/Filter';
 const mapStateToProps = (state, {match}) => {
   const {section = 'playground'} = match.params;
 
+  const filterData = state.primitives.filter;
+
+  if (filterData.style) {
+    delete filterData.style;
+  }
+
   return {
     primitives: state.primitives[section],
-    filterData: state.primitives.filter
+    filterData
   };
 };
 
