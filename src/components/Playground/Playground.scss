@@ -3,6 +3,10 @@
   height: 350px;
   font-size: 6rem;
   font-weight: bold;
-  font-family: Arial Black, Arial, sans-serif;
+  font-family: Arial Black, Arial Bold, Arial, sans-serif;
   fill: lightseagreen;
+
+  .Playground--text & {
+    font-size: 9rem;
+  }
 }
