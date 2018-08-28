@@ -24,7 +24,7 @@ const typesList = [
 class PlaygroundSwitcher extends Component {
   render() {
     const {
-      playgroundType,
+      playgroundType = 'image-and-text',
       setPlaygroundType
     } = this.props;
 

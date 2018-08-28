@@ -7,7 +7,7 @@ import grayCells from './gray-cells.png';
 import Filter from '../../containers/Filter';
 import PlaygroundSwitcher from '../../containers/PlaygroundSwitcher';
 
-const Playground = ({filterId, playgroundType}) => {
+const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
 
   const getSvgContentByPlaygroundType = () => {
