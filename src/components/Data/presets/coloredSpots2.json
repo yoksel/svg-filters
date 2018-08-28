@@ -1,0 +1,278 @@
+{
+  "id": "coloredSpots2",
+  "name": "Colored Spots 2",
+  "primitives": [
+    {
+      "id": "turbulence",
+      "params": {
+        "type": {
+          "value": "fractalNoise"
+        },
+        "baseFrequency": {
+          "value": "0.02 0.01"
+        },
+        "numOctaves": {
+          "value": "1"
+        },
+        "seed": {
+          "value": "2"
+        },
+        "stitchTiles": {
+          "value": "stitch"
+        },
+        "result": {
+          "value": "turbulence"
+        }
+      },
+      "groupName": "turbulence"
+    },
+    {
+      "id": "colormatrix",
+      "params": {
+        "type": {
+          "value": "matrix"
+        },
+        "values": {
+          "value": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 0 1",
+          "variants": {
+            "key": "type",
+            "values": {
+              "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 0 1"
+            }
+          },
+          "disabled": false,
+          "type": "textarea"
+        },
+        "in": {
+          "value": "turbulence"
+        },
+        "result": {
+          "value": "colormatrix"
+        }
+      },
+      "groupName": "colormatrix"
+    },
+    {
+      "id": "colormatrix1",
+      "params": {
+        "type": {
+          "value": "saturate"
+        },
+        "values": {
+          "value": "4",
+          "variants": {
+            "key": "type",
+            "values": {
+              "saturate": "4"
+            }
+          }
+        },
+        "in": {
+          "value": "colormatrix"
+        },
+        "result": {
+          "value": "colormatrix1"
+        }
+      },
+      "groupName": "colormatrix"
+    },
+    {
+      "id": "blur",
+      "params": {
+        "stdDeviation": {
+          "value": "3 3"
+        },
+        "in": {
+          "value": "componentTransfer"
+        },
+        "edgeMode": {
+          "value": "none"
+        },
+        "result": {
+          "value": "blur"
+        }
+      },
+      "groupName": "blur"
+    },
+    {
+      "id": "componentTransfer",
+      "params": {
+        "in": {
+          "value": "composite"
+        },
+        "result": {
+          "value": "componentTransfer"
+        }
+      },
+      "groupName": "componentTransfer",
+      "children": [
+        {
+          "id": "funcR",
+          "groupName": "funcR",
+          "params": {
+            "type": {
+              "value": "table"
+            },
+            "tableValues": {
+              "value": "1 0 -1",
+              "disabled": false
+            },
+            "slope": {
+              "value": "1",
+              "disabled": true
+            },
+            "intercept": {
+              "value": "0",
+              "disabled": true
+            },
+            "amplitude": {
+              "value": "0.8",
+              "disabled": true
+            },
+            "exponent": {
+              "value": "0.4",
+              "disabled": true
+            },
+            "offset": {
+              "value": "0.1",
+              "disabled": true
+            }
+          }
+        },
+        {
+          "id": "funcG",
+          "groupName": "funcG",
+          "params": {
+            "type": {
+              "value": "table"
+            },
+            "tableValues": {
+              "value": "1 0 1",
+              "disabled": false
+            },
+            "slope": {
+              "value": "1.1",
+              "disabled": true
+            },
+            "intercept": {
+              "value": "0.1",
+              "disabled": true
+            },
+            "amplitude": {
+              "value": "1.6",
+              "disabled": true
+            },
+            "exponent": {
+              "value": "1.6",
+              "disabled": true
+            },
+            "offset": {
+              "value": "0",
+              "disabled": true
+            }
+          }
+        },
+        {
+          "id": "funcB",
+          "groupName": "funcB",
+          "params": {
+            "type": {
+              "value": "table"
+            },
+            "tableValues": {
+              "value": "1 -1 1",
+              "disabled": false
+            },
+            "slope": {
+              "value": "1",
+              "disabled": true
+            },
+            "intercept": {
+              "value": "0",
+              "disabled": true
+            },
+            "amplitude": {
+              "value": "0.5",
+              "disabled": true
+            },
+            "exponent": {
+              "value": "0.2",
+              "disabled": true
+            },
+            "offset": {
+              "value": "0",
+              "disabled": true
+            }
+          }
+        },
+        {
+          "id": "funcA",
+          "groupName": "funcA",
+          "params": {
+            "type": {
+              "value": "identity"
+            },
+            "tableValues": {
+              "value": "0 1",
+              "disabled": true
+            },
+            "slope": {
+              "value": "1",
+              "disabled": true
+            },
+            "intercept": {
+              "value": "0",
+              "disabled": true
+            },
+            "amplitude": {
+              "value": "1",
+              "disabled": true
+            },
+            "exponent": {
+              "value": "1",
+              "disabled": true
+            },
+            "offset": {
+              "value": "0",
+              "disabled": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "composite",
+      "params": {
+        "in": {
+          "value": "componentTransfer"
+        },
+        "in2": {
+          "value": "SourceAlpha"
+        },
+        "operator": {
+          "value": "in"
+        },
+        "k1": {
+          "value": 0,
+          "disabled": true
+        },
+        "k2": {
+          "value": 8,
+          "disabled": true
+        },
+        "k3": {
+          "value": -0.5,
+          "disabled": true
+        },
+        "k4": {
+          "value": -0.5,
+          "disabled": true
+        },
+        "result": {
+          "value": "composite"
+        }
+      },
+      "groupName": "composite"
+    }
+  ]
+}
