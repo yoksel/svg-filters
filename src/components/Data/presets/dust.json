@@ -85,6 +85,54 @@
         }
       },
       "groupName": "composite"
+    },
+    {
+      "id": "turbulence1",
+      "params": {
+        "type": {
+          "value": "turbulence"
+        },
+        "baseFrequency": {
+          "value": "0.1 0.1"
+        },
+        "numOctaves": {
+          "value": "1"
+        },
+        "seed": {
+          "value": "2"
+        },
+        "stitchTiles": {
+          "value": "stitch"
+        },
+        "result": {
+          "value": "turbulence1"
+        }
+      },
+      "groupName": "turbulence"
+    },
+    {
+      "id": "displacementMap",
+      "params": {
+        "in": {
+          "value": "composite"
+        },
+        "in2": {
+          "value": "turbulence1"
+        },
+        "scale": {
+          "value": 20
+        },
+        "xChannelSelector": {
+          "value": "R"
+        },
+        "yChannelSelector": {
+          "value": "B"
+        },
+        "result": {
+          "value": "displacementMap"
+        }
+      },
+      "groupName": "displacementMap"
     }
   ]
 }
