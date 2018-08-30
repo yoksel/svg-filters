@@ -27,7 +27,7 @@ class ColorInterpolFiltersSwitcher extends Component {
     return (
       <div className="ColorInterpolFiltersSwitcher">
         <RadioList
-          name="colorInterpolationFilters"
+          name="color-interpolation-filters"
           list={colorInterpolList}
           current={colorInterpolationFilters}
           onChange={(colorInterpol) => {
