@@ -470,6 +470,8 @@ export const primitives = (state = initialState, action) => {
     const moveSetResult = {...state};
     moveSetResult['playground'] = moveSetList;
 
+    resetIdKeeperSection(moveSetList, 'playground');
+
     return moveSetResult;
 
   case 'TOGGLE_DOCS':
