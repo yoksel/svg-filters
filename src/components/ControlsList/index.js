@@ -81,5 +81,7 @@ const ControlsList = ({items, control = 'button', addPrimitive, match}) => {
 export default withRouter(ControlsList);
 
 ControlsList.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  control: PropTypes.string,
+  addPrimitive: PropTypes.func
 };
