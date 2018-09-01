@@ -1,7 +1,7 @@
 # ResultAttribute
 
-Create element with result attribute for PrimitivePanel
+Create element with result attribute for [PrimitivePanel](#primitivepanel)
 
-## Prop
-
-`value` — name of result
+```js
+<ResultAttribute value="blur"/>
+```
