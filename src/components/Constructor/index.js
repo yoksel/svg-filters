@@ -48,7 +48,6 @@ const getMoveToPlaygroundButton = (section, moveToPlayground, count) => {
 
 const Constructor = ({
   primitives,
-  dragDrop,
   purgePrimitives,
   moveToPlayground,
   section
@@ -132,5 +131,8 @@ const Constructor = ({
 export default Constructor;
 
 Constructor.propTypes = {
-  primitives: PropTypes.array.isRequired
+  primitives: PropTypes.array,
+  purgePrimitives: PropTypes.func,
+  moveToPlayground: PropTypes.func,
+  section: PropTypes.string,
 };

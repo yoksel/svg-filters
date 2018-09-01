@@ -2,6 +2,4 @@
 
 Contains constructor for visual manipulating filter primitives
 
-## Props
-
-`primitives` — objects with primitives props
+__Container:__ [Constructor](#constructor-1)

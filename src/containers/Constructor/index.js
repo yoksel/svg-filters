@@ -10,7 +10,6 @@ const mapStateToProps = (state, {match}) => {
 
   return {
     primitives: state.primitives[section],
-    dragDrop: state.dragDrop,
     section
   };
 };
