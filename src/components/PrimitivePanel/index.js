@@ -132,5 +132,7 @@ export default withRouter(PrimitivePanel);
 PrimitivePanel.propTypes = {
   primitive: PropTypes.object,
   parentId: PropTypes.string,
-  resultsList: PropTypes.array
+  resultsList: PropTypes.array,
+  parentHasSingleChild: PropTypes.bool,
+  noChangesForChildren: PropTypes.bool,
 };
