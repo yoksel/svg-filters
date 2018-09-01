@@ -131,5 +131,16 @@ export default PrimitivePanelControls;
 
 PrimitivePanelControls.propTypes = {
   duplicatePrimitive: PropTypes.func,
-  removePrimitive: PropTypes.func
+  removePrimitive: PropTypes.func,
+  togglePrimitive: PropTypes.func,
+  toggleDocs: PropTypes.func,
+  primitiveDisabled: PropTypes.bool,
+  hasResult: PropTypes.bool,
+  section: PropTypes.string,
+  id: PropTypes.string,
+  parentId: PropTypes.string,
+  groupName: PropTypes.string,
+  hasChildrenMod: PropTypes.string,
+  parentHasSingleChild: PropTypes.bool,
+  noChangesForChildren: PropTypes.bool,
 };
