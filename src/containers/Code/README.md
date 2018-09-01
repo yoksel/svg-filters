@@ -1,5 +1,8 @@
 # Code
 
-Gets primitives & filterData from state, passes them to template, which outputs filter code to page.
+Exports:
+
+* primitives
+* filterData
 
 __Template:__ [Code](#code)
