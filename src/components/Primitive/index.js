@@ -28,6 +28,5 @@ const Primitive = ({primitive}) => {
 export default Primitive;
 
 Primitive.propTypes = {
-  primitive: PropTypes.object.isRequired,
-  children: PropTypes.array
+  primitive: PropTypes.object.isRequired
 };
