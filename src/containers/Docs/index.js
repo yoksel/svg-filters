@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
+import PropTypes from 'prop-types';
 
 import {toggleDocs} from '../../store/actions';
 
@@ -47,3 +48,7 @@ const Docs = withRouter(connect(
 )(DocsTemplate));
 
 export default Docs;
+
+Docs.propTypes = {
+  docId: PropTypes.string
+};

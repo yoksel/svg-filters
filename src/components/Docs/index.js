@@ -185,5 +185,7 @@ class Docs extends Component {
 export default Docs;
 
 Docs.propTypes = {
-  docId: PropTypes.string
+  docId: PropTypes.string,
+  embeded: PropTypes.bool,
+  toggleDocs: PropTypes.func,
 };
