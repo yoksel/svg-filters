@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import './ConstructorPlaceholder.css';
 
@@ -22,3 +23,7 @@ class ConstructorPlaceholder extends Component {
 }
 
 export default ConstructorPlaceholder;
+
+ConstructorPlaceholder.propTypes = {
+  section: PropTypes.string
+};
