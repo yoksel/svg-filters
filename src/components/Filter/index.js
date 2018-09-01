@@ -40,5 +40,6 @@ const Filter = ({primitives, filterData}) => (
 export default Filter;
 
 Filter.propTypes = {
-  primitives: PropTypes.array.isRequired
+  primitives: PropTypes.array.isRequired,
+  filterData: PropTypes.object.isRequired
 };
