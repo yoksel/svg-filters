@@ -1,6 +1,6 @@
 # Placeholder
 
-Placeholder for draggable element in list
+Placeholder for draggable element
 
 ## Props
 

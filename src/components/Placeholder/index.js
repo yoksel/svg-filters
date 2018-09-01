@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Placeholder.css';
 
@@ -16,3 +17,8 @@ const Placeholder = ({elemClientRect, isDragging}) => {
 };
 
 export default Placeholder;
+
+Placeholder.propTypes = {
+  elemClientRect: PropTypes.object,
+  isDragging: PropTypes.bool
+};
