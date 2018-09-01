@@ -7,4 +7,9 @@ Controls for primitive panel:
 * Duplicate primitive
 * Remove primitive
 
+Uses:
+
+* [Icon](#icon)
+* [PrimitivePanelSwitcher](#primitivepanelswitcher)
+
 __Container:__ [PrimitivePanelControls](#primitivepanelcontrols-1)
