@@ -1,3 +1,0 @@
-# PrimitivePanelSwitcher
-
-## Props
