@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import deepClone from '../../helpers/deepClone';
 
@@ -126,3 +127,8 @@ class Code extends Component {
 }
 
 export default Code;
+
+Code.propTypes = {
+  filterData: PropTypes.object,
+  primitives: PropTypes.array
+};
