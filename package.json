@@ -31,7 +31,9 @@
     "css:lint": "stylelint src/**/*.scss",
     "lint": "npm run js:lint && npm run css:lint",
     "lint:fix": "npm run js:fix",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build",
+    "styleguide:watch": "npx styleguidist server",
+    "styleguide:build": "npx styleguidist build"
   },
   "devDependencies": {
     "create-component-files": "^0.1.15",
