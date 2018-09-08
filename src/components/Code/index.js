@@ -120,6 +120,7 @@ class Code extends Component {
           className="Code__textarea"
           value={value}
           onChange={() => {}}
+          spellcheck="false"
         />
       </section>
     );
