@@ -31,6 +31,18 @@
     "k4": {
       "type": "number",
       "step": 0.1
+    },
+    "x": {
+      "type": "text"
+    },
+    "y": {
+      "type": "text"
+    },
+    "width": {
+      "type": "text"
+    },
+    "height": {
+      "type": "text"
     }
   },
   "operator": [
