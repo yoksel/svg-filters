@@ -20,6 +20,8 @@ class InputText extends Component {
     let size = value.length;
     if (size > 35) {
       size = 35;
+    } else if (size === '' || size === 0) {
+      size = 1;
     }
 
     return React.createElement('input', {
