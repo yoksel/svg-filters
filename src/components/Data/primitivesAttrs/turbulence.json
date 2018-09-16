@@ -28,6 +28,18 @@
     },
     "stitchTiles": {
       "type": "select"
+    },
+    "x": {
+      "type": "text"
+    },
+    "y": {
+      "type": "text"
+    },
+    "width": {
+      "type": "text"
+    },
+    "height": {
+      "type": "text"
     }
   }
 }
