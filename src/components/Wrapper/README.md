@@ -1,3 +1,3 @@
 # Wrapper
 
-## Props
+Common wrapper to control content width

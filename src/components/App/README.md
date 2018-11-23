@@ -7,3 +7,5 @@ Main component for app. It contains [DragDrop](#dragdrop) wrapper & page layout 
 * [Docs](#docs-1)
 * [Playground](#playground-1)
 * [Code](#code-1)
+
+__Container:__ [App](#app-1)
