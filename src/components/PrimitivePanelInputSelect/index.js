@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import InputSelect from '../../containers/InputSelect';
+import InputSelect from '../../containers/PrimitivePanelInputSelect';
 import {primitivesAttrs} from '../Data';
 
 class PrimitivePanelInputSelect extends Component {

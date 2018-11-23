@@ -117,14 +117,14 @@ const mapDispatchProps = (
   };
 };
 
-const InputSelect = withRouter(connect(
+const PrimitiveInputSelect = withRouter(connect(
   null,
   mapDispatchProps
 )(InputSelectTemplate));
 
-export default InputSelect;
+export default PrimitiveInputSelect;
 
-InputSelect.propTypes = {
+PrimitiveInputSelect.propTypes = {
   id: PropTypes.string,
   param: PropTypes.string,
   value: PropTypes.oneOfType([

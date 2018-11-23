@@ -1,7 +1,7 @@
-# InputSelect
+# PrimitivePanelInputSelect
 
 ```js static
-<InputSelect
+<PrimitivePanelInputSelect
   id={primitive.id}
   param={paramKey}
   value={actualValue}
