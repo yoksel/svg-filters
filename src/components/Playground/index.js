@@ -64,7 +64,7 @@ const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           className="Playground__svg"
-          >
+        >
 
           <defs>
             <Filter/>
