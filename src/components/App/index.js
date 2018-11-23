@@ -37,7 +37,7 @@ const App = () => {
             </div>
 
             <div className="App__container App__container--playground">
-              <div className="App__content App__content--sticky">
+              <div className="App__content App__content--playground App__content--sticky">
                 <Playground/>
                 <Code/>
               </div>

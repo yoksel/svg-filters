@@ -19,7 +19,7 @@
   }
 
   &--controlsList {
-    min-width: 250px;
+    max-width: 250px;
     flex-shrink: 0;
   }
 
@@ -32,10 +32,16 @@
   &--playground {
     flex-grow: 1;
     flex-basis: 35%;
+    display: flex;
   }
 }
 
 .App__content {
+  &--playground {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
   &--sticky {
     position: sticky;
     top: 20px;

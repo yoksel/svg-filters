@@ -2,10 +2,10 @@ import React, {Fragment} from 'react';
 import './Playground.css';
 import PropTypes from 'prop-types';
 
-import grayCells from './gray-cells.png';
-
 import Filter from '../../containers/Filter';
 import PlaygroundSwitcher from '../../containers/PlaygroundSwitcher';
+
+import './gray-cells.png';
 
 const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
@@ -17,7 +17,7 @@ const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
           x="10%" y="10%"
           width="80%" height="80%"
           preserveAspectRatio="xMidYMid slice"
-          xlinkHref="https://placekitten.com/500/250"
+          xlinkHref="https://placekitten.com/800/400"
           filter={filterUrl}
         />
       );
@@ -40,13 +40,14 @@ const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
           x="10%" y="10%"
           width="80%" height="50%"
           preserveAspectRatio="xMidYMid slice"
-          xlinkHref="https://placekitten.com/400/200"
+          xlinkHref="https://placekitten.com/800/400"
           filter={filterUrl}
         />
 
         <g filter={filterUrl}>
           <text
-            x="50%" y="315"
+            x="50%" y="79%"
+            dy=".35em"
             textAnchor="middle">Text</text>
         </g>
       </Fragment>
@@ -63,13 +64,15 @@ const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           className="Playground__svg"
-          style={{background: `url(${grayCells})`}}>
+          >
 
           <defs>
             <Filter/>
           </defs>
 
-          {getSvgContentByPlaygroundType()}
+          <svg>
+            {getSvgContentByPlaygroundType()}
+          </svg>
         </svg>
       </div>
     </section>
