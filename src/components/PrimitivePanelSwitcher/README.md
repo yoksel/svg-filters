@@ -1,3 +1,5 @@
 # PrimitivePanelSwitcher
 
-## Props
+Control for switching panels with light sources
+
+Uses: [PrimitiveInputRadio](#primitiveinputradio)

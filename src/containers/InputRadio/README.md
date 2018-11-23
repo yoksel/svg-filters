@@ -1,3 +1,0 @@
-# InputRadio
-
-## Props

@@ -23,9 +23,9 @@ const mapDispatchProps = (
   };
 };
 
-const InputRadio = withRouter(connect(
+const PrimitiveInputRadio = withRouter(connect(
   null,
   mapDispatchProps
 )(InputRadioTemplate));
 
-export default InputRadio;
+export default PrimitiveInputRadio;
