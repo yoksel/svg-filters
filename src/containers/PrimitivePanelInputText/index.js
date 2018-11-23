@@ -25,9 +25,9 @@ const mapDispatchProps = (
   };
 };
 
-const InputText = withRouter(connect(
+const PrimitivePanelInputText = withRouter(connect(
   null,
   mapDispatchProps
 )(InputTextTemplate));
 
-export default InputText;
+export default PrimitivePanelInputText;

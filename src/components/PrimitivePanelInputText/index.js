@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {primitivesAttrs} from '../Data';
 
-import InputText from '../../containers/InputText';
+import InputTextContainer from '../../containers/PrimitivePanelInputText';
 
 class PrimitivePanelInputText extends Component {
   render() {
@@ -33,7 +33,7 @@ class PrimitivePanelInputText extends Component {
       secondValue = valuesList[1];
     }
 
-    input = <InputText
+    input = <InputTextContainer
       id={primitive.id}
       key={primitive.id}
       param={paramKey}
@@ -47,7 +47,7 @@ class PrimitivePanelInputText extends Component {
     />;
 
     if (double) {
-      input2 = <InputText
+      input2 = <InputTextContainer
         id={primitive.id}
         key={primitive.id+1}
         param={paramKey}
