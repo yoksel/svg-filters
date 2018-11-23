@@ -1,4 +1,4 @@
-# PrimitiveInputRadio
+# PrimitivePanelInputRadio
 
 Exports:
 

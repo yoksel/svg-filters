@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import InputRadio from '../../containers/PrimitiveInputRadio';
+import InputRadio from '../../containers/PrimitivePanelInputRadio';
 
 import './PrimitivePanelSwitcher.css';
 

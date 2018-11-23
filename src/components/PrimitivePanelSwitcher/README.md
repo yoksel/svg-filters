@@ -2,4 +2,4 @@
 
 Control for switching panels with light sources
 
-Uses: [PrimitiveInputRadio](#primitiveinputradio)
+Uses: [PrimitivePanelInputRadio](#primitivepanelinputradio)
