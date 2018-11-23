@@ -25,9 +25,9 @@ const mapDispatchProps = (
   };
 };
 
-const InputTextarea = withRouter(connect(
+const PrimitivePanelInputTextarea = withRouter(connect(
   null,
   mapDispatchProps
 )(InputTextareaTemplate));
 
-export default InputTextarea;
+export default PrimitivePanelInputTextarea;

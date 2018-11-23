@@ -1,4 +1,4 @@
-# InputTextarea
+# PrimitivePanelInputTextarea
 
 Exports:
 
@@ -9,7 +9,7 @@ __Template:__ [InputTextarea](#inputtextarea)
 Usage:
 
 ```js static
-<InputTextarea
+<PrimitivePanelInputTextarea
   id={id}
   key={id}
   parentId={parentId}

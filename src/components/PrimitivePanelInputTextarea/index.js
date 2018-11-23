@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import InputTextarea from '../../containers/InputTextarea';
+import InputTextarea from '../../containers/PrimitivePanelInputTextarea';
 
 class PrimitivePanelInputTextarea extends Component {
   render() {
