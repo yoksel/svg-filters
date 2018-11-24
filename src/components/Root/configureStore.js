@@ -32,12 +32,13 @@ const addLoggingToDispatch = (store) => {
 
 const configureStore = () => {
   const dataFromStorage = getState();
-  const {primitives} = dataFromStorage;
+  const {primitives, playground} = dataFromStorage;
 
   const initialState = {
     presetControls: presetsData,
     primitiveControls: primitivesData,
-    primitives: primitives
+    primitives,
+    playground
   };
 
   const store = createStore(
@@ -51,6 +52,7 @@ const configureStore = () => {
 
   store.subscribe(throttle(
     () => {
+      const playgroundToSave = deepClone(store.getState().playground);
       const primitivesToSave = deepClone(store.getState().primitives);
       const primitivesCleared = {
         ...primitivesToSave,
@@ -60,7 +62,8 @@ const configureStore = () => {
       };
 
       saveState({
-        primitives: primitivesCleared
+        primitives: primitivesCleared,
+        playground: playgroundToSave
       });
     }
   ), 1000);

@@ -8,7 +8,8 @@ const mapStateToProps = (state, {match}) => {
 
   return {
     filterId: state.primitives[section].length ? 'filter' : '',
-    playgroundType: state.primitives.playgroundType
+    playgroundType: state.primitives.playgroundType,
+    svgCode: state.playground.svgCode
   };
 };
 

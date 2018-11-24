@@ -1,11 +1,5 @@
 .Playground {
-  max-height: 400px;
-  flex-grow: 1;
   display: flex;
-
-  @media (min-width: 1100px) {
-    max-height: 500px;
-  }
 }
 
 .Playground__image {
@@ -14,15 +8,30 @@
   flex-direction: column;
 }
 
+.Playground__svg-wrapper {
+  position: relative;
+}
+
+.Playground__svg-control {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .Playground__svg {
   width: 100%;
   min-height: 350px;
+  max-height: 400px;
   flex-grow: 1;
   background: url("./gray-cells.png");
   font-size: 6rem;
   font-weight: bold;
   font-family: Arial Black, Arial Bold, Arial, sans-serif;
   fill: lightseagreen;
+
+  @media (min-width: 1100px) {
+    max-height: 500px;
+  }
 
   .Playground--text & {
     font-size: 9rem;

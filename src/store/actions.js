@@ -39,6 +39,7 @@ const MOVE_TO_PLAYGROUND = 'MOVE_TO_PLAYGROUND';
 const SET_PLAYGROUND_TYPE = 'SET_PLAYGROUND_TYPE';
 const SET_COLOR_INTERPOL_FILTERS = 'SET_COLOR_INTERPOL_FILTERS';
 const TOGGLE_DOCS = 'TOGGLE_DOCS';
+const UPDATE_SVG = 'UPDATE_SVG';
 
 const ADD_PRESET = 'ADD_PRESET';
 
@@ -149,4 +150,9 @@ export const setColorInterpolFilters = createAction(
 export const toggleDocs = createAction(
   TOGGLE_DOCS,
   ['id', 'childId', 'section']
+);
+
+export const updateSvg = createAction(
+  UPDATE_SVG,
+  ['value']
 );

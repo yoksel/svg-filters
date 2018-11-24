@@ -1,41 +1,54 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import './Playground.css';
 import PropTypes from 'prop-types';
 
 import Filter from '../../containers/Filter';
 import PlaygroundSwitcher from '../../containers/PlaygroundSwitcher';
+import SvgCode from '../../containers/SvgCode';
 
 import './gray-cells.png';
 
-const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
+const Playground = ({
+  filterId,
+  playgroundType = 'image-and-text',
+  svgCode
+}) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
 
   const getSvgContentByPlaygroundType = () => {
     if (playgroundType === 'image') {
       return (
-        <image
-          x="10%" y="10%"
-          width="80%" height="80%"
-          preserveAspectRatio="xMidYMid slice"
-          xlinkHref="https://placekitten.com/800/400"
-          filter={filterUrl}
-        />
+        <svg>
+          <image
+            x="10%" y="10%"
+            width="80%" height="80%"
+            preserveAspectRatio="xMidYMid slice"
+            xlinkHref="https://placekitten.com/800/400"
+            filter={filterUrl}
+          />
+        </svg>
       );
     }
 
     if (playgroundType === 'text') {
       return (
-        <g filter={filterUrl}>
-          <text
-            x="50%" y="50%"
-            dy=".35em"
-            textAnchor="middle">Text</text>
-        </g>
+        <svg>
+          <g filter={filterUrl}>
+            <text
+              x="50%" y="50%"
+              dy=".35em"
+              textAnchor="middle">Text</text>
+          </g>
+        </svg>
       );
     }
 
+    if (playgroundType === 'edit') {
+      return <svg dangerouslySetInnerHTML={{__html: svgCode}}></svg>;
+    }
+
     return (
-      <Fragment>
+      <svg>
         <image
           x="10%" y="10%"
           width="80%" height="50%"
@@ -50,9 +63,11 @@ const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
             dy=".35em"
             textAnchor="middle">Text</text>
         </g>
-      </Fragment>
+      </svg>
     );
   };
+
+  const content = getSvgContentByPlaygroundType();
 
   return (
     <section className={`Playground Playground--${playgroundType}`}>
@@ -60,20 +75,23 @@ const Playground = ({filterId, playgroundType = 'image-and-text'}) => {
       <div className="Playground__image">
         <PlaygroundSwitcher/>
 
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          className="Playground__svg"
-        >
+        {playgroundType === 'edit' && <SvgCode content={content}/>}
 
-          <defs>
-            <Filter/>
-          </defs>
+        <div className="Playground__svg-wrapper">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            className="Playground__svg"
+          >
 
-          <svg>
-            {getSvgContentByPlaygroundType()}
+            <defs>
+              <Filter/>
+            </defs>
+
+            {content}
+
           </svg>
-        </svg>
+        </div>
       </div>
     </section>
   );

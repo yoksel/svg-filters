@@ -18,6 +18,10 @@ const typesList = [
   {
     id: 'text',
     name: 'Text'
+  },
+  {
+    id: 'edit',
+    name: 'Your Code'
   }
 ];
 
