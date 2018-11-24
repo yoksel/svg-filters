@@ -10,12 +10,9 @@ import './SvgCode.css';
 class SvgCode extends Component {
   constructor(props) {
     super(props);
-    const {filterId} = this.props;
-    const filterUrl = filterId ? `url(#${filterId})` : '';
 
     this.state = {
-      panelIsOpen: false,
-      filterUrl
+      panelIsOpen: false
     };
   }
 
@@ -56,14 +53,47 @@ class SvgCode extends Component {
     return markupString;
   };
 
-  addExample = () => {
+  getButtonText = () => {
+    const {value} = this.props;
 
+    if (this.state.panelIsOpen) {
+      return 'Close';
+    }
+
+    if (value === '') {
+      return 'Add';
+    }
+
+    return 'Edit';
+  };
+
+  getTip = () => {
+    const {value} = this.props;
+
+    if (!value) {
+      return;
+    }
+
+    const valueCleared = value
+      .replace(/"|'/g, '');
+
+    const isFilterInStr = valueCleared.indexOf('filter=url(#filter)') > -1;
+
+    if (!isFilterInStr) {
+      return (
+        <p className="SvgCode__text">
+          Add <code>filter="url(#filter)"</code> as attribute to apply filter effect to group or shape.
+        </p>
+      );
+    }
   };
 
   render() {
-    const {panelIsOpen, filterUrl} = this.state;
+    const {panelIsOpen} = this.state;
+    const {value, onChange} = this.props;
     const exampleContent = this.getExampleContent();
     let SvgCodeClass = 'SvgCode';
+    const buttonText = this.getButtonText();
 
     if (panelIsOpen) {
       SvgCodeClass += ' SvgCode--opened';
@@ -82,19 +112,11 @@ class SvgCode extends Component {
                 size="12"
               /></button>
 
-
-            <div className="SvgCode__text">
-              <p>
-                Add <code>filter="url(#filter)"</code> as attribute to apply filter effect to group or shape.
-              </p>
-              <p>
-                If filter is empty, content will not be displayed. Add primitive or choose preset.
-              </p>
-            </div>
+            {this.getTip()}
 
             <InputTextarea
-              value={this.props.value}
-              onChange={this.props.onChange}
+              value={value}
+              onChange={onChange}
               className="SvgCode__InputTextarea"
             />
 
@@ -110,7 +132,7 @@ class SvgCode extends Component {
         <button
           className="SvgCode__control SvgCode__control--edit"
           onClick={this.togglePanel}
-        >Edit</button>
+        >{buttonText}</button>
       </div>
     );
   }

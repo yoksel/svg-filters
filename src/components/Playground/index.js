@@ -15,6 +15,25 @@ const Playground = ({
 }) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
 
+  const getTip = (content) => {
+    let tipText = '';
+    let modClassesList = ['Playground__tip'];
+
+    if (!content) {
+      tipText = 'Add some SVG';
+      modClassesList.push('Playground__tip--add-content');
+    } else if (!filterId && playgroundType === 'edit') {
+      tipText = 'If the filter is empty, content may disappear. Add a primitive or choose a preset.';
+      modClassesList.push('Playground__tip--add-primitives');
+    }
+
+    if (tipText) {
+      return (
+        <div className={modClassesList.join(' ')}>{tipText}</div>
+      );
+    }
+  };
+
   const getSvgContentByPlaygroundType = () => {
     if (playgroundType === 'image') {
       return (
@@ -44,7 +63,7 @@ const Playground = ({
     }
 
     if (playgroundType === 'edit') {
-      return <svg dangerouslySetInnerHTML={{__html: svgCode}}></svg>;
+      return svgCode ? <svg dangerouslySetInnerHTML={{__html: svgCode}}></svg> : '';
     }
 
     return (
@@ -78,6 +97,9 @@ const Playground = ({
         {playgroundType === 'edit' && <SvgCode content={content}/>}
 
         <div className="Playground__svg-wrapper">
+
+          {getTip(content)}
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"

@@ -12,10 +12,29 @@
   position: relative;
 }
 
-.Playground__svg-control {
+.Playground__tip {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50%;
+  left: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, .75);
+  border: 2px solid #CCC;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
+  font-size: 14px;
+  font-style: italic;
+
+  &--add-content {
+    min-width: 50%;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  &--add-primitives {
+    min-width: 80%;
+  }
 }
 
 .Playground__svg {
