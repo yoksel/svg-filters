@@ -26,8 +26,6 @@ class SvgCode extends Component {
   }
 
   getExampleContent = () => {
-    const {filterUrl} = this.state;
-
     const markup = (
       <svg>
         <image
@@ -35,10 +33,10 @@ class SvgCode extends Component {
           width="80%" height="50%"
           preserveAspectRatio="xMidYMid slice"
           xlinkHref="https://placekitten.com/800/400"
-          filter={filterUrl}
+          filter="url(#filter)"
         />
 
-        <g filter={filterUrl}>
+        <g filter="url(#filter)">
           <text
             x="50%" y="79%"
             dy=".35em"
@@ -85,9 +83,14 @@ class SvgCode extends Component {
               /></button>
 
 
-            <p className="SvgCode__text">
-              Add <code>filter="{filterUrl}"</code> as attribute to apply filter effect to group or shape
-            </p>
+            <div className="SvgCode__text">
+              <p>
+                Add <code>filter="url(#filter)"</code> as attribute to apply filter effect to group or shape.
+              </p>
+              <p>
+                If filter is empty, content will not be displayed. Add primitive or choose preset.
+              </p>
+            </div>
 
             <InputTextarea
               value={this.props.value}

@@ -54,6 +54,10 @@
   margin-top: 0;
   margin-right: 16px;
 
+  P:first-child {
+    margin-top: 0;
+  }
+
   CODE {
     padding: 0 3px;
     background: $hlt-gold;
