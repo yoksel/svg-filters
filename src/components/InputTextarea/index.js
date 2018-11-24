@@ -17,13 +17,12 @@ class InputTextarea extends Component {
   }
 
   render() {
-    let {value, type} = this.props;
+    let {value, className = ''} = this.props;
 
     return React.createElement('textarea', {
       value: value,
-      type: type,
       onChange: this.onChange,
-      className: 'InputTextarea'
+      className: `InputTextarea ${className}`
     });
   }
 }
@@ -35,6 +34,5 @@ InputTextarea.propTypes = {
     PropTypes.string,
     PropTypes.number
   ]),
-  type: PropTypes.string,
   onChange: PropTypes.func
 };
