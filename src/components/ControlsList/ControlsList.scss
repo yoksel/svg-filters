@@ -53,6 +53,11 @@
       background: $hlt-blue;
       box-shadow: 0 0 0 5px $hlt-blue;
     }
+
+    &:focus::before {
+      left: -4px;
+      box-shadow: 0 0 0 5px $hlt-blue;
+    }
   }
 
   &-docs {
@@ -72,6 +77,14 @@
 
     &--current::before {
       background: $hlt-green;
+      box-shadow: 0 0 0 5px $hlt-green;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:focus::before {
       box-shadow: 0 0 0 5px $hlt-green;
     }
   }
