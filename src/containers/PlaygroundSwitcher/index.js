@@ -47,7 +47,7 @@ class PlaygroundSwitcher extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    playgroundType: state.primitives.playgroundType
+    playgroundType: state.playground.type
   };
 };
 
