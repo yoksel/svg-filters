@@ -1,6 +1,12 @@
 # PrimitivePanelInputSelect
 
-```js static
+Exports:
+
+* onChange() with action changePrimitiveProp()
+
+__Template__: [InputSelect](#inputselect)
+
+```jsx static
 <PrimitivePanelInputSelect
   id={primitive.id}
   param={paramKey}
@@ -13,5 +19,3 @@
   dependencies={dependencies}
 />
 ```
-
-__Template__: [InputSelect](#inputselect)

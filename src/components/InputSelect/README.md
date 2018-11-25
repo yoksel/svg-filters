@@ -1,9 +1,9 @@
 # InputSelect
 
-```js static
+```jsx static
 <InputSelect
-  value={actualValue}
-  valuesList={actualOptionsList}
+  value={value}
+  valuesList={valuesList}
   onChange={() => {}}
 />
 ```

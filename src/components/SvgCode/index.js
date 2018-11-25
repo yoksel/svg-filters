@@ -141,5 +141,7 @@ class SvgCode extends Component {
 export default SvgCode;
 
 SvgCode.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   filterId: PropTypes.string
 };

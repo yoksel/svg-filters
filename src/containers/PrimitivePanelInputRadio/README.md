@@ -2,7 +2,7 @@
 
 Exports:
 
-* onChange()
+* onChange() with action switchChild()
 
 __Template:__ [InputRadio](#inputradio)
 

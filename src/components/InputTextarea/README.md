@@ -1,3 +1,8 @@
 # InputTextarea
 
-__Container:__ [InputTextarea](#inputtextarea-1)
+```jsx static
+<InputTextarea
+  value={value}
+  onChange={() => {}}
+/>
+```
