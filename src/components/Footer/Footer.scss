@@ -9,3 +9,15 @@
   display: flex;
   justify-content: space-between;
 }
+
+.Footer__link {
+  margin-left: 1rem;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.Footer__link--read {
+  margin-right: auto;
+}

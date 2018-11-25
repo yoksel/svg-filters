@@ -1,0 +1,24 @@
+@import "../../variables.scss";
+
+.SinglePage {
+  min-width: 1028px;
+}
+
+.SinglePage__inner {
+  padding: 2.5rem $offset;
+}
+
+.SinglePage__title {
+  margin-top: 0;
+}
+
+.SinglePage__list {
+  LI {
+    margin-bottom: .5rem;
+    font-size: 14px;
+  }
+
+  A {
+    font-size: 16px;
+  }
+}
