@@ -84,6 +84,12 @@
   font: inherit;
   color: inherit;
   cursor: pointer;
+
+  &:hover {
+    border-color: $color-green;
+    opacity: 1;
+    color: $color-green;
+  }
 }
 
 .SvgCode__control--example {
@@ -104,7 +110,7 @@
   border: 2px solid #CCC;
   background: #FFF;
   border-radius: 4px;
-  transition: all .25s;
+  transition: all .15s;
   opacity: .8;
 
   .SvgCode--opened & {
