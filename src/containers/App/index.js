@@ -7,7 +7,6 @@ import {addPreset, discoveryPrimitive, purgePrimitives} from '../../store/action
 import {docsData} from '../../components/Data';
 
 import AppTemplate from '../../components/App';
-import SinglePage from '../../components/SinglePage';
 
 class App extends Component {
   purgePrev = (prevSection) => {
@@ -60,13 +59,6 @@ class App extends Component {
   }
 
   render() {
-    const {section} = this.props;
-    if (section === 'read') {
-      return (
-        <SinglePage/>
-      );
-    }
-
     return (
       <AppTemplate/>
     );

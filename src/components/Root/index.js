@@ -1,8 +1,9 @@
 import React from 'react';
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
 import App from '../../containers/App';
+import SinglePage from '../SinglePage';
 import configureStore from './configureStore';
 
 const store = configureStore();
@@ -13,10 +14,16 @@ const Root = () => {
   return (
     <Provider store={store}>
       <Router>
-        <Route
-          path={url}
-          component={App}
-        />
+        <Switch>
+          <Route
+            path="/read"
+            component={SinglePage}
+          />
+          <Route
+            path={url}
+            component={App}
+          />
+        </Switch>
       </Router>
     </Provider>
   );
