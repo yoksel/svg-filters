@@ -39,8 +39,7 @@
 
 .Playground__svg {
   width: 100%;
-  min-height: 350px;
-  max-height: 400px;
+  height: 400px;
   flex-grow: 1;
   background: url("./gray-cells.png");
   font-size: 6rem;
@@ -49,7 +48,15 @@
   fill: lightseagreen;
 
   @media (min-width: 1100px) {
-    max-height: 500px;
+    height: 450px;
+  }
+
+  @media (min-width: 1250px) {
+    height: 525px;
+  }
+
+  @media (min-width: 1400px) {
+    height: 600px;
   }
 
   .Playground--text & {
