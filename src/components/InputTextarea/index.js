@@ -22,6 +22,7 @@ class InputTextarea extends Component {
     return React.createElement('textarea', {
       value: value,
       onChange: this.onChange,
+      spellCheck: false,
       className: `InputTextarea ${className}`
     });
   }

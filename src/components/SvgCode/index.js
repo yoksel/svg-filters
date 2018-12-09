@@ -48,7 +48,7 @@ class SvgCode extends Component {
       .replace('<g', '\n\n\t<g')
       .replace('</g', '\n\t</g')
       .replace('<text', '\n\t\t<text')
-      .replace('</svg', '\n<svg');
+      .replace('</svg', '\n</svg');
 
     return markupString;
   };
