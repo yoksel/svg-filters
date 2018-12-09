@@ -5,9 +5,11 @@
   z-index: 1;
   background: #FFF;
   border: 2px solid transparent;
+  border-width: 0 2px;
   font-size: 14px;
 
   &--opened {
+    border-width: 2px;
     border-color: #CCC;
     border-radius: 4px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
