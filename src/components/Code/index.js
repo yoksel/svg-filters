@@ -101,7 +101,7 @@ class Code extends Component {
     const {primitives} = this.props;
     const primitivesCode = getAllPrimitivesCode(primitives).join('\n');
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' && primitives.length > 0) {
       // Temporary for extracting good presets
       console.groupCollapsed('Filter code');
       console.log(JSON.stringify(primitives, null, '\t'));
