@@ -1,10 +1,12 @@
 @import "../../variables.scss";
 
 .SinglePage {
-  min-width: 1028px;
+  min-width: 800px;
 }
 
 .SinglePage__inner {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 2.5rem $offset;
 }
 
