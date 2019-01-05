@@ -8,8 +8,12 @@ import './Header.css';
 
 class Header extends Component {
   render() {
-    const {section = 'playground'} = this.props.match.params;
-    const logoLinkProps = {};
+    let {section = 'playground'} = this.props.match.params;
+
+    if (this.props.match.url === '/read') {
+      section = '';
+    }
+
     const sectionsList = [
       {
         id: 'playground',
@@ -27,12 +31,6 @@ class Header extends Component {
         url: '/docs'
       }
     ];
-
-    if (section !== 'playground') {
-      logoLinkProps.to = '/';
-    } else {
-      logoLinkProps.to = '';
-    }
 
     const navItems = sectionsList.map(item => {
       const {id, name, url} = item;
@@ -70,15 +68,35 @@ class Header extends Component {
       );
     });
 
+    const getLogoLink = () => {
+      const pageTitle = 'SVG Filters';
+
+      if (section !== 'playground') {
+        const logoLinkProps = {
+          to: '/'
+        };
+
+        return (
+          <NavLink
+            className="Header__logo"
+            {...logoLinkProps}
+          >{pageTitle}</NavLink>
+        );
+      }
+
+      return (
+        <span
+          className="Header__logo"
+        >{pageTitle}</span>
+      );
+    };
+
     return (
       <header className="Header">
         <Wrapper>
           <div className="Header__content">
             <h1 className="Header__title">
-              <NavLink
-                className="Header__logo"
-                {...logoLinkProps}
-              >SVG Filters</NavLink>
+              {getLogoLink()}
             </h1>
 
             <nav className="Header__nav">
