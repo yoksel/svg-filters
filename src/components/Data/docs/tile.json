@@ -27,7 +27,7 @@
       "id": "image",
       "params": {
         "xlinkHref": {
-          "value": "https://placekitten.com/200/200"
+          "value": "https://source.unsplash.com/random/200x200?blossom"
         },
         "x": {
           "value": "0"
