@@ -3,7 +3,7 @@
   "groupName": "image",
   "params": {
     "xlinkHref": {
-      "value": "https://placekitten.com/500/500"
+      "value": "https://source.unsplash.com/random/500x500?blossom"
     },
     "x":{
       "value": 0
