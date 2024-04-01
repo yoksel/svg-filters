@@ -29,7 +29,7 @@ class SvgCode extends Component {
           x="10%" y="10%"
           width="80%" height="50%"
           preserveAspectRatio="xMidYMid slice"
-          xlinkHref="https://placekitten.com/800/400"
+          xlinkHref="https://source.unsplash.com/random/800x400?blossom"
           filter="url(#filter)"
         />
 
