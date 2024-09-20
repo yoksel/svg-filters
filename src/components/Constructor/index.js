@@ -1,16 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 
 import deepClone from '../../helpers/deepClone';
 
-import {primitivesAttrs} from '../Data';
+import {primitivesAttrs} from '../../data';
 
 import DragDropItem from '../../containers/DragDropItem';
 import PrimitivePanel from '../PrimitivePanel';
-import ConstructorPlaceholder from '../ConstructorPlaceholder';
+import ConstructorPlaceholder from '../atoms/ConstructorPlaceholder';
 
-import './Constructor.css';
+import './Constructor.scss';
 
 const getResultsList = (primitives, index) => {
   return primitives.slice(0, index)
@@ -123,7 +122,7 @@ const Constructor = ({
         })}
       </div>
 
-      <div className="Constructor__tag Constructor__tag--close">&lt;/filter></div>
+      <div className="Constructor__tag Constructor__tag--close">&lt;/filter&gt;</div>
     </section>
   );
 };

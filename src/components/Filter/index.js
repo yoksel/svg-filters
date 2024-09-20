@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import deepClone from '../../helpers/deepClone';
 
-import Primitive from '../Primitive';
+import Primitive from '../molecules/Primitive';
 
 const Filter = ({primitives, filterData}) => (
   <filter id="filter" {...filterData}>

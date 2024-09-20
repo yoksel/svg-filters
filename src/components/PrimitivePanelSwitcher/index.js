@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import InputRadio from '../../containers/PrimitivePanelInputRadio';
 
-import './PrimitivePanelSwitcher.css';
+import './PrimitivePanelSwitcher.scss';
 
 class PrimitivePanelSwitcher extends Component {
   render() {

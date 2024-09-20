@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {docsData} from '../Data';
+import {docsData} from '../../data';
 
-import Icon from '../Icon';
+import Icon from '../atoms/Icon';
 import PrimitivePanelSwitcher from '../PrimitivePanelSwitcher';
 
-import './PrimitivePanelControls.css';
+import './PrimitivePanelControls.scss';
 
 const PrimitivePanelControls = ({
   duplicatePrimitive,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
 import {moveDrag, stopDrag, swapPrimitives, switchOffLastAdded} from '../../store/actions';
 
@@ -105,7 +105,7 @@ const mapStateToProps = (state, {match}) => {
 };
 
 const mapDispatchProps = (dispatch, {match}) => {
-  const {section = 'playground'} = match.params;
+  const {section = 'playground'} = match?.params || {};
 
   return {
     onMoveDrag: (coords) => {

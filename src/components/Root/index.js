@@ -1,31 +1,35 @@
-import React from 'react';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import App from '../../containers/App';
-import SinglePage from '../SinglePage';
-import configureStore from './configureStore';
+import App from '../../routes/Read/App';
+import SinglePage from '../../routes/Read';
+// import configureStore from '../../configureStore';
 
-const store = configureStore();
+// const store = configureStore();
 
 const Root = () => {
   const url = '/:section?/:id?';
 
   return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route
-            path="/read"
-            component={SinglePage}
-          />
-          <Route
-            path={url}
-            component={App}
-          />
-        </Switch>
-      </Router>
-    </Provider>
+    <Router>
+      {/* <Provider store={store}> */}
+      <Routes>
+        {/* <Route
+              path="/read"
+              element={SinglePage}
+            /> */}
+        {/* <Route
+              path={url}
+              element={App}
+            /> */}
+        {/* <Route
+              path='/'
+              element={App}
+            /> */}
+        <Route path="/" element={<App />} />
+      </Routes>
+      {/* </Provider> */}
+    </Router>
   );
 };
 

@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
 import {changePrimitiveProp, changePropType, toggleProp} from '../../store/actions';
-import InputSelectTemplate from '../../components/InputSelect';
+import InputSelectTemplate from '../../components/atoms/InputSelect';
 
 const mapDispatchProps = (
   dispatch,
@@ -12,7 +12,7 @@ const mapDispatchProps = (
   return {
     onChange: (value) => {
       const {id, parentId, param, dependencies, tiedValues, tiedTypes, match} = props;
-      const {section = 'playground'} = match.params;
+      const {section = 'playground'} = match?.params || {};
 
       const initialProps = {
         id,

@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
 import {addPrimitive} from '../../store/actions';
 
 import ControlsListTemplate from '../../components/ControlsList';
 
 const mapStateToProps = (state, {match}) => {
-  const {section} = match.params;
+  const {section} = match?.params || {};
   let control;
   if (section === 'docs') {
     control = 'NavLink';
@@ -19,7 +19,7 @@ const mapStateToProps = (state, {match}) => {
 };
 
 const mapDispatchProps = (dispatch, {match}) => {
-  const {section = 'playground'} = match.params;
+  const {section = 'playground'} = match?.params || {};
 
   if (section === 'docs') {
     return {};

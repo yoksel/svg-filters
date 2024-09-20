@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
 import FilterTemplate from '../../components/Filter';
 
 const mapStateToProps = (state, {match}) => {
-  const {section = 'playground'} = match.params;
+  const {section = 'playground'} = match?.params || {};
 
   const filterData = state.primitives.filter;
 

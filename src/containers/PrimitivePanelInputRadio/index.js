@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
 import {switchChild} from '../../store/actions';
-import InputRadioTemplate from '../../components/InputRadio';
+import InputRadioTemplate from '../../components/atoms/InputRadio';
 
 const mapDispatchProps = (
   dispatch,
@@ -11,7 +11,7 @@ const mapDispatchProps = (
   return {
     onChange: (value) => {
       const {id, parentId, match} = props;
-      const {section = 'playground'} = match.params;
+      const {section = 'playground'} = match?.params || {};
       const initialProps = {
         id,
         parentId,

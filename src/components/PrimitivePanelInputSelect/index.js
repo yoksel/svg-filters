@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import InputSelect from '../../containers/PrimitivePanelInputSelect';
-import {primitivesAttrs} from '../Data';
+import {primitivesAttrs} from '../../data';
 
 class PrimitivePanelInputSelect extends Component {
   render() {
@@ -28,7 +28,7 @@ class PrimitivePanelInputSelect extends Component {
 
     if (paramKey === 'in' || paramKey === 'in2') {
       actualOptionsList = primitivesAttrs[paramKey];
-      actualOptionsList = actualOptionsList.concat(resultsList);
+      actualOptionsList = actualOptionsList?.concat(resultsList);
     }
 
     if (double) {

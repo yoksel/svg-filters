@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
 import {changePrimitiveProp} from '../../store/actions';
 
-import InputTextareaTemplate from '../../components/InputTextarea';
+import InputTextareaTemplate from '../../components/atoms/InputTextarea';
 
 const mapDispatchProps = (
   dispatch,
@@ -12,7 +12,7 @@ const mapDispatchProps = (
   return {
     onChange: (value) => {
       const {id, parentId, param, match} = props;
-      const {section = 'playground'} = match.params;
+      const {section = 'playground'} = match?.params || {};
       const initialProps = {
         id,
         parentId,

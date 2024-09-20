@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import deepClone from '../../helpers/deepClone';
 
-import {primitivesAttrs} from '../Data';
+import {primitivesAttrs} from '../../data';
 
 import ColorInterpolFiltersSwitcher from '../../containers/ColorInterpolFiltersSwitcher';
 
-import './Code.css';
+import './Code.scss';
 
 const getPrimitiveCode = (primitive, level = 1) => {
   const groupData = primitivesAttrs[primitive.groupName];

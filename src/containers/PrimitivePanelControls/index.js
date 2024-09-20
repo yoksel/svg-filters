@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
 import {deletePrimitive, duplicatePrimitive, togglePrimitive, toggleDocs, updateIns} from '../../store/actions';
 
@@ -9,7 +9,7 @@ const mapDispatchProps = (
   dispatch,
   {id, parentId, match}
 ) => {
-  const {section = 'playground'} = match.params;
+  const {section = 'playground'} = match?.params || {};
   let params = {
     id: id
   };

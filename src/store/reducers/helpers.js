@@ -11,7 +11,6 @@ const reduceStateToCounterObj = (state) => {
       } else {
         prev[groupName] = orderNum;
       }
-
     } else {
       prev[groupName] = orderNum;
     }
@@ -74,7 +73,7 @@ export const idKeeper = () => {
     addSection,
     checkSection,
     purgeSection,
-    getId
+    getId,
   };
 };
 
@@ -103,7 +102,7 @@ export const getAllEnabledResultsObj = (state) => {
 
 export const getLastResult = (state) => {
   let result = 'SourceGraphic';
-  const newState = state.filter(item => !item.disabled);
+  const newState = state.filter((item) => !item.disabled);
   const last = newState[newState.length - 1];
 
   if (last) {
@@ -112,7 +111,7 @@ export const getLastResult = (state) => {
   return result;
 };
 
-export const updateUnicalProps = ({state, primitive, actionType, section}) => {
+export const updateUniqueProps = ({ state, primitive, actionType, section }) => {
   if (!keeperTools.checkSection(section)) {
     keeperTools.addSection(state, section);
   }
@@ -142,7 +141,6 @@ export const updateUnicalProps = ({state, primitive, actionType, section}) => {
           newPrimitive.params.in.value = newIn;
           newPrimitive.params.in2.value = 'SourceAlpha';
         }
-
       } else if (newPrimitive.params.in) {
         // In only
         newPrimitive.params.in.value = newIn;
@@ -151,11 +149,11 @@ export const updateUnicalProps = ({state, primitive, actionType, section}) => {
   }
 
   if (newPrimitive.children) {
-    newPrimitive.children = newPrimitive.children.map(item => {
-      return updateUnicalProps({
+    newPrimitive.children = newPrimitive.children.map((item) => {
+      return updateUniqueProps({
         state,
         primitive: item,
-        section
+        section,
       });
     });
   }
@@ -164,7 +162,7 @@ export const updateUnicalProps = ({state, primitive, actionType, section}) => {
 };
 
 export const swap = (items, positions) => {
-  const {from, to} = positions;
+  const { from, to } = positions;
   const itemFrom = items.splice(from, 1)[0];
   items.splice(to, 0, itemFrom);
 
@@ -185,7 +183,7 @@ export const getFilteredWithIndex = (list, id) => {
 
   return {
     pos,
-    filtered
+    filtered,
   };
 };
 
@@ -195,10 +193,10 @@ export const getIn = (state, section) => {
 
   const defaultSources = {
     SourceGraphic: 'SourceGraphic',
-    SourceAlpha: 'SourceAlpha'
+    SourceAlpha: 'SourceAlpha',
   };
 
-  const updateItem = ({item, index, isChild}) => {
+  const updateItem = ({ item, index, isChild }) => {
     item = deepClone(item);
     const previousItems = list.slice(0, index);
     const initialValue = item.params.in.value;
@@ -239,6 +237,6 @@ export const getIn = (state, section) => {
   };
 
   return {
-    updateItem
+    updateItem,
   };
 };

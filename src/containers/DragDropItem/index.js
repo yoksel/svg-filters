@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 
 import {startDrag} from '../../store/actions';
 
-import Placeholder from '../../components/Placeholder';
+import Placeholder from '../../components/atoms/Placeholder';
 
-import './DragDropItem.css';
+import './DragDropItem.scss';
 
 class DragDropItem extends Component {
   elem = null;

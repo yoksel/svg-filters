@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 import PropTypes from 'prop-types';
 
 import {toggleDocs} from '../../store/actions';
@@ -7,7 +7,7 @@ import {toggleDocs} from '../../store/actions';
 import DocsTemplate from '../../components/Docs';
 
 const mapStateToProps = (state, {docId, match}) => {
-  const {section, id} = match.params;
+  const {section, id} = match?.params || {};
   if (section === 'docs' && id) {
     docId = id;
   }
@@ -21,7 +21,7 @@ const mapDispatchProps = (
   dispatch,
   {id, parentId, match}
 ) => {
-  const {section = 'playground'} = match.params;
+  const {section = 'playground'} = match?.params || {};
   let params = {
     id: id
   };

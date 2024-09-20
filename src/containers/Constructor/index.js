@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
 import {purgePrimitives, moveToPlayground} from '../../store/actions';
 
 import ConstructorTemplate from '../../components/Constructor';
 
 const mapStateToProps = (state, {match}) => {
-  const {section = 'playground'} = match.params;
+  const {section = 'playground'} = match?.params || {};
 
   return {
     primitives: state.primitives[section],
@@ -15,7 +15,7 @@ const mapStateToProps = (state, {match}) => {
 };
 
 const mapDispatchProps = (dispatch, {match}) => {
-  const {section = 'playground'} = match.params;
+  const {section = 'playground'} = match?.params || {};
 
   return {
     purgePrimitives: () => {

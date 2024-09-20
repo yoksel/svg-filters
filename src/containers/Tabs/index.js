@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router';
+import withRouter from '../../helpers/withRouter';
 
-import TabsTemplate from '../../components/Tabs';
+import TabsTemplate from '../../components/molecules/Tabs';
 
 class Tabs extends Component {
   state = {
@@ -9,7 +9,7 @@ class Tabs extends Component {
   };
 
   setActive = () => {
-    let {section} = this.props.match.params;
+    let {section} = this.props.match?.params || {};
     if (!section) {
       section = 'primitives';
     }
