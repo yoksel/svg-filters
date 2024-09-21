@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import { connect, useSelector } from 'react-redux';
 import withRouter from '../../helpers/withRouter';
-import { LoaderFunctionArgs, useLoaderData, useParams } from 'react-router-dom';
+import {
+  LoaderFunctionArgs,
+  useLoaderData,
+  useLocation,
+  useMatch,
+  useParams,
+} from 'react-router-dom';
 
 import { addPreset, discoveryPrimitive, purgePrimitives } from '../../store/actions';
 
 import { docsData } from '../../data';
 
-import AppTemplate from '../../components/App';
+import App from '../../components/App';
 import { RootState } from '../../store';
 
 export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
   return params;
 }
 
-const App = (props: any) => {
-  console.log('=== APP ===');
+const AppRoute = (props: any) => {
+  console.log('=== AppRoute ===');
   const params = useLoaderData() as { section: string };
   const section = params?.section;
   const presetControls = useSelector((state: RootState) => state.presetControls);
@@ -82,7 +88,7 @@ const App = (props: any) => {
   //   }
   // }
 
-  return <AppTemplate section={section} />;
+  return <App />;
 };
 
 // @ts-expect-error
@@ -126,4 +132,4 @@ const mapStateToProps = (state, { match }) => {
 //   // mapDispatchProps
 // )(App));
 
-export default App;
+export default AppRoute;

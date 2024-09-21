@@ -12,7 +12,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { presetsData } from '../data';
 // import type { PayloadAction } from '@reduxjs/toolkit';
-console.log(presetsData);
+// console.log(presetsData);
 
 export type PresetControlsState = [];
 

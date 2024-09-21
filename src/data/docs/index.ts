@@ -40,9 +40,27 @@ const href = {
   desc: 'An <url> to an image resource or to an element. If both, the <code>xlink:href</code> and the href attribute are specified, the latter overrides the first definition.'
 };
 
-export default {
+interface Prop {
+  name: string;
+  value?: string;
+  desc?: string;
+}
+
+interface Doc {
+  name?: string;
+  link?: string;
+  desc?: string;
+  props?: Prop[];
+  commonProps?: string[];
+}
+
+interface Docs {
+  [key: string]: Doc;
+}
+
+const docs: Docs = {
   in: inProp,
-  in2: in2,
+  in2,
   x,
   y,
   width,
@@ -71,5 +89,7 @@ export default {
   specularLighting,
   tile,
   turbulence,
-  'xlink:href': href
+  'xlink:href': href,
 };
+
+export default docs;

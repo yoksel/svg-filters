@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 
 const sectionsList = [
@@ -20,18 +20,21 @@ const sectionsList = [
 ];
 
 interface HeaderNavProps {
-  section?: string;
   className?: string;
 }
 
-export const HeaderNav = ({ section, className }: HeaderNavProps) => {
-  // console.log({ section });
+export const HeaderNav = ({ className }: HeaderNavProps) => {
+  const { pathname } = useLocation();
+  const section = pathname.replaceAll('/', '') || 'playground';
 
   return (
     <nav className={className}>
       {sectionsList.map((item) => {
         const { id, name, url } = item;
-        const navItemClass = `Header__nav-link Header__nav-link-${id}`;
+        const navItemClass = clsx(
+          `Header__nav-link Header__nav-link-${id}`,
+          item.id === section && `Header__nav-link--current Header__nav-link-${id}--current`,
+        );
 
         if (item.id === section) {
           return (
@@ -41,16 +44,9 @@ export const HeaderNav = ({ section, className }: HeaderNavProps) => {
           );
         }
 
+        // console.lo
         return (
-          <NavLink
-            key={id}
-            to={url}
-            className={clsx(
-              navItemClass,
-              ({ isActive }: { isActive: boolean }) =>
-                isActive && `Header__nav-link--current Header__nav-link-${id}--current`,
-            )}
-          >
+          <NavLink key={id} to={url} className={navItemClass}>
             <span className="Header__nav-text">{name}</span>
           </NavLink>
         );

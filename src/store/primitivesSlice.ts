@@ -7,19 +7,20 @@ import {
   updateUniqueProps,
 } from './reducers/helpers';
 // import { purgePrimitives as purgePrimitivesAction } from './actions';
+import primitives from '../data/primitives';
+import docs from '../data/docs';
 
 export interface PrimitivesState {
   type?: string;
   filter?: { colorInterpolationFilters?: string };
-  docs: string[];
+  docs?: typeof primitives;
   playground: string[];
+  primitives: typeof primitives;
 }
 
 const initialState: PrimitivesState = {
-  type: 'image-and-text',
-  // filter: '',
-  docs: [],
   playground: [],
+  primitives: primitives,
 };
 
 // const primitive = (state, action) => {
@@ -85,7 +86,7 @@ interface Payload {
   section: 'docs' | 'playground';
   type?: string;
   item?: string;
-  primitives: string[];
+  primitives: typeof primitives;
   // colorInterpolationFilters?: string;
 }
 

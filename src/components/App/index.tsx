@@ -14,15 +14,15 @@ import Wrapper from '../atoms/Wrapper';
 
 import './App.scss';
 
-const App = ({ section }: { section?: string }) => {
+const App = () => {
   return (
     <DragDrop listId="primitives_to_constructor">
       <Icons />
 
       <div className="App">
-        <Header section={section} />
+        <Header />
 
-        <Wrapper>
+        {/* <Wrapper>
           <main className="App__inner">
             <div className="App__container App__container--controlsList">
               <div className="App__content App__content--sticky">
@@ -42,7 +42,7 @@ const App = ({ section }: { section?: string }) => {
               </div>
             </div>
           </main>
-        </Wrapper>
+        </Wrapper> */}
 
         <Footer />
       </div>

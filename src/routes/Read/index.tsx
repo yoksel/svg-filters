@@ -1,7 +1,4 @@
 /*  eslint-disable max-len */
-
-import React, { Fragment } from 'react';
-
 import Icons from '../../components/atoms/Icons';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -15,7 +12,7 @@ const Read = () => {
       <Icons />
 
       <div className="Read">
-        <Header section="read" />
+        <Header />
 
         <Wrapper>
           <main className="Read__inner">
