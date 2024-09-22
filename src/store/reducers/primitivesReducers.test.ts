@@ -802,202 +802,202 @@ describe('reducers', () => {
     expect(stateBefore).toEqual(stateAfter);
   });
 
-  // // MOVE_TO_PLAYGROUND
-  // // ------------------------------
+  // MOVE_TO_PLAYGROUND
+  // ------------------------------
 
-  // it('MOVE_TO_PLAYGROUND: should move given section items to playground', () => {
-  //   const stateBefore = {
-  //     presets: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //     playground: [],
-  //   };
-  //   const action = {
-  //     section: 'presets',
-  //     type: 'MOVE_TO_PLAYGROUND',
-  //   };
-  //   const stateAfter = {
-  //     presets: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
+  it('moveToPlayground: should move given section items to playground', () => {
+    const stateBefore = {
+      presets: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+      playground: [],
+    };
+    const action = {
+      section: 'presets',
+      type: 'MOVE_TO_PLAYGROUND',
+    };
+    const stateAfter = {
+      presets: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
 
-  //   deepFreeze(stateBefore);
+    // @ts-expect-error
+    primitivesReducers.moveToPlayground(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+  // TOGGLE_DOCS
+  // ------------------------------
 
-  // // TOGGLE_DOCS
-  // // ------------------------------
+  it('0️⃣ toggleDocs: should toggle docs for given item', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
+    const action = {
+      section: 'playground',
+      id: 'blur',
+      type: 'TOGGLE_DOCS',
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+          showDocs: true,
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
 
-  // it('0️⃣ TOGGLE_DOCS: should toggle docs for given item', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     section: 'playground',
-  //     id: 'blur',
-  //     type: 'TOGGLE_DOCS',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //         showDocs: true,
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
+    // @ts-expect-error
+    primitivesReducers.toggleDocs(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
-  //   deepFreeze(stateBefore);
+  it('1️⃣ toggleDocs: should toggle docs for given child', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+          children: [
+            {
+              id: 'mergeNode',
+            },
+            {
+              id: 'mergeNode1',
+            },
+          ],
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
+    const action = {
+      section: 'playground',
+      id: 'blur',
+      childId: 'mergeNode1',
+      type: 'TOGGLE_DOCS',
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+          children: [
+            {
+              id: 'mergeNode',
+            },
+            {
+              id: 'mergeNode1',
+              showDocs: true,
+            },
+          ],
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
 
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
-
-  // it('1️⃣ TOGGLE_DOCS: should toggle docs for given child', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //         children: [
-  //           {
-  //             id: 'mergeNode',
-  //           },
-  //           {
-  //             id: 'mergeNode1',
-  //           },
-  //         ],
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     section: 'playground',
-  //     id: 'blur',
-  //     childId: 'mergeNode1',
-  //     type: 'TOGGLE_DOCS',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //         children: [
-  //           {
-  //             id: 'mergeNode',
-  //           },
-  //           {
-  //             id: 'mergeNode1',
-  //             showDocs: true,
-  //           },
-  //         ],
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-
-  //   deepFreeze(stateBefore);
-
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+    // @ts-expect-error
+    primitivesReducers.toggleDocs(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 });

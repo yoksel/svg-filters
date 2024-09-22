@@ -26,6 +26,7 @@ export interface PrimitiveItem {
   children?: PrimitiveItem[];
   disabled?: boolean;
   justAdded?: boolean;
+  showDocs?: boolean;
   nativeEvent?: NativeEventCoords | null;
 }
 

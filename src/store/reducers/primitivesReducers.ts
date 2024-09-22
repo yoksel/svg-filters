@@ -4,6 +4,7 @@ import {
   getFilteredWithIndex,
   getIn,
   purgeIdKeeperSection,
+  resetIdKeeperSection,
   swap,
   updateUniqueProps,
 } from './helpers';
@@ -487,6 +488,50 @@ const reducers = {
 
     state[section] = updatedList;
   },
+  moveToPlayground: (
+    state: PrimitivesState,
+    action: PayloadAction<{
+      section: Section;
+    }>,
+  ) => {
+    const { section } = action.payload;
+    let listToMove = state[section];
+
+    resetIdKeeperSection(listToMove, 'playground');
+    state['playground'] = listToMove;
+  },
+  toggleDocs: (
+    state: PrimitivesState,
+    action: PayloadAction<{
+      section: Section;
+      id: string;
+      childId?: string;
+    }>,
+  ) => {
+    const { section, id, childId } = action.payload;
+    const updatedList = state[section].map((item: PrimitiveItem) => {
+      if (item.id === id) {
+        item = structuredClone(item);
+
+        if (childId) {
+          item.children = item.children?.map((child: PrimitiveItem) => {
+            if (child.id === childId) {
+              child = structuredClone(child);
+              child.showDocs = !child.showDocs;
+            }
+
+            return child;
+          });
+        } else {
+          item.showDocs = !item.showDocs;
+        }
+      }
+
+      return item;
+    });
+
+    state[section] = updatedList;
+  },
   setColorInterpolFilters: (state: PrimitivesState, action: PayloadAction<string>) => {
     state.filter = {
       colorInterpolationFilters: action.payload,
@@ -494,80 +539,6 @@ const reducers = {
   },
 
   // switch (action.type) {
-
-  // case 'CHANGE_PRIMITIVE_PROP':
-  //   const changePrimitivePropSection = action.section;
-  //   let changePrimitivePropList = state[changePrimitivePropSection].map((item) => {
-  //     // Edit prop of child
-  //     if (item.id === .parentId) {
-  //       item = structuredClone(item);
-
-  //       item.children = item.children.map((child) => {
-  //         const childParam = child.params[action.param];
-  //         if (child.id === action.id && childParam) {
-  //           child.params[action.param].value = action.value;
-  //         }
-
-  //         return child;
-  //       });
-  //     } else if (item.id === action.id) {
-  //       item = structuredClone(item);
-  //       const param = item.params[action.param];
-
-  //       if (param) {
-  //         param.value = action.value;
-
-  //         // Save value to variants (feColorMatrix, for example)
-  //         if (param.variants) {
-  //           const propByKey = item.params[param.variants.key];
-  //           const keyValue = propByKey.value;
-  //           if (!param.variants.values) {
-  //             param.variants.values = {};
-  //           }
-  //           param.variants.values[keyValue] = action.value;
-  //         }
-  //       }
-  //     }
-
-  //     return item;
-  //   });
-
-  //   const changePrimitivePropResult = { ...state };
-  //   changePrimitivePropResult[changePrimitivePropSection] = changePrimitivePropList;
-
-  //   return changePrimitivePropResult;
-
-  // case 'CHANGE_PROP_TYPE':
-  //   const changePropTypeSection = action.section;
-  //   let changePropTypeList = state[changePropTypeSection].map((item) => {
-  //     if (item.id === action.parentId) {
-  //       // Edit prop type of child
-  //       item = structuredClone(item);
-
-  //       item.children = item.children.map((child) => {
-  //         const childParam = child.params[action.param];
-  //         if (child.id === action.id && childParam) {
-  //           childParam.type = action.propType;
-  //         }
-
-  //         return child;
-  //       });
-  //     } else if (item.id === action.id) {
-  //       item = structuredClone(item);
-  //       const param = item.params[action.param];
-
-  //       if (param) {
-  //         param.type = action.propType;
-  //       }
-  //     }
-
-  //     return item;
-  //   });
-
-  //   const changePropTypeResult = { ...state };
-  //   changePropTypeResult[changePropTypeSection] = changePropTypeList;
-
-  //   return changePropTypeResult;
 
   // case 'ADD_PRESET':
   //   const addPresetSection = 'presets';
@@ -592,49 +563,6 @@ const reducers = {
   //     presets: addPresetList,
   //   };
 
-
-  // case 'MOVE_TO_PLAYGROUND':
-  //   const { section: moveSetSection } = action;
-  //   let moveSetList = state[moveSetSection];
-
-  //   const moveSetResult = { ...state };
-  //   moveSetResult['playground'] = moveSetList;
-
-  //   resetIdKeeperSection(moveSetList, 'playground');
-
-  //   return moveSetResult;
-
-  // case 'TOGGLE_DOCS':
-  //   const { section: toggleDocsSection } = action;
-  //   let toggleDocsList = state[toggleDocsSection].map((item) => {
-  //     if (item.id === action.id) {
-  //       item = structuredClone(item);
-
-  //       if (action.childId) {
-  //         item.children = item.children.map((child) => {
-  //           if (child.id === action.childId) {
-  //             child = structuredClone(child);
-  //             child.showDocs = !child.showDocs;
-  //           }
-
-  //           return child;
-  //         });
-  //       } else {
-  //         item.showDocs = !item.showDocs;
-  //       }
-  //     }
-
-  //     return item;
-  //   });
-
-  //   const toggleDocsResult = { ...state };
-  //   toggleDocsResult[toggleDocsSection] = toggleDocsList;
-
-  //   return toggleDocsResult;
-
-  // default:
-  //   return state;
-  // },
 };
 
 export default reducers;
