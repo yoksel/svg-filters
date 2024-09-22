@@ -9,8 +9,8 @@ import React from 'react';
 import Icons from '../atoms/Icons';
 import Header from '../Header';
 import Footer from '../Footer';
-// import Sidebar from '../Sidebar';
-// import Wrapper from '../atoms/Wrapper';
+import Sidebar from '../Sidebar';
+import Wrapper from '../atoms/Wrapper';
 
 import './App.scss';
 
@@ -23,7 +23,7 @@ const App = () => {
       <div className="App">
         <Header />
 
-        {/* <Wrapper>
+        <Wrapper>
           <main className="App__inner">
             <div className="App__container App__container--controlsList">
               <div className="App__content App__content--sticky">
@@ -31,7 +31,7 @@ const App = () => {
               </div>
             </div>
 
-            <div className="App__container App__container--constructor">
+            {/* <div className="App__container App__container--constructor">
               <Constructor />
               <Docs />
             </div>
@@ -42,8 +42,9 @@ const App = () => {
                 <Code />
               </div>
             </div>
+            */}
           </main>
-        </Wrapper> */}
+        </Wrapper>
 
         <Footer />
       </div>

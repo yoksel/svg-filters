@@ -1,4 +1,5 @@
 import { primitivesAttrs } from '../../../data';
+import { NativeEventCoords } from '../../../store/types';
 
 interface ParamValue {
   value: string | number;
@@ -14,15 +15,11 @@ export interface Params {
   [key: string]: ParamValue;
 }
 
-interface NativeEventCoords {
-  offsetX: number;
-  offsetY: number;
-}
-
 export interface PrimitiveItem {
   id: string;
   groupName: keyof typeof primitivesAttrs;
   params: Params;
+  name?: string;
   children?: PrimitiveItem[];
   disabled?: boolean;
   justAdded?: boolean;

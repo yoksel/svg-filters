@@ -1,4 +1,5 @@
 import { PrimitiveItem } from '../components/molecules/Primitive';
+import primitives from '../data/primitives';
 
 // duplicated for checking keys in type
 // might be improved

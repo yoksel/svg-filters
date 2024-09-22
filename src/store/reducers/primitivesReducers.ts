@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { PrimitivesState, Section, SectionState } from '../types';
+import { NativeEventCoords, PrimitivesState, Section, SectionState } from '../types';
 import {
   getFilteredWithIndex,
   getIn,
@@ -10,12 +10,11 @@ import {
 } from './helpers';
 import primitives from '../../data/primitives';
 import { PrimitiveItem } from '../../components/molecules/Primitive';
-import { ReactNode } from 'react';
 
 const primitive = (
   sectionState: SectionState,
   action: { type: string; item: PrimitiveItem; section: Section; childId?: string; id?: string },
-) => {
+): { newPrimitive: PrimitiveItem } | { newPrimitive: PrimitiveItem; pos: number } => {
   const { section } = action;
 
   switch (action.type) {
@@ -28,11 +27,13 @@ const primitive = (
       });
 
       return {
-        id: newAction.id,
-        params: newAction.params,
-        groupName: newAction.groupName,
-        children: newAction.children,
-        disabled: false,
+        newPrimitive: {
+          id: newAction.id,
+          params: newAction.params,
+          groupName: newAction.groupName,
+          children: newAction.children,
+          disabled: false,
+        },
       };
 
     case 'DISCOVERY_PRIMITIVE':
@@ -44,11 +45,13 @@ const primitive = (
       });
 
       return {
-        id: newPrimitiveDiscovery.id,
-        params: newPrimitiveDiscovery.params,
-        groupName: newPrimitiveDiscovery.groupName,
-        children: newPrimitiveDiscovery.children,
-        disabled: false,
+        newPrimitive: {
+          id: newPrimitiveDiscovery.id,
+          params: newPrimitiveDiscovery.params,
+          groupName: newPrimitiveDiscovery.groupName,
+          children: newPrimitiveDiscovery.children,
+          disabled: false,
+        },
       };
 
     case 'DUPLICATE_PRIMITIVE':
@@ -77,29 +80,25 @@ const primitive = (
 };
 
 const reducers = {
-  // setPrimitivesTypeResult: (state: PrimitivesState, action: PayloadAction<string>) => {
-  //   state.type = action.payload;
-  // },
   addPrimitive: (
     state: PrimitivesState,
     action: PayloadAction<{
-      type: string;
       section: Section;
-      nativeEvent: Event;
+      nativeEvent: NativeEventCoords;
       item: PrimitiveItem;
     }>,
   ) => {
-    const { section, item, nativeEvent, type } = action.payload;
+    const { section, item, nativeEvent } = action.payload;
     const primitiveData = {
-      type,
+      type: 'ADD_PRIMITIVE',
       item,
       section,
     };
-    const addPrimitiveNew = primitive(state[section], primitiveData);
-    addPrimitiveNew.justAdded = true;
-    addPrimitiveNew.nativeEvent = nativeEvent;
+    const { newPrimitive } = primitive(state[section], primitiveData);
+    newPrimitive.justAdded = true;
+    newPrimitive.nativeEvent = nativeEvent;
 
-    state[section] = [...state[section], addPrimitiveNew];
+    state[section] = [...state[section], newPrimitive];
   },
   discoverPrimitive: (
     state: PrimitivesState,
@@ -130,11 +129,11 @@ const reducers = {
       id,
     };
     const { newPrimitive, pos } = primitive(sectionStateList, primitiveData);
-    let duplicateList = [];
+    let duplicateList: PrimitiveItem[] = [];
 
     if (childId !== undefined) {
       // Inner list
-      duplicateList = state[section].map((item: PrimitiveItem) => {
+      duplicateList = state[section]?.map((item: PrimitiveItem) => {
         if (item.id === id && item.children) {
           item.children = [
             ...item.children?.slice(0, pos + 1),
@@ -168,7 +167,7 @@ const reducers = {
   ) => {
     const { section, id, childId } = action.payload;
     const sectionStateList = state[section];
-    const togglePrimitiveList = sectionStateList.map((item: PrimitiveItem) => {
+    const togglePrimitiveList = sectionStateList?.map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item?.id === id) {
         item = structuredClone(item);

@@ -1,16 +1,33 @@
 import { NavLink } from 'react-router-dom';
 
 import { primitivesAttrs } from '../../data';
+import useSection from '../../hooks/useSection';
+import { PrimitiveItem } from '../molecules/Primitive';
 
 import './ControlsList.scss';
+import { NativeEventCoords, Section } from '../../store/types';
 
-const ControlsList = ({ items, control = 'button', addPrimitive, match }) => {
-  const { section = 'playground', id } = match?.params || {};
+interface AddPrimitiveArgs {
+  item: PrimitiveItem;
+  nativeEvent: NativeEventCoords;
+  section: Section;
+}
+
+interface ControlsListProps {
+  items: PrimitiveItem[];
+  control?: string;
+  addPrimitive?: (args: AddPrimitiveArgs) => void;
+}
+
+const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListProps) => {
+  const { section, id } = useSection();
   const ControlsListClass = ['ControlsList', `ControlsList--${section}`].join(' ');
+
+  console.log({ items });
 
   return (
     <nav className={ControlsListClass}>
-      {items.map((item, index) => {
+      {items?.map((item: PrimitiveItem) => {
         const groupData = primitivesAttrs[item.groupName];
         const ControlClassList = ['Control', `Control--${control}`, `Control-${section}`];
 
@@ -47,9 +64,10 @@ const ControlsList = ({ items, control = 'button', addPrimitive, match }) => {
                 offsetY: event.nativeEvent.offsetY,
               };
 
-              addPrimitive({
+              addPrimitive?.({
                 item,
                 nativeEvent,
+                section,
               });
             }}
           >
