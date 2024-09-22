@@ -1,7 +1,17 @@
 import { primitivesAttrs } from '../../../data';
 
+interface ParamValue {
+  value: string | number;
+  disabled: boolean;
+  type?: string;
+  variants?: {
+    key: string;
+    values?: { [key: string]: string | number };
+  };
+}
+
 export interface Params {
-  [key: string]: { value: string | number; disabled: boolean; type?: string };
+  [key: string]: ParamValue;
 }
 
 export interface PrimitiveItem {
