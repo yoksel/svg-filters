@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import withRouter from '../../helpers/withRouter';
-import {
-  LoaderFunctionArgs,
-  useLoaderData,
-  useLocation,
-  useMatch,
-  useParams,
-} from 'react-router-dom';
+import { LoaderFunctionArgs, useLoaderData, useMatch, useParams } from 'react-router-dom';
 
 // import { addPreset, discoveryPrimitive, purgePrimitives } from '../../store/actions';
 import { addPrimitive, discoverPrimitive, purgePrimitives } from '../../store/primitivesSlice';

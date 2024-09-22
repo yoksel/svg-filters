@@ -1,5 +1,6 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
+import useSection from '../../hooks/useSection';
 
 const sectionsList = [
   {
@@ -24,8 +25,7 @@ interface HeaderNavProps {
 }
 
 export const HeaderNav = ({ className }: HeaderNavProps) => {
-  const { pathname } = useLocation();
-  const section = pathname.replaceAll('/', '') || 'playground';
+  const section = useSection();
 
   return (
     <nav className={className}>
