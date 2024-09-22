@@ -376,57 +376,40 @@ describe('reducers', () => {
     expect(stateBefore).toEqual(stateAfter);
   });
 
-  // // CHANGE_PROP_TYPE
-  // // ------------------------------
+  // CHANGE_PROP_TYPE
+  // ------------------------------
 
-  // it('CHANGE_PROP_TYPE: should change primitive param type', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         groupName: 'blur',
-  //         params: {
-  //           mode: {
-  //             value: 'multiply',
-  //             type: 'select',
-  //           },
-  //           result: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     type: 'CHANGE_PROP_TYPE',
-  //     section: 'playground',
-  //     id: 'blur',
-  //     param: 'mode',
-  //     value: 'screen',
-  //     propType: 'string',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         groupName: 'blur',
-  //         params: {
-  //           mode: {
-  //             value: 'multiply',
-  //             type: 'string',
-  //           },
-  //           result: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
+  it('changePrimitivePropType: should change primitive param type', () => {
+    const stateBefore = {
+      playground: [blurMock],
+    };
+    const action = {
+      type: 'CHANGE_PROP_TYPE',
+      section: 'playground',
+      id: 'blur',
+      param: 'in',
+      value: 'SourceGraphic',
+      propType: 'select',
+    };
+    const stateAfter = {
+      playground: [
+        {
+          ...blurMock,
+          params: {
+            ...blurMock.params,
+            in: {
+              value: 'SourceGraphic',
+              type: 'select',
+            },
+          },
+        },
+      ],
+    };
 
-  //   deepFreeze(stateBefore);
-
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+    // @ts-expect-error
+    primitivesReducers.changePrimitivePropType(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
   // // UPDATE_INS
   // // ------------------------------

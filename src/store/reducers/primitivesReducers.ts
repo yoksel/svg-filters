@@ -242,6 +242,7 @@ const reducers = {
         });
       } else if (item.id === id) {
         item = structuredClone(item);
+        // does it work?
         const paramByKey = item.params[param];
 
         if (paramByKey) {
@@ -281,6 +282,7 @@ const reducers = {
         });
       } else if (item.id === id) {
         item = structuredClone(item);
+        // does it work?
         const paramBKey = item.params[param];
 
         if (paramBKey) {
@@ -302,6 +304,45 @@ const reducers = {
     });
 
     state[section] = updatedList;
+  },
+  changePrimitivePropType: (
+    state: PrimitivesState,
+    action: PayloadAction<{
+      section: Section;
+      param: string;
+      id?: string;
+      parentId?: string;
+      propType?: string;
+    }>,
+  ) => {
+    const { section, id, parentId, param, propType } = action.payload;
+    let changePropTypeList = state[section].map((item: PrimitiveItem) => {
+      if (item.id === parentId) {
+        // Edit prop type of child
+        item = structuredClone(item);
+
+        item.children = item.children?.map((child: PrimitiveItem) => {
+          const childParam = child.params[param];
+          if (child.id === id && childParam) {
+            childParam.type = propType;
+          }
+
+          return child;
+        });
+      } else if (item.id === id) {
+        item = structuredClone(item);
+        // does it work?
+        const paramByKey = item.params[param];
+
+        if (paramByKey) {
+          paramByKey.type = propType;
+        }
+      }
+
+      return item;
+    });
+
+    state[section] = changePropTypeList;
   },
   purgePrimitives: (state: PrimitivesState, action: PayloadAction<{ section: Section }>) => {
     const purgeSection = action.payload.section;
