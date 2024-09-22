@@ -195,7 +195,7 @@ export const primitives = (state = initialState, action) => {
 
             return newIn.updateItem({
               item: child,
-              iindex: childIndex,
+              index: childIndex,
               idChild: true,
             });
           });

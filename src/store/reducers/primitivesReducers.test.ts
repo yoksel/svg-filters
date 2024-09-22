@@ -411,278 +411,278 @@ describe('reducers', () => {
     expect(stateBefore).toEqual(stateAfter);
   });
 
-  // // UPDATE_INS
-  // // ------------------------------
+  // UPDATE_INS
+  // ------------------------------
 
-  // it('0️⃣  UPDATE_INS: should update attributes `in`', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         disabled: true,
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'matrix',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     type: 'UPDATE_INS',
-  //     section: 'playground',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         disabled: true,
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //             prevValue: 'blur',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'matrix',
-  //         params: {
-  //           in: {
-  //             value: 'blend',
-  //             prevValue: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
+  it('0️⃣  changeInProps: should update attributes `in`', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          disabled: true,
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
+    const action = {
+      type: 'UPDATE_INS',
+      section: 'playground',
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          disabled: true,
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+              prevValue: 'blur',
+            },
+          },
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              value: 'blend',
+              prevValue: 'blur',
+            },
+          },
+        },
+      ],
+    };
 
-  //   deepFreeze(stateBefore);
+    // @ts-expect-error
+    primitivesReducers.changeInProps(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+  it('1️⃣  changeInProps: should keep previous attribute `in`', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          disabled: true,
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
+    const action = {
+      type: 'UPDATE_INS',
+      section: 'playground',
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          disabled: true,
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+              prevValue: 'blur',
+            },
+          },
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              value: 'blend',
+              prevValue: 'blur',
+            },
+          },
+        },
+      ],
+    };
 
-  // it('1️⃣  UPDATE_INS: should keep previous attribute `in`', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         disabled: true,
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'matrix',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     type: 'UPDATE_INS',
-  //     section: 'playground',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         disabled: true,
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //             prevValue: 'blur',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'matrix',
-  //         params: {
-  //           in: {
-  //             value: 'blend',
-  //             prevValue: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
+    // @ts-expect-error
+    primitivesReducers.changeInProps(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
-  //   deepFreeze(stateBefore);
+  it('2️⃣  changeInProps: should place previous attribute `in` if it available again', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+              prevValue: 'blur',
+            },
+          },
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              value: 'blend',
+              prevValue: 'blur',
+            },
+          },
+        },
+      ],
+    };
+    const action = {
+      type: 'UPDATE_INS',
+      section: 'playground',
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+        {
+          id: 'matrix',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
 
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+    // @ts-expect-error
+    primitivesReducers.changeInProps(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
-  // it('2️⃣  UPDATE_INS: should place previous attribute `in` if it available again', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //             prevValue: 'blur',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'matrix',
-  //         params: {
-  //           in: {
-  //             value: 'blend',
-  //             prevValue: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     type: 'UPDATE_INS',
-  //     section: 'playground',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'matrix',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
+  // SWITCH_OFF_LAST_ADDED
+  // ------------------------------
 
-  //   deepFreeze(stateBefore);
+  it('switchOffLastAdded: should switch off prop by primitive id', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+          justAdded: true,
+          nativeEvent: { offsetX: 113, offsetY: 18 },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
+    const action = {
+      id: 'blur',
+      section: 'playground',
+      type: 'SWITCH_OFF_LAST_ADDED',
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+          justAdded: false,
+          nativeEvent: null,
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
 
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
-
-  // // SWITCH_OFF_LAST_ADDED
-  // // ------------------------------
-
-  // it('SWITCH_OFF_LAST_ADDED: should switch off prop by primitive id', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //         justAdded: true,
-  //         nativeEvent: { offsetX: 113, offsetY: 18 },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     id: 'blur',
-  //     section: 'playground',
-  //     type: 'SWITCH_OFF_LAST_ADDED',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //         justAdded: false,
-  //         nativeEvent: null,
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-
-  //   deepFreeze(stateBefore);
-
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+    // @ts-expect-error
+    primitivesReducers.switchOffLastAdded(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
   // // SWAP_PRIMITIVES
   // // ------------------------------
@@ -741,42 +741,42 @@ describe('reducers', () => {
   //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
   // });
 
-  // // PURGE_PRIMITIVES
-  // // ------------------------------
+  // PURGE_PRIMITIVES
+  // ------------------------------
 
-  // it('PURGE_PRIMITIVES: should purge given list', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     section: 'playground',
-  //     type: 'PURGE_PRIMITIVES',
-  //   };
-  //   const stateAfter = {
-  //     playground: [],
-  //   };
+  it('PURGE_PRIMITIVES: should purge given list', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'blur',
+          params: {
+            in: {
+              value: 'SourceGraphic',
+            },
+          },
+        },
+        {
+          id: 'blend',
+          params: {
+            in: {
+              value: 'blur',
+            },
+          },
+        },
+      ],
+    };
+    const action = {
+      section: 'playground',
+      type: 'PURGE_PRIMITIVES',
+    };
+    const stateAfter = {
+      playground: [],
+    };
 
-  //   deepFreeze(stateBefore);
-
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+    // @ts-expect-error
+    primitivesReducers.purgePrimitives(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
   // // SWITCH_CHILD
   // // ------------------------------

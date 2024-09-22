@@ -14,12 +14,19 @@ export interface Params {
   [key: string]: ParamValue;
 }
 
+interface NativeEventCoords {
+  offsetX: number;
+  offsetY: number;
+}
+
 export interface PrimitiveItem {
   id: string;
   groupName: keyof typeof primitivesAttrs;
   params: Params;
   children?: PrimitiveItem[];
   disabled?: boolean;
+  justAdded?: boolean;
+  nativeEvent?: NativeEventCoords | null;
 }
 
 interface PrimitiveProps {

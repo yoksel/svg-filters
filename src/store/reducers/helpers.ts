@@ -223,7 +223,7 @@ export const getIn = (state: PrimitivesState, section: Section) => {
   }: {
     item: PrimitiveItem;
     index: number;
-    isChild: boolean;
+    isChild?: boolean;
   }) => {
     const clonedItem = structuredClone(item);
     const previousItems = list.slice(0, index);

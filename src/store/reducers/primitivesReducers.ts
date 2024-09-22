@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { PrimitivesState, Section, SectionState } from '../types';
-import { getFilteredWithIndex, purgeIdKeeperSection, updateUniqueProps } from './helpers';
+import { getFilteredWithIndex, getIn, purgeIdKeeperSection, updateUniqueProps } from './helpers';
 import primitives from '../../data/primitives';
 import { PrimitiveItem } from '../../components/molecules/Primitive';
 import { ReactNode } from 'react';
@@ -344,6 +344,63 @@ const reducers = {
 
     state[section] = changePropTypeList;
   },
+  changeInProps: (
+    state: PrimitivesState,
+    action: PayloadAction<{
+      section: Section;
+    }>,
+  ) => {
+    const { section } = action.payload;
+    const newIn = getIn(state, section);
+
+    let updatedList = state[section].map((item: PrimitiveItem, index: number) => {
+      if (item.disabled) {
+        return item;
+      }
+
+      if (item.params.in) {
+        item = newIn.updateItem({ item, index });
+      }
+      if (item.children) {
+        const children = structuredClone(item?.children);
+        item.children = children.map((child: PrimitiveItem, childIndex: number) => {
+          if (!child.params.in) {
+            return child;
+          }
+
+          return newIn.updateItem({
+            item: child,
+            index: childIndex,
+            isChild: true,
+          });
+        });
+      }
+
+      return item;
+    });
+
+    state[section] = updatedList;
+  },
+  switchOffLastAdded: (
+    state: PrimitivesState,
+    action: PayloadAction<{
+      section: Section;
+      id: string;
+    }>,
+  ) => {
+    const { section, id } = action.payload;
+    const updatedList = state[section].map((item: PrimitiveItem) => {
+      if (item.id === id) {
+        item = structuredClone(item);
+        item.justAdded = false;
+        item.nativeEvent = null;
+      }
+
+      return item;
+    });
+
+    state[section] = updatedList;
+  },
   purgePrimitives: (state: PrimitivesState, action: PayloadAction<{ section: Section }>) => {
     const purgeSection = action.payload.section;
 
@@ -361,54 +418,6 @@ const reducers = {
   },
 
   // switch (action.type) {
-
-  // case 'UPDATE_INS':
-  //   const updateInsSection = action.section;
-  //   const newIn = getIn(state: PrimitivesState, updateInsSection);
-
-  //   let updateInsList = state[updateInsSection].map((item, index) => {
-  //     if (item.disabled) {
-  //       return item;
-  //     }
-
-  //     if (item.params.in) {
-  //       item = newIn.updateItem({ item, index });
-  //     }
-  //     if (item.children) {
-  //       const children = structuredClone(item.children);
-  //       item.children = children.map((child, childIndex) => {
-  //         if (!child.params.in) {
-  //           return child;
-  //         }
-
-  //         return newIn.updateItem({
-  //           item: child,
-  //           iindex: childIndex,
-  //           idChild: true,
-  //         });
-  //       });
-  //     }
-
-  //     return item;
-  //   });
-
-  //   const updateInsResult = { ...state };
-  //   updateInsResult[updateInsSection] = updateInsList;
-
-  //   return updateInsResult;
-
-  // case 'PURGE_PRIMITIVES':
-  //   const purgeSection = action.section;
-
-  //   const purgeResult = { ...state };
-  //   purgeResult[purgeSection] = [];
-
-  //   if (purgeSection !== 'docs') {
-  //     // Docs not using unique Id
-  //     purgeIdKeeperSection(purgeSection);
-  //   }
-
-  //   return purgeResult;
 
   // case 'CHANGE_PRIMITIVE_PROP':
   //   const changePrimitivePropSection = action.section;
