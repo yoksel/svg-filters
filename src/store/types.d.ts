@@ -7,6 +7,7 @@ export interface PrimitivesState {
   filter?: { colorInterpolationFilters?: string };
   docs?: typeof primitives;
   playground: PrimitiveItem[];
+  presets?: PrimitiveItem[];
   primitives?: typeof primitives;
   swapSnapshot?: string;
 }

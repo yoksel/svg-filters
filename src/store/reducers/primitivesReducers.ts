@@ -532,6 +532,25 @@ const reducers = {
 
     state[section] = updatedList;
   },
+  // TODO: CHECK THIS REDUCER
+  addPreset: (
+    state: PrimitivesState,
+    action: PayloadAction<{
+      primitives: PrimitiveItem[];
+      colorInterpolationFilters?: string;
+    }>,
+  ) => {
+    const { primitives, colorInterpolationFilters = 'linearRGB' } = action.payload;
+    const addPresetList = [...primitives];
+
+    resetIdKeeperSection(addPresetList, 'presets' as Section);
+
+    state['filter'] = {
+      ...state.filter,
+      colorInterpolationFilters,
+    };
+    state['presets'] = addPresetList;
+  },
   setColorInterpolFilters: (state: PrimitivesState, action: PayloadAction<string>) => {
     state.filter = {
       colorInterpolationFilters: action.payload,
@@ -558,11 +577,10 @@ const reducers = {
   //   resetIdKeeperSection(addPresetList, addPresetSection);
 
   //   return {
-  //     ...state: PrimitivesState,
+  //     ...state,
   //     filter: addPresetFilter,
   //     presets: addPresetList,
   //   };
-
 };
 
 export default reducers;

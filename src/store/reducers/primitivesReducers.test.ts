@@ -1000,4 +1000,24 @@ describe('reducers', () => {
     primitivesReducers.toggleDocs(stateBefore, { payload: action });
     expect(stateBefore).toEqual(stateAfter);
   });
+
+  // TODO: CHECK THIS REDUCER
+  it('addPreset: should add preset primitives to page', () => {
+    const stateBefore = {
+      playground: [],
+    };
+    const action = {
+      primitives: [blurMock, blendMock],
+      colorInterpolationFilters: 'linearRGB',
+    };
+    const stateAfter = {
+      playground: [],
+      presets: [blurMock, blendMock],
+      filter: { colorInterpolationFilters: 'linearRGB' },
+    };
+
+    // @ts-expect-error
+    primitivesReducers.addPreset(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 });

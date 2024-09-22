@@ -82,7 +82,7 @@ export const idKeeper = () => {
 
 const keeperTools = idKeeper();
 
-export const resetIdKeeperSection = (state: PrimitivesState, section: Section) => {
+export const resetIdKeeperSection = (state: PrimitiveItem[], section: Section) => {
   keeperTools.addSection(state, section);
 };
 
