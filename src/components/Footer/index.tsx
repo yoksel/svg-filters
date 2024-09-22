@@ -6,7 +6,7 @@ import './Footer.scss';
 import useSection from '../../hooks/useSection';
 
 const Footer = () => {
-  const section = useSection();
+  const { section } = useSection();
 
   const getLink = () => {
     if (section === 'read') {

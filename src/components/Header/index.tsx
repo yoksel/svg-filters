@@ -7,7 +7,7 @@ import './Header.scss';
 import useSection from '../../hooks/useSection';
 
 const Header = () => {
-  const section = useSection();
+  const { section } = useSection();
 
   const getLogoLink = () => {
     const pageTitle = 'SVG Filters';

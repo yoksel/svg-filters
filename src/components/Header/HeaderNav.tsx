@@ -25,7 +25,7 @@ interface HeaderNavProps {
 }
 
 export const HeaderNav = ({ className }: HeaderNavProps) => {
-  const section = useSection();
+  const { section } = useSection();
 
   return (
     <nav className={className}>
