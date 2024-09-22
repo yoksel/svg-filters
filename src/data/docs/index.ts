@@ -52,6 +52,7 @@ interface Doc {
   desc?: string;
   props?: Prop[];
   commonProps?: string[];
+  // primitives?: string[];
 }
 
 interface Docs {

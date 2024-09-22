@@ -1,22 +1,23 @@
 import React from 'react';
 
-import DragDrop from '../../containers/DragDrop';
-import Constructor from '../../containers/Constructor';
-import Playground from '../../containers/Playground';
-import Code from '../../containers/Code';
-import Docs from '../../containers/Docs';
+// import DragDrop from '../../containers/DragDrop';
+// import Constructor from '../../containers/Constructor';
+// import Playground from '../../containers/Playground';
+// import Code from '../../containers/Code';
+// import Docs from '../../containers/Docs';
 
 import Icons from '../atoms/Icons';
 import Header from '../Header';
 import Footer from '../Footer';
-import Sidebar from '../Sidebar';
-import Wrapper from '../atoms/Wrapper';
+// import Sidebar from '../Sidebar';
+// import Wrapper from '../atoms/Wrapper';
 
 import './App.scss';
 
 const App = () => {
   return (
-    <DragDrop listId="primitives_to_constructor">
+    <>
+      {/* <DragDrop listId="primitives_to_constructor"> */}
       <Icons />
 
       <div className="App">
@@ -46,7 +47,8 @@ const App = () => {
 
         <Footer />
       </div>
-    </DragDrop>
+      {/* </DragDrop> */}
+    </>
   );
 };
 

@@ -50,7 +50,7 @@ const primitive = (state, action) => {
         filteredWithIndex = getFilteredWithIndex(children, action.childId);
       }
 
-      const duplAction = updateUniqueProps({
+      const duplicatedAction = updateUniqueProps({
         state,
         primitive: filteredWithIndex.filtered,
         actionType: action.type,
@@ -59,7 +59,7 @@ const primitive = (state, action) => {
 
       return {
         pos: filteredWithIndex.pos,
-        newPrimitive: duplAction,
+        newPrimitive: duplicatedAction,
       };
 
     default:

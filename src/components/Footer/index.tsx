@@ -1,10 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import Wrapper from '../atoms/Wrapper';
 
 import './Footer.scss';
 
-const Footer = ({ section = '' }: { section?: string }) => {
+const Footer = () => {
+  const { pathname } = useLocation();
+  const section = pathname.replaceAll('/', '');
+
   const getLink = () => {
     if (section === 'read') {
       return <span className="Footer__link Footer__link--read">Useful Resources</span>;

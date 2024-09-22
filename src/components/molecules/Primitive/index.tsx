@@ -1,14 +1,15 @@
-import { PropsWithChildren } from 'react';
 import { primitivesAttrs } from '../../../data';
 
 export interface Params {
   [key: string]: { value: string | number; disabled: boolean; type?: string };
 }
 
-export interface PrimitiveItem extends PropsWithChildren {
-  id: number;
+export interface PrimitiveItem {
+  id: string;
   groupName: keyof typeof primitivesAttrs;
   params: Params;
+  children?: PrimitiveItem[];
+  disabled?: boolean;
 }
 
 interface PrimitiveProps {
@@ -40,7 +41,7 @@ const Primitive = ({ primitive }: PrimitiveProps) => {
 
   // console.log(groupData);
   // console.log(Element)
-
+  // @ts-expect-error WTF
   return <Element {...params}>{primitive.children}</Element>;
 };
 

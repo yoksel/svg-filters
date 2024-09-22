@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import withRouter from '../../helpers/withRouter';
 import {
   LoaderFunctionArgs,
@@ -9,12 +9,14 @@ import {
   useParams,
 } from 'react-router-dom';
 
-import { addPreset, discoveryPrimitive, purgePrimitives } from '../../store/actions';
+// import { addPreset, discoveryPrimitive, purgePrimitives } from '../../store/actions';
+import { addPrimitive, discoverPrimitive, purgePrimitives } from '../../store/primitivesSlice';
 
 import { docsData } from '../../data';
 
 import App from '../../components/App';
 import { RootState } from '../../store';
+import { PrimitiveItem } from '../../components/molecules/Primitive';
 
 export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
   return params;
@@ -22,12 +24,10 @@ export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
 
 const AppRoute = (props: any) => {
   console.log('=== AppRoute ===');
-  const params = useLoaderData() as { section: string };
-  const section = params?.section;
-  const presetControls = useSelector((state: RootState) => state.presetControls);
-  // const primitiveControls = useSelector((state: RootState) => state.primitive.type);
-
-  // return <ColorInterpolFiltersSwitcher />;
+  const { section, id } = (useLoaderData() as { section: string; id?: string }) || {};
+  const presets = useSelector((state: RootState) => state.presetControls);
+  const primitives = useSelector((state: RootState) => state.primitives);
+  const dispatch = useDispatch();
 
   // @ts-expect-error
   const purgePrev = (prevSection) => {
@@ -39,42 +39,68 @@ const AppRoute = (props: any) => {
   };
 
   const itemFromPath = () => {
-    // @ts-expect-error
-    const { id, section, handlerName } = this.props;
-    // @ts-expect-error
-    const currentSet = this?.props?.[section];
-    // @ts-expect-error
-    const handler = this.props[handlerName];
+    console.log('itemFromPath', id);
+    const currentSet = section === 'docs' ? primitives : presets;
     let currentItems = [];
 
     if (!id) {
       return null;
     }
 
+    // console.log({ dataFromStore, currentSet, id });
+    // console.log({ dataById: docsData[id] });
+    // console.log({ dataFromStore, section });
+
     if (section === 'docs') {
       // @ts-expect-error
       if (docsData[id] && docsData[id].primitives) {
-        // Doc contains set of primitives for demo
-        // @ts-expect-error
-        currentItems = docsData[id].primitives;
+        console.log(1);
+        //   // Doc contains set of primitives for demo
+        //   // @ts-expect-error
+        //   currentItems = docsData[id].primitives;
       } else {
-        // No presets, take from primitiveControls
-        // @ts-expect-error
-        currentItems = currentSet.filter((item) => item.id === id);
+        console.log(2);
+        //   // No presets, take from primitiveControls
+        //   // @ts-expect-error
+        // currentItems = currentSet?.primitives.filter((item: PrimitiveItem) => item.id === id);
       }
     } else {
-      // @ts-expect-error
-      currentItems = currentSet.filter((item) => item.id === id);
+      // console.log(currentSet.primitives);
+      // currentItems = currentSet.primitives?.filter((item) => item.id === id);
     }
 
-    if (currentItems) {
-      handler(currentItems);
+    if (section === 'docs' && id) {
+      console.log('discoveryPrimitive in ROUTE');
+      // dispatch(discoverPrimitive(primitives));
+    }
+
+    // console.log('currentItems', currentItems);
+    if (currentItems.length) {
+      // if (section === 'presets' && id) {
+      //   // handlerName = 'addPreset';
+      // } else if (section === 'docs' && id) {
+      //   console.log('discoveryPrimitive');
+      //   dispatch(discoverPrimitive(primitives));
+      // }
+      // if (section === 'presets' && id) {
+      //   handlerName = 'addPreset';
+      // }
+      // return {
+      //     addPreset: (presets) => {
+      //       dispatch(addPreset(presets[0]));
+      //     },
+      //     discoveryPrimitive: (primitives) => {
+      //       dispatch(discoveryPrimitive({primitives}));
+      //     },
+      //     purgePrimitives: (section) => {
+      //       dispatch(purgePrimitives({section}));
+      //     }
+      //   };
+      // handler(currentItems);
     }
   };
 
-  // componentDidMount() {
-  //   this.itemFromPath();
-  // }
+  itemFromPath();
 
   // componentDidUpdate(prevProps) {
   //   // @ts-expect-error
@@ -88,6 +114,7 @@ const AppRoute = (props: any) => {
   //   }
   // }
 
+  return <div>123</div>;
   return <App />;
 };
 

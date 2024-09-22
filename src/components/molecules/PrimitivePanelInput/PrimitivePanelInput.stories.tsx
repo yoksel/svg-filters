@@ -28,18 +28,18 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     primitive: {
-      id: 2,
+      id: 'hello',
       groupName: 'blur',
       params: {
         x: {
-         value: '23',
-         disabled: true
-        }
-      }
+          value: '23',
+          disabled: true,
+        },
+      },
     },
     paramKey: 'x',
     resultsList: ['23', '35'],
     parentId: 'parentId',
-  }
+  },
 };
 

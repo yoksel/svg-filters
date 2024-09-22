@@ -129,7 +129,7 @@ const Read = () => {
           </main>
         </Wrapper>
 
-        <Footer section="read" />
+        <Footer />
       </div>
     </>
   );

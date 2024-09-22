@@ -1,12 +1,11 @@
 import React from 'react';
 // import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import { BrowserRouter } from 'react-router-dom';
-import Root from './components/Root';
+// import Root from './components/Root';
 import { Provider } from 'react-redux';
-import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import App, { loader as AppLoader } from './routes/App';
 import Read from './routes/Read';
 // import configureStore from './configureStore';
