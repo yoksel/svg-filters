@@ -1,6 +1,15 @@
 import { PrimitiveItem } from '../components/molecules/Primitive';
 
-export type Section = 'docs' | 'playground';
+// duplicated for checking keys in type
+// might be improved
+export enum SectionEnum {
+  playground,
+  presets,
+  docs,
+  read,
+}
+
+export type Section = 'playground' | 'presets' | 'docs' | 'read';
 
 export interface PrimitivesState {
   type?: string;
