@@ -8,6 +8,7 @@ export interface PrimitivesState {
   docs?: typeof primitives;
   playground: PrimitiveItem[];
   primitives?: typeof primitives;
+  swapSnapshot?: string;
 }
 
 export type SectionState = PrimitivesState['docs'] | PrimitivesState['playground'];

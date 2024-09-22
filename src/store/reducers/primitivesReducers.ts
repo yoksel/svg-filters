@@ -1,6 +1,12 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { PrimitivesState, Section, SectionState } from '../types';
-import { getFilteredWithIndex, getIn, purgeIdKeeperSection, updateUniqueProps } from './helpers';
+import {
+  getFilteredWithIndex,
+  getIn,
+  purgeIdKeeperSection,
+  swap,
+  updateUniqueProps,
+} from './helpers';
 import primitives from '../../data/primitives';
 import { PrimitiveItem } from '../../components/molecules/Primitive';
 import { ReactNode } from 'react';
@@ -401,6 +407,50 @@ const reducers = {
 
     state[section] = updatedList;
   },
+  swapPrimitives: (
+    state: PrimitivesState,
+    action: PayloadAction<{
+      section: Section;
+      id: string;
+      parentId: string;
+      swapSnapshot?: string;
+      indexes: { from: number; to: number };
+    }>,
+  ) => {
+    const { section, id, parentId, swapSnapshot, indexes } = action.payload;
+    let swapPrimitivesList = [...state[section]];
+
+    if (state.swapSnapshot && state.swapSnapshot === swapSnapshot) {
+      return;
+    }
+
+    if (parentId) {
+      swapPrimitivesList = swapPrimitivesList.map((item: PrimitiveItem) => {
+        if (item.id === parentId) {
+          const children = structuredClone(item).children;
+          item.children = swap(children, indexes);
+        }
+
+        return item;
+      });
+    } else {
+      swapPrimitivesList = swap(swapPrimitivesList, indexes);
+    }
+
+    swapPrimitivesList = swapPrimitivesList.filter((item) => item);
+
+    // const swapResult = {
+    //   ...state: PrimitivesState,
+    //   swapSnapshot: action.swapSnapshot,
+    // };
+
+    // swapResult[swapSection] = swapPrimitivesList;
+
+    // return swapResult;
+
+    state[section] = swapPrimitivesList;
+    state.swapSnapshot = swapSnapshot;
+  },
   purgePrimitives: (state: PrimitivesState, action: PayloadAction<{ section: Section }>) => {
     const purgeSection = action.payload.section;
 
@@ -410,6 +460,32 @@ const reducers = {
     }
 
     state[purgeSection] = [];
+  },
+  switchChild: (
+    state: PrimitivesState,
+    action: PayloadAction<{
+      section: Section;
+      id: string;
+      parentId: string;
+    }>,
+  ) => {
+    const { section, id, parentId } = action.payload;
+    const updatedList = state[section].map((item: PrimitiveItem) => {
+      if (item.id === parentId) {
+        item = structuredClone(item);
+
+        item.children = item.children?.map((child: PrimitiveItem) => {
+          child = structuredClone(child);
+          child.disabled = !(child.id === id);
+
+          return child;
+        });
+      }
+
+      return item;
+    });
+
+    state[section] = updatedList;
   },
   setColorInterpolFilters: (state: PrimitivesState, action: PayloadAction<string>) => {
     state.filter = {
@@ -516,79 +592,6 @@ const reducers = {
   //     presets: addPresetList,
   //   };
 
-  // case 'SWAP_PRIMITIVES':
-  //   const parentId = action.parentId;
-  //   const swapSection = action.section;
-  //   let swapPrimitivesList = Array.from(state[swapSection]);
-
-  //   if (state.swapSnapshot && state.swapSnapshot === action.swapSnapshot) {
-  //     return state;
-  //   }
-
-  //   if (parentId) {
-  //     swapPrimitivesList = swapPrimitivesList.map((item) => {
-  //       if (item.id === parentId) {
-  //         const children = structuredClone(item).children;
-  //         item.children = swap(children, action.indexes);
-  //       }
-
-  //       return item;
-  //     });
-  //   } else {
-  //     swapPrimitivesList = swap(swapPrimitivesList, action.indexes);
-  //   }
-
-  //   swapPrimitivesList = swapPrimitivesList.filter((item) => item);
-
-  //   const swapResult = {
-  //     ...state: PrimitivesState,
-  //     swapSnapshot: action.swapSnapshot,
-  //   };
-
-  //   swapResult[swapSection] = swapPrimitivesList;
-
-  //   return swapResult;
-
-  // case 'SWITCH_OFF_LAST_ADDED':
-  //   let switchOffLastList = [];
-  //   const switchOffLastSection = action.section;
-
-  //   switchOffLastList = state[switchOffLastSection].map((item) => {
-  //     if (item.id === action.id) {
-  //       item = structuredClone(item);
-  //       item.justAdded = false;
-  //       item.nativeEvent = null;
-  //     }
-
-  //     return item;
-  //   });
-
-  //   const switchOffLastResult = { ...state };
-  //   switchOffLastResult[switchOffLastSection] = switchOffLastList;
-
-  //   return switchOffLastResult;
-
-  // case 'SWITCH_CHILD':
-  //   const { section: switchChildSection } = action;
-  //   let switchChildList = state[switchChildSection].map((item) => {
-  //     if (item.id === action.parentId) {
-  //       item = structuredClone(item);
-
-  //       item.children = item.children.map((child) => {
-  //         child = structuredClone(child);
-  //         child.disabled = !(child.id === action.id);
-
-  //         return child;
-  //       });
-  //     }
-
-  //     return item;
-  //   });
-
-  //   const switchChildResult = { ...state };
-  //   switchChildResult[switchChildSection] = switchChildList;
-
-  //   return switchChildResult;
 
   // case 'MOVE_TO_PLAYGROUND':
   //   const { section: moveSetSection } = action;

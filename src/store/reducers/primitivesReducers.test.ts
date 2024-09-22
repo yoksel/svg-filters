@@ -684,67 +684,33 @@ describe('reducers', () => {
     expect(stateBefore).toEqual(stateAfter);
   });
 
-  // // SWAP_PRIMITIVES
-  // // ------------------------------
+  // SWAP_PRIMITIVES
+  // ------------------------------
 
-  // it('SWAP_PRIMITIVES: should swap primitives', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     indexes: { from: 0, to: 1 },
-  //     section: 'playground',
-  //     swapSnapshot: 'blur-0,blend-1',
-  //     type: 'SWAP_PRIMITIVES',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'blend',
-  //         params: {
-  //           in: {
-  //             value: 'blur',
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'blur',
-  //         params: {
-  //           in: {
-  //             value: 'SourceGraphic',
-  //           },
-  //         },
-  //       },
-  //     ],
-  //     swapSnapshot: 'blur-0,blend-1',
-  //   };
+  it('swapPrimitives: should swap primitives', () => {
+    const stateBefore = {
+      playground: [blurMock, blendMock],
+    };
+    const action = {
+      indexes: { from: 0, to: 1 },
+      section: 'playground',
+      swapSnapshot: 'blur-0,blend-1',
+      type: 'SWAP_PRIMITIVES',
+    };
+    const stateAfter = {
+      playground: [blendMock, blurMock],
+      swapSnapshot: 'blur-0,blend-1',
+    };
 
-  //   deepFreeze(stateBefore);
-
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+    // @ts-expect-error
+    primitivesReducers.swapPrimitives(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
   // PURGE_PRIMITIVES
   // ------------------------------
 
-  it('PURGE_PRIMITIVES: should purge given list', () => {
+  it('purgePrimitives: should purge given list', () => {
     const stateBefore = {
       playground: [
         {
@@ -778,63 +744,63 @@ describe('reducers', () => {
     expect(stateBefore).toEqual(stateAfter);
   });
 
-  // // SWITCH_CHILD
-  // // ------------------------------
+  // SWITCH_CHILD
+  // ------------------------------
 
-  // it('SWITCH_CHILD: should enable one child & disable others', () => {
-  //   const stateBefore = {
-  //     playground: [
-  //       {
-  //         id: 'diffuseLighting',
-  //         children: [
-  //           {
-  //             id: 'distantLight',
-  //             disabled: false,
-  //           },
-  //           {
-  //             id: 'pointLight',
-  //             disabled: true,
-  //           },
-  //           {
-  //             id: 'spotLight',
-  //             disabled: true,
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   };
-  //   const action = {
-  //     id: 'pointLight',
-  //     parentId: 'diffuseLighting',
-  //     section: 'playground',
-  //     type: 'SWITCH_CHILD',
-  //   };
-  //   const stateAfter = {
-  //     playground: [
-  //       {
-  //         id: 'diffuseLighting',
-  //         children: [
-  //           {
-  //             id: 'distantLight',
-  //             disabled: true,
-  //           },
-  //           {
-  //             id: 'pointLight',
-  //             disabled: false,
-  //           },
-  //           {
-  //             id: 'spotLight',
-  //             disabled: true,
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   };
+  it('switchChild: should enable one child & disable others', () => {
+    const stateBefore = {
+      playground: [
+        {
+          id: 'diffuseLighting',
+          children: [
+            {
+              id: 'distantLight',
+              disabled: false,
+            },
+            {
+              id: 'pointLight',
+              disabled: true,
+            },
+            {
+              id: 'spotLight',
+              disabled: true,
+            },
+          ],
+        },
+      ],
+    };
+    const action = {
+      id: 'pointLight',
+      parentId: 'diffuseLighting',
+      section: 'playground',
+      type: 'SWITCH_CHILD',
+    };
+    const stateAfter = {
+      playground: [
+        {
+          id: 'diffuseLighting',
+          children: [
+            {
+              id: 'distantLight',
+              disabled: true,
+            },
+            {
+              id: 'pointLight',
+              disabled: false,
+            },
+            {
+              id: 'spotLight',
+              disabled: true,
+            },
+          ],
+        },
+      ],
+    };
 
-  //   deepFreeze(stateBefore);
-
-  //   expect(primitivesReducers.primitives(stateBefore, action)).toEqual(stateAfter);
-  // });
+    // @ts-expect-error
+    primitivesReducers.switchChild(stateBefore, { payload: action });
+    expect(stateBefore).toEqual(stateAfter);
+  });
 
   // // MOVE_TO_PLAYGROUND
   // // ------------------------------
