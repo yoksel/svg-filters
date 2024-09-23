@@ -1,22 +1,21 @@
 import { useSelector } from 'react-redux';
-import PlaygroundTemplate from '../../components/atoms/Playground';
+import Playground from '../../components/atoms/Playground';
 import { RootState } from '../../store';
+import useSection from '../../hooks/useSection';
 
-interface PlaygroundProps {
-  section?: string;
-}
-
-const Playground = ({ section = 'playground' }: PlaygroundProps) => {
+const PlaygroundContainer = () => {
+  const { section } = useSection();
   const playgroundType = useSelector((state: RootState) => state.playground.type);
   const svgCode = useSelector((state: RootState) => state.playground.svgCode);
+  const primitives = useSelector((state: RootState) => state.primitives[section]);
 
   return (
-    <PlaygroundTemplate
-      // filterId={state.primitives[section].length ? 'filter' : ''}
+    <Playground
+      filterId={primitives ? 'filter' : ''}
       playgroundType={playgroundType}
       svgCode={svgCode}
     />
   );
 };
 
-export default Playground;
+export default PlaygroundContainer;

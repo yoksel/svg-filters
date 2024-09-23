@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RadioList from '../../components/molecules/RadioList';
 import { setColorInterpolFilters } from '../../store/primitivesSlice';
+import { Interpolation } from '../../store/types';
 
 const colorInterpolList = [
   {
@@ -26,7 +27,7 @@ const ColorInterpolFiltersSwitcher = () => {
         list={colorInterpolList}
         current={filter?.colorInterpolationFilters || 'linearRGB'}
         onChange={(colorInterpol) => {
-          dispatch(setColorInterpolFilters(colorInterpol));
+          dispatch(setColorInterpolFilters(colorInterpol as Interpolation));
         }}
       />
     </div>

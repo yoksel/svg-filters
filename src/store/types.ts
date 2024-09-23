@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import { PrimitiveItem } from '../components/molecules/Primitive';
 import primitives from '../data/primitives';
 
@@ -12,9 +13,16 @@ export enum SectionEnum {
 
 export type Section = 'playground' | 'presets' | 'docs' | 'read';
 
+export type Interpolation = 'linearRGB' | 'sRGB';
+
+export interface FilterParams {
+  colorInterpolationFilters?: Interpolation;
+  style?: CSSProperties;
+}
+
 export interface PrimitivesState {
   type?: string;
-  filter?: { colorInterpolationFilters?: string };
+  filter?: FilterParams;
   docs?: typeof primitives;
   playground: PrimitiveItem[];
   presets?: PrimitiveItem[];

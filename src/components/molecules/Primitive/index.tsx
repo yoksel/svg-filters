@@ -29,13 +29,14 @@ export interface PrimitiveItem {
 
 interface PrimitiveProps {
   primitive: PrimitiveItem;
+  children?: React.ReactNode[];
 }
 
 /**
  * Creates primitive element inside element `filter` in [Filter](#filter)
  * It won't be rendered to page
  */
-const Primitive = ({ primitive }: PrimitiveProps) => {
+const Primitive = ({ primitive, children }: PrimitiveProps) => {
   const groupData = primitivesAttrs[primitive.groupName];
   const Element = groupData.name;
   const paramsKeys = Object.keys(primitive.params);
@@ -54,10 +55,7 @@ const Primitive = ({ primitive }: PrimitiveProps) => {
     {} as { [key: string]: string | number },
   );
 
-  // console.log(groupData);
-  // console.log(Element)
-  // @ts-expect-error WTF
-  return <Element {...params}>{primitive.children}</Element>;
+  return <Element {...params}>{children}</Element>;
 };
 
 export default Primitive;

@@ -7,8 +7,6 @@ import { RootState } from '../../store';
 const PresetsList = () => {
   const presetControls = useSelector((state: RootState) => state.presetControls);
 
-  console.log({ presetControls });
-
   if (!presetControls?.length) return null;
 
   return (
