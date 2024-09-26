@@ -3,7 +3,7 @@ import { NativeEventCoords } from '../../../store/types';
 
 interface ParamValue {
   value: string | number;
-  disabled: boolean;
+  disabled?: boolean;
   type?: string;
   variants?: {
     key: string;

@@ -3,7 +3,7 @@ import React from 'react';
 // import DragDrop from '../../containers/DragDrop';
 // import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
-// import Code from '../../containers/Code';
+import Code from '../../containers/Code';
 // import Docs from '../../containers/Docs';
 
 import Icons from '../atoms/Icons';
@@ -39,7 +39,7 @@ const App = () => {
             <div className="App__container App__container--playground">
               <div className="App__content App__content--playground App__content--sticky">
                 <Playground />
-                {/* <Code /> */}
+                <Code />
               </div>
             </div>
           </main>

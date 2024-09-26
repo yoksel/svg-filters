@@ -15,8 +15,9 @@ import offset from './offset.json';
 import specularLighting from './specularLighting.json';
 import tile from './tile.json';
 import turbulence from './turbulence.json';
+import { PrimitiveItem } from '../../components/molecules/Primitive';
 
-export default [
+const primitives: PrimitiveItem[] = [
   blur,
   dropShadow,
   morphology,
@@ -39,3 +40,5 @@ export default [
   composite,
   merge,
 ];
+
+export default primitives;
