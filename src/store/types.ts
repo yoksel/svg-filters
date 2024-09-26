@@ -27,7 +27,8 @@ export interface PrimitivesState {
   playground: PrimitiveItem[];
   presets?: PrimitiveItem[];
   read?: null;
-  primitives?: typeof primitives;
+  primitives?: PrimitiveItem[];
+  // primitives?: typeof primitives;
   swapSnapshot?: string;
 }
 

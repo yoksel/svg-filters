@@ -53,14 +53,13 @@ const configureStore = () => {
 
   store.subscribe(throttle(
     () => {
-      const playgroundToSave = deepClone(store.getState().playground);
-      const primitivesToSave = deepClone(store.getState().primitives);
+      const playgroundToSave = structuredClone(store.getState().playground);
+      const primitivesToSave = structuredClone(store.getState().primitives);
       const primitivesCleared = {
         ...primitivesToSave,
-        // @ts-expect-error
         playground: primitivesToSave.playground,
         presets: [],
-        docs: []
+        docs: [],
       };
 
       saveState({

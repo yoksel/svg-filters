@@ -67,7 +67,7 @@ const Constructor = ({
           const groupData = primitivesAttrs[primitive.groupName];
 
           if (primitive.children && primitive.children.length > 0) {
-            primitive = deepClone(primitive);
+            primitive = structuredClone(primitive);
 
             primitive.children = primitive.children.map((item, childIndex) => {
               return (

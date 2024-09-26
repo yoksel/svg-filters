@@ -156,7 +156,6 @@ const reducers = {
       });
     } else {
       // Top level list
-      // @ts-expect-error
       duplicateList = [
         ...sectionStateList.slice(0, pos + 1),
         newPrimitive,
@@ -179,7 +178,6 @@ const reducers = {
   ) => {
     const { section, id, childId } = action.payload;
     const sectionStateList = state[section];
-    // @ts-expect-error
     const togglePrimitiveList = sectionStateList?.map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item?.id === id) {

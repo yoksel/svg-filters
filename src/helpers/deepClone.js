@@ -9,7 +9,7 @@ const deepClone = (obj) => {
     if (Array.isArray(obj[key])) {
       resultObj[key] = [...obj[key]];
     } else if (typeof obj[key] === 'object') {
-      resultObj[key] = deepClone(obj[key]);
+      resultObj[key] = structuredClone(obj[key]);
     } else {
       resultObj[key] = obj[key];
     }

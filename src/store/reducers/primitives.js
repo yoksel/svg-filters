@@ -150,12 +150,12 @@ export const primitives = (state = initialState, action) => {
       let togglePrimitiveList = state[toggleSection].map((item) => {
         // Edit prop of child
         if (item.id === action.id) {
-          item = deepClone(item);
+          item = structuredClone(item);
 
           if (action.childId !== undefined) {
             item.children = item.children.map((child) => {
               if (child.id === action.childId) {
-                child = deepClone(child);
+                child = structuredClone(child);
                 child.disabled = !child.disabled;
               }
 
@@ -187,7 +187,7 @@ export const primitives = (state = initialState, action) => {
           item = newIn.updateItem({ item, index });
         }
         if (item.children) {
-          const children = deepClone(item.children);
+          const children = structuredClone(item.children);
           item.children = children.map((child, childIndex) => {
             if (!child.params.in) {
               return child;
@@ -218,7 +218,7 @@ export const primitives = (state = initialState, action) => {
         // Inner list
         deleteList = deleteStateList.map((item) => {
           if (item.id === action.id) {
-            item = deepClone(item);
+            item = structuredClone(item);
             item.children = item.children.filter((child) => child.id !== action.childId);
           }
 
@@ -252,7 +252,7 @@ export const primitives = (state = initialState, action) => {
       let changePrimitivePropList = state[changePrimitivePropSection].map((item) => {
         // Edit prop of child
         if (item.id === action.parentId) {
-          item = deepClone(item);
+          item = structuredClone(item);
 
           item.children = item.children.map((child) => {
             const childParam = child.params[action.param];
@@ -263,7 +263,7 @@ export const primitives = (state = initialState, action) => {
             return child;
           });
         } else if (item.id === action.id) {
-          item = deepClone(item);
+          item = structuredClone(item);
           const param = item.params[action.param];
 
           if (param) {
@@ -294,7 +294,7 @@ export const primitives = (state = initialState, action) => {
       let togglePropList = state[togglePropSection].map((item) => {
         // Edit prop of child
         if (item.id === action.parentId) {
-          item = deepClone(item);
+          item = structuredClone(item);
 
           item.children = item.children.map((child) => {
             const childParam = child.params[action.param];
@@ -305,7 +305,7 @@ export const primitives = (state = initialState, action) => {
             return child;
           });
         } else if (item.id === action.id) {
-          item = deepClone(item);
+          item = structuredClone(item);
           const param = item.params[action.param];
 
           if (param) {
@@ -326,7 +326,7 @@ export const primitives = (state = initialState, action) => {
       let changePropTypeList = state[changePropTypeSection].map((item) => {
         if (item.id === action.parentId) {
           // Edit prop type of child
-          item = deepClone(item);
+          item = structuredClone(item);
 
           item.children = item.children.map((child) => {
             const childParam = child.params[action.param];
@@ -337,7 +337,7 @@ export const primitives = (state = initialState, action) => {
             return child;
           });
         } else if (item.id === action.id) {
-          item = deepClone(item);
+          item = structuredClone(item);
           const param = item.params[action.param];
 
           if (param) {
@@ -388,7 +388,7 @@ export const primitives = (state = initialState, action) => {
       if (parentId) {
         swapPrimitivesList = swapPrimitivesList.map((item) => {
           if (item.id === parentId) {
-            const children = deepClone(item).children;
+            const children = structuredClone(item).children;
             item.children = swap(children, action.indexes);
           }
 
@@ -415,7 +415,7 @@ export const primitives = (state = initialState, action) => {
 
       switchOffLastList = state[switchOffLastSection].map((item) => {
         if (item.id === action.id) {
-          item = deepClone(item);
+          item = structuredClone(item);
           item.justAdded = false;
           item.nativeEvent = null;
         }
@@ -432,10 +432,10 @@ export const primitives = (state = initialState, action) => {
       const { section: switchChildSection } = action;
       let switchChildList = state[switchChildSection].map((item) => {
         if (item.id === action.parentId) {
-          item = deepClone(item);
+          item = structuredClone(item);
 
           item.children = item.children.map((child) => {
-            child = deepClone(child);
+            child = structuredClone(child);
             child.disabled = !(child.id === action.id);
 
             return child;
@@ -465,12 +465,12 @@ export const primitives = (state = initialState, action) => {
       const { section: toggleDocsSection } = action;
       let toggleDocsList = state[toggleDocsSection].map((item) => {
         if (item.id === action.id) {
-          item = deepClone(item);
+          item = structuredClone(item);
 
           if (action.childId) {
             item.children = item.children.map((child) => {
               if (child.id === action.childId) {
-                child = deepClone(child);
+                child = structuredClone(child);
                 child.showDocs = !child.showDocs;
               }
 

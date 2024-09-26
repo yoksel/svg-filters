@@ -37,7 +37,7 @@ export const dragDrop = (state = initialState, action) => {
   case 'ADD_DRAGITEM_TO_LIST':
     const listId = action.dragItem.listId;
     const itemId = action.dragItem.id;
-    let siblingsCoords = deepClone(state.siblingsCoords);
+    let siblingsCoords = structuredClone(state.siblingsCoords);
 
     if (!siblingsCoords[listId]) {
       siblingsCoords[listId] = {};
