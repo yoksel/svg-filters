@@ -1,7 +1,4 @@
-import { PrimitiveItem } from '../../components/molecules/Primitive';
-import deepFreeze from '../../helpers/deepFreeze';
 import { Section } from '../types';
-import primitives from '../../data/primitives';
 import primitivesReducers from './primitivesReducers';
 import primitivesAttrs from '../../data/primitivesAttrs';
 
