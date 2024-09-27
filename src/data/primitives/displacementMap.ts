@@ -1,0 +1,40 @@
+import { PrimitiveItem } from '../../store/types';
+
+const displacementMap: PrimitiveItem = {
+  id: 'displacementMap',
+  groupName: 'displacementMap',
+  params: {
+    in: {
+      value: 'SourceGraphic',
+    },
+    in2: {
+      value: 'SourceGraphic',
+    },
+    scale: {
+      value: 20,
+    },
+    xChannelSelector: {
+      value: 'R',
+    },
+    yChannelSelector: {
+      value: 'B',
+    },
+    x: {
+      value: '0%',
+    },
+    y: {
+      value: '0%',
+    },
+    width: {
+      value: '100%',
+    },
+    height: {
+      value: '100%',
+    },
+    result: {
+      value: 'displacementMap',
+    },
+  },
+};
+
+export default displacementMap;

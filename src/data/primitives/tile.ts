@@ -1,0 +1,28 @@
+import { PrimitiveItem } from '../../store/types';
+
+const tile: PrimitiveItem = {
+  id: 'tile',
+  groupName: 'tile',
+  params: {
+    x: {
+      value: 0,
+    },
+    y: {
+      value: 0,
+    },
+    width: {
+      value: 1000,
+    },
+    height: {
+      value: 1000,
+    },
+    in: {
+      value: 'SourceGraphic',
+    },
+    result: {
+      value: 'tile',
+    },
+  },
+};
+
+export default tile;

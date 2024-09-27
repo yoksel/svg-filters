@@ -1,20 +1,20 @@
-import blur from './blur.json';
-import blend from './blend.json';
-import colormatrix from './colormatrix.json';
-import componentTransfer from './componentTransfer.json';
-import composite from './composite.json';
-import convolveMatrix from './convolveMatrix.json';
-import diffuseLighting from './diffuseLighting.json';
-import displacementMap from './displacementMap.json';
-import dropShadow from './dropShadow.json';
-import flood from './flood.json';
-import image from './image.json';
-import merge from './merge.json';
-import morphology from './morphology.json';
-import offset from './offset.json';
-import specularLighting from './specularLighting.json';
-import tile from './tile.json';
-import turbulence from './turbulence.json';
+import blur from './blur';
+import blend from './blend';
+import colormatrix from './colormatrix';
+import componentTransfer from './componentTransfer';
+import composite from './composite';
+import convolveMatrix from './convolveMatrix';
+import diffuseLighting from './diffuseLighting';
+import displacementMap from './displacementMap';
+import dropShadow from './dropShadow';
+import flood from './flood';
+import image from './image';
+import merge from './merge';
+import morphology from './morphology';
+import offset from './offset';
+import specularLighting from './specularLighting';
+import tile from './tile';
+import turbulence from './turbulence';
 import { PrimitiveItem } from '../../store/types';
 
 const primitives: PrimitiveItem[] = [
