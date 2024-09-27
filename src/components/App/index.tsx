@@ -4,7 +4,7 @@ import React from 'react';
 import Constructor from '../../containers/Constructor';
 import Playground from '../../containers/Playground';
 import Code from '../../containers/Code';
-// import Docs from '../../containers/Docs';
+import Docs from '../../containers/Docs';
 
 import Icons from '../atoms/Icons';
 import Header from '../Header';
@@ -33,7 +33,7 @@ const App = () => {
 
             <div className="App__container App__container--constructor">
               <Constructor />
-              {/* <Docs /> */}
+              <Docs />
             </div>
 
             <div className="App__container App__container--playground">
