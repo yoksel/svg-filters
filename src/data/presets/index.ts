@@ -1,45 +1,26 @@
-import grayscale from './grayscale.json';
-import smoke from './smoke.json';
-import paper from './paper.json';
-import watercolor from './watercolor.json';
-import waterDrops from './waterDrops.json';
-import paintDrops from './paintDrops.json';
-import stroke from './stroke.json';
-import dancingStroke from './dancingStroke.json';
-import contour from './contour.json';
-import zebra from './zebra.json';
-import net from './net.json';
-import layeredNet from './layeredNet.json';
-import dust from './dust.json';
-import shadow from './shadow.json';
-import innerShadow from './innerShadow.json';
-import waves from './waves.json';
-import coloredSpots from './coloredSpots.json';
-import coloredSpots2 from './coloredSpots2.json';
-import coloredStripesVert from './coloredStripesVert.json';
-import coloredFlame from './coloredFlame.json';
+import grayscale from './grayscale';
+import smoke from './smoke';
+import paper from './paper';
+import watercolor from './watercolor';
+import waterDrops from './waterDrops';
+import paintDrops from './paintDrops';
+import stroke from './stroke';
+import dancingStroke from './dancingStroke';
+import contour from './contour';
+import zebra from './zebra';
+import net from './net';
+import layeredNet from './layeredNet';
+import dust from './dust';
+import shadow from './shadow';
+import innerShadow from './innerShadow';
+import waves from './waves';
+import coloredSpots from './coloredSpots';
+import coloredSpots2 from './coloredSpots2';
+import coloredStripesVert from './coloredStripesVert';
+import coloredFlame from './coloredFlame';
+import { Preset } from '../../store/types';
 
-// Types of property 'primitives' are incompatible.
-//     Type '{ id: string; params: { type: { value: string; }; values: { value: string; variants: { key: string; }; }; in: { value: string; }; result: { value: string; }; }; groupName: string; }[]' is not assignable to type '[{}]'.
-
-interface Primitive {
-  id: string;
-  params: {
-    type: { value: string };
-    values: { value: string; variants: { key: string } };
-    in: { value: string };
-    result: { value: string };
-  };
-  groupName: string;
-}
-
-interface Preset {
-  id: string;
-  name: string;
-  primitives: Primitive[];
-}
-
-const presets: any[] = [
+const presets: Preset[] = [
   grayscale,
   shadow,
   innerShadow,

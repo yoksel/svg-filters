@@ -4,6 +4,7 @@ import primitivesAttrs from '../data/primitivesAttrs';
 
 interface ParamValue {
   value: string | number;
+  prevValue?: string | number;
   disabled?: boolean;
   type?: string;
   variants?: {
@@ -65,4 +66,11 @@ export type SectionState = PrimitivesState['docs'] | PrimitivesState['playground
 export interface NativeEventCoords {
   offsetX: number;
   offsetY: number;
+}
+
+export interface Preset {
+  id: string;
+  name: string;
+  colorInterpolationFilters?: Interpolation;
+  primitives: PrimitiveItem[];
 }
