@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import withRouter from '../../helpers/withRouter';
 import { LoaderFunctionArgs, useLoaderData, useMatch, useParams } from 'react-router-dom';
 
 // import { addPreset, discoveryPrimitive, purgePrimitives } from '../../store/actions';
@@ -10,7 +9,6 @@ import { docsData } from '../../data';
 
 import App from '../../components/App';
 import { RootState } from '../../store';
-import { PrimitiveItem } from '../../components/molecules/Primitive';
 
 export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
   return params;
@@ -148,9 +146,5 @@ const mapStateToProps = (state, { match }) => {
 //     }
 //   };
 // };
-// App = withRouter(connect(
-//   mapStateToProps,
-//   // mapDispatchProps
-// )(App));
 
 export default AppRoute;

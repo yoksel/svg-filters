@@ -1,6 +1,34 @@
 import { CSSProperties } from 'react';
-import { PrimitiveItem } from '../components/molecules/Primitive';
 import primitives from '../data/primitives';
+import primitivesAttrs from '../data/primitivesAttrs';
+
+interface ParamValue {
+  value: string | number;
+  disabled?: boolean;
+  type?: string;
+  variants?: {
+    key: string;
+    values?: { [key: string]: string | number };
+  };
+}
+
+export interface Params {
+  [key: string]: ParamValue;
+}
+
+export type PrimitiveName = keyof typeof primitivesAttrs;
+
+export interface PrimitiveItem {
+  id: string;
+  groupName: PrimitiveName;
+  params: Params;
+  name?: string;
+  children?: PrimitiveItem[];
+  disabled?: boolean;
+  justAdded?: boolean;
+  showDocs?: boolean;
+  nativeEvent?: NativeEventCoords | null;
+}
 
 // duplicated for checking keys in type
 // might be improved

@@ -1,5 +1,5 @@
-import { PrimitiveItem } from '../molecules/Primitive';
 import { primitivesAttrs } from '../../data';
+import { PrimitiveItem } from '../../store/types';
 
 export const getPrimitiveCode = (primitive: PrimitiveItem, level: number = 1) => {
   const groupData = primitivesAttrs[primitive.groupName];

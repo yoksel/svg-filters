@@ -1,5 +1,12 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { Interpolation, NativeEventCoords, PrimitivesState, Section, SectionState } from '../types';
+import {
+  Interpolation,
+  NativeEventCoords,
+  PrimitiveItem,
+  PrimitivesState,
+  Section,
+  SectionState,
+} from '../types';
 import {
   getFilteredWithIndex,
   getIn,
@@ -9,11 +16,18 @@ import {
   updateUniqueProps,
 } from './helpers';
 import primitives from '../../data/primitives';
-import { PrimitiveItem } from '../../components/molecules/Primitive';
+
+interface Action {
+  type: string;
+  item: PrimitiveItem;
+  section: Section;
+  childId?: string;
+  id?: string;
+}
 
 const primitive = (
   sectionState: SectionState,
-  action: { type: string; item: PrimitiveItem; section: Section; childId?: string; id?: string },
+  action: Action,
 ): { newPrimitive: PrimitiveItem } | { newPrimitive: PrimitiveItem; pos: number } => {
   const { section } = action;
 

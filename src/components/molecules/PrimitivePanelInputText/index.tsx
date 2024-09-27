@@ -1,8 +1,8 @@
 import {primitivesAttrs} from '../../../data';
 
 import InputTextContainer from '../../../containers/PrimitivePanelInputText';
-import {PrimitiveItem} from '../Primitive';
 import {InputsData} from '../../../data/types';
+import { PrimitiveItem } from '../../../store/types';
 
 interface PrimitivePanelInputProps {
   primitive: PrimitiveItem;

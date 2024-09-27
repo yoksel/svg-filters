@@ -1,5 +1,5 @@
-import { FilterParams } from '../../store/types';
-import Primitive, { PrimitiveItem } from '../molecules/Primitive';
+import { FilterParams, PrimitiveItem } from '../../store/types';
+import Primitive from '../molecules/Primitive';
 
 interface FilterProps {
   primitives: PrimitiveItem[];

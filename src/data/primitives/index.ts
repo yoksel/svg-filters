@@ -15,7 +15,7 @@ import offset from './offset.json';
 import specularLighting from './specularLighting.json';
 import tile from './tile.json';
 import turbulence from './turbulence.json';
-import { PrimitiveItem } from '../../components/molecules/Primitive';
+import { PrimitiveItem } from '../../store/types';
 
 const primitives: PrimitiveItem[] = [
   blur,

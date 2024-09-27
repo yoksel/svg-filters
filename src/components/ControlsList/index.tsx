@@ -2,10 +2,9 @@ import { NavLink } from 'react-router-dom';
 
 import { primitivesAttrs } from '../../data';
 import useSection from '../../hooks/useSection';
-import { PrimitiveItem } from '../molecules/Primitive';
+import { NativeEventCoords, PrimitiveItem, Section } from '../../store/types';
 
 import './ControlsList.scss';
-import { NativeEventCoords, Section } from '../../store/types';
 
 interface AddPrimitiveArgs {
   item: PrimitiveItem;

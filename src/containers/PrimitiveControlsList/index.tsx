@@ -3,7 +3,7 @@ import ControlsList from '../../components/ControlsList';
 import { addPrimitive } from '../../store/primitivesSlice';
 import { RootState } from '../../store';
 import useSection from '../../hooks/useSection';
-import { PrimitiveItem } from '../../components/molecules/Primitive';
+import { PrimitiveItem } from '../../store/types';
 
 const PrimitiveControlsList = () => {
   const dispatch = useDispatch();

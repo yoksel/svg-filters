@@ -1,6 +1,5 @@
 import ColorInterpolFiltersSwitcher from '../../containers/ColorInterpolFiltersSwitcher';
-import { PrimitiveItem } from '../molecules/Primitive';
-import { FilterParams } from '../../store/types';
+import { FilterParams, PrimitiveItem } from '../../store/types';
 
 import './Code.scss';
 import { getAllPrimitivesCode } from './helpers';

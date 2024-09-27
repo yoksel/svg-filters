@@ -3,8 +3,8 @@ import { primitivesAttrs } from '../../../data';
 import PrimitivePanelInputText from '../PrimitivePanelInputText';
 import PrimitivePanelInputSelect from '../../PrimitivePanelInputSelect';
 import PrimitivePanelInputTextarea from '../../PrimitivePanelInputTextarea';
-import { PrimitiveItem } from '../Primitive';
 import { InputsData, PrimitiveAttributesType } from '../../../data/types';
+import { PrimitiveItem } from '../../../store/types';
 
 interface PrimitivePanelInputProps {
   primitive: PrimitiveItem;

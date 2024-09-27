@@ -1,5 +1,5 @@
 import primitivesAttrs from '../../data/primitivesAttrs';
-import { PrimitiveItem } from '../molecules/Primitive';
+import { PrimitiveItem } from '../../store/types';
 import { getAllPrimitivesCode, getPrimitiveCode } from './helpers';
 
 global.structuredClone = (val) => JSON.parse(JSON.stringify(val));

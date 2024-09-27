@@ -1,31 +1,5 @@
 import { primitivesAttrs } from '../../../data';
-import { NativeEventCoords } from '../../../store/types';
-
-interface ParamValue {
-  value: string | number;
-  disabled?: boolean;
-  type?: string;
-  variants?: {
-    key: string;
-    values?: { [key: string]: string | number };
-  };
-}
-
-export interface Params {
-  [key: string]: ParamValue;
-}
-
-export interface PrimitiveItem {
-  id: string;
-  groupName: keyof typeof primitivesAttrs;
-  params: Params;
-  name?: string;
-  children?: PrimitiveItem[];
-  disabled?: boolean;
-  justAdded?: boolean;
-  showDocs?: boolean;
-  nativeEvent?: NativeEventCoords | null;
-}
+import { PrimitiveItem } from '../../../store/types';
 
 interface PrimitiveProps {
   primitive: PrimitiveItem;
