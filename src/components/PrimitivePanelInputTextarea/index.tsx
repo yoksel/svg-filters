@@ -4,7 +4,7 @@ import { PrimitiveItem } from '../../store/types';
 interface PrimitivePanelInputTextareaProps {
   primitive: PrimitiveItem;
   paramKey: string;
-  parentId: string;
+  parentId?: string;
 }
 const PrimitivePanelInputTextarea = ({
   primitive,

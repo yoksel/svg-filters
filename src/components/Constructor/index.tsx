@@ -106,10 +106,32 @@ const Constructor = ({
                 nativeEvent={primitive.nativeEvent}
               >
                 <PrimitivePanel
-                  index={index}
                   primitive={primitive}
                   resultsList={getResultsList(primitives, index)}
-                />
+                >
+                  {primitive?.children?.map((item, childIndex) => {
+                    return (
+                      <div key={item.id} id={item.id} className="Constructor__item">
+                        <DragDropItem
+                          id={item.id}
+                          parentId={primitive.id}
+                          listId={primitive.id}
+                          index={childIndex}
+                          justAdded={item.justAdded}
+                          nativeEvent={item.nativeEvent}
+                        >
+                          <PrimitivePanel
+                            parentId={primitive.id}
+                            primitive={item}
+                            resultsList={getResultsList(primitives, index)}
+                            parentHasSingleChild={groupData.hasSingleChild}
+                            noChangesForChildren={groupData.noChangesForChildren}
+                          />
+                        </DragDropItem>
+                      </div>
+                    );
+                  })}
+                </PrimitivePanel>
               </DragDropItem>
             </div>
           );

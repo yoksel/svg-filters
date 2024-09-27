@@ -10,7 +10,7 @@ interface PrimitivePanelInputProps {
   primitive: PrimitiveItem;
   paramKey: string;
   resultsList: string[];
-  parentId: string;
+  parentId?: string;
 }
 
 function isKeyInData(
