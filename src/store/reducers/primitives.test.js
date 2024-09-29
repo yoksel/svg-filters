@@ -2,8 +2,6 @@ import deepFreeze from '../../helpers/deepFreeze';
 
 import * as primitivesReducers from './primitives';
 
-global.structuredClone = (val) => JSON.parse(JSON.stringify(val));
-
 // ADD_PRIMITIVE
 // ------------------------------
 

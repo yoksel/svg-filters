@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    elemClientRect: {height: '30px'},
-    isDragging: false
+    elemClientRect: { height: 30 },
+    isDragging: false,
   },
 };

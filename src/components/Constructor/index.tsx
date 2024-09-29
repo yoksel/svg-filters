@@ -68,71 +68,32 @@ const Constructor = ({
         {primitives?.map((primitive: PrimitiveItem, index: number) => {
           const groupData = primitivesAttrs[primitive.groupName];
 
-          if (primitive.children && primitive.children.length > 0) {
-            primitive = structuredClone(primitive);
-
-            // primitive.children = primitive.children.map((item, childIndex) => {
-            //   return (
-            //     <div key={item.id} id={item.id} className="Constructor__item">
-            //       <DragDropItem
-            //         id={item.id}
-            //         parentId={primitive.id}
-            //         listId={primitive.id}
-            //         index={childIndex}
-            //         justAdded={item.justAdded}
-            //         nativeEvent={item.nativeEvent}
-            //       >
-            //         <PrimitivePanel
-            //           index={childIndex}
-            //           parentId={primitive.id}
-            //           primitive={item}
-            //           resultsList={getResultsList(primitives, index)}
-            //           parentHasSingleChild={groupData.hasSingleChild}
-            //           noChangesForChildren={groupData.noChangesForChildren}
-            //         />
-            //       </DragDropItem>
-            //     </div>
-            //   );
-            // });
-          }
-
           return (
             <div key={primitive.id} id={primitive.id} className="Constructor__item">
-              <DragDropItem
-                id={primitive.id}
-                listId="primitives"
-                index={index}
-                justAdded={primitive.justAdded}
-                nativeEvent={primitive.nativeEvent}
-              >
-                <PrimitivePanel
-                  primitive={primitive}
-                  resultsList={getResultsList(primitives, index)}
-                >
-                  {primitive?.children?.map((item, childIndex) => {
-                    return (
-                      <div key={item.id} id={item.id} className="Constructor__item">
-                        <DragDropItem
-                          id={item.id}
+              <PrimitivePanel primitive={primitive} resultsList={getResultsList(primitives, index)}>
+                {primitive?.children?.map((item, childIndex) => {
+                  return (
+                    <div key={item.id} id={item.id} className="Constructor__item">
+                      <DragDropItem
+                        id={item.id}
+                        parentId={primitive.id}
+                        listId={primitive.id}
+                        index={childIndex}
+                        justAdded={item.justAdded}
+                        nativeEvent={item.nativeEvent || undefined}
+                      >
+                        <PrimitivePanel
                           parentId={primitive.id}
-                          listId={primitive.id}
-                          index={childIndex}
-                          justAdded={item.justAdded}
-                          nativeEvent={item.nativeEvent}
-                        >
-                          <PrimitivePanel
-                            parentId={primitive.id}
-                            primitive={item}
-                            resultsList={getResultsList(primitives, index)}
-                            parentHasSingleChild={groupData.hasSingleChild}
-                            noChangesForChildren={groupData.noChangesForChildren}
-                          />
-                        </DragDropItem>
-                      </div>
-                    );
-                  })}
-                </PrimitivePanel>
-              </DragDropItem>
+                          primitive={item}
+                          resultsList={getResultsList(primitives, index)}
+                          parentHasSingleChild={groupData.hasSingleChild}
+                          noChangesForChildren={groupData.noChangesForChildren}
+                        />
+                      </DragDropItem>
+                    </div>
+                  );
+                })}
+              </PrimitivePanel>
             </div>
           );
         })}

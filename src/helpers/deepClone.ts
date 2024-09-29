@@ -1,4 +1,6 @@
-const deepClone = (obj) => {
+// I use custom function to make it possible to work with Jest tests
+// I failed to mock lodash version
+const deepClone = <T>(obj: T): T => {
   let resultObj = {};
 
   if (Array.isArray(obj)) {
@@ -7,15 +9,18 @@ const deepClone = (obj) => {
 
   for (let key in obj) {
     if (Array.isArray(obj[key])) {
+      // @ts-expect-error
       resultObj[key] = [...obj[key]];
     } else if (typeof obj[key] === 'object') {
-      resultObj[key] = structuredClone(obj[key]);
+      // @ts-expect-error
+      resultObj[key] = deepClone(obj[key]);
     } else {
+      // @ts-expect-error
       resultObj[key] = obj[key];
     }
   }
 
-  return resultObj;
+  return resultObj as T;
 };
 
 export default deepClone;

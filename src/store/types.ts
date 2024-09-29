@@ -57,13 +57,13 @@ export interface PrimitivesState {
   presets?: PrimitiveItem[];
   read?: null;
   primitives?: PrimitiveItem[];
-  // primitives?: typeof primitives;
   swapSnapshot?: string;
 }
 
 export type SectionState = PrimitivesState['docs'] | PrimitivesState['playground'];
 
 export interface NativeEventCoords {
+  left?: number;
   offsetX: number;
   offsetY: number;
 }
@@ -74,3 +74,41 @@ export interface Preset {
   colorInterpolationFilters?: Interpolation;
   primitives: PrimitiveItem[];
 }
+
+export interface Offset {
+  x: number;
+  y: number;
+  middleY: number;
+  halfHeight: number;
+}
+
+export interface DragClientRect {
+  x?: number;
+  width?: number | 'auto';
+  height?: number | 'auto';
+}
+
+export interface DragDropState {
+  id?: string;
+  type?: string;
+  index?: number;
+  parentId?: string;
+  listId?: string;
+  elemClientRect?: DragClientRect;
+  offset?: Offset;
+  coords?: NativeEventCoords;
+  siblingsCoords?: {
+    [key: string]: {
+      [key: string]: NativeEventCoords | {};
+    };
+  };
+}
+
+export interface PrimitiveActionArgs {
+  primitive: PrimitiveItem;
+  section: Section;
+  id?: string;
+  childId?: string;
+}
+
+export type ToggleDocsArgs = Omit<PrimitiveActionArgs, 'primitive'>;

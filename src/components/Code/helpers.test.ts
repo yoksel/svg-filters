@@ -2,8 +2,6 @@ import primitivesAttrs from '../../data/primitivesAttrs';
 import { PrimitiveItem } from '../../store/types';
 import { getAllPrimitivesCode, getPrimitiveCode } from './helpers';
 
-global.structuredClone = (val) => JSON.parse(JSON.stringify(val));
-
 const blurMock: PrimitiveItem = {
   id: 'blur',
   groupName: 'blur' as keyof typeof primitivesAttrs,

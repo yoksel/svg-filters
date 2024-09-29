@@ -4,6 +4,7 @@ import throttle from 'lodash/throttle';
 import reducers from './store/reducers';
 import {primitivesData, presetsData} from './data';
 import {saveState, getState} from './components/Root/localStorage';
+import deepClone from './helpers/deepClone';
 
 const addLoggingToDispatch = (store: any) => {
   const rawDispatch = store.dispatch;
@@ -31,28 +32,25 @@ const addLoggingToDispatch = (store: any) => {
 
 const configureStore = () => {
   const dataFromStorage = getState();
-  const {primitives, playground} = dataFromStorage;
+  const { primitives, playground } = dataFromStorage;
 
   const initialState = {
     presetControls: presetsData,
     primitiveControls: primitivesData,
     primitives,
-    playground
+    playground,
   };
 
-  const store = createStore(
-    reducers,
-    initialState
-  );
+  const store = createStore(reducers, initialState);
 
   if (process.env.NODE_ENV !== 'production') {
     store.dispatch = addLoggingToDispatch(store);
   }
 
-  store.subscribe(throttle(
-    () => {
-      const playgroundToSave = structuredClone(store.getState().playground);
-      const primitivesToSave = structuredClone(store.getState().primitives);
+  store.subscribe(
+    throttle(() => {
+      const playgroundToSave = deepClone(store.getState().playground);
+      const primitivesToSave = deepClone(store.getState().primitives);
       const primitivesCleared = {
         ...primitivesToSave,
         playground: primitivesToSave.playground,
@@ -62,11 +60,10 @@ const configureStore = () => {
 
       saveState({
         primitives: primitivesCleared,
-        playground: playgroundToSave
+        playground: playgroundToSave,
       });
-    }
-    // @ts-expect-error
-  ), 1000);
+    }, 1000),
+  );
 
   return store;
 };

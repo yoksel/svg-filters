@@ -2,6 +2,7 @@
 
 import { PrimitiveItem } from '../../components/molecules/Primitive';
 import { PrimitivesState, Section } from '../types';
+import deepClone from '../../helpers/deepClone';
 
 const reduceStateToCounterObj = (state: PrimitiveItem[]) => {
   return state.reduce((prev, item) => {
@@ -136,7 +137,7 @@ export const updateUniqueProps = ({
     throw new Error('No primitive passed to updateUniqueProps');
   }
 
-  const newPrimitive = structuredClone(primitive);
+  const newPrimitive = deepClone(primitive);
   let newIn = getLastResult(sectionState);
   let newIdAdd = newPrimitive.id;
 
@@ -225,7 +226,7 @@ export const getIn = (state: PrimitivesState, section: Section) => {
     index: number;
     isChild?: boolean;
   }) => {
-    const clonedItem = structuredClone(item);
+    const clonedItem = deepClone(item);
     const previousItems = list.slice(0, index);
     const initialValue = clonedItem.params.in.value;
     const prevValue = clonedItem.params.in.prevValue;
@@ -254,7 +255,7 @@ export const getIn = (state: PrimitivesState, section: Section) => {
     }
 
     // SET BACK
-    // Use prev value if it available
+    // Use prev value if it is available
     if (prevValue && allEnabledResultsObj[prevValue]) {
       newValue = prevValue;
       delete clonedItem.params.in.prevValue;

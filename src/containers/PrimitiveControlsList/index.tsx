@@ -17,9 +17,9 @@ const PrimitiveControlsList = () => {
       // TO FIX: dirty hack
       items={primitives as unknown as PrimitiveItem[]}
       control={section === 'docs' ? 'NavLink' : 'button'}
-      addPrimitive={({ item, nativeEvent, section }) => {
+      addPrimitive={({ primitive, nativeEvent, section }) => {
         if (section === 'docs') return;
-        dispatch(addPrimitive({ item, nativeEvent, section }));
+        dispatch(addPrimitive({ primitive, nativeEvent, section }));
       }}
     />
   );

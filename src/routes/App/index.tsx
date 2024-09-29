@@ -5,10 +5,11 @@ import { LoaderFunctionArgs, useLoaderData, useMatch, useParams } from 'react-ro
 // import { addPreset, discoveryPrimitive, purgePrimitives } from '../../store/actions';
 import { addPrimitive, discoverPrimitive, purgePrimitives } from '../../store/primitivesSlice';
 
-import { docsData } from '../../data';
+import { docsData } from '../../data/';
 
 import App from '../../components/App';
 import { RootState } from '../../store';
+import { PrimitiveItem } from '../../store/types';
 
 export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
   return params;
@@ -33,7 +34,7 @@ const AppRoute = (props: any) => {
   const itemFromPath = () => {
     console.log('itemFromPath', id);
     const currentSet = section === 'docs' ? primitives : presets;
-    let currentItems = [];
+    let currentItems: PrimitiveItem[] = [];
 
     if (!id) {
       return null;
@@ -43,27 +44,25 @@ const AppRoute = (props: any) => {
     // console.log({ dataById: docsData[id] });
     // console.log({ dataFromStore, section });
 
-    if (section === 'docs') {
-      // @ts-expect-error
-      if (docsData[id] && docsData[id].primitives) {
-        console.log(1);
-        //   // Doc contains set of primitives for demo
-        //   // @ts-expect-error
-        //   currentItems = docsData[id].primitives;
+    if (section === 'docs' && docsData[id]) {
+      // only tiles docs has primitives for demo
+      if (docsData[id].primitives) {
+        // to fix
+        currentItems = docsData[id].primitives as PrimitiveItem[];
       } else {
-        console.log(2);
-        //   // No presets, take from primitiveControls
-        //   // @ts-expect-error
-        // currentItems = currentSet?.primitives.filter((item: PrimitiveItem) => item.id === id);
+        const primitiveById = primitives?.primitives?.find((primitive) => id === primitive.id);
+        // No presets, take from primitiveControls
+        if (primitiveById) currentItems = [primitiveById];
       }
     } else {
+      console.log('SECTION: OTHER');
       // console.log(currentSet.primitives);
       // currentItems = currentSet.primitives?.filter((item) => item.id === id);
     }
 
     if (section === 'docs' && id) {
       console.log('discoveryPrimitive in ROUTE');
-      // dispatch(discoverPrimitive(primitives));
+      dispatch(discoverPrimitive({ primitives: currentItems }));
     }
 
     // console.log('currentItems', currentItems);

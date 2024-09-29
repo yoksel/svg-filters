@@ -2,10 +2,12 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import {
   Interpolation,
   NativeEventCoords,
+  PrimitiveActionArgs,
   PrimitiveItem,
   PrimitivesState,
   Section,
   SectionState,
+  ToggleDocsArgs,
 } from '../types';
 import {
   getFilteredWithIndex,
@@ -16,16 +18,17 @@ import {
   updateUniqueProps,
 } from './helpers';
 import primitives from '../../data/primitives';
+import deepClone from '../../helpers/deepClone';
 
 interface Action {
   type: string;
-  item: PrimitiveItem;
+  primitive: PrimitiveItem;
   section: Section;
   childId?: string;
   id?: string;
 }
 
-const primitive = (
+const primitiveHandler = (
   sectionState: SectionState,
   action: Action,
 ): { newPrimitive: PrimitiveItem } | { newPrimitive: PrimitiveItem; pos: number } => {
@@ -35,7 +38,7 @@ const primitive = (
     case 'ADD_PRIMITIVE':
       const newAction = updateUniqueProps({
         sectionState,
-        primitive: action.item,
+        primitive: action.primitive,
         section,
         actionType: action.type,
       });
@@ -53,7 +56,7 @@ const primitive = (
     case 'DISCOVERY_PRIMITIVE':
       const newPrimitiveDiscovery = updateUniqueProps({
         sectionState,
-        primitive: action.item,
+        primitive: action.primitive,
         section,
         actionType: action.type,
       });
@@ -78,7 +81,7 @@ const primitive = (
 
       const duplicatedAction = updateUniqueProps({
         sectionState,
-        primitive: filteredWithIndex.filtered,
+        primitive: { ...filteredWithIndex.filtered, showDocs: false },
         actionType: 'DUPLICATE_PRIMITIVE',
         section,
       });
@@ -100,19 +103,19 @@ const reducers = {
     action: PayloadAction<{
       section: Section;
       nativeEvent: NativeEventCoords;
-      item: PrimitiveItem;
+      primitive: PrimitiveItem;
     }>,
   ) => {
-    const { section, item, nativeEvent } = action.payload;
+    const { section, primitive, nativeEvent } = action.payload;
     const primitiveData = {
       type: 'ADD_PRIMITIVE',
-      item,
+      primitive,
       section,
     };
     const stateBySection = state[section];
     if (!stateBySection) return;
 
-    const { newPrimitive } = primitive(stateBySection, primitiveData);
+    const { newPrimitive } = primitiveHandler(stateBySection, primitiveData);
     newPrimitive.justAdded = true;
     newPrimitive.nativeEvent = nativeEvent;
 
@@ -121,28 +124,19 @@ const reducers = {
   },
   discoverPrimitive: (
     state: PrimitivesState,
-    action: PayloadAction<{ primitives: typeof primitives; type: string }>,
+    action: PayloadAction<{ primitives: typeof primitives }>,
   ) => {
     // const discoverPrimitiveSection = 'docs';
     // resetIdKeeperSection(discoverPrimitiveList, discoverPrimitiveSection);
 
     state.docs = action.payload.primitives;
   },
-  duplicatePrimitive: (
-    state: PrimitivesState,
-    action: PayloadAction<{
-      item: PrimitiveItem;
-      type: string;
-      section: Section;
-      id?: string;
-      childId?: string;
-    }>,
-  ) => {
-    const { section, item, type, childId, id } = action.payload;
+  duplicatePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
+    const { section, primitive, childId, id } = action.payload;
     const sectionStateList = state[section];
     const primitiveData = {
-      type,
-      item,
+      type: 'DUPLICATE_PRIMITIVE',
+      primitive,
       section,
       childId,
       id,
@@ -151,7 +145,7 @@ const reducers = {
     if (!sectionStateList) return;
 
     // @ts-expect-error
-    const { newPrimitive, pos } = primitive(sectionStateList, primitiveData);
+    const { newPrimitive, pos } = primitiveHandler(sectionStateList, primitiveData);
     let duplicateList: PrimitiveItem[] = [];
 
     if (childId !== undefined) {
@@ -180,27 +174,29 @@ const reducers = {
     // @ts-expect-error
     state[section] = duplicateList;
   },
-  togglePrimitive: (
-    state: PrimitivesState,
-    action: PayloadAction<{
-      item: PrimitiveItem;
-      type: string;
-      section: Section;
-      id?: string;
-      childId?: string;
-    }>,
-  ) => {
+  togglePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
     const sectionStateList = state[section];
-    const togglePrimitiveList = sectionStateList?.map((item: PrimitiveItem) => {
+    console.log('===togglePrimitive===');
+    console.log({ state });
+    console.log({ section });
+    console.log({ sectionStateList });
+    console.log({ length: sectionStateList?.length });
+
+    if (!sectionStateList?.length) return;
+
+    console.log('Checked, Ok');
+
+    const togglePrimitiveList = [...sectionStateList]?.map((item: PrimitiveItem) => {
       // Edit prop of child
-      if (item?.id === id) {
-        item = structuredClone(item);
+      if (item && item.id === id) {
+        console.log({ item, id });
+        item = deepClone(item);
 
         if (childId !== undefined) {
           item.children = item.children?.map((child: PrimitiveItem) => {
             if (child.id === childId) {
-              child = structuredClone(child);
+              child = deepClone(child);
               child.disabled = !child.disabled;
             }
 
@@ -217,16 +213,7 @@ const reducers = {
     // @ts-expect-error
     state[section] = togglePrimitiveList;
   },
-  deletePrimitive: (
-    state: PrimitivesState,
-    action: PayloadAction<{
-      item: PrimitiveItem;
-      type: string;
-      section: Section;
-      id?: string;
-      childId?: string;
-    }>,
-  ) => {
+  deletePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
     const sectionStateList = state[section];
     let updatedList = [];
@@ -236,7 +223,7 @@ const reducers = {
       // @ts-expect-error
       updatedList = sectionStateList.map((item: PrimitiveItem) => {
         if (item.id === id) {
-          item = structuredClone(item);
+          item = deepClone(item);
           item.children = item.children?.filter((child) => child.id !== childId);
         }
 
@@ -266,7 +253,7 @@ const reducers = {
     let updatedList = state[section].map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item.id === parentId) {
-        item = structuredClone(item);
+        item = deepClone(item);
 
         item.children = item.children?.map((child) => {
           const childParam = child.params[param];
@@ -277,7 +264,7 @@ const reducers = {
           return child;
         });
       } else if (item.id === id) {
-        item = structuredClone(item);
+        item = deepClone(item);
         // does it work?
         const paramByKey = item.params[param];
 
@@ -307,7 +294,7 @@ const reducers = {
     let updatedList = state[section].map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item.id === parentId) {
-        item = structuredClone(item);
+        item = deepClone(item);
 
         item.children = item.children?.map((child: PrimitiveItem) => {
           const childParam = child.params[param];
@@ -318,7 +305,7 @@ const reducers = {
           return child;
         });
       } else if (item.id === id) {
-        item = structuredClone(item);
+        item = deepClone(item);
         // does it work?
         const paramBKey = item.params[param];
 
@@ -358,7 +345,7 @@ const reducers = {
     let changePropTypeList = state[section].map((item: PrimitiveItem) => {
       if (item.id === parentId) {
         // Edit prop type of child
-        item = structuredClone(item);
+        item = deepClone(item);
 
         item.children = item.children?.map((child: PrimitiveItem) => {
           const childParam = child.params[param];
@@ -369,7 +356,7 @@ const reducers = {
           return child;
         });
       } else if (item.id === id) {
-        item = structuredClone(item);
+        item = deepClone(item);
         // does it work?
         const paramByKey = item.params[param];
 
@@ -401,7 +388,7 @@ const reducers = {
         item = newIn.updateItem({ item, index });
       }
       if (item.children) {
-        const children = structuredClone(item?.children);
+        const children = deepClone(item?.children);
         item.children = children.map((child: PrimitiveItem, childIndex: number) => {
           if (!child.params.in) {
             return child;
@@ -431,7 +418,7 @@ const reducers = {
     // @ts-expect-error
     const updatedList = state[section].map((item: PrimitiveItem) => {
       if (item.id === id) {
-        item = structuredClone(item);
+        item = deepClone(item);
         item.justAdded = false;
         item.nativeEvent = null;
       }
@@ -463,7 +450,7 @@ const reducers = {
     if (parentId) {
       swapPrimitivesList = swapPrimitivesList.map((item: PrimitiveItem) => {
         if (item.id === parentId) {
-          const children = structuredClone(item).children;
+          const children = deepClone(item).children;
           item.children = swap(children, indexes);
         }
 
@@ -511,10 +498,10 @@ const reducers = {
     // @ts-expect-error
     const updatedList = state[section].map((item: PrimitiveItem) => {
       if (item.id === parentId) {
-        item = structuredClone(item);
+        item = deepClone(item);
 
         item.children = item.children?.map((child: PrimitiveItem) => {
-          child = structuredClone(child);
+          child = deepClone(child);
           child.disabled = !(child.id === id);
 
           return child;
@@ -540,24 +527,17 @@ const reducers = {
     // @ts-expect-error
     state['playground'] = listToMove;
   },
-  toggleDocs: (
-    state: PrimitivesState,
-    action: PayloadAction<{
-      section: Section;
-      id: string;
-      childId?: string;
-    }>,
-  ) => {
+  toggleDocs: (state: PrimitivesState, action: PayloadAction<ToggleDocsArgs>) => {
     const { section, id, childId } = action.payload;
     // @ts-expect-error
     const updatedList = state[section].map((item: PrimitiveItem) => {
       if (item.id === id) {
-        item = structuredClone(item);
+        item = deepClone(item);
 
         if (childId) {
           item.children = item.children?.map((child: PrimitiveItem) => {
             if (child.id === childId) {
-              child = structuredClone(child);
+              child = deepClone(child);
               child.showDocs = !child.showDocs;
             }
 

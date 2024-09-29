@@ -2,9 +2,6 @@ import { Section } from '../types';
 import primitivesReducers from './primitivesReducers';
 import primitivesAttrs from '../../data/primitivesAttrs';
 
-// because Node.js does not support structuredClone()
-global.structuredClone = (val) => JSON.parse(JSON.stringify(val));
-
 // ADD_PRIMITIVE
 // ------------------------------
 
@@ -78,7 +75,7 @@ describe('reducers', () => {
     const action = {
       type: 'ADD_PRIMITIVE',
       section: 'playground' as Section,
-      item: blurMock,
+      primitive: blurMock,
       nativeEvent: {
         offsetX: 108,
         offsetY: 12,
@@ -136,7 +133,7 @@ describe('reducers', () => {
     const action = {
       type: 'DUPLICATE_PRIMITIVE',
       id: 'blur',
-      item: blurMock,
+      primitive: blurMock,
       section: 'playground',
     };
     const stateAfter = {
@@ -151,6 +148,7 @@ describe('reducers', () => {
               value: 'blur1',
             },
           },
+          showDocs: false,
         },
       ],
     };

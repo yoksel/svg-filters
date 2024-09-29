@@ -7,7 +7,7 @@ import { NativeEventCoords, PrimitiveItem, Section } from '../../store/types';
 import './ControlsList.scss';
 
 interface AddPrimitiveArgs {
-  item: PrimitiveItem;
+  primitive: PrimitiveItem;
   nativeEvent: NativeEventCoords;
   section: Section;
 }
@@ -26,28 +26,28 @@ const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListP
 
   return (
     <nav className={ControlsListClass}>
-      {items?.map((item: PrimitiveItem) => {
-        const groupData = primitivesAttrs[item.groupName];
+      {items?.map((primitive: PrimitiveItem) => {
+        const groupData = primitivesAttrs[primitive.groupName];
         const ControlClassList = ['Control', `Control--${control}`, `Control-${section}`];
 
-        if (id === item.id) {
+        if (id === primitive.id) {
           ControlClassList.push('Control--current');
           ControlClassList.push(`Control-${section}--current`);
         }
 
         const ControlClass = ControlClassList.join(' ');
 
-        let name = item.name;
-        if (item.groupName) {
+        let name = primitive.name;
+        if (primitive.groupName) {
           // primitives
           name = groupData.name;
         }
 
         if (control === 'NavLink') {
-          const url = `/${section}/${item.id}`;
+          const url = `/${section}/${primitive.id}`;
 
           return (
-            <NavLink key={item.id} to={url} className={ControlClass}>
+            <NavLink key={primitive.id} to={url} className={ControlClass}>
               <span className="Control__text">{name}</span>
             </NavLink>
           );
@@ -56,7 +56,7 @@ const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListP
         return (
           <button
             className={ControlClass}
-            key={item.id}
+            key={primitive.id}
             onMouseDown={(event) => {
               const nativeEvent = {
                 offsetX: event.nativeEvent.offsetX,
@@ -64,7 +64,7 @@ const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListP
               };
 
               addPrimitive?.({
-                item,
+                primitive,
                 nativeEvent,
                 section,
               });

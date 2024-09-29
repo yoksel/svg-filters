@@ -1,8 +1,8 @@
 import ColorInterpolFiltersSwitcher from '../../containers/ColorInterpolFiltersSwitcher';
 import { FilterParams, PrimitiveItem } from '../../store/types';
+import { getAllPrimitivesCode } from './helpers';
 
 import './Code.scss';
-import { getAllPrimitivesCode } from './helpers';
 
 interface CodeProps {
   primitives?: PrimitiveItem[];

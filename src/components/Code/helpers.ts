@@ -1,5 +1,6 @@
 import { primitivesAttrs } from '../../data';
 import { PrimitiveItem } from '../../store/types';
+import deepClone from '../../helpers/deepClone';
 
 export const getPrimitiveCode = (primitive: PrimitiveItem, level: number = 1) => {
   const groupData = primitivesAttrs[primitive.groupName];
@@ -44,7 +45,7 @@ export const getAllPrimitivesCode = (primitives?: PrimitiveItem[]): string[] => 
   return primitives
     .filter((primitive) => !primitive.disabled)
     .map((primitive) => {
-      primitive = structuredClone(primitive);
+      primitive = deepClone(primitive);
 
       return getPrimitiveCode(primitive);
     });

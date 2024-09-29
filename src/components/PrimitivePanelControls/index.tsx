@@ -1,12 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import {docsData} from '../../data';
+import { docsData } from '../../data';
 
 import Icon from '../atoms/Icon';
 import PrimitivePanelSwitcher from '../PrimitivePanelSwitcher';
+import { Section } from '../../store/types';
 
 import './PrimitivePanelControls.scss';
+
+export interface PrimitivePanelControlsProps {
+  section: Section;
+  id: string;
+  parentId?: string;
+  groupName: string;
+  hasResult?: boolean;
+  hasChildrenMod?: string;
+  parentHasSingleChild?: boolean;
+  primitiveDisabled?: boolean;
+  noChangesForChildren?: boolean;
+  duplicatePrimitive: () => void;
+  removePrimitive: () => void;
+  togglePrimitive: () => void;
+  toggleDocs: () => void;
+}
 
 const PrimitivePanelControls = ({
   duplicatePrimitive,
@@ -21,12 +35,9 @@ const PrimitivePanelControls = ({
   groupName,
   hasChildrenMod,
   parentHasSingleChild,
-  noChangesForChildren
-}) => {
-  const panelClassList = [
-    'PrimitivePanelControls',
-    `PrimitivePanelControls--${hasChildrenMod}`
-  ];
+  noChangesForChildren,
+}: PrimitivePanelControlsProps) => {
+  const panelClassList = ['PrimitivePanelControls', `PrimitivePanelControls--${hasChildrenMod}`];
   let showDocs = true;
 
   if (!docsData[groupName] || section === 'docs') {
@@ -51,10 +62,7 @@ const PrimitivePanelControls = ({
         type="button"
         onClick={toggleDocs}
       >
-        <Icon
-          symbol="doc"
-          color="currentColor"
-          size="15"/>
+        <Icon symbol="doc" color="currentColor" size="15" />
       </button>
     );
   };
@@ -62,11 +70,7 @@ const PrimitivePanelControls = ({
   if (parentHasSingleChild) {
     return (
       <div className={panelClassList.join(' ')}>
-        <PrimitivePanelSwitcher
-          id={id}
-          parentId={parentId}
-          primitiveDisabled={primitiveDisabled}
-        />
+        <PrimitivePanelSwitcher id={id} parentId={parentId} primitiveDisabled={primitiveDisabled} />
         {getDocsButton()}
       </div>
     );
@@ -79,11 +83,7 @@ const PrimitivePanelControls = ({
 
   // Hide toggle, duplicate, delete controls for componentTransfer
   if (noChangesForChildren) {
-    return (
-      <div className={panelClassList.join(' ')}>
-        {getDocsButton()}
-      </div>
-    );
+    return <div className={panelClassList.join(' ')}>{getDocsButton()}</div>;
   }
 
   return (
@@ -95,10 +95,7 @@ const PrimitivePanelControls = ({
         onClick={togglePrimitive}
         type="button"
       >
-        <Icon
-          symbol={primitiveDisabled ? 'eye' : 'eye-blocked'}
-          color="currentColor"
-          size="16"/>
+        <Icon symbol={primitiveDisabled ? 'eye' : 'eye-blocked'} color="currentColor" size="16" />
       </button>
 
       <button
@@ -106,10 +103,7 @@ const PrimitivePanelControls = ({
         onClick={duplicatePrimitive}
         type="button"
       >
-        <Icon
-          symbol="plus"
-          color="currentColor"
-          size="14"/>
+        <Icon symbol="plus" color="currentColor" size="14" />
       </button>
 
       <button
@@ -117,30 +111,10 @@ const PrimitivePanelControls = ({
         type="button"
         onClick={removePrimitive}
       >
-        <Icon
-          symbol="cross"
-          color="currentColor"
-          size="13"/>
+        <Icon symbol="cross" color="currentColor" size="13" />
       </button>
-
     </div>
   );
 };
 
 export default PrimitivePanelControls;
-
-PrimitivePanelControls.propTypes = {
-  duplicatePrimitive: PropTypes.func,
-  removePrimitive: PropTypes.func,
-  togglePrimitive: PropTypes.func,
-  toggleDocs: PropTypes.func,
-  primitiveDisabled: PropTypes.bool,
-  hasResult: PropTypes.bool,
-  section: PropTypes.string,
-  id: PropTypes.string,
-  parentId: PropTypes.string,
-  groupName: PropTypes.string,
-  hasChildrenMod: PropTypes.string,
-  parentHasSingleChild: PropTypes.bool,
-  noChangesForChildren: PropTypes.bool,
-};

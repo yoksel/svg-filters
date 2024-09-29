@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import playgroundSlice from './store/playgroundSlice';
 import presetControlsSlice from './store/presetControlsSlice';
 import primitivesSlice from './store/primitivesSlice';
+import dragDropSlice from './store/dragDropSlice';
 
 export const store = configureStore({
   reducer: {
     playground: playgroundSlice,
     presetControls: presetControlsSlice,
     primitives: primitivesSlice,
+    dragDrop: dragDropSlice,
   },
 });
 

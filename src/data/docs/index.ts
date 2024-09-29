@@ -30,14 +30,15 @@ import x from './x.json';
 import y from './y.json';
 import width from './width.json';
 import height from './height.json';
+import { PrimitiveItem } from '../../store/types';
 
 const in2 = {
-  desc: 'The second input image. See <code>in</code>.'
+  desc: 'The second input image. See <code>in</code>.',
 };
 
 const href = {
   value: '<url>',
-  desc: 'An <url> to an image resource or to an element. If both, the <code>xlink:href</code> and the href attribute are specified, the latter overrides the first definition.'
+  desc: 'An <url> to an image resource or to an element. If both, the <code>xlink:href</code> and the href attribute are specified, the latter overrides the first definition.',
 };
 
 interface Prop {
@@ -52,7 +53,7 @@ interface Doc {
   desc?: string;
   props?: Prop[];
   commonProps?: string[];
-  // primitives?: string[];
+  primitives?: PrimitiveItem[];
 }
 
 interface Docs {
@@ -88,6 +89,7 @@ const docs: Docs = {
   morphology,
   offset,
   specularLighting,
+  // @ts-expect-error
   tile,
   turbulence,
   'xlink:href': href,

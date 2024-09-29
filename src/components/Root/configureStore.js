@@ -1,8 +1,5 @@
 import {createStore} from 'redux';
 import throttle from 'lodash/throttle';
-
-import deepClone from './helpers/deepClone';
-
 import reducers from './store/reducers';
 import {primitivesData, presetsData} from './data';
 import {saveState, getState} from './components/Root/localStorage';

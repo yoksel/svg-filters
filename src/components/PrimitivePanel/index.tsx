@@ -80,7 +80,7 @@ const PrimitivePanel = ({
   const getPanelControls = () => {
     return (
       <PrimitivePanelControls
-        id={primitive.id}
+        primitive={primitive}
         parentId={parentId}
         groupName={groupName}
         section={section}
