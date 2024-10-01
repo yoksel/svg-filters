@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { LoaderFunctionArgs, useLoaderData, useMatch, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 
 // import { addPreset, discoveryPrimitive, purgePrimitives } from '../../store/actions';
-import { addPrimitive, discoverPrimitive, purgePrimitives } from '../../store/primitivesSlice';
+import {
+  addPreset,
+  addPrimitive,
+  discoverPrimitive,
+  purgePrimitives,
+} from '../../store/primitivesSlice';
 
 import { docsData } from '../../data/';
 
 import App from '../../components/App';
 import { RootState } from '../../store';
-import { PrimitiveItem } from '../../store/types';
+import { isPrimitiveItem, Preset, PrimitiveItem } from '../../store/types';
 
 export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
   return params;
@@ -18,7 +22,7 @@ export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
 const AppRoute = (props: any) => {
   console.log('=== AppRoute ===');
   const { section, id } = (useLoaderData() as { section: string; id?: string }) || {};
-  const presets = useSelector((state: RootState) => state.presetControls);
+  const presets = useSelector((state: RootState) => state.presetControls.presets);
   const primitives = useSelector((state: RootState) => state.primitives);
   const dispatch = useDispatch();
 
@@ -34,7 +38,7 @@ const AppRoute = (props: any) => {
   const itemFromPath = () => {
     console.log('itemFromPath', id);
     const currentSet = section === 'docs' ? primitives : presets;
-    let currentItems: PrimitiveItem[] = [];
+    let currentItems: (PrimitiveItem | Preset)[] = [];
 
     if (!id) {
       return null;
@@ -54,28 +58,31 @@ const AppRoute = (props: any) => {
         // No presets, take from primitiveControls
         if (primitiveById) currentItems = [primitiveById];
       }
-    } else {
+    } else if (Array.isArray(currentSet)) {
       console.log('SECTION: OTHER');
-      // console.log(currentSet.primitives);
-      // currentItems = currentSet.primitives?.filter((item) => item.id === id);
+      console.log({ currentSet });
+      console.log({ t: typeof currentSet });
+      console.log({ arr: Array.isArray(currentSet) });
+      console.log({ id });
+      currentItems = currentSet?.filter?.((item) => item.id === id);
     }
 
-    if (section === 'docs' && id) {
+    if (section === 'docs' && id && isPrimitiveItem(currentItems[0])) {
       console.log('discoveryPrimitive in ROUTE');
+      // @ts-expect-error
       dispatch(discoverPrimitive({ primitives: currentItems }));
     }
 
-    // console.log('currentItems', currentItems);
+    console.log('1 currentItems', currentItems);
     if (currentItems.length) {
-      // if (section === 'presets' && id) {
-      //   // handlerName = 'addPreset';
-      // } else if (section === 'docs' && id) {
-      //   console.log('discoveryPrimitive');
-      //   dispatch(discoverPrimitive(primitives));
-      // }
-      // if (section === 'presets' && id) {
-      //   handlerName = 'addPreset';
-      // }
+      console.log('2 has items', currentItems);
+      if (section === 'presets' && id) {
+        console.log('3 has id in presets', id);
+        const preset = presets.find((preset: Preset) => preset.id === id);
+        console.log(preset?.primitives);
+        if (preset?.primitives?.length) dispatch(addPreset({ primitives: preset?.primitives }));
+      }
+
       // return {
       //     addPreset: (presets) => {
       //       dispatch(addPreset(presets[0]));
@@ -87,7 +94,6 @@ const AppRoute = (props: any) => {
       //       dispatch(purgePrimitives({section}));
       //     }
       //   };
-      // handler(currentItems);
     }
   };
 

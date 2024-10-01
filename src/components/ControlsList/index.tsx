@@ -2,7 +2,14 @@ import { NavLink } from 'react-router-dom';
 
 import { primitivesAttrs } from '../../data';
 import useSection from '../../hooks/useSection';
-import { NativeEventCoords, PrimitiveItem, Section } from '../../store/types';
+import {
+  isPrimitiveItem,
+  NativeEventCoords,
+  Preset,
+  PrimitiveItem,
+  Section,
+} from '../../store/types';
+import clsx from 'clsx';
 
 import './ControlsList.scss';
 
@@ -13,7 +20,7 @@ interface AddPrimitiveArgs {
 }
 
 interface ControlsListProps {
-  items: PrimitiveItem[];
+  items: (PrimitiveItem | Preset)[];
   control?: string;
   addPrimitive?: (args: AddPrimitiveArgs) => void;
 }
@@ -26,19 +33,18 @@ const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListP
 
   return (
     <nav className={ControlsListClass}>
-      {items?.map((primitive: PrimitiveItem) => {
-        const groupData = primitivesAttrs[primitive.groupName];
-        const ControlClassList = ['Control', `Control--${control}`, `Control-${section}`];
-
-        if (id === primitive.id) {
-          ControlClassList.push('Control--current');
-          ControlClassList.push(`Control-${section}--current`);
-        }
-
-        const ControlClass = ControlClassList.join(' ');
+      {items?.map((primitive: PrimitiveItem | Preset) => {
+        const groupName = 'groupName' in primitive ? primitive.groupName : undefined;
+        const groupData = groupName ? primitivesAttrs[groupName] : null;
+        const ControlClass = clsx(
+          'Control',
+          `Control--${control}`,
+          `Control-${section}`,
+          id === primitive.id && ['Control--current', `Control-${section}--current`],
+        );
 
         let name = primitive.name;
-        if (primitive.groupName) {
+        if (groupName && groupData) {
           // primitives
           name = groupData.name;
         }
@@ -58,6 +64,8 @@ const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListP
             className={ControlClass}
             key={primitive.id}
             onMouseDown={(event) => {
+              if (!isPrimitiveItem(primitive)) return;
+
               const nativeEvent = {
                 offsetX: event.nativeEvent.offsetX,
                 offsetY: event.nativeEvent.offsetY,

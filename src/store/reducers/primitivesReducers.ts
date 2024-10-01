@@ -553,7 +553,7 @@ const reducers = {
     // @ts-expect-error
     state[section] = updatedList;
   },
-  // TODO: CHECK THIS REDUCER
+  // TODO: CHECK THIS REDUCER, add tests
   addPreset: (
     state: PrimitivesState,
     action: PayloadAction<{
@@ -562,15 +562,11 @@ const reducers = {
     }>,
   ) => {
     const { primitives, colorInterpolationFilters = 'linearRGB' } = action.payload;
-    const addPresetList = [...primitives];
 
-    resetIdKeeperSection(addPresetList, 'presets' as Section);
+    // resetIdKeeperSection(addPresetList, 'presets' as Section);
 
-    state['filter'] = {
-      ...state.filter,
-      colorInterpolationFilters,
-    };
-    state['presets'] = addPresetList;
+    if (state['filter']) state['filter'].colorInterpolationFilters = colorInterpolationFilters;
+    state['presets'] = primitives;
   },
   setColorInterpolFilters: (state: PrimitivesState, action: PayloadAction<Interpolation>) => {
     state['filter'] = {

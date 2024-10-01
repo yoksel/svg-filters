@@ -5,17 +5,11 @@ import ControlsList from '../../components/ControlsList';
 import { RootState } from '../../store';
 
 const PresetsList = () => {
-  const presetControls = useSelector((state: RootState) => state.presetControls);
+  const presetControls = useSelector((state: RootState) => state.presetControls.presets);
 
   if (!presetControls?.length) return null;
 
-  return (
-    <ControlsList
-      // @ts-expect-error
-      items={presetControls}
-      control="NavLink"
-    />
-  );
+  return <ControlsList items={presetControls} control="NavLink" />;
 };
 
 export default withRouter(PresetsList);

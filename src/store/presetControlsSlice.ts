@@ -16,9 +16,9 @@ import { Preset } from './types';
 // import type { PayloadAction } from '@reduxjs/toolkit';
 // console.log(presetsData);
 
-export type PresetControlsState = Preset[];
+export type PresetControlsState = { presets: Preset[] };
 
-const initialState: PresetControlsState = presets;
+const initialState: PresetControlsState = { presets };
 
 export const presetControlsSlice = createSlice({
   name: 'presetControls',

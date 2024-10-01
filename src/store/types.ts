@@ -112,3 +112,7 @@ export interface PrimitiveActionArgs {
 }
 
 export type ToggleDocsArgs = Omit<PrimitiveActionArgs, 'primitive'>;
+
+export const isPrimitiveItem = (item: PrimitiveItem | Preset): item is PrimitiveItem => {
+  return 'groupName' in item;
+};
