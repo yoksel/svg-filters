@@ -209,7 +209,7 @@ export const getFilteredWithIndex = (list, id) => {
 };
 
 export const getIn = (state: PrimitivesState, section: Section) => {
-  const list = state[section];
+  const list = state.sections[section];
   const allEnabledResultsObj = getAllEnabledResultsObj(list);
 
   const defaultSources = {

@@ -18,10 +18,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-   active: 'docs',
-  items: [
-    {id: 'playground', name: 'Playground', content: 'div'},
-    {id: 'docs', name: 'Docs', content: 'div'}
-  ]
+    active: 'docs',
+    items: [
+      { id: 'playground', name: 'Preview', content: 'div' },
+      { id: 'docs', name: 'Docs', content: 'div' },
+    ],
   },
 };

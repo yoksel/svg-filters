@@ -70,7 +70,7 @@ const Constructor = ({
 
           return (
             <div key={primitive.id} id={primitive.id} className="Constructor__item">
-              <PrimitivePanel primitive={primitive} resultsList={getResultsList(primitives, index)}>
+              {/* <PrimitivePanel primitive={primitive} resultsList={getResultsList(primitives, index)}>
                 {primitive?.children?.map((item, childIndex) => {
                   return (
                     <div key={item.id} id={item.id} className="Constructor__item">
@@ -93,7 +93,7 @@ const Constructor = ({
                     </div>
                   );
                 })}
-              </PrimitivePanel>
+              </PrimitivePanel> */}
             </div>
           );
         })}

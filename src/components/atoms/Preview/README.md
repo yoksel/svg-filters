@@ -1,4 +1,4 @@
-# Playground
+# Preview
 
 Demo-content for testing filters.
 
@@ -10,4 +10,4 @@ Uses:
 * [Filter](#filter-1)
 * [SvgCode](#svgcode-1)
 
-__Container:__ [Playground](#playground-1)
+__Container:__ [Preview](#playground-1)

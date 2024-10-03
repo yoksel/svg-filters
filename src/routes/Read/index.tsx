@@ -109,9 +109,7 @@ const Read = () => {
                 Yoksel
               </li>
               <li>
-                <a href="https://kazzkiq.github.io/svg-color-filter/">
-                  SVG Color Filter Playground
-                </a>{' '}
+                <a href="https://kazzkiq.github.io/svg-color-filter/">SVG Color Filter Preview</a>{' '}
                 by Claudio Holanda
               </li>
               <li>

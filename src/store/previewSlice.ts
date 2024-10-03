@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface PlaygroundState {
+export interface PreviewState {
   svgCode: string;
   type: string;
 }
 
-const initialState: PlaygroundState = {
+const initialState: PreviewState = {
   svgCode: '',
   type: 'image-and-text',
 };
@@ -15,7 +15,7 @@ export const playgroundSlice = createSlice({
   name: 'playground',
   initialState,
   reducers: {
-    setPlaygroundType: (state, action: PayloadAction<string>) => {
+    setPreviewType: (state, action: PayloadAction<string>) => {
       state.type = action.payload;
     },
     updateSvg: (state, action: PayloadAction<string>) => {
@@ -24,6 +24,6 @@ export const playgroundSlice = createSlice({
   },
 });
 
-export const { setPlaygroundType, updateSvg } = playgroundSlice.actions;
+export const { setPreviewType, updateSvg } = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;

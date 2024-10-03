@@ -1,5 +1,5 @@
 import { primitivesAttrs } from '../../data';
-import { PrimitiveItem } from '../../store/types';
+import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 import useSection from '../../hooks/useSection';
 import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
 import Docs from '../../containers/Docs';
@@ -25,6 +25,9 @@ const PrimitivePanel = ({
   noChangesForChildren,
 }: PrimitivePanelProp) => {
   const { section } = useSection();
+
+  if (!isPrimitivesSection(section)) return null;
+
   const primitiveDisabled = primitive.disabled;
   const groupName = primitive.groupName;
   const groupData = primitivesAttrs[groupName];

@@ -49,18 +49,29 @@ export interface FilterParams {
   style?: CSSProperties;
 }
 
+export interface PrimitivesSections {
+  // to keep Preview primitives
+  playground: PrimitiveItem[];
+  // to keep Presets primitives
+  presets?: PrimitiveItem[];
+  docs?: PrimitiveItem[];
+}
+
+export const isPrimitivesSection = (section: Section): section is keyof PrimitivesSections => {
+  return ['playground', 'presets', 'docs'].includes(section);
+};
+
 export interface PrimitivesState {
   type?: string;
   filter?: FilterParams;
   docs?: typeof primitives;
-  playground: PrimitiveItem[];
-  presets?: PrimitiveItem[];
+  sections: PrimitivesSections;
   read?: null;
-  primitives?: PrimitiveItem[];
+  allPrimitives?: PrimitiveItem[];
   swapSnapshot?: string;
 }
 
-export type SectionState = PrimitivesState['docs'] | PrimitivesState['playground'];
+export type SectionState = PrimitivesState['docs'] | PrimitivesState['sections']['playground'];
 
 export interface NativeEventCoords {
   left?: number;
@@ -106,7 +117,7 @@ export interface DragDropState {
 
 export interface PrimitiveActionArgs {
   primitive: PrimitiveItem;
-  section: Section;
+  section: keyof PrimitivesSections;
   id?: string;
   childId?: string;
 }
@@ -115,4 +126,7 @@ export type ToggleDocsArgs = Omit<PrimitiveActionArgs, 'primitive'>;
 
 export const isPrimitiveItem = (item: PrimitiveItem | Preset): item is PrimitiveItem => {
   return 'groupName' in item;
+};
+export const isPrimitiveItems = (items: (PrimitiveItem | Preset)[]): items is PrimitiveItem[] => {
+  return 'groupName' in items[0];
 };

@@ -5,8 +5,10 @@ import { PrimitivesState } from './types';
 import primitivesReducers from './reducers/primitivesReducers';
 
 const initialState: PrimitivesState = {
-  playground: [],
-  primitives,
+  sections: {
+    playground: [],
+  },
+  allPrimitives: primitives,
 };
 
 export const primitivesSlice = createSlice({
@@ -31,7 +33,7 @@ export const {
   switchChild,
   moveToPlayground,
   toggleDocs,
-  addPreset,
+  addPresetPrimitivesToStage,
   setColorInterpolFilters,
 } = primitivesSlice.actions;
 

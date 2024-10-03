@@ -4,7 +4,7 @@ App container handles navigation between sections, fill page with content by id 
 
 __Actions:__
 
-* addPreset() — add preset primitives to page
+* addPresetPrimitivesToStage() — add preset primitives to page
 * discoveryPrimitive() — add doc primitives to page
 * purgePrimitives() — purge docs & presets primitives when visitor leaves
 

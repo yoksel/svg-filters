@@ -1,13 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import playgroundSlice from './store/playgroundSlice';
+import previewSlice from './store/previewSlice';
 import presetControlsSlice from './store/presetControlsSlice';
 import primitivesSlice from './store/primitivesSlice';
 import dragDropSlice from './store/dragDropSlice';
 
 export const store = configureStore({
   reducer: {
-    playground: playgroundSlice,
+    // playground state/props: code to show, type
+    preview: previewSlice,
+    // list of all presets
     presetControls: presetControlsSlice,
+    // main app state: control primitives states in different sections
     primitives: primitivesSlice,
     dragDrop: dragDropSlice,
   },

@@ -6,17 +6,25 @@ import { moveToPlayground, purgePrimitives } from '../../store/primitivesSlice';
 
 const ConstructorContainer = () => {
   const { section } = useSection();
-  const primitives = useSelector((state: RootState) => state.primitives[section]);
+  // @ts-expect-error
+  const primitives = useSelector((state: RootState) => state.primitives.sections[section]);
   const dispatch = useDispatch();
 
-  return (
-    <Constructor
-      section={section}
-      primitives={primitives || undefined}
-      purgePrimitives={() => dispatch(purgePrimitives({ section }))}
-      moveToPlayground={() => dispatch(moveToPlayground({ section }))}
-    />
-  );
+  console.log('CONSTRUCTORCONTAINER');
+  console.log({ primitives });
+
+  return <div>hello</div>;
+
+  // return (
+  //   <Constructor
+  //     section={section}
+  //     primitives={primitives || undefined}
+  //     // @ts-expect-error
+  //     purgePrimitives={() => dispatch(purgePrimitives({ section }))}
+  //     // @ts-expect-error
+  //     moveToPlayground={() => dispatch(moveToPlayground({ section }))}
+  //   />
+  // );
 };
 
 export default ConstructorContainer;

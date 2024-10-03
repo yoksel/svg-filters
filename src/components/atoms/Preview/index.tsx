@@ -2,17 +2,17 @@ import Filter from '../../../containers/Filter';
 import PlaygroundSwitcher from '../../../containers/PlaygroundSwitcher';
 import SvgCodeContainer from '../../../containers/SvgCode';
 
-import './Playground.scss';
+import './Preview.scss';
 
 import './gray-cells.png';
 
 interface PlaygroundProps {
   filterId?: string;
-  playgroundType: string;
+  previewType: string;
   svgCode: string;
 }
 
-const Playground = ({ filterId, playgroundType = 'image-and-text', svgCode }: PlaygroundProps) => {
+const Preview = ({ filterId, previewType = 'image-and-text', svgCode }: PlaygroundProps) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
 
   const getTip = (content?: ReturnType<typeof getSvgContentByPlaygroundType>) => {
@@ -22,7 +22,7 @@ const Playground = ({ filterId, playgroundType = 'image-and-text', svgCode }: Pl
     if (!content) {
       tipText = 'Add some SVG';
       modClassesList.push('Playground__tip--add-content');
-    } else if (!filterId && playgroundType === 'edit') {
+    } else if (!filterId && previewType === 'edit') {
       tipText =
         'If the filter is empty, content may disappear. Add a primitive or choose a preset.';
       modClassesList.push('Playground__tip--add-primitives');
@@ -34,7 +34,7 @@ const Playground = ({ filterId, playgroundType = 'image-and-text', svgCode }: Pl
   };
 
   const getSvgContentByPlaygroundType = () => {
-    if (playgroundType === 'image') {
+    if (previewType === 'image') {
       return (
         <svg>
           <image
@@ -43,14 +43,14 @@ const Playground = ({ filterId, playgroundType = 'image-and-text', svgCode }: Pl
             width="80%"
             height="80%"
             preserveAspectRatio="xMidYMid slice"
-            xlinkHref="https://placekitten.com/800/400"
+            xlinkHref="./manja-vitolic-gKXKBY-C-Dk-unsplash.jpg"
             filter={filterUrl}
           />
         </svg>
       );
     }
 
-    if (playgroundType === 'text') {
+    if (previewType === 'text') {
       return (
         <svg>
           <g filter={filterUrl}>
@@ -62,7 +62,7 @@ const Playground = ({ filterId, playgroundType = 'image-and-text', svgCode }: Pl
       );
     }
 
-    if (playgroundType === 'edit') {
+    if (previewType === 'edit') {
       return svgCode ? <svg dangerouslySetInnerHTML={{ __html: svgCode }}></svg> : undefined;
     }
 
@@ -74,7 +74,7 @@ const Playground = ({ filterId, playgroundType = 'image-and-text', svgCode }: Pl
           width="80%"
           height="50%"
           preserveAspectRatio="xMidYMid slice"
-          xlinkHref="https://placekitten.com/800/400"
+          xlinkHref="./manja-vitolic-gKXKBY-C-Dk-unsplash.jpg"
           filter={filterUrl}
         />
 
@@ -90,12 +90,12 @@ const Playground = ({ filterId, playgroundType = 'image-and-text', svgCode }: Pl
   const content = getSvgContentByPlaygroundType();
 
   return (
-    <section className={`Playground Playground--${playgroundType}`}>
+    <section className={`Preview Playground--${previewType}`}>
       <h2 className="visuallyhidden">Live demo</h2>
       <div className="Playground__image">
         <PlaygroundSwitcher />
 
-        {playgroundType === 'edit' && <SvgCodeContainer value={content} />}
+        {previewType === 'edit' && <SvgCodeContainer value={content} />}
 
         <div className="Playground__svg-wrapper">
           {getTip(content)}
@@ -117,4 +117,4 @@ const Playground = ({ filterId, playgroundType = 'image-and-text', svgCode }: Pl
   );
 };
 
-export default Playground;
+export default Preview;

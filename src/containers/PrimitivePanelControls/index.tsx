@@ -9,7 +9,7 @@ import {
   toggleDocs,
   togglePrimitive,
 } from '../../store/primitivesSlice';
-import { PrimitiveActionArgs, PrimitiveItem, Section } from '../../store/types';
+import { PrimitiveActionArgs, PrimitiveItem, PrimitivesSections, Section } from '../../store/types';
 
 interface PrimitivePanelControlsContainerProps
   extends Omit<
@@ -24,7 +24,7 @@ interface PrimitivePanelControlsContainerProps
   > {
   primitive: PrimitiveItem;
   parentId?: string;
-  section: Section;
+  section: keyof PrimitivesSections;
 }
 
 const PrimitivePanelControlsContainer = (props: PrimitivePanelControlsContainerProps) => {

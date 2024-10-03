@@ -18,9 +18,9 @@ class Docs extends Component {
       currentProp = null;
     }
 
-    this.setState({
-      currentProp: currentProp
-    });
+    // this.setState({
+    //   currentProp: currentProp
+    // });
   };
 
   getPropsList = (currentDocProps) => {

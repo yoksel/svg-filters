@@ -2,7 +2,7 @@ import React from 'react';
 
 // import DragDrop from '../../containers/DragDrop';
 import Constructor from '../../containers/Constructor';
-import Playground from '../../containers/Playground';
+import Preview from '../../containers/Preview';
 import Code from '../../containers/Code';
 import Docs from '../../containers/Docs';
 
@@ -26,9 +26,7 @@ const App = () => {
         <Wrapper>
           <main className="App__inner">
             <div className="App__container App__container--controlsList">
-              <div className="App__content App__content--sticky">
-                <Sidebar />
-              </div>
+              <div className="App__content App__content--sticky">{/* <Sidebar /> */}</div>
             </div>
 
             <div className="App__container App__container--constructor">
@@ -38,14 +36,14 @@ const App = () => {
 
             <div className="App__container App__container--playground">
               <div className="App__content App__content--playground App__content--sticky">
-                <Playground />
+                <Preview />
                 <Code />
               </div>
             </div>
           </main>
         </Wrapper>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
       {/* </DragDrop> */}
     </>

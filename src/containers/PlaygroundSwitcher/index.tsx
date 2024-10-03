@@ -1,6 +1,6 @@
 import { RootState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPlaygroundType } from '../../store/playgroundSlice';
+import { setPreviewType } from '../../store/previewSlice';
 
 import RadioList from '../../components/molecules/RadioList';
 
@@ -24,7 +24,7 @@ const typesList = [
 ];
 
 const PlaygroundSwitcher = () => {
-  const playgroundType = useSelector((state: RootState) => state.playground.type);
+  const playgroundType = useSelector((state: RootState) => state.preview.type);
   const dispatch = useDispatch();
 
   return (
@@ -34,7 +34,7 @@ const PlaygroundSwitcher = () => {
         current={playgroundType || 'image-and-text'}
         name="playgroundType"
         onChange={(type) => {
-          dispatch(setPlaygroundType(type));
+          dispatch(setPreviewType(type));
         }}
       />
     </div>

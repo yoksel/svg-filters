@@ -137,10 +137,7 @@ export const moveToPlayground = createAction(
   ['section']
 );
 
-export const setPlaygroundType = createAction(
-  SET_PLAYGROUND_TYPE,
-  ['playgroundType']
-);
+export const setPreviewType = createAction(SET_PLAYGROUND_TYPE, ['playgroundType']);
 
 export const setColorInterpolFilters = createAction(
   SET_COLOR_INTERPOL_FILTERS,

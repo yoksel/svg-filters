@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import Docs from '../../components/Docs';
 import useSection from '../../hooks/useSection';
 import { toggleDocs } from '../../store/primitivesSlice';
+import { isPrimitivesSection } from '../../store/types';
 
 interface DocsContainerProps {
   docId?: string;
@@ -15,7 +16,7 @@ const DocsContainer = ({ id, docId, parentId }: DocsContainerProps) => {
   const dispatch = useDispatch();
   const docsId = id || idFromUrl;
 
-  if (!docsId) return null;
+  if (!docsId || !isPrimitivesSection(section)) return null;
 
   let params = {
     id: docsId,

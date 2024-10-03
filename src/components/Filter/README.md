@@ -1,6 +1,6 @@
 # Filter
 
-Creates element `filter` for using inside element `svg` in [Playground](#playground)
+Creates element `filter` for using inside element `svg` in [Preview](#playground)
 
 Uses [Primitive](#primitive)
 

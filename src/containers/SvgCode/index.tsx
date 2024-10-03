@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import SvgCode from '../../components/SvgCode';
 import { RootState } from '../../store';
-import { updateSvg } from '../../store/playgroundSlice';
+import { updateSvg } from '../../store/previewSlice';
 
 const SvgCodeContainer = ({ value }: { value?: JSX.Element | string }) => {
-  const svgCode = useSelector((state: RootState) => state.playground.svgCode);
+  const svgCode = useSelector((state: RootState) => state.preview.svgCode);
   const dispatch = useDispatch();
 
   return (

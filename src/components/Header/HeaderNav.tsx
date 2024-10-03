@@ -5,7 +5,7 @@ import useSection from '../../hooks/useSection';
 const sectionsList = [
   {
     id: 'playground',
-    name: 'Playground',
+    name: 'Preview',
     url: '/',
   },
   {

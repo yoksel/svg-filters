@@ -4,6 +4,7 @@ import {
   NativeEventCoords,
   PrimitiveActionArgs,
   PrimitiveItem,
+  PrimitivesSections,
   PrimitivesState,
   Section,
   SectionState,
@@ -101,7 +102,7 @@ const reducers = {
   addPrimitive: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
       nativeEvent: NativeEventCoords;
       primitive: PrimitiveItem;
     }>,
@@ -112,7 +113,7 @@ const reducers = {
       primitive,
       section,
     };
-    const stateBySection = state[section];
+    const stateBySection = state.sections[section];
     if (!stateBySection) return;
 
     const { newPrimitive } = primitiveHandler(stateBySection, primitiveData);
@@ -120,20 +121,23 @@ const reducers = {
     newPrimitive.nativeEvent = nativeEvent;
 
     // @ts-expect-error
-    state[section] = [...state[section], newPrimitive];
+    state.sections[section] = [...state.sections[section], newPrimitive];
   },
   discoverPrimitive: (
     state: PrimitivesState,
-    action: PayloadAction<{ primitives: typeof primitives }>,
+    action: PayloadAction<{ primitives: PrimitiveItem[] }>,
   ) => {
     // const discoverPrimitiveSection = 'docs';
     // resetIdKeeperSection(discoverPrimitiveList, discoverPrimitiveSection);
 
-    state.docs = action.payload.primitives;
+    console.log('In reducer');
+    console.log(action.payload.primitives);
+
+    state.sections.docs = action.payload.primitives;
   },
   duplicatePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, primitive, childId, id } = action.payload;
-    const sectionStateList = state[section];
+    const sectionStateList = state.sections[section];
     const primitiveData = {
       type: 'DUPLICATE_PRIMITIVE',
       primitive,
@@ -151,7 +155,7 @@ const reducers = {
     if (childId !== undefined) {
       // Inner list
       // @ts-expect-error
-      duplicateList = state[section]?.map((item: PrimitiveItem) => {
+      duplicateList = state.sections[section]?.map((item: PrimitiveItem) => {
         if (item.id === id && item.children) {
           item.children = [
             ...item.children?.slice(0, pos + 1),
@@ -171,12 +175,11 @@ const reducers = {
       ];
     }
 
-    // @ts-expect-error
-    state[section] = duplicateList;
+    state.sections[section] = duplicateList;
   },
   togglePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
-    const sectionStateList = state[section];
+    const sectionStateList = state.sections[section];
     console.log('===togglePrimitive===');
     console.log({ state });
     console.log({ section });
@@ -210,12 +213,11 @@ const reducers = {
       return item;
     });
 
-    // @ts-expect-error
-    state[section] = togglePrimitiveList;
+    state.sections[section] = togglePrimitiveList;
   },
   deletePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
-    const sectionStateList = state[section];
+    const sectionStateList = state.sections[section];
     let updatedList = [];
 
     if (childId) {
@@ -235,13 +237,12 @@ const reducers = {
       updatedList = sectionStateList.filter((item: PrimitiveItem) => item.id !== id);
     }
 
-    // @ts-expect-error
-    state[section] = updatedList;
+    state.sections[section] = updatedList;
   },
   togglePrimitiveProp: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
       param: string;
       disabled: boolean;
       id?: string;
@@ -250,7 +251,7 @@ const reducers = {
   ) => {
     const { section, id, parentId, disabled, param } = action.payload;
     // @ts-expect-error
-    let updatedList = state[section].map((item: PrimitiveItem) => {
+    let updatedList = state.sections[section].map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item.id === parentId) {
         item = deepClone(item);
@@ -275,13 +276,13 @@ const reducers = {
 
       return item;
     });
-    // @ts-expect-error
-    state[section] = updatedList;
+
+    state.sections[section] = updatedList;
   },
   changePrimitiveProp: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
       param: string;
       disabled: boolean;
       id?: string;
@@ -291,7 +292,7 @@ const reducers = {
   ) => {
     const { section, id, parentId, param, value } = action.payload;
     // @ts-expect-error
-    let updatedList = state[section].map((item: PrimitiveItem) => {
+    let updatedList = state.sections[section].map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item.id === parentId) {
         item = deepClone(item);
@@ -327,13 +328,12 @@ const reducers = {
       return item;
     });
 
-    // @ts-expect-error
-    state[section] = updatedList;
+    state.sections[section] = updatedList;
   },
   changePrimitivePropType: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
       param: string;
       id?: string;
       parentId?: string;
@@ -342,7 +342,7 @@ const reducers = {
   ) => {
     const { section, id, parentId, param, propType } = action.payload;
     // @ts-expect-error
-    let changePropTypeList = state[section].map((item: PrimitiveItem) => {
+    let changePropTypeList = state.sections[section].map((item: PrimitiveItem) => {
       if (item.id === parentId) {
         // Edit prop type of child
         item = deepClone(item);
@@ -367,19 +367,18 @@ const reducers = {
 
       return item;
     });
-    // @ts-expect-error
-    state[section] = changePropTypeList;
+    state.sections[section] = changePropTypeList;
   },
   changeInProps: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
     }>,
   ) => {
     const { section } = action.payload;
     const newIn = getIn(state, section);
     // @ts-expect-error
-    let updatedList = state[section].map((item: PrimitiveItem, index: number) => {
+    let updatedList = state.sections[section].map((item: PrimitiveItem, index: number) => {
       if (item.disabled) {
         return item;
       }
@@ -404,19 +403,18 @@ const reducers = {
 
       return item;
     });
-    // @ts-expect-error
-    state[section] = updatedList;
+    state.sections[section] = updatedList;
   },
   switchOffLastAdded: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
       id: string;
     }>,
   ) => {
     const { section, id } = action.payload;
     // @ts-expect-error
-    const updatedList = state[section].map((item: PrimitiveItem) => {
+    const updatedList = state.sections[section].map((item: PrimitiveItem) => {
       if (item.id === id) {
         item = deepClone(item);
         item.justAdded = false;
@@ -426,13 +424,12 @@ const reducers = {
       return item;
     });
 
-    // @ts-expect-error
-    state[section] = updatedList;
+    state.sections[section] = updatedList;
   },
   swapPrimitives: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
       id: string;
       parentId: string;
       swapSnapshot?: string;
@@ -441,7 +438,7 @@ const reducers = {
   ) => {
     const { section, parentId, swapSnapshot, indexes } = action.payload;
     // @ts-expect-error
-    let swapPrimitivesList = [...state[section]];
+    let swapPrimitivesList = [...state.sections[section]];
 
     if (state.swapSnapshot && state.swapSnapshot === swapSnapshot) {
       return;
@@ -471,11 +468,13 @@ const reducers = {
 
     // return swapResult;
 
-    // @ts-expect-error
-    state[section] = swapPrimitivesList;
+    state.sections[section] = swapPrimitivesList;
     state.swapSnapshot = swapSnapshot;
   },
-  purgePrimitives: (state: PrimitivesState, action: PayloadAction<{ section: Section }>) => {
+  purgePrimitives: (
+    state: PrimitivesState,
+    action: PayloadAction<{ section: keyof PrimitivesSections }>,
+  ) => {
     const purgeSection = action.payload.section;
 
     if (purgeSection !== 'docs') {
@@ -483,20 +482,19 @@ const reducers = {
       purgeIdKeeperSection(purgeSection);
     }
 
-    // @ts-expect-error
-    state[purgeSection] = [];
+    state.sections[purgeSection] = [];
   },
   switchChild: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
       id: string;
       parentId: string;
     }>,
   ) => {
     const { section, id, parentId } = action.payload;
     // @ts-expect-error
-    const updatedList = state[section].map((item: PrimitiveItem) => {
+    const updatedList = state.sections[section].map((item: PrimitiveItem) => {
       if (item.id === parentId) {
         item = deepClone(item);
 
@@ -511,26 +509,25 @@ const reducers = {
       return item;
     });
 
-    // @ts-expect-error
-    state[section] = updatedList;
+    state.sections[section] = updatedList;
   },
   moveToPlayground: (
     state: PrimitivesState,
     action: PayloadAction<{
-      section: Section;
+      section: keyof PrimitivesSections;
     }>,
   ) => {
     const { section } = action.payload;
-    let listToMove = state[section];
+    let listToMove = state.sections[section];
     // @ts-expect-error
     resetIdKeeperSection(listToMove, 'playground');
     // @ts-expect-error
-    state['playground'] = listToMove;
+    state.sections['playground'] = listToMove;
   },
   toggleDocs: (state: PrimitivesState, action: PayloadAction<ToggleDocsArgs>) => {
     const { section, id, childId } = action.payload;
     // @ts-expect-error
-    const updatedList = state[section].map((item: PrimitiveItem) => {
+    const updatedList = state.sections[section].map((item: PrimitiveItem) => {
       if (item.id === id) {
         item = deepClone(item);
 
@@ -550,11 +547,10 @@ const reducers = {
 
       return item;
     });
-    // @ts-expect-error
-    state[section] = updatedList;
+    state.sections[section] = updatedList;
   },
   // TODO: CHECK THIS REDUCER, add tests
-  addPreset: (
+  addPresetPrimitivesToStage: (
     state: PrimitivesState,
     action: PayloadAction<{
       primitives: PrimitiveItem[];
@@ -565,8 +561,11 @@ const reducers = {
 
     // resetIdKeeperSection(addPresetList, 'presets' as Section);
 
-    if (state['filter']) state['filter'].colorInterpolationFilters = colorInterpolationFilters;
-    state['presets'] = primitives;
+    if (!state['filter']) {
+      state['filter'] = {};
+    }
+    state['filter'].colorInterpolationFilters = colorInterpolationFilters;
+    state.sections['presets'] = primitives;
   },
   setColorInterpolFilters: (state: PrimitivesState, action: PayloadAction<Interpolation>) => {
     state['filter'] = {
