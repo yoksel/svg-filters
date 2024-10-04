@@ -8,10 +8,9 @@ import { isPrimitivesSection } from '../../store/types';
 const FilterContainer = () => {
   const { section } = useSection();
   const filterProps = useSelector((state: RootState) => state.primitives.filter);
-  const storeKyeBySection = section === 'presets' ? 'presets' : 'playground';
   const primitives = useSelector((state: RootState) => {
-    if (!isPrimitivesSection(storeKyeBySection)) return [];
-    return state.primitives.sections[storeKyeBySection];
+    if (!isPrimitivesSection(section)) return [];
+    return state.primitives.sections[section];
   });
 
   if (!primitives?.length) return null;

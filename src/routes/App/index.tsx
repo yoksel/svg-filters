@@ -67,7 +67,7 @@ const AppRoute = (props: any) => {
       console.log('discoveryPrimitive in ROUTE');
       console.log(currentItems);
 
-      // dispatch(discoverPrimitive({ primitives: currentItems }));
+      dispatch(discoverPrimitive({ primitives: currentItems }));
     }
 
     console.log('1 currentItems', currentItems);

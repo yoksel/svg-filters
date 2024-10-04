@@ -6,13 +6,13 @@ import './Preview.scss';
 
 import './gray-cells.png';
 
-interface PlaygroundProps {
+interface PreviewProps {
   filterId?: string;
   previewType: string;
   svgCode: string;
 }
 
-const Preview = ({ filterId, previewType = 'image-and-text', svgCode }: PlaygroundProps) => {
+const Preview = ({ filterId, previewType = 'image-and-text', svgCode }: PreviewProps) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
 
   const getTip = (content?: ReturnType<typeof getSvgContentByPlaygroundType>) => {
