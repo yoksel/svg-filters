@@ -25,6 +25,9 @@ const PrimitivePanelInputTextContainer = ({
   firstValue,
   type,
   value,
+  step,
+  min,
+  max,
 }: PrimitivePanelInputTextContainerProps) => {
   const { section } = useSection();
   const dispatch = useDispatch();
@@ -33,6 +36,13 @@ const PrimitivePanelInputTextContainer = ({
 
   return (
     <InputText
+      step={step}
+      min={min}
+      max={max}
+      secondValue={secondValue}
+      firstValue={firstValue}
+      value={value}
+      type={type}
       onChange={(newValue) => {
         const initialProps = {
           id,
@@ -44,10 +54,6 @@ const PrimitivePanelInputTextContainer = ({
 
         dispatch(changePrimitiveProp(initialProps));
       }}
-      secondValue={secondValue}
-      firstValue={firstValue}
-      value={value}
-      type={type}
     />
   );
 };
