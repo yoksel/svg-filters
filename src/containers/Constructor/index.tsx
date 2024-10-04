@@ -10,21 +10,16 @@ const ConstructorContainer = () => {
   const primitives = useSelector((state: RootState) => state.primitives.sections[section]);
   const dispatch = useDispatch();
 
-  console.log('CONSTRUCTORCONTAINER');
-  console.log({ primitives });
-
-  return <div>hello</div>;
-
-  // return (
-  //   <Constructor
-  //     section={section}
-  //     primitives={primitives || undefined}
-  //     // @ts-expect-error
-  //     purgePrimitives={() => dispatch(purgePrimitives({ section }))}
-  //     // @ts-expect-error
-  //     moveToPlayground={() => dispatch(moveToPlayground({ section }))}
-  //   />
-  // );
+  return (
+    <Constructor
+      section={section}
+      primitives={primitives || undefined}
+      // @ts-expect-error
+      purgePrimitives={() => dispatch(purgePrimitives({ section }))}
+      // @ts-expect-error
+      moveToPlayground={() => dispatch(moveToPlayground({ section }))}
+    />
+  );
 };
 
 export default ConstructorContainer;

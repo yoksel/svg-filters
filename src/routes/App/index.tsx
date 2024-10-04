@@ -9,8 +9,6 @@ import {
   purgePrimitives,
 } from '../../store/primitivesSlice';
 
-import { docsData } from '../../data/';
-
 import App from '../../components/App';
 import { RootState } from '../../store';
 import { isPrimitiveItems, Preset, PrimitiveItem } from '../../store/types';
@@ -24,6 +22,7 @@ const AppRoute = (props: any) => {
   const { section, id } = (useLoaderData() as { section: string; id?: string }) || {};
   const presets = useSelector((state: RootState) => state.data.presets);
   const primitives = useSelector((state: RootState) => state.data.primitives);
+  const docs = useSelector((state: RootState) => state.data.docs);
   const dispatch = useDispatch();
 
   // @ts-expect-error
@@ -44,15 +43,11 @@ const AppRoute = (props: any) => {
       return null;
     }
 
-    // console.log({ dataFromStore, currentSet, id });
-    // console.log({ dataById: docsData[id] });
-    // console.log({ dataFromStore, section });
-
-    if (section === 'docs' && docsData[id]) {
+    if (section === 'docs' && docs[id]) {
       // only Tiles docs has primitives for demo
-      if (docsData[id].primitives) {
+      if (docs[id].primitives) {
         // to fix
-        currentItems = docsData[id].primitives as PrimitiveItem[];
+        currentItems = docs[id].primitives as PrimitiveItem[];
       } else {
         const primitivesById = primitives?.filter((primitive) => id === primitive.id);
         // No presets, take from primitiveControls

@@ -64,16 +64,16 @@ const Constructor = ({
       </div>
       <div className="Constructor__container">
         {!primitives?.length && <ConstructorPlaceholder section={section} />}
-
         {primitives?.map((primitive: PrimitiveItem, index: number) => {
           const groupData = primitivesAttrs[primitive.groupName];
 
           return (
             <div key={primitive.id} id={primitive.id} className="Constructor__item">
-              {/* <PrimitivePanel primitive={primitive} resultsList={getResultsList(primitives, index)}>
+              <PrimitivePanel primitive={primitive} resultsList={getResultsList(primitives, index)}>
                 {primitive?.children?.map((item, childIndex) => {
                   return (
                     <div key={item.id} id={item.id} className="Constructor__item">
+                      {item.id}
                       <DragDropItem
                         id={item.id}
                         parentId={primitive.id}
@@ -93,7 +93,7 @@ const Constructor = ({
                     </div>
                   );
                 })}
-              </PrimitivePanel> */}
+              </PrimitivePanel>
             </div>
           );
         })}
