@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import primitives from '../data/primitives';
-// import docs from '../data/docs';
 import { PrimitivesState } from './types';
 import primitivesReducers from './reducers/primitivesReducers';
 
