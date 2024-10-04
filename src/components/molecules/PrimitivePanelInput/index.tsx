@@ -35,10 +35,10 @@ const PrimitivePanelInput = (props: PrimitivePanelInputProps) => {
   // PrimitiveAttributesType
   if (type === 'textarea') {
     return <PrimitivePanelInputTextarea {...props} />;
-  } else if (type !== 'select') {
-    return <PrimitivePanelInputText {...props} />;
-  } else {
+  } else if (type === 'select') {
     return <PrimitivePanelInputSelect {...props} />;
+  } else {
+    return <PrimitivePanelInputText {...props} />;
   }
 };
 

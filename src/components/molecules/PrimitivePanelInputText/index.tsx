@@ -1,30 +1,29 @@
 import {primitivesAttrs} from '../../../data';
+import { PrimitiveItem } from '../../../store/types';
 
 import InputTextContainer from '../../../containers/PrimitivePanelInputText';
-import {InputsData} from '../../../data/types';
-import { PrimitiveItem } from '../../../store/types';
 
 interface PrimitivePanelInputProps {
   primitive: PrimitiveItem;
   paramKey: string;
   resultsList: string[];
   parentId?: string;
-};
+}
 
-const PrimitivePanelInputText = ({primitive, paramKey, parentId}: PrimitivePanelInputProps) => {
+const PrimitivePanelInputText = ({ primitive, paramKey, parentId }: PrimitivePanelInputProps) => {
   const param = primitive.params[paramKey];
-  const {value} = param;
+  const { value } = param;
   const groupData = primitivesAttrs[primitive.groupName];
   // @ts-expect-error: FIX IT
   const inputData = groupData.inputsData[paramKey];
 
-  if(!inputData) return null;
+  if (!inputData) return null;
 
-  const min = ('min' in inputData) ? inputData.min : undefined;
-  const max = ('max' in inputData) ? inputData.max : undefined;
-  const step = ('step' in inputData) ? inputData.step : undefined;
-  const double = ('double' in inputData) ? inputData.double : undefined;
-  const type = ('type' in inputData) ? inputData.type : undefined;
+  const min = 'min' in inputData ? inputData.min : undefined;
+  const max = 'max' in inputData ? inputData.max : undefined;
+  const step = 'step' in inputData ? inputData.step : undefined;
+  const double = 'double' in inputData ? inputData.double : undefined;
+  const type = 'type' in inputData ? inputData.type : undefined;
 
   let actualValue = value;
   let valuesList = [];
@@ -50,7 +49,7 @@ const PrimitivePanelInputText = ({primitive, paramKey, parentId}: PrimitivePanel
         id={primitive.id}
         key={primitive.id}
         param={paramKey}
-        value={actualValue}
+        value={String(actualValue)}
         secondValue={secondValue}
         step={step}
         min={min}
@@ -62,9 +61,9 @@ const PrimitivePanelInputText = ({primitive, paramKey, parentId}: PrimitivePanel
       {double && (
         <InputTextContainer
           id={primitive.id}
-          key={primitive.id+1}
+          key={primitive.id + 1}
           param={paramKey}
-          value={secondValue}
+          value={String(secondValue)}
           firstValue={actualValue}
           step={step}
           min={min}
@@ -74,7 +73,7 @@ const PrimitivePanelInputText = ({primitive, paramKey, parentId}: PrimitivePanel
         />
       )}
     </>
-  )
+  );
 };
 
 export default PrimitivePanelInputText;

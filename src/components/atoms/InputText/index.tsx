@@ -2,9 +2,9 @@ import React from 'react';
 import './InputText.scss';
 
 interface InputTextProps {
-  secondValue: string | number;
-  firstValue: string | number;
   value: string;
+  secondValue?: string | number;
+  firstValue?: string | number;
   type: 'text' | 'number';
   step?: number;
   min?: number;
