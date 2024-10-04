@@ -48,7 +48,7 @@ const PrimitivePanel = ({
     fieldsetProps.disabled = true;
   }
 
-  const params = Object.keys(primitive.params).map((key) => {
+  const primitivePropControls = Object.keys(primitive.params).map((key) => {
     const param = primitive.params[key];
     const { value } = param;
     let name = key;
@@ -101,7 +101,7 @@ const PrimitivePanel = ({
       <fieldset className="PrimitivePanel__fieldset" {...fieldsetProps}>
         <div className={PrimitivePanelContentClass}>
           <div className="PrimitivePanel__tag">{primitiveName}</div>
-          {params}
+          {primitivePropControls}
 
           {primitive.showDocs && (
             <Docs docId={primitive.groupName} id={primitive.id} parentId={parentId} embeded />

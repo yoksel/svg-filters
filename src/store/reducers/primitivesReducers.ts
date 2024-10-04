@@ -131,13 +131,10 @@ const reducers = {
     state: PrimitivesState,
     action: PayloadAction<{ primitives: PrimitiveItem[] }>,
   ) => {
-    // const discoverPrimitiveSection = 'docs';
-    // resetIdKeeperSection(discoverPrimitiveList, discoverPrimitiveSection);
+    const primitives = action.payload.primitives;
+    resetIdKeeperSection(primitives, 'docs');
 
-    console.log('In reducer');
-    console.log(action.payload.primitives);
-
-    state.sections.docs = action.payload.primitives;
+    state.sections.docs = primitives;
   },
   duplicatePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, primitive, childId, id } = action.payload;
@@ -288,7 +285,7 @@ const reducers = {
     action: PayloadAction<{
       section: keyof PrimitivesSections;
       param: string;
-      disabled: boolean;
+      disabled?: boolean;
       id?: string;
       parentId?: string;
       value: string | number;
