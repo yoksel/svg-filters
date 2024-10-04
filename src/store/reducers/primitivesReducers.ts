@@ -7,7 +7,6 @@ import {
   PrimitivesSections,
   PrimitivesState,
   Section,
-  SectionState,
   ToggleDocsArgs,
 } from '../types';
 import {
@@ -18,7 +17,7 @@ import {
   swap,
   updateUniqueProps,
 } from './helpers';
-import primitives from '../../data/primitives';
+
 import deepClone from '../../helpers/deepClone';
 
 interface Action {
@@ -28,6 +27,11 @@ interface Action {
   childId?: string;
   id?: string;
 }
+
+type SectionState =
+  | PrimitivesState['sections']['playground']
+  | PrimitivesState['sections']['presets']
+  | PrimitivesState['sections']['docs'];
 
 const primitiveHandler = (
   sectionState: SectionState,

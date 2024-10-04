@@ -56,7 +56,7 @@ interface Doc {
   primitives?: PrimitiveItem[];
 }
 
-interface Docs {
+export interface Docs {
   [key: string]: Doc;
 }
 

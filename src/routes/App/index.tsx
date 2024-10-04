@@ -22,8 +22,8 @@ export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
 const AppRoute = (props: any) => {
   console.log('=== AppRoute ===');
   const { section, id } = (useLoaderData() as { section: string; id?: string }) || {};
-  const presets = useSelector((state: RootState) => state.presetControls.presets);
-  const primitives = useSelector((state: RootState) => state.primitives);
+  const presets = useSelector((state: RootState) => state.data.presets);
+  const primitives = useSelector((state: RootState) => state.data.primitives);
   const dispatch = useDispatch();
 
   // @ts-expect-error
@@ -54,7 +54,7 @@ const AppRoute = (props: any) => {
         // to fix
         currentItems = docsData[id].primitives as PrimitiveItem[];
       } else {
-        const primitivesById = primitives.allPrimitives?.filter((primitive) => id === primitive.id);
+        const primitivesById = primitives?.filter((primitive) => id === primitive.id);
         // No presets, take from primitiveControls
         if (primitivesById?.length) currentItems = primitivesById;
       }
@@ -64,6 +64,7 @@ const AppRoute = (props: any) => {
       console.log({ t: typeof currentSet });
       console.log({ arr: Array.isArray(currentSet) });
       console.log({ id });
+      // @ts-expect-error
       currentItems = currentSet?.filter?.((item) => item.id === id);
     }
 

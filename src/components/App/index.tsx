@@ -26,7 +26,9 @@ const App = () => {
         <Wrapper>
           <main className="App__inner">
             <div className="App__container App__container--controlsList">
-              <div className="App__content App__content--sticky">{/* <Sidebar /> */}</div>
+              <div className="App__content App__content--sticky">
+                <Sidebar />
+              </div>
             </div>
 
             <div className="App__container App__container--constructor">
@@ -43,7 +45,7 @@ const App = () => {
           </main>
         </Wrapper>
 
-        {/* <Footer /> */}
+        <Footer />
       </div>
       {/* </DragDrop> */}
     </>

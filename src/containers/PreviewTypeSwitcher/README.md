@@ -1,4 +1,4 @@
-# PlaygroundSwitcher
+# PreviewTypeSwitcher
 
 Switcher for playground types. Values:
 
@@ -7,7 +7,7 @@ Switcher for playground types. Values:
 * Text
 
 ```js static
-<PlaygroundSwitcher/>
+<PreviewTypeSwitcher/>
 ```
 
 Uses component [RadioList](#radiolist)

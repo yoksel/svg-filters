@@ -8,7 +8,6 @@ const initialState: PrimitivesState = {
   sections: {
     playground: [],
   },
-  allPrimitives: primitives,
 };
 
 export const primitivesSlice = createSlice({

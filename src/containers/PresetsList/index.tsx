@@ -5,7 +5,7 @@ import ControlsList from '../../components/ControlsList';
 import { RootState } from '../../store';
 
 const PresetsList = () => {
-  const presetControls = useSelector((state: RootState) => state.presetControls.presets);
+  const presetControls = useSelector((state: RootState) => state.data.presets);
 
   if (!presetControls?.length) return null;
 

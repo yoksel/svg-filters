@@ -1,5 +1,5 @@
 import Filter from '../../../containers/Filter';
-import PlaygroundSwitcher from '../../../containers/PlaygroundSwitcher';
+import PreviewTypeSwitcher from '../../../containers/PreviewTypeSwitcher';
 import SvgCodeContainer from '../../../containers/SvgCode';
 
 import './Preview.scss';
@@ -93,7 +93,7 @@ const Preview = ({ filterId, previewType = 'image-and-text', svgCode }: Playgrou
     <section className={`Preview Playground--${previewType}`}>
       <h2 className="visuallyhidden">Live demo</h2>
       <div className="Playground__image">
-        <PlaygroundSwitcher />
+        <PreviewTypeSwitcher />
 
         {previewType === 'edit' && <SvgCodeContainer value={content} />}
 

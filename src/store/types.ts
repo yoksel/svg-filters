@@ -64,14 +64,9 @@ export const isPrimitivesSection = (section: Section): section is keyof Primitiv
 export interface PrimitivesState {
   type?: string;
   filter?: FilterParams;
-  docs?: typeof primitives;
   sections: PrimitivesSections;
-  read?: null;
-  allPrimitives?: PrimitiveItem[];
   swapSnapshot?: string;
 }
-
-export type SectionState = PrimitivesState['docs'] | PrimitivesState['sections']['playground'];
 
 export interface NativeEventCoords {
   left?: number;

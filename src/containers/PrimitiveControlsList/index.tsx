@@ -8,7 +8,7 @@ import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 const PrimitiveControlsList = () => {
   const dispatch = useDispatch();
   const { section } = useSection();
-  const primitives = useSelector((state: RootState) => state.primitives.allPrimitives);
+  const primitives = useSelector((state: RootState) => state.data.primitives);
 
   if (!primitives?.length) return null;
 

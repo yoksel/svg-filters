@@ -14,7 +14,7 @@ const Footer = () => {
     }
 
     return (
-      <NavLink to="/#/read" className="Footer__link Footer__link--read">
+      <NavLink to="/read" className="Footer__link Footer__link--read">
         Useful Resources
       </NavLink>
     );
