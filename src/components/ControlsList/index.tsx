@@ -27,12 +27,9 @@ interface ControlsListProps {
 
 const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListProps) => {
   const { section, id } = useSection();
-  const ControlsListClass = ['ControlsList', `ControlsList--${section}`].join(' ');
-
-  console.log({ items });
 
   return (
-    <nav className={ControlsListClass}>
+    <nav className={clsx('ControlsList', `ControlsList--${section}`)}>
       {items?.map((primitive: PrimitiveItem | Preset) => {
         const groupName = 'groupName' in primitive ? primitive.groupName : undefined;
         const groupData = groupName ? primitivesAttrs[groupName] : null;

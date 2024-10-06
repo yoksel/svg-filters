@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Filter from '../../../containers/Filter';
 import PreviewTypeSwitcher from '../../../containers/PreviewTypeSwitcher';
 import SvgCodeContainer from '../../../containers/SvgCode';
@@ -17,19 +18,25 @@ const Preview = ({ filterId, previewType = 'image-and-text', svgCode }: PreviewP
 
   const getTip = (content?: ReturnType<typeof getSvgContentByPlaygroundType>) => {
     let tipText = '';
-    let modClassesList = ['Playground__tip'];
 
     if (!content) {
       tipText = 'Add some SVG';
-      modClassesList.push('Playground__tip--add-content');
     } else if (!filterId && previewType === 'edit') {
       tipText =
         'If the filter is empty, content may disappear. Add a primitive or choose a preset.';
-      modClassesList.push('Playground__tip--add-primitives');
     }
 
     if (tipText) {
-      return <div className={modClassesList.join(' ')}>{tipText}</div>;
+      return (
+        <div
+          className={clsx(
+            'Playground__tip',
+            content ? 'Playground__tip--add-primitives' : 'Playground__tip--add-content',
+          )}
+        >
+          {tipText}
+        </div>
+      );
     }
   };
 
