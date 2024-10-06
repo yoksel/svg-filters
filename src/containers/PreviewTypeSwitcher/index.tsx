@@ -32,7 +32,6 @@ const PreviewTypeSwitcher = () => {
       <RadioList
         list={typesList}
         current={playgroundType || 'image-and-text'}
-        name=""
         onChange={(type) => {
           dispatch(setPreviewType(type));
         }}

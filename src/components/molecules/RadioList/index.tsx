@@ -6,14 +6,14 @@ import './RadioList.scss';
 interface RadioListProps {
   current: string;
   list: { id: string; name: string }[];
-  name: string;
+  listTitle?: string;
   onChange: (value: string | Interpolation) => void;
 }
 
-const RadioList = ({ list, current, name, onChange }: RadioListProps) => {
+const RadioList = ({ list, current, listTitle, onChange }: RadioListProps) => {
   return (
     <div className="RadioList">
-      {name && <b className="RadioList__name">{name}:</b>}
+      {listTitle && <b className="RadioList__name">{listTitle}:</b>}
 
       {list.map((type) => {
         return (

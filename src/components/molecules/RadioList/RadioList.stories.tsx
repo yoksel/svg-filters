@@ -18,9 +18,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-   current: 'id1',
-   list: [{id: 'id1', name: 'banana'}, {id: 'id2', name: 'orange'}],
-    name: 'name',
-    onChange: fn()
+    current: 'id1',
+    list: [
+      { id: 'id1', name: 'banana' },
+      { id: 'id2', name: 'orange' },
+    ],
+    listTitle: 'List title',
+    onChange: fn(),
   },
 };

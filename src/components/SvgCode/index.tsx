@@ -78,8 +78,6 @@ const SvgCode = ({ addExample, value, onChange }: SvgCodeProps) => {
             value={valueAsString}
             onChange={onChange}
             className="SvgCode__InputTextarea"
-            secondValue={''}
-            firstValue={''}
           />
 
           <button

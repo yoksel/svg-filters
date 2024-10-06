@@ -1,8 +1,8 @@
 import './InputTextarea.scss';
 
 interface InputTextareaProps {
-  secondValue: string | number;
-  firstValue: string | number;
+  secondValue?: string | number;
+  firstValue?: string | number;
   value: string;
   className?: string;
   onChange: (value: string) => void;
