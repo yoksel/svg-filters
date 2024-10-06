@@ -24,7 +24,7 @@ const ColorInterpolFiltersSwitcher = () => {
     <div className="ColorInterpolFiltersSwitcher">
       <RadioList
         list={colorInterpolList}
-        current={filter?.colorInterpolationFilters || 'linearRGB'}
+        current={filter.colorInterpolationFilters}
         onChange={(colorInterpol) => {
           dispatch(setColorInterpolFilters(colorInterpol as Interpolation));
         }}

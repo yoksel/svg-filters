@@ -1,13 +1,11 @@
-import { Section } from '../types';
 import primitivesReducers from './primitivesReducers';
-import primitivesAttrs from '../../data/primitivesAttrs';
 
 // ADD_PRIMITIVE
 // ------------------------------
 
 const blendMock = {
   id: 'blend',
-  groupName: 'blend' as keyof typeof primitivesAttrs,
+  groupName: 'blend',
   params: {
     mode: {
       value: 'multiply',
@@ -38,7 +36,7 @@ const blendMock = {
 
 const blurMock = {
   id: 'blur',
-  groupName: 'blur' as keyof typeof primitivesAttrs,
+  groupName: 'blur',
   params: {
     stdDeviation: {
       value: '3 10',
@@ -1077,6 +1075,9 @@ describe('reducers', () => {
     const stateBefore = {
       sections: {
         playground: [],
+      },
+      filter: {
+        colorInterpolationFilters: 'sRGB',
       },
     };
     const action = {

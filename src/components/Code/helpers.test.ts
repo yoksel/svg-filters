@@ -1,10 +1,9 @@
-import primitivesAttrs from '../../data/primitivesAttrs';
 import { PrimitiveItem } from '../../store/types';
 import { getAllPrimitivesCode, getPrimitiveCode } from './helpers';
 
 const blurMock: PrimitiveItem = {
   id: 'blur',
-  groupName: 'blur' as keyof typeof primitivesAttrs,
+  groupName: 'blur',
   params: {
     stdDeviation: {
       value: '3 10',

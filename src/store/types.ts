@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react';
-import primitives from '../data/primitives';
 import primitivesAttrs from '../data/primitivesAttrs';
 
 interface ParamValue {
@@ -45,7 +44,7 @@ export type Section = 'playground' | 'presets' | 'docs' | 'read';
 export type Interpolation = 'linearRGB' | 'sRGB';
 
 export interface FilterParams {
-  colorInterpolationFilters?: Interpolation;
+  colorInterpolationFilters: Interpolation;
   style?: CSSProperties;
 }
 
@@ -63,7 +62,7 @@ export const isPrimitivesSection = (section: Section): section is keyof Primitiv
 
 export interface PrimitivesState {
   type?: string;
-  filter?: FilterParams;
+  filter: FilterParams;
   sections: PrimitivesSections;
   swapSnapshot?: string;
 }

@@ -562,9 +562,6 @@ const reducers = {
 
     // resetIdKeeperSection(addPresetList, 'presets' as Section);
 
-    if (!state['filter']) {
-      state['filter'] = {};
-    }
     state['filter'].colorInterpolationFilters = colorInterpolationFilters;
     state.sections['presets'] = primitives;
   },

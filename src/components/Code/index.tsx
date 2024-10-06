@@ -13,6 +13,7 @@ const getFilterAttrs = (filterData?: FilterParams) => {
   if (!filterData) return;
 
   if (filterData.style) {
+    // Do not print style in filter code
     delete filterData.style;
   }
 
@@ -60,7 +61,7 @@ const Code = ({ filterData, primitives }: CodeProps) => {
     <section className="Code">
       <h2 className="visuallyhidden">Filter code</h2>
       <ColorInterpolFiltersSwitcher />
-      <textarea className="Code__textarea" value={value} onChange={() => {}} spellCheck="false" />
+      <textarea className="Code__textarea" defaultValue={value} spellCheck="false" />
     </section>
   );
 };
