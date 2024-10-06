@@ -5,7 +5,7 @@ const image: PrimitiveItem = {
   groupName: 'image',
   params: {
     xlinkHref: {
-      value: 'https://placekitten.com/500/500',
+      value: './manja-vitolic-gKXKBY-C-Dk-unsplash.jpg',
     },
     x: {
       value: 0,

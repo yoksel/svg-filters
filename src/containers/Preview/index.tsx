@@ -7,14 +7,18 @@ import { isPrimitivesSection } from '../../store/types';
 const PreviewContainer = () => {
   const { section } = useSection();
   const previewType = useSelector((state: RootState) => state.preview.type);
-  const svgCode = useSelector((state: RootState) => state.preview.svgCode);
+  const customSvgCode = useSelector((state: RootState) => state.preview.customSvgCode);
   const primitives = useSelector((state: RootState) => {
     if (!isPrimitivesSection(section)) return [];
     return state.primitives.sections[section];
   });
 
   return (
-    <Preview filterId={primitives ? 'filter' : ''} previewType={previewType} svgCode={svgCode} />
+    <Preview
+      filterId={primitives ? 'filter' : ''}
+      previewType={previewType}
+      customSvgCode={customSvgCode}
+    />
   );
 };
 

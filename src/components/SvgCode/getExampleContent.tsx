@@ -9,7 +9,7 @@ export const getExampleContent = () => {
         width="80%"
         height="50%"
         preserveAspectRatio="xMidYMid slice"
-        xlinkHref="https://placekitten.com/800/400"
+        xlinkHref="./manja-vitolic-gKXKBY-C-Dk-unsplash.jpg"
         filter="url(#filter)"
       />
 

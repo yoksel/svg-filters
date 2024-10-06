@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface PreviewState {
-  svgCode: string;
+  customSvgCode: string;
   type: string;
 }
 
 const initialState: PreviewState = {
-  svgCode: '',
+  customSvgCode: '',
   type: 'image-and-text',
 };
 
@@ -19,7 +19,7 @@ export const playgroundSlice = createSlice({
       state.type = action.payload;
     },
     updateSvg: (state, action: PayloadAction<string>) => {
-      state.svgCode = action.payload;
+      state.customSvgCode = action.payload;
     },
   },
 });

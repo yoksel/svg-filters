@@ -1,22 +1,14 @@
-import React from 'react';
-import { flushSync } from 'react-dom';
-import { createRoot } from 'react-dom/client';
+import { renderToString } from 'react-dom/server';
 
 const markupToString = (component?: JSX.Element) => {
   if (!component) return '';
 
-  const div = document.createElement('div');
-  const root = createRoot(div);
-  const Component = () => component;
-  flushSync(() => {
-    root.render(
-      <>
-        <Component />
-      </>,
-    );
-  });
+  const elementString = renderToString(component);
 
-  const markupString = div.innerHTML
+  const markupString = elementString
+    // remove previous formatting
+    .replaceAll(/\n|\t/g, '')
+    // add proper formatting
     .replace('<image', '\n\t<image')
     .replace('<g', '\n\n\t<g')
     .replace('</g', '\n\t</g')

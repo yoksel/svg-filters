@@ -52,7 +52,7 @@ const Constructor = ({
       <h2 className="visuallyhidden">Constructor</h2>
       <div className="Constructor__tag Constructor__tag--open">
         &lt;filter id="#filter"&gt;
-        {!primitives?.length && section !== 'playground' && (
+        {Boolean(primitives?.length) && section === 'playground' && (
           <button
             className="Constructor__button Constructor__button--purge"
             onClick={purgePrimitives}

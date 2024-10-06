@@ -7,6 +7,7 @@ import {
   PrimitivesSections,
   PrimitivesState,
   Section,
+  SectionState,
   ToggleDocsArgs,
 } from '../types';
 import {
@@ -25,81 +26,35 @@ interface Action {
   primitive: PrimitiveItem;
   section: Section;
   childId?: string;
-  id?: string;
+  id: string;
 }
 
-type SectionState =
-  | PrimitivesState['sections']['playground']
-  | PrimitivesState['sections']['presets']
-  | PrimitivesState['sections']['docs'];
-
-const primitiveHandler = (
-  sectionState: SectionState,
+const updateDuplicatedPrimitive = (
+  sectionState: PrimitiveItem[],
   action: Action,
-): { newPrimitive: PrimitiveItem } | { newPrimitive: PrimitiveItem; pos: number } => {
+): { newPrimitive: PrimitiveItem; pos: number } => {
   const { section } = action;
 
-  switch (action.type) {
-    case 'ADD_PRIMITIVE':
-      const newAction = updateUniqueProps({
-        sectionState,
-        primitive: action.primitive,
-        section,
-        actionType: action.type,
-      });
+  let filteredWithIndex = getFilteredWithIndex(sectionState, action.id);
 
-      return {
-        newPrimitive: {
-          id: newAction.id,
-          params: newAction.params,
-          groupName: newAction.groupName,
-          children: newAction.children,
-          disabled: false,
-        },
-      };
-
-    case 'DISCOVERY_PRIMITIVE':
-      const newPrimitiveDiscovery = updateUniqueProps({
-        sectionState,
-        primitive: action.primitive,
-        section,
-        actionType: action.type,
-      });
-
-      return {
-        newPrimitive: {
-          id: newPrimitiveDiscovery.id,
-          params: newPrimitiveDiscovery.params,
-          groupName: newPrimitiveDiscovery.groupName,
-          children: newPrimitiveDiscovery.children,
-          disabled: false,
-        },
-      };
-
-    case 'DUPLICATE_PRIMITIVE':
-      let filteredWithIndex = getFilteredWithIndex(sectionState, action.id);
-
-      if (action.childId) {
-        const children = filteredWithIndex.filtered.children;
-        filteredWithIndex = getFilteredWithIndex(children, action.childId);
-      }
-
-      const duplicatedAction = updateUniqueProps({
-        sectionState,
-        primitive: { ...filteredWithIndex.filtered, showDocs: false },
-        actionType: 'DUPLICATE_PRIMITIVE',
-        section,
-      });
-
-      return {
-        pos: filteredWithIndex.pos,
-        newPrimitive: duplicatedAction,
-      };
-
-    default:
-      // @ts-expect-error
-      return null;
+  if (action.childId) {
+    const children = filteredWithIndex?.filtered?.children;
+    if (children) {
+      filteredWithIndex = getFilteredWithIndex(children, action.childId);
+    }
   }
+
+  const duplicatedAction = updateUniqueProps({
+    sectionState,
+    primitive: { ...filteredWithIndex.filtered, showDocs: false },
+    actionType: 'DUPLICATE_PRIMITIVE',
+    section,
+  });
+
+  return {
+    pos: filteredWithIndex?.pos,
+    newPrimitive: duplicatedAction,
+  };
 };
 
 const reducers = {
@@ -112,15 +67,15 @@ const reducers = {
     }>,
   ) => {
     const { section, primitive, nativeEvent } = action.payload;
-    const primitiveData = {
-      type: 'ADD_PRIMITIVE',
-      primitive,
-      section,
-    };
     const stateBySection = state.sections[section];
     if (!stateBySection) return;
 
-    const { newPrimitive } = primitiveHandler(stateBySection, primitiveData);
+    const newPrimitive = updateUniqueProps({
+      sectionState: stateBySection,
+      primitive: primitive,
+      section,
+      actionType: action.type,
+    });
     newPrimitive.justAdded = true;
     newPrimitive.nativeEvent = nativeEvent;
 
@@ -150,7 +105,7 @@ const reducers = {
     if (!sectionStateList) return;
 
     // @ts-expect-error
-    const { newPrimitive, pos } = primitiveHandler(sectionStateList, primitiveData);
+    const { newPrimitive, pos } = updateDuplicatedPrimitive(sectionStateList, primitiveData);
     let duplicateList: PrimitiveItem[] = [];
 
     if (childId !== undefined) {
@@ -449,7 +404,9 @@ const reducers = {
       swapPrimitivesList = swapPrimitivesList.map((item: PrimitiveItem) => {
         if (item.id === parentId) {
           const children = deepClone(item).children;
-          item.children = swap(children, indexes);
+          if (children) {
+            item.children = swap(children, indexes);
+          }
         }
 
         return item;
@@ -560,41 +517,14 @@ const reducers = {
   ) => {
     const { primitives, colorInterpolationFilters = 'linearRGB' } = action.payload;
 
-    // resetIdKeeperSection(addPresetList, 'presets' as Section);
+    resetIdKeeperSection(primitives, 'presets' as Section);
 
     state['filter'].colorInterpolationFilters = colorInterpolationFilters;
     state.sections['presets'] = primitives;
   },
   setColorInterpolFilters: (state: PrimitivesState, action: PayloadAction<Interpolation>) => {
-    state['filter'] = {
-      colorInterpolationFilters: action.payload,
-    };
+    state['filter'].colorInterpolationFilters = action.payload;
   },
-
-  // switch (action.type) {
-
-  // case 'ADD_PRESET':
-  //   const addPresetSection = 'presets';
-  //   const addPresetList = [...action.primitives];
-
-  //   let colorInterpolationFilters = 'linearRGB';
-
-  //   if (action.colorInterpolationFilters) {
-  //     colorInterpolationFilters = action.colorInterpolationFilters;
-  //   }
-
-  //   const addPresetFilter = {
-  //     ...state.filter,
-  //     colorInterpolationFilters,
-  //   };
-
-  //   resetIdKeeperSection(addPresetList, addPresetSection);
-
-  //   return {
-  //     ...state,
-  //     filter: addPresetFilter,
-  //     presets: addPresetList,
-  //   };
 };
 
 export default reducers;

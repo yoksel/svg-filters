@@ -24,13 +24,8 @@ const PrimitivePanelInput = (props: PrimitivePanelInputProps) => {
   const { primitive, paramKey } = props;
   const { inputsData } = primitivesAttrs[primitive.groupName];
   const inputDataByKey = inputsData[paramKey as keyof typeof inputsData];
-  // console.log('===PrimitivePanelInput===');
-  // console.log({inputsData})
-  // console.log({paramKey})
-  // console.log({inputDataByKey})
   // @ts-expect-error: FIX IT
   const type = 'type' in inputDataByKey ? inputDataByKey?.type : undefined;
-  // console.log('===///PrimitivePanelInput===');
 
   // PrimitiveAttributesType
   if (type === 'textarea') {

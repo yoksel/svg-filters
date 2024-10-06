@@ -64,9 +64,6 @@ const AppRoute = (props: any) => {
     }
 
     if (section === 'docs' && id && isPrimitiveItems(currentItems)) {
-      console.log('discoveryPrimitive in ROUTE');
-      console.log(currentItems);
-
       dispatch(discoverPrimitive({ primitives: currentItems }));
     }
 
@@ -75,73 +72,12 @@ const AppRoute = (props: any) => {
       const preset = presets.find((preset: Preset) => preset.id === id);
       if (preset?.primitives?.length)
         dispatch(addPresetPrimitivesToStage({ primitives: preset?.primitives }));
-
-      // return {
-      //     addPreset: (presets) => {
-      //       dispatch(addPresetPrimitivesToStage(presets[0]));
-      //     },
-      //     discoveryPrimitive: (primitives) => {
-      //       dispatch(discoveryPrimitive({primitives}));
-      //     },
-      //     purgePrimitives: (section) => {
-      //       dispatch(purgePrimitives({section}));
-      //     }
-      //   };
     }
   };
 
   itemFromPath();
 
-  // componentDidUpdate(prevProps) {
-  //   // @ts-expect-error
-  //   const { id, section } = this.props;
-
-  //   if (prevProps.id !== id) {
-  //     this.itemFromPath();
-  //   }
-  //   if (prevProps.section !== section) {
-  //     this.purgePrev(prevProps.section);
-  //   }
-  // }
-
-  // return <div>123</div>;
   return <App />;
 };
-
-// const mapStateToProps = (state, { match }) => {
-//   const { presetControls, primitiveControls } = state;
-//   const { section, id } = match?.params || {};
-//   let handlerName;
-
-//   if (!section) return null;
-
-//   if (section === 'presets' && id) {
-//     handlerName = 'addPreset';
-//   } else if (section === 'docs' && id) {
-//     handlerName = 'discoveryPrimitive';
-//   }
-
-//   return {
-//     id,
-//     section,
-//     handlerName,
-//     docs: primitiveControls,
-//     presets: presetControls,
-//   };
-// };
-
-// const mapDispatchProps = (dispatch, props) => {
-//   return {
-//     addPreset: (presets) => {
-//       dispatch(addPresetPrimitivesToStage(presets[0]));
-//     },
-//     discoveryPrimitive: (primitives) => {
-//       dispatch(discoveryPrimitive({primitives}));
-//     },
-//     purgePrimitives: (section) => {
-//       dispatch(purgePrimitives({section}));
-//     }
-//   };
-// };
 
 export default AppRoute;

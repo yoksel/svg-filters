@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import Icon from '../atoms/Icon';
 import InputTextarea from '../atoms/InputTextarea';
 import { getExampleContent } from './getExampleContent';
+import markupToString from './markupToString';
 
 import './SvgCode.scss';
-import markupToString from './markupToString';
 
 interface TogglerProps {
   panelIsOpen: boolean;
@@ -51,14 +51,14 @@ const Tip = ({ value }: { value: string }) => {
 };
 
 interface SvgCodeProps {
-  value?: JSX.Element | string;
+  value?: JSX.Element;
   addExample: (value: string) => void;
   onChange: (value: string) => void;
 }
 
 const SvgCode = ({ addExample, value, onChange }: SvgCodeProps) => {
   const [panelIsOpen, setPanelIsOpen] = useState(false);
-  const valueAsString = typeof value === 'string' ? value : markupToString(value);
+  const valueAsString = markupToString(value);
 
   const togglePanel = () => {
     setPanelIsOpen(!panelIsOpen);
@@ -68,7 +68,7 @@ const SvgCode = ({ addExample, value, onChange }: SvgCodeProps) => {
     <div className={clsx('SvgCode', panelIsOpen && 'SvgCode--opened')}>
       <div className="SvgCode__container">
         <div className="SvgCode__content">
-          <button className="SvgCode__close-button" onClick={togglePanel}>
+          <button className="SvgCode__close-button" onClick={togglePanel} title="close">
             <Icon symbol="cross" color="currentColor" size="12" />
           </button>
 

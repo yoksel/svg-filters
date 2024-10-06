@@ -6,7 +6,11 @@ const initialState: PrimitivesState = {
   sections: {
     playground: [],
   },
-  filter: { colorInterpolationFilters: 'linearRGB' },
+  filter: {
+    colorInterpolationFilters: 'linearRGB',
+    filterUnits: 'objectBoundingBox',
+    primitiveUnits: 'userSpaceOnUse',
+  },
 };
 
 export const primitivesSlice = createSlice({

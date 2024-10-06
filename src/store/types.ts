@@ -45,6 +45,8 @@ export type Interpolation = 'linearRGB' | 'sRGB';
 
 export interface FilterParams {
   colorInterpolationFilters: Interpolation;
+  filterUnits: string;
+  primitiveUnits: string;
   style?: CSSProperties;
 }
 
@@ -124,3 +126,8 @@ export const isPrimitiveItem = (item: PrimitiveItem | Preset): item is Primitive
 export const isPrimitiveItems = (items: (PrimitiveItem | Preset)[]): items is PrimitiveItem[] => {
   return 'groupName' in items[0];
 };
+
+export type SectionState =
+  | PrimitivesState['sections']['playground']
+  | PrimitivesState['sections']['presets']
+  | PrimitivesState['sections']['docs'];

@@ -5,13 +5,12 @@ import { updateSvg } from '../../store/previewSlice';
 
 import SvgCode from '../../components/SvgCode';
 
-const SvgCodeContainer = ({ value }: { value?: JSX.Element | string }) => {
-  const svgCode = useSelector((state: RootState) => state.preview.svgCode);
+const SvgCodeContainer = ({ value }: { value?: JSX.Element }) => {
   const dispatch = useDispatch();
 
   return (
     <SvgCode
-      value={value || svgCode}
+      value={value}
       addExample={(content) => dispatch(updateSvg(content))}
       onChange={(content) => dispatch(updateSvg(content))}
     />
