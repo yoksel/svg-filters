@@ -61,6 +61,7 @@ const PrimitivePanelControls = ({
         className="PrimitivePanelControl PrimitivePanelControl--docs"
         type="button"
         onClick={toggleDocs}
+        title="Show documentation for this primitive"
       >
         <Icon symbol="doc" color="currentColor" size="15" />
       </button>
@@ -94,6 +95,7 @@ const PrimitivePanelControls = ({
         className="PrimitivePanelControl PrimitivePanelControl--toggle"
         onClick={togglePrimitive}
         type="button"
+        title={primitiveDisabled ? 'Enable' : 'Disable'}
       >
         <Icon symbol={primitiveDisabled ? 'eye' : 'eye-blocked'} color="currentColor" size="16" />
       </button>
@@ -102,6 +104,7 @@ const PrimitivePanelControls = ({
         className="PrimitivePanelControl PrimitivePanelControl--add"
         onClick={duplicatePrimitive}
         type="button"
+        title="Duplicate"
       >
         <Icon symbol="plus" color="currentColor" size="14" />
       </button>
@@ -110,6 +113,7 @@ const PrimitivePanelControls = ({
         className="PrimitivePanelControl PrimitivePanelControl--remove"
         type="button"
         onClick={removePrimitive}
+        title="Delete"
       >
         <Icon symbol="cross" color="currentColor" size="13" />
       </button>
