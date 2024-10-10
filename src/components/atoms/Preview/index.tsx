@@ -19,7 +19,7 @@ const Preview = ({ filterId, previewType = 'image-and-text', customSvgCode }: Pr
   const getTip = (hasContent?: boolean) => {
     let tipText = '';
 
-    if (!content) {
+    if (!hasContent) {
       tipText = 'Add some SVG';
     } else if (!filterId && previewType === 'edit') {
       tipText =
@@ -31,7 +31,7 @@ const Preview = ({ filterId, previewType = 'image-and-text', customSvgCode }: Pr
         <div
           className={clsx(
             'Preview__tip',
-            content ? 'Preview__tip--add-primitives' : 'Preview__tip--add-content',
+            hasContent ? 'Preview__tip--add-primitives' : 'Preview__tip--add-content',
           )}
         >
           {tipText}
@@ -42,9 +42,9 @@ const Preview = ({ filterId, previewType = 'image-and-text', customSvgCode }: Pr
 
   const getSvgContentByPreviewType = (): JSX.Element | undefined => {
     if (previewType === 'edit') {
-      return customSvgCode ? (
-        <svg dangerouslySetInnerHTML={{ __html: customSvgCode }}></svg>
-      ) : undefined;
+      if (!customSvgCode) return;
+
+      return <svg dangerouslySetInnerHTML={{ __html: customSvgCode }}></svg>;
     }
 
     if (previewType === 'image') {
@@ -104,7 +104,7 @@ const Preview = ({ filterId, previewType = 'image-and-text', customSvgCode }: Pr
       <div className="Preview__image">
         <PreviewTypeSwitcher />
 
-        {previewType === 'edit' && <SvgCodeContainer value={content} />}
+        {previewType === 'edit' && <SvgCodeContainer />}
 
         <div className="Preview__svg-wrapper">
           {getTip(Boolean(content))}

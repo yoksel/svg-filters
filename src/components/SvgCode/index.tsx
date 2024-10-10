@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import Icon from '../atoms/Icon';
 import InputTextarea from '../atoms/InputTextarea';
 import { getExampleContent } from './getExampleContent';
-import markupToString from './markupToString';
 
 import './SvgCode.scss';
 
@@ -42,7 +41,7 @@ const Tip = ({ value }: { value: string }) => {
     return (
       <p className="SvgCode__text">
         Add <code>filter="url(#filter)"</code> as attribute to apply filter effect to group or
-        shape.
+        shapes
       </p>
     );
   }
@@ -51,14 +50,13 @@ const Tip = ({ value }: { value: string }) => {
 };
 
 interface SvgCodeProps {
-  value?: JSX.Element;
+  value?: string;
   addExample: (value: string) => void;
   onChange: (value: string) => void;
 }
 
 const SvgCode = ({ addExample, value, onChange }: SvgCodeProps) => {
   const [panelIsOpen, setPanelIsOpen] = useState(false);
-  const valueAsString = markupToString(value);
 
   const togglePanel = () => {
     setPanelIsOpen(!panelIsOpen);
@@ -72,10 +70,10 @@ const SvgCode = ({ addExample, value, onChange }: SvgCodeProps) => {
             <Icon symbol="cross" color="currentColor" size="12" />
           </button>
 
-          {valueAsString && <Tip value={valueAsString} />}
+          {value && <Tip value={value} />}
 
           <InputTextarea
-            value={valueAsString}
+            value={value || ''}
             onChange={onChange}
             className="SvgCode__InputTextarea"
           />

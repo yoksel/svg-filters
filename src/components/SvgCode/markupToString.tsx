@@ -9,9 +9,9 @@ const markupToString = (component?: JSX.Element) => {
     // remove previous formatting
     .replaceAll(/\n|\t/g, '')
     // add proper formatting
-    .replace('<image', '\n\t<image')
-    .replace('<g', '\n\n\t<g')
+    .replace('<g', '\n\t<g')
     .replace('</g', '\n\t</g')
+    .replace('<image', '\n\t\t<image')
     .replace('<text', '\n\t\t<text')
     .replace('</svg', '\n</svg');
 

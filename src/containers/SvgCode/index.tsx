@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { RootState } from '../../store';
 import { updateSvg } from '../../store/previewSlice';
 
 import SvgCode from '../../components/SvgCode';
+import { RootState } from '../../store';
 
-const SvgCodeContainer = ({ value }: { value?: JSX.Element }) => {
+const SvgCodeContainer = () => {
+  const customSvgCode = useSelector((state: RootState) => state.preview.customSvgCode);
   const dispatch = useDispatch();
 
   return (
     <SvgCode
-      value={value}
+      value={customSvgCode}
       addExample={(content) => dispatch(updateSvg(content))}
       onChange={(content) => dispatch(updateSvg(content))}
     />
