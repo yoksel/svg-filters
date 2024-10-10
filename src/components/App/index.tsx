@@ -1,6 +1,4 @@
-import React from 'react';
-
-// import DragDrop from '../../containers/DragDrop';
+import DragDrop from '../../containers/DragDrop';
 import Constructor from '../../containers/Constructor';
 import Preview from '../../containers/Preview';
 import Code from '../../containers/Code';
@@ -17,37 +15,37 @@ import './App.scss';
 const App = () => {
   return (
     <>
-      {/* <DragDrop listId="primitives_to_constructor"> */}
-      <Icons />
+      <DragDrop listId="primitives_to_constructor">
+        <Icons />
 
-      <div className="App">
-        <Header />
+        <div className="App">
+          <Header />
 
-        <Wrapper>
-          <main className="App__inner">
-            <div className="App__container App__container--controlsList">
-              <div className="App__content App__content--sticky">
-                <Sidebar />
+          <Wrapper>
+            <main className="App__inner">
+              <div className="App__container App__container--controlsList">
+                <div className="App__content App__content--sticky">
+                  <Sidebar />
+                </div>
               </div>
-            </div>
 
-            <div className="App__container App__container--constructor">
-              <Constructor />
-              <Docs />
-            </div>
-
-            <div className="App__container App__container--playground">
-              <div className="App__content App__content--playground App__content--sticky">
-                <Preview />
-                <Code />
+              <div className="App__container App__container--constructor">
+                <Constructor />
+                <Docs />
               </div>
-            </div>
-          </main>
-        </Wrapper>
 
-        <Footer />
-      </div>
-      {/* </DragDrop> */}
+              <div className="App__container App__container--playground">
+                <div className="App__content App__content--playground App__content--sticky">
+                  <Preview />
+                  <Code />
+                </div>
+              </div>
+            </main>
+          </Wrapper>
+
+          <Footer />
+        </div>
+      </DragDrop>
     </>
   );
 };

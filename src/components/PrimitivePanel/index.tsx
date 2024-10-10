@@ -5,6 +5,7 @@ import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
 import Docs from '../../containers/Docs';
 import PrimitivePanelInput from '../molecules/PrimitivePanelInput';
 import ResultAttribute from '../atoms/ResultAttribute';
+import clsx from 'clsx';
 
 import './PrimitivePanel.scss';
 
@@ -37,12 +38,6 @@ const PrimitivePanel = ({
   const hasChildren = primitive.children ? 'has-children' : 'no-children';
   const PrimitivePanelContentClass = `PrimitivePanel__content PrimitivePanel__content--${hasChildren}`;
   const hasResult = Boolean(primitive.params.result);
-
-  const PrimitivePanelClassList = ['PrimitivePanel', `PrimitivePanel--${hasChildren}`];
-
-  if (!hasResult) {
-    PrimitivePanelClassList.push('PrimitivePanel--no-result');
-  }
 
   if (primitiveDisabled) {
     fieldsetProps.disabled = true;
@@ -80,24 +75,14 @@ const PrimitivePanel = ({
     );
   });
 
-  const getPanelControls = () => {
-    return (
-      <PrimitivePanelControls
-        primitive={primitive}
-        parentId={parentId}
-        groupName={groupName}
-        section={section}
-        primitiveDisabled={primitiveDisabled}
-        hasResult={hasResult}
-        hasChildrenMod={hasChildren}
-        parentHasSingleChild={parentHasSingleChild}
-        noChangesForChildren={noChangesForChildren}
-      />
-    );
-  };
-
   return (
-    <div className={PrimitivePanelClassList.join(' ')}>
+    <div
+      className={clsx(
+        'PrimitivePanel',
+        `PrimitivePanel--${hasChildren}`,
+        !hasResult && 'PrimitivePanel--no-result',
+      )}
+    >
       <fieldset className="PrimitivePanel__fieldset" {...fieldsetProps}>
         <div className={PrimitivePanelContentClass}>
           <div className="PrimitivePanel__tag">{primitiveName}</div>
@@ -111,7 +96,17 @@ const PrimitivePanel = ({
         </div>
       </fieldset>
 
-      {getPanelControls()}
+      <PrimitivePanelControls
+        primitive={primitive}
+        parentId={parentId}
+        groupName={groupName}
+        section={section}
+        primitiveDisabled={primitiveDisabled}
+        hasResult={hasResult}
+        hasChildrenMod={hasChildren}
+        parentHasSingleChild={parentHasSingleChild}
+        noChangesForChildren={noChangesForChildren}
+      />
     </div>
   );
 };
