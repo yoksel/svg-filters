@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleEditPanel, updateSvg } from '../../store/previewSlice';
 
 import SvgCode from '../../components/SvgCode';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 const SvgCodeContainer = () => {
   const customSvgCode = useSelector((state: RootState) => state.preview.customSvgCode);

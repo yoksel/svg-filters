@@ -10,15 +10,14 @@ import {
 } from '../../store/primitivesSlice';
 
 import App from '../../components/App';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import { isPrimitiveItems, Preset, PrimitiveItem } from '../../store/types';
 
 export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
   return params;
 }
 
-const AppRoute = (props: any) => {
-  console.log('=== AppRoute ===');
+const AppRoute = () => {
   const { section, id } = (useLoaderData() as { section: string; id?: string }) || {};
   const presets = useSelector((state: RootState) => state.data.presets);
   const primitives = useSelector((state: RootState) => state.data.primitives);
@@ -35,13 +34,12 @@ const AppRoute = (props: any) => {
   };
 
   const itemFromPath = () => {
-    console.log('\n\nitemFromPath\n\n', id);
-    const currentSet = section === 'docs' ? primitives : presets;
-    let currentItems: (PrimitiveItem | Preset)[] = [];
-
     if (!id) {
       return null;
     }
+
+    const currentSet = section === 'docs' ? primitives : presets;
+    let currentItems: (PrimitiveItem | Preset)[] = [];
 
     if (section === 'docs' && docs[id]) {
       // only Tiles docs has primitives for demo
@@ -53,21 +51,15 @@ const AppRoute = (props: any) => {
         // No presets, take from primitiveControls
         if (primitivesById?.length) currentItems = primitivesById;
       }
-    } else if (Array.isArray(currentSet)) {
-      console.log('SECTION: OTHER');
-      console.log({ currentSet });
-      console.log({ t: typeof currentSet });
-      console.log({ arr: Array.isArray(currentSet) });
-      console.log({ id });
+    } else if (Boolean(currentSet.length)) {
       // @ts-expect-error
-      currentItems = currentSet?.filter?.((item) => item.id === id);
+      currentItems = currentSet?.filter?.((item: { id: string }) => item.id === id);
     }
 
     if (section === 'docs' && id && isPrimitiveItems(currentItems)) {
       dispatch(discoverPrimitive({ primitives: currentItems }));
     }
 
-    console.log('1 currentItems', currentItems);
     if (currentItems.length && section === 'presets' && id) {
       const preset = presets.find((preset: Preset) => preset.id === id);
       if (preset?.primitives?.length)

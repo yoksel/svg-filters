@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';
 import { moveDrag, stopDrag } from '../../store/dragDropSlice';
 import { swapPrimitives, switchOffLastAdded } from '../../store/primitivesSlice';

@@ -48,6 +48,10 @@ const PrimitivePanel = ({
     const { value } = param;
     let name = key;
 
+    if (param.disabled) {
+      return null;
+    }
+
     // @ts-expect-error
     if (inputsData && inputsData[key] && inputsData[key].name) {
       // @ts-expect-error
@@ -56,10 +60,6 @@ const PrimitivePanel = ({
 
     if (key === 'result') {
       return <ResultAttribute key={value} value={value} />;
-    }
-
-    if (param.disabled) {
-      return null;
     }
 
     return (

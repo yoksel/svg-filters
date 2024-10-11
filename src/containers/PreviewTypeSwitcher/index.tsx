@@ -1,4 +1,4 @@
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPreviewType } from '../../store/previewSlice';
 

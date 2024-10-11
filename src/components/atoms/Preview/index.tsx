@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import Filter from '../../../containers/Filter';
 import PreviewTypeSwitcher from '../../../containers/PreviewTypeSwitcher';
 import SvgCodeContainer from '../../../containers/SvgCode';

@@ -5,11 +5,13 @@ import DragDropItem from '../../containers/DragDropItem';
 import PrimitivePanel from '../PrimitivePanel';
 import ConstructorPlaceholder from '../atoms/ConstructorPlaceholder';
 import { PrimitiveItem, Section } from '../../store/types';
+import { defaultSources } from '../../store/reducers/helpers/updateInPropInPrimitiveItem';
 
 import './Constructor.scss';
 
 const getResultsList = (primitives: PrimitiveItem[], index: number) => {
-  return primitives.slice(0, index).map((item) => item.id);
+  const results = primitives.slice(0, index).map((item) => item.id);
+  return Object.keys(defaultSources).concat(results);
 };
 
 const getMoveToPlaygroundButton = (

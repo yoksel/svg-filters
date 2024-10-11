@@ -1,71 +1,10 @@
+import { blendMock, blurMock } from './mocks';
 import primitivesReducers from './primitivesReducers';
 
-// ADD_PRIMITIVE
-// ------------------------------
-
-const blendMock = {
-  id: 'blend',
-  groupName: 'blend',
-  params: {
-    mode: {
-      value: 'multiply',
-    },
-    x: {
-      value: '0%',
-    },
-    y: {
-      value: '0%',
-    },
-    width: {
-      value: '100%',
-    },
-    height: {
-      value: '100%',
-    },
-    in: {
-      value: 'SourceGraphic',
-    },
-    in2: {
-      value: 'SourceGraphic',
-    },
-    result: {
-      value: 'blend',
-    },
-  },
-};
-
-const blurMock = {
-  id: 'blur',
-  groupName: 'blur',
-  params: {
-    stdDeviation: {
-      value: '3 10',
-    },
-    x: {
-      value: '0%',
-    },
-    y: {
-      value: '0%',
-    },
-    width: {
-      value: '100%',
-    },
-    height: {
-      value: '100%',
-    },
-    in: {
-      value: 'SourceGraphic',
-    },
-    edgeMode: {
-      value: 'none',
-    },
-    result: {
-      value: 'blur',
-    },
-  },
-};
-
 describe('reducers', () => {
+  // ADD_PRIMITIVE
+  // ------------------------------
+
   it('addPrimitive: should add primitive to state', () => {
     const stateBefore = {
       sections: {

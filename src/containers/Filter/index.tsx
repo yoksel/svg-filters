@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import Filter from '../../components/Filter';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';
 import { isPrimitivesSection } from '../../store/types';
 

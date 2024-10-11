@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import ControlsList from '../../components/ControlsList';
 import { addPrimitive } from '../../store/primitivesSlice';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';
 import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 

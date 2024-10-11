@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import withRouter from '../../helpers/withRouter';
 
 import ControlsList from '../../components/ControlsList';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 const PresetsList = () => {
   const presetControls = useSelector((state: RootState) => state.data.presets);

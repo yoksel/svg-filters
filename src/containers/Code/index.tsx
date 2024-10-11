@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import Code from '../../components/Code';
 import useSection from '../../hooks/useSection';
 import { isPrimitivesSection } from '../../store/types';

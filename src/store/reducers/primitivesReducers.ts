@@ -7,7 +7,6 @@ import {
   PrimitivesSections,
   PrimitivesState,
   Section,
-  SectionState,
   ToggleDocsArgs,
 } from '../types';
 import {
@@ -15,11 +14,11 @@ import {
   getIn,
   purgeIdKeeperSection,
   resetIdKeeperSection,
-  swap,
   updateUniqueProps,
 } from './helpers';
 
 import deepClone from '../../helpers/deepClone';
+import swapPrimitives from './helpers/swapPrimitives';
 
 interface Action {
   type: string;
@@ -324,7 +323,7 @@ const reducers = {
     }>,
   ) => {
     const { section } = action.payload;
-    const newIn = getIn(state, section);
+    const newIn = getIn(state.sections[section]);
     // @ts-expect-error
     let updatedList = state.sections[section].map((item: PrimitiveItem, index: number) => {
       if (item.disabled) {
@@ -396,14 +395,14 @@ const reducers = {
         if (item.id === parentId) {
           const children = deepClone(item).children;
           if (children) {
-            item.children = swap(children, indexes);
+            item.children = swapPrimitives(children, indexes);
           }
         }
 
         return item;
       });
     } else {
-      swapPrimitivesList = swap(swapPrimitivesList, indexes);
+      swapPrimitivesList = swapPrimitives(swapPrimitivesList, indexes);
     }
 
     swapPrimitivesList = swapPrimitivesList.filter((item) => item);

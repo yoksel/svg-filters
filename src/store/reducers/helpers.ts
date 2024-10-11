@@ -1,51 +1,13 @@
-import {
-  PrimitiveItem,
-  PrimitivesSections,
-  PrimitivesState,
-  Section,
-  SectionState,
-} from '../types';
+import { PrimitiveItem, Section, SectionState } from '../types';
 import deepClone from '../../helpers/deepClone';
-
-const reduceStateToCounterObj = (state: PrimitiveItem[]) => {
-  return state.reduce<{ [key: string]: number }>((prev, item) => {
-    const groupName = item.groupName;
-    const orderNum = Number(item.id.replace(groupName, ''));
-
-    if (prev[groupName] !== undefined) {
-      if (prev[groupName] > orderNum) {
-        prev[groupName] = ++prev[groupName];
-      } else {
-        prev[groupName] = orderNum;
-      }
-    } else {
-      prev[groupName] = orderNum;
-    }
-
-    if (item.children) {
-      const childrenReduce = reduceStateToCounterObj(item.children);
-      prev = Object.assign(prev, childrenReduce);
-    }
-
-    return prev;
-  }, {});
-};
+import countItemsInGroups from './helpers/countItemsInGroups';
+import getAllEnabledResultsIds from './helpers/getAllEnabledResultsIds';
+import getLastResultIdFromPrimitivesList from './helpers/getLastResultIdFromPrimitivesList';
 
 // to fix: clarify name
 interface Counter {
   [key: string]: number;
 }
-
-// Fill counter with state for section
-const fillCounter = (state: SectionState): Counter => {
-  let counterObj = {};
-
-  if (state) {
-    counterObj = reduceStateToCounterObj(state);
-  }
-
-  return counterObj;
-};
 
 export const idKeeper = () => {
   const groupIdCounter: { [key: string]: Counter } = {};
@@ -53,7 +15,7 @@ export const idKeeper = () => {
   const addSection = (sectionState: SectionState, section: string) => {
     // If state was filled from localStorage,
     // need fill groupIdCounter with existed IDs
-    groupIdCounter[section] = fillCounter(sectionState);
+    groupIdCounter[section] = countItemsInGroups(sectionState);
   };
 
   const purgeSection = (section: Section) => {
@@ -99,31 +61,7 @@ export const purgeIdKeeperSection = (section: Section) => {
   keeperTools.purgeSection(section);
 };
 
-export const getAllEnabledResultsObj = (state?: SectionState) => {
-  const results = state?.reduce<{ [key: string]: string }>((prev, item) => {
-    if (item.disabled) {
-      return prev;
-    }
-
-    prev[item.id] = item.id;
-    return prev;
-  }, {});
-
-  return results;
-};
-
-export const getLastResult = (state: SectionState) => {
-  let result = 'SourceGraphic';
-  const newState = state?.filter((item) => !item.disabled);
-  const last = newState?.[newState.length - 1];
-
-  if (last) {
-    result = last.id;
-  }
-  return result;
-};
-
-interface updateUniquePropsArgs {
+interface UpdateUniquePropsArgs {
   sectionState: SectionState;
   primitive: PrimitiveItem;
   actionType: string;
@@ -135,7 +73,7 @@ export const updateUniqueProps = ({
   primitive,
   actionType,
   section,
-}: updateUniquePropsArgs) => {
+}: UpdateUniquePropsArgs) => {
   if (!keeperTools.checkSection(section)) {
     keeperTools.addSection(sectionState, section);
   }
@@ -145,7 +83,7 @@ export const updateUniqueProps = ({
   }
 
   const newPrimitive = deepClone(primitive);
-  let newIn = getLastResult(sectionState);
+  let newIn = getLastResultIdFromPrimitivesList(sectionState);
   let newIdAdd = newPrimitive.id;
 
   if (section !== 'docs') {
@@ -190,14 +128,6 @@ export const updateUniqueProps = ({
   return newPrimitive;
 };
 
-export const swap = (items: PrimitiveItem[], positions: { from: number; to: number }) => {
-  const { from, to } = positions;
-  const itemFrom = items.splice(from, 1)[0];
-  items.splice(to, 0, itemFrom);
-
-  return items;
-};
-
 export const getFilteredWithIndex = (list: PrimitiveItem[], id: string) => {
   let pos = 0;
   const filteredList = list?.filter((item, index) => {
@@ -216,9 +146,8 @@ export const getFilteredWithIndex = (list: PrimitiveItem[], id: string) => {
   };
 };
 
-export const getIn = (state: PrimitivesState, section: keyof PrimitivesSections) => {
-  const list = state.sections[section];
-  const allEnabledResultsObj = getAllEnabledResultsObj(list);
+export const getIn = (list?: PrimitiveItem[]) => {
+  const allEnabledResultsObj = getAllEnabledResultsIds(list);
 
   const defaultSources = {
     SourceGraphic: 'SourceGraphic',
@@ -238,7 +167,7 @@ export const getIn = (state: PrimitivesState, section: keyof PrimitivesSections)
     const previousItems = list?.slice(0, index);
     const initialValue = clonedItem.params.in.value;
     const prevValue = clonedItem.params.in.prevValue;
-    const lastResult = getLastResult(previousItems);
+    const lastResult = getLastResultIdFromPrimitivesList(previousItems);
     let newValue: string | number = lastResult;
 
     // SAVE
@@ -253,7 +182,7 @@ export const getIn = (state: PrimitivesState, section: keyof PrimitivesSections)
       if (defaultSources[initialValue]) {
         newValue = initialValue;
       } else {
-        if (!allEnabledResultsObj?.[initialValue]) {
+        if (!allEnabledResultsObj.has(initialValue)) {
           // in-elem not available
           clonedItem.params.in.prevValue = initialValue;
         } else {
@@ -264,7 +193,7 @@ export const getIn = (state: PrimitivesState, section: keyof PrimitivesSections)
 
     // SET BACK
     // Use prev value if it is available
-    if (prevValue && allEnabledResultsObj?.[prevValue]) {
+    if (prevValue && typeof initialValue === 'string' && allEnabledResultsObj.has(initialValue)) {
       newValue = prevValue;
       delete clonedItem.params.in.prevValue;
     }

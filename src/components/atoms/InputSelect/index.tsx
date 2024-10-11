@@ -3,8 +3,8 @@ import React from 'react';
 import './InputSelect.scss';
 
 interface InputSelectProps {
-  secondValue: string;
   firstValue?: string;
+  secondValue?: string;
   value: string;
   valuesList: string[];
   onChange: (value: string) => void;

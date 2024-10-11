@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Preview from '../../components/atoms/Preview';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';
 import { isPrimitivesSection } from '../../store/types';
 import { toggleEditPanel } from '../../store/previewSlice';

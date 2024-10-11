@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Constructor from '../../components/Constructor';
 import useSection from '../../hooks/useSection';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import { moveToPlayground, purgePrimitives } from '../../store/primitivesSlice';
 
 const ConstructorContainer = () => {

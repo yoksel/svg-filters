@@ -19,9 +19,10 @@ interface PrimitiveInputSelectContainerProps {
   id: string;
   param: string;
   value: string;
-  secondValue: string;
+  firstValue?: string;
+  secondValue?: string;
   valuesList: string[];
-  parentId: string;
+  parentId?: string;
   tiedValues: { [key: string]: string };
   tiedTypes: { [key: string]: string };
   dependencies: Dependency[];

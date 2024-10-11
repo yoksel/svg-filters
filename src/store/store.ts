@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import previewSlice from './store/previewSlice';
-import dataSlice from './store/dataSlice';
-import primitivesSlice from './store/primitivesSlice';
-import dragDropSlice from './store/dragDropSlice';
+import previewSlice from './previewSlice';
+import dataSlice from './dataSlice';
+import primitivesSlice from './primitivesSlice';
+import dragDropSlice from './dragDropSlice';
 
 export const store = configureStore({
   reducer: {

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import { startDrag, addDragItemToList } from '../../store/dragDropSlice';
 
 // import {startDrag} from '../../store/actions';

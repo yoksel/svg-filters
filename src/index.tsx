@@ -8,7 +8,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 import App, { loader as AppLoader } from './routes/App';
 import Read from './routes/Read';
 // import configureStore from './configureStore';
-import { store } from './store';
+import { store } from './store/store';
 
 import './index.scss';
 
