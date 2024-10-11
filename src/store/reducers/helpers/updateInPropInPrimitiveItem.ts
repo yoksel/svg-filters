@@ -24,15 +24,9 @@ const updateInPropInPrimitiveItem = ({
   isChild?: boolean;
 }) => {
   const allEnabledResults = getAllEnabledResultsIds(list);
-  console.log(1);
   const clonedItem = deepClone(item);
-  console.log(2);
-  console.log({ list, index });
   const previousItems = list.slice(0, index);
-  console.log(3);
-  console.log(clonedItem.params);
   const initialValue = clonedItem.params.in?.value;
-  console.log(4);
   const prevValue = clonedItem.params.in?.prevValue;
   const lastResult = getLastResultIdFromPrimitivesList(previousItems);
   let newValue: string = lastResult;
@@ -44,25 +38,22 @@ const updateInPropInPrimitiveItem = ({
       value: '',
     };
   }
-  console.log({ initialValue, prevValue, lastResult });
 
   // SAVE
   // Value not inherited, need to keep
   if (index === 0) {
     // First primitive in list
     if (!isChild) {
-      console.log('* First item, no children');
       newValue = initialValue;
     }
   } else {
     // SourceGraphic || SourceAlpha
     if (isValueDefaultSource(initialValue)) {
-      console.log('* InitialValue is default source');
       newValue = initialValue;
     } else {
       if (!allEnabledResults.has(initialValue)) {
-        // IN is not found in available results
-        console.log('* IN is not found in available results');
+        // IN is not found in available results, save it to prevValue
+        // to be able to use it again if primitive with this ID will be available
         clonedItem.params.in.prevValue = initialValue;
       } else {
         newValue = initialValue;
@@ -71,9 +62,10 @@ const updateInPropInPrimitiveItem = ({
   }
 
   // SET BACK
-  // Use prev value if it is available
-  if (typeof prevValue === 'string' && allEnabledResults.has(initialValue)) {
+  // Use prev value if it is available again
+  if (typeof prevValue === 'string' && allEnabledResults.has(prevValue)) {
     newValue = prevValue;
+    // remove after using
     delete clonedItem.params.in.prevValue;
   }
 

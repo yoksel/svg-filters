@@ -380,7 +380,7 @@ describe('reducers', () => {
   // UPDATE_INS
   // ------------------------------
 
-  it('0️⃣  changeInProps: should update attributes `in`', () => {
+  it('0️⃣  changeInProps: should update attributes `in` if first one is disabled', () => {
     const stateBefore = {
       sections: {
         playground: [

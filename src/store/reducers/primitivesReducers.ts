@@ -11,7 +11,6 @@ import {
 } from '../types';
 import {
   getFilteredWithIndex,
-  getIn,
   purgeIdKeeperSection,
   resetIdKeeperSection,
   updateUniqueProps,
@@ -19,6 +18,7 @@ import {
 
 import deepClone from '../../helpers/deepClone';
 import swapPrimitives from './helpers/swapPrimitives';
+import updateInPropInPrimitiveItem from './helpers/updateInPropInPrimitiveItem';
 
 interface Action {
   type: string;
@@ -323,15 +323,15 @@ const reducers = {
     }>,
   ) => {
     const { section } = action.payload;
-    const newIn = getIn(state.sections[section]);
+    const list = state.sections[section];
     // @ts-expect-error
     let updatedList = state.sections[section].map((item: PrimitiveItem, index: number) => {
-      if (item.disabled) {
+      if (item.disabled || !list?.length) {
         return item;
       }
 
       if (item.params.in) {
-        item = newIn.updateItem({ item, index });
+        item = updateInPropInPrimitiveItem({ item, index, list });
       }
       if (item.children) {
         const children = deepClone(item?.children);
@@ -340,10 +340,11 @@ const reducers = {
             return child;
           }
 
-          return newIn.updateItem({
+          return updateInPropInPrimitiveItem({
             item: child,
             index: childIndex,
             isChild: true,
+            list,
           });
         });
       }

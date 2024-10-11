@@ -1,8 +1,8 @@
 import { PrimitiveItem, Section, SectionState } from '../types';
 import deepClone from '../../helpers/deepClone';
 import countItemsInGroups from './helpers/countItemsInGroups';
-import getAllEnabledResultsIds from './helpers/getAllEnabledResultsIds';
 import getLastResultIdFromPrimitivesList from './helpers/getLastResultIdFromPrimitivesList';
+import updateInPropInPrimitiveItem from './helpers/updateInPropInPrimitiveItem';
 
 // to fix: clarify name
 interface Counter {
@@ -143,66 +143,5 @@ export const getFilteredWithIndex = (list: PrimitiveItem[], id: string) => {
   return {
     pos,
     filtered,
-  };
-};
-
-export const getIn = (list?: PrimitiveItem[]) => {
-  const allEnabledResultsObj = getAllEnabledResultsIds(list);
-
-  const defaultSources = {
-    SourceGraphic: 'SourceGraphic',
-    SourceAlpha: 'SourceAlpha',
-  };
-
-  const updateItem = ({
-    item,
-    index,
-    isChild,
-  }: {
-    item: PrimitiveItem;
-    index: number;
-    isChild?: boolean;
-  }) => {
-    const clonedItem = deepClone(item);
-    const previousItems = list?.slice(0, index);
-    const initialValue = clonedItem.params.in.value;
-    const prevValue = clonedItem.params.in.prevValue;
-    const lastResult = getLastResultIdFromPrimitivesList(previousItems);
-    let newValue: string | number = lastResult;
-
-    // SAVE
-    // Value not inherited, need to keep
-    if (index === 0) {
-      // First primitive in list
-      if (!isChild) {
-        newValue = initialValue;
-      }
-    } else if (initialValue === 'SourceGraphic' || initialValue === 'SourceAlpha') {
-      // SourceGraphic || SourceAlpha
-      if (defaultSources[initialValue]) {
-        newValue = initialValue;
-      } else {
-        if (!allEnabledResultsObj.has(initialValue)) {
-          // in-elem not available
-          clonedItem.params.in.prevValue = initialValue;
-        } else {
-          newValue = initialValue;
-        }
-      }
-    }
-
-    // SET BACK
-    // Use prev value if it is available
-    if (prevValue && typeof initialValue === 'string' && allEnabledResultsObj.has(initialValue)) {
-      newValue = prevValue;
-      delete clonedItem.params.in.prevValue;
-    }
-
-    clonedItem.params.in.value = newValue;
-    return clonedItem;
-  };
-
-  return {
-    updateItem,
   };
 };

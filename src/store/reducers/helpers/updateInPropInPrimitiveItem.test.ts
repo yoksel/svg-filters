@@ -32,10 +32,12 @@ describe('updateInPropInPrimitiveItem()', () => {
     expect(updateInPropInPrimitiveItem(stateBefore)).toEqual(blendMockWithCustomIn);
   });
 
-  it('add proper IN prop to given item', () => {
-    const list = [blurMock, turbulenceMock, mergeMock];
-    const stateBefore = { list, item: turbulenceMock, index: 1, isChild: false };
-    const stateAfter = {
+  it('should update IN if first one is disabled', () => {
+    const blurDisabledMock: PrimitiveItem = {
+      ...blurMock,
+      disabled: true,
+    };
+    const turbulenceMockWithIn: PrimitiveItem = {
       ...turbulenceMock,
       params: {
         ...turbulenceMock.params,
@@ -45,36 +47,124 @@ describe('updateInPropInPrimitiveItem()', () => {
       },
     };
 
-    expect(updateInPropInPrimitiveItem(stateBefore)).toEqual(stateAfter);
+    const list = [blurDisabledMock, turbulenceMockWithIn, mergeMock];
+    const stateBefore = { list, item: turbulenceMockWithIn, index: 1, isChild: false };
+
+    const expectedResult = {
+      ...turbulenceMock,
+      params: {
+        ...turbulenceMock.params,
+        in: {
+          prevValue: 'blur',
+          value: 'SourceGraphic',
+        },
+      },
+    };
+
+    expect(updateInPropInPrimitiveItem(stateBefore)).toEqual(expectedResult);
   });
 
-  it('update IN prop in given item', () => {
-    const blendMockWithCustomResult: PrimitiveItem = {
-      ...blendMock,
-      params: { ...blendMock.params, result: { value: 'new-id' } },
-    };
+  it('should update IN if first one is enabled again', () => {
     const turbulenceMockWithIn: PrimitiveItem = {
       ...turbulenceMock,
       params: {
         ...turbulenceMock.params,
         in: {
           value: 'SourceGraphic',
-        },
-      },
-    };
-    const list = [blendMockWithCustomResult, turbulenceMockWithIn, mergeMock];
-    const stateBefore = { list, item: turbulenceMockWithIn, index: 1, isChild: false };
-    const stateAfter = {
-      ...turbulenceMockWithIn,
-      params: {
-        ...turbulenceMockWithIn.params,
-        in: {
-          prevValue: 'SourceGraphic',
-          value: 'new-id',
+          prevValue: 'blur',
         },
       },
     };
 
-    expect(updateInPropInPrimitiveItem(stateBefore)).toEqual(stateAfter);
+    const mergeMockWithIn: PrimitiveItem = {
+      ...mergeMock,
+      params: {
+        ...mergeMock.params,
+        in: {
+          value: 'turbulence',
+          prevValue: 'blur',
+        },
+      },
+    };
+
+    const list = [blurMock, turbulenceMockWithIn, mergeMockWithIn];
+    const stateBefore = { list, item: turbulenceMockWithIn, index: 1, isChild: false };
+
+    const expectedResult = {
+      ...turbulenceMock,
+      params: {
+        ...turbulenceMock.params,
+        in: {
+          value: 'blur',
+        },
+      },
+    };
+
+    expect(updateInPropInPrimitiveItem(stateBefore)).toEqual(expectedResult);
+  });
+
+  it('should keep IN values if they are custom', () => {
+    const blurDisabledMock: PrimitiveItem = {
+      ...blurMock,
+      params: {
+        ...blurMock.params,
+        in: {
+          value: 'SourceGraphic',
+        },
+      },
+    };
+    const turbulenceMockWithIn: PrimitiveItem = {
+      ...turbulenceMock,
+      params: {
+        ...turbulenceMock.params,
+        in: {
+          value: 'blur',
+        },
+      },
+    };
+    const mergeMockWithIn: PrimitiveItem = {
+      ...mergeMock,
+      params: {
+        ...mergeMock.params,
+        in: {
+          value: 'blur',
+        },
+      },
+    };
+
+    const list = [blurDisabledMock, turbulenceMockWithIn, mergeMockWithIn];
+    const stateBeforeWithTurbulence = {
+      list,
+      item: turbulenceMockWithIn,
+      index: 1,
+      isChild: false,
+    };
+
+    const expectedResultTurbulence = {
+      ...turbulenceMock,
+      params: {
+        ...turbulenceMock.params,
+        in: {
+          value: 'blur',
+        },
+      },
+    };
+
+    expect(updateInPropInPrimitiveItem(stateBeforeWithTurbulence)).toEqual(
+      expectedResultTurbulence,
+    );
+
+    const stateBeforeWithMerge = { list, item: mergeMockWithIn, index: 2, isChild: false };
+    const expectedResultMerge = {
+      ...mergeMock,
+      params: {
+        ...mergeMock.params,
+        in: {
+          value: 'blur',
+        },
+      },
+    };
+
+    expect(updateInPropInPrimitiveItem(stateBeforeWithMerge)).toEqual(expectedResultMerge);
   });
 });
