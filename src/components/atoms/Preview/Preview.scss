@@ -25,16 +25,16 @@
   box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
   font-size: 14px;
   font-style: italic;
+  text-align: center;
+  min-width: 50%;
 
   &--add-svg-content {
-    min-width: 50%;
-    text-align: center;
     white-space: nowrap;
     cursor: pointer;
   }
 
   &--add-primitives {
-    min-width: 80%;
+    white-space: nowrap;
   }
 }
 

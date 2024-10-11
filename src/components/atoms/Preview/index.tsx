@@ -1,12 +1,14 @@
 import Filter from '../../../containers/Filter';
 import PreviewTypeSwitcher from '../../../containers/PreviewTypeSwitcher';
 import SvgCodeContainer from '../../../containers/SvgCode';
+import { Section } from '../../../store/types';
 
 import './Preview.scss';
 
 import './gray-cells.png';
 
 interface PreviewProps {
+  section: Section;
   filterId?: string;
   previewType: string;
   customSvgCode: string;
@@ -14,12 +16,14 @@ interface PreviewProps {
 }
 
 const Preview = ({
+  section,
   filterId,
   previewType = 'image-and-text',
   customSvgCode,
   toggleEditPanel,
 }: PreviewProps) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
+  const sectionControlName = section === 'presets' ? 'preset' : 'primitive';
 
   const Tip = ({ noContent, noFilter }: { noContent?: boolean; noFilter?: boolean }) => {
     if (noContent) {
@@ -36,7 +40,7 @@ const Preview = ({
     if (noFilter) {
       return (
         <div className="Preview__tip Preview__tip--add-primitives">
-          If the filter is empty, content may disappear. Add a primitive or choose a preset.
+          Choose a {sectionControlName} from the left column
         </div>
       );
     }

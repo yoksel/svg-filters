@@ -9,17 +9,18 @@ const FilterContainer = () => {
   const { section } = useSection();
   const filterProps = useSelector((state: RootState) => state.primitives.filter);
   const primitives = useSelector((state: RootState) => {
-    if (!isPrimitivesSection(section)) return [];
+    if (!isPrimitivesSection(section)) return undefined;
     return state.primitives.sections[section];
   });
+  const enabledPrimitives = primitives?.filter((item) => !item.disabled);
 
-  if (!primitives?.length) return null;
+  if (!enabledPrimitives?.length) return null;
 
   if (filterProps?.style) {
     delete filterProps.style;
   }
 
-  return <Filter filterProps={filterProps} primitives={primitives} />;
+  return <Filter filterProps={filterProps} primitives={enabledPrimitives} />;
 };
 
 export default FilterContainer;

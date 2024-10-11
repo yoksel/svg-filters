@@ -17,7 +17,8 @@ const PreviewContainer = () => {
 
   return (
     <Preview
-      filterId={primitives ? 'filter' : ''}
+      section={section}
+      filterId={primitives?.length ? 'filter' : ''}
       previewType={previewType}
       customSvgCode={customSvgCode}
       toggleEditPanel={(isOpen) => dispatch(toggleEditPanel(isOpen))}
