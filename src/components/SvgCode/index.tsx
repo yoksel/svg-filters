@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import clsx from 'clsx';
 import Icon from '../atoms/Icon';
 import InputTextarea from '../atoms/InputTextarea';
@@ -51,19 +50,25 @@ const Tip = ({ value }: { value: string }) => {
 
 interface SvgCodeProps {
   value?: string;
+  isEditPanelOpen: boolean;
   addExample: (value: string) => void;
   onChange: (value: string) => void;
+  toggleEditPanel: (value: boolean) => void;
 }
 
-const SvgCode = ({ addExample, value, onChange }: SvgCodeProps) => {
-  const [panelIsOpen, setPanelIsOpen] = useState(false);
-
+const SvgCode = ({
+  addExample,
+  value,
+  isEditPanelOpen,
+  onChange,
+  toggleEditPanel,
+}: SvgCodeProps) => {
   const togglePanel = () => {
-    setPanelIsOpen(!panelIsOpen);
+    toggleEditPanel(!isEditPanelOpen);
   };
 
   return (
-    <div className={clsx('SvgCode', panelIsOpen && 'SvgCode--opened')}>
+    <div className={clsx('SvgCode', isEditPanelOpen && 'SvgCode--opened')}>
       <div className="SvgCode__container">
         <div className="SvgCode__content">
           <button className="SvgCode__close-button" onClick={togglePanel} title="close">
@@ -89,7 +94,7 @@ const SvgCode = ({ addExample, value, onChange }: SvgCodeProps) => {
         </div>
       </div>
 
-      <Toggler panelIsOpen={panelIsOpen} onClick={togglePanel} hasValue={Boolean(value)} />
+      <Toggler panelIsOpen={isEditPanelOpen} onClick={togglePanel} hasValue={Boolean(value)} />
     </div>
   );
 };

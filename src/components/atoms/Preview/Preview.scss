@@ -26,10 +26,11 @@
   font-size: 14px;
   font-style: italic;
 
-  &--add-content {
+  &--add-svg-content {
     min-width: 50%;
     text-align: center;
     white-space: nowrap;
+    cursor: pointer;
   }
 
   &--add-primitives {

@@ -163,14 +163,14 @@ class Docs extends Component {
 
     return (
       <section className={DocsClass}>
-        <h2 className="visuallyhidden">Docs</h2>
+        <h2 className="visually-hidden">Docs</h2>
         <div className="Docs__content">
           <h3 className="Docs__title">{name}</h3>
           <div className="Docs__links">
             {specLink}
             {docLink}
           </div>
-          <div className="Docs__desc" dangerouslySetInnerHTML={{__html: desc}}></div>
+          <div className="Docs__desc" dangerouslySetInnerHTML={{ __html: desc }}></div>
 
           <h4 className="Docs__list-title">Attributes</h4>
           {propsList}

@@ -49,7 +49,7 @@ const Constructor = ({
 }: ConstructorProps) => {
   return (
     <section className="Constructor">
-      <h2 className="visuallyhidden">Constructor</h2>
+      <h2 className="visually-hidden">Constructor</h2>
       <div className="Constructor__tag Constructor__tag--open">
         &lt;filter id="#filter"&gt;
         {Boolean(primitives?.length) && section === 'playground' && (

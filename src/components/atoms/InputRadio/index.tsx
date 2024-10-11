@@ -24,7 +24,7 @@ const InputRadio = ({ value, checked, hidden, onChange }: InputRadioProps) => {
       type={'radio'}
       checked={checked}
       onChange={onChangeHandler}
-      className={clsx('InputRadio', hidden && 'visuallyhidden')}
+      className={clsx('InputRadio', hidden && 'visually-hidden')}
     />
   );
 };

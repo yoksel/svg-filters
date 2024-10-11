@@ -11,33 +11,38 @@ interface PreviewProps {
   filterId?: string;
   previewType: string;
   customSvgCode: string;
+  toggleEditPanel: (value: boolean) => void;
 }
 
-const Preview = ({ filterId, previewType = 'image-and-text', customSvgCode }: PreviewProps) => {
+const Preview = ({
+  filterId,
+  previewType = 'image-and-text',
+  customSvgCode,
+  toggleEditPanel,
+}: PreviewProps) => {
   const filterUrl = filterId ? `url(#${filterId})` : '';
 
-  const getTip = (hasContent?: boolean) => {
-    let tipText = '';
-
-    if (!hasContent) {
-      tipText = 'Add some SVG';
-    } else if (!filterId && previewType === 'edit') {
-      tipText =
-        'If the filter is empty, content may disappear. Add a primitive or choose a preset.';
+  const Tip = ({ noContent, noFilter }: { noContent?: boolean; noFilter?: boolean }) => {
+    if (noContent) {
+      return (
+        <button
+          className="Preview__tip Preview__tip--add-svg-content"
+          onClick={() => toggleEditPanel(true)}
+        >
+          Add some SVG
+        </button>
+      );
     }
 
-    if (tipText) {
+    if (noFilter) {
       return (
-        <div
-          className={clsx(
-            'Preview__tip',
-            hasContent ? 'Preview__tip--add-primitives' : 'Preview__tip--add-content',
-          )}
-        >
-          {tipText}
+        <div className="Preview__tip Preview__tip--add-primitives">
+          If the filter is empty, content may disappear. Add a primitive or choose a preset.
         </div>
       );
     }
+
+    return null;
   };
 
   const getSvgContentByPreviewType = (): JSX.Element | undefined => {
@@ -100,14 +105,14 @@ const Preview = ({ filterId, previewType = 'image-and-text', customSvgCode }: Pr
 
   return (
     <section className={`Preview Preview--${previewType}`}>
-      <h2 className="visuallyhidden">Live demo</h2>
+      <h2 className="visually-hidden">Live demo</h2>
       <div className="Preview__image">
         <PreviewTypeSwitcher />
 
         {previewType === 'edit' && <SvgCodeContainer />}
 
         <div className="Preview__svg-wrapper">
-          {getTip(Boolean(content))}
+          <Tip noContent={!Boolean(content)} noFilter={!filterId && previewType === 'edit'} />
 
           <svg
             xmlns="http://www.w3.org/2000/svg"

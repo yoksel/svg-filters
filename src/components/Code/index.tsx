@@ -59,7 +59,7 @@ const Code = ({ filterData, primitives }: CodeProps) => {
 
   return (
     <section className="Code">
-      <h2 className="visuallyhidden">Filter code</h2>
+      <h2 className="visually-hidden">Filter code</h2>
       <ColorInterpolFiltersSwitcher />
       <textarea className="Code__textarea" defaultValue={value} spellCheck="false" />
     </section>
