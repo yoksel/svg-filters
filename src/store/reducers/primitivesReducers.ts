@@ -136,20 +136,12 @@ const reducers = {
   togglePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
     const sectionStateList = state.sections[section];
-    console.log('===togglePrimitive===');
-    console.log({ state });
-    console.log({ section });
-    console.log({ sectionStateList });
-    console.log({ length: sectionStateList?.length });
 
     if (!sectionStateList?.length) return;
-
-    console.log('Checked, Ok');
 
     const togglePrimitiveList = [...sectionStateList]?.map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item && item.id === id) {
-        console.log({ item, id });
         item = deepClone(item);
 
         if (childId !== undefined) {
@@ -386,8 +378,7 @@ const reducers = {
     state: PrimitivesState,
     action: PayloadAction<{
       section: keyof PrimitivesSections;
-      id: string;
-      parentId: string;
+      parentId?: string;
       swapSnapshot?: string;
       indexes: { from: number; to: number };
     }>,

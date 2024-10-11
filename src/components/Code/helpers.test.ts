@@ -86,7 +86,6 @@ describe('getPrimitiveCode()', () => {
 \t\t<feMergeNode in="SourceGraphic"/>
 \t\t<feMergeNode in="SourceGraphic"/>
 \t</feMerge>`;
-    console.log(getPrimitiveCode(mergeMock));
     expect(getPrimitiveCode(mergeMock)).toEqual(expectedResult);
   });
 });
@@ -100,7 +99,6 @@ describe('getAllPrimitivesCode()', () => {
 		<feMergeNode in="SourceGraphic"/>
 	</feMerge>`,
     ];
-    console.log(getAllPrimitivesCode([blurMock, mergeMock]));
     expect(getAllPrimitivesCode([blurMock, mergeMock])).toEqual(expectedResult);
   });
 });

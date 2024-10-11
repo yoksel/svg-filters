@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { DragDropState, NativeEventCoords, Offset } from '../types';
+import { BaseCoords, DragDropState, Offset } from '../types';
 import deepClone from '../../helpers/deepClone';
 
 const reducers = {
@@ -10,26 +10,23 @@ const reducers = {
       index: number;
       parentId?: string;
       listId?: string;
-      elemClientRect: { x: number };
+      elemClientRect: { x: number; width: number; height: number };
       offset: Offset;
     }>,
   ) => {
     // If dragging was started already
-    if (state.id) {
-      return state;
+    if (state.currentId) {
+      return;
     }
 
-    state = {
-      ...state,
-      id: action.payload.id,
-      index: action.payload.index,
-      parentId: action.payload.parentId,
-      listId: action.payload.listId,
-      elemClientRect: action.payload.elemClientRect,
-      offset: action.payload.offset,
-    };
+    state.currentId = action.payload.id;
+    state.index = action.payload.index;
+    state.parentId = action.payload.parentId;
+    state.listId = action.payload.listId;
+    state.elemClientRect = action.payload.elemClientRect;
+    state.offset = action.payload.offset;
   },
-  moveDrag: (state: DragDropState, action: PayloadAction<{ coords: NativeEventCoords }>) => {
+  moveDrag: (state: DragDropState, action: PayloadAction<{ coords: BaseCoords }>) => {
     state.coords = action.payload.coords;
   },
   updateDragIndex: (state: DragDropState, action: PayloadAction<{ index: number }>) => {
@@ -39,7 +36,7 @@ const reducers = {
     state: DragDropState,
     action: PayloadAction<{
       id: string;
-      parentId: string;
+      parentId?: string;
       listId: string;
       index: number;
       top: number;
@@ -60,11 +57,8 @@ const reducers = {
 
     state.siblingsCoords = siblingsCoords;
   },
-  stopDrag: () => {
-    // state.siblingsCoords;
-    // return {
-    //       siblingsCoords: state.siblingsCoords,
-    //     };
+  stopDrag: (state: DragDropState) => {
+    state.currentId = undefined;
   },
 };
 

@@ -141,7 +141,6 @@ export const updateUniqueProps = ({
   }
 
   if (!primitive) {
-    console.log({ primitive });
     throw new Error('No primitive passed to updateUniqueProps');
   }
 

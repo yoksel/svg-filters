@@ -87,8 +87,6 @@ describe('reducers', () => {
           {
             ...blurMock,
             justAdded: true,
-            children: undefined,
-            disabled: false,
             nativeEvent: {
               offsetX: 108,
               offsetY: 12,

@@ -19,8 +19,6 @@ const addLoggingToDispatch = (store: any) => {
     }
 
     console.groupCollapsed(action.type);
-    console.log('Before:', store.getState());
-    console.log('Action:', action);
     const result = rawDispatch(action);
     console.log('After:', store.getState());
     // @ts-expect-error

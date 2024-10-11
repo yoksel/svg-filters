@@ -95,18 +95,33 @@ export interface DragClientRect {
   height?: number | 'auto';
 }
 
+export interface BaseCoords {
+  top: number;
+  left: number;
+}
+
+export interface DragDropCoords {
+  id: string;
+  parentId?: string;
+  left?: number;
+  top?: number;
+  index: number;
+  bottom?: number;
+  listId: string;
+}
+
 export interface DragDropState {
-  id?: string;
+  currentId?: string;
   type?: string;
   index?: number;
   parentId?: string;
   listId?: string;
   elemClientRect?: DragClientRect;
   offset?: Offset;
-  coords?: NativeEventCoords;
+  coords?: BaseCoords;
   siblingsCoords?: {
     [key: string]: {
-      [key: string]: NativeEventCoords | {};
+      [key: string]: DragDropCoords;
     };
   };
 }

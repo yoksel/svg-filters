@@ -3,7 +3,7 @@ import dragDropReducers from './reducers/dragDropReducers';
 import { DragDropState } from './types';
 
 const initialState: DragDropState = {
-  id: undefined,
+  currentId: undefined,
   type: undefined,
   index: undefined,
   parentId: undefined,

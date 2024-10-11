@@ -44,7 +44,6 @@ export const HeaderNav = ({ className }: HeaderNavProps) => {
           );
         }
 
-        // console.lo
         return (
           <NavLink key={id} to={url} className={navItemClass}>
             <span className="Header__nav-text">{name}</span>

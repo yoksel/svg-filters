@@ -1,15 +1,16 @@
-import { useRef } from 'react';
+import clsx from 'clsx';
+import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { RootState } from '../../store';
 import { startDrag, addDragItemToList } from '../../store/dragDropSlice';
 
 // import {startDrag} from '../../store/actions';
 
 import Placeholder from '../../components/atoms/Placeholder';
+import { NativeEventCoords } from '../../store/types';
 
 import './DragDropItem.scss';
-import { NativeEventCoords } from '../../store/types';
-import clsx from 'clsx';
 
 interface Position {
   left?: number;
@@ -19,25 +20,26 @@ interface Position {
 interface DragDropItemProps extends React.PropsWithChildren {
   id: string;
   index: number;
-  parentId: string;
+  parentId?: string;
   listId: string;
   justAdded?: boolean;
   nativeEvent?: NativeEventCoords;
 }
 
 const DragDropItem = (props: DragDropItemProps) => {
+  const { id, index, parentId, listId, justAdded, nativeEvent } = props;
   // from state
   const dragDropState = useSelector((state: RootState) => state.dragDrop);
+  const elemClientRect = useSelector((state: RootState) => state.dragDrop.elemClientRect);
   // from state
   const lastSwapSnapshot = useSelector((state: RootState) => state.primitives.swapSnapshot);
   const currentElement = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  let coords = {};
-  let leftSideCoord = 0;
+  let coords = useRef<{ left?: number }>({});
+  let leftSideCoord = useRef<number>(0);
 
   const isDragging = (): boolean => {
-    const { id } = props;
-    return dragDropState && id === dragDropState.id;
+    return id === dragDropState.currentId;
   };
 
   const getStatus = (position: Position) => {
@@ -46,7 +48,7 @@ const DragDropItem = (props: DragDropItemProps) => {
     if (isDragging()) {
       status = 'readyToDrop';
 
-      if (position.left && position.left < leftSideCoord - 100) {
+      if (position.left && position.left < leftSideCoord.current - 100) {
         status = 'notOVerlapTarget';
       }
     }
@@ -60,7 +62,7 @@ const DragDropItem = (props: DragDropItemProps) => {
     if (isDragging()) {
       let coords = dragDropState.coords;
       let width = dragDropState.elemClientRect?.width;
-      if (coords?.left && coords.left < leftSideCoord - 100) {
+      if (coords?.left && coords.left < leftSideCoord.current - 100) {
         width = 'auto';
       }
 
@@ -73,43 +75,43 @@ const DragDropItem = (props: DragDropItemProps) => {
     return position;
   };
 
-  const onMouseDown = (event: {
-    target: HTMLDivElement | null;
-    nativeEvent: NativeEventCoords;
-  }) => {
-    const { nativeEvent } = event;
-    const target = event.target as HTMLElement;
-    const classList = target.classList;
+  const onMouseDown = useCallback(
+    (event: { target: HTMLDivElement | null; nativeEvent: NativeEventCoords }) => {
+      const { nativeEvent } = event;
+      const target = event.target as HTMLElement;
+      const classList = target.classList;
 
-    if (classList.contains('DragDropItem')) {
-      const elemClientRect = target.getBoundingClientRect();
-      const middleY = elemClientRect.y + elemClientRect.height / 2;
+      if (classList.contains('DragDropItem')) {
+        const { x, y, width, height } = target.getBoundingClientRect();
+        const middleY = y + height / 2;
 
-      dispatch(
-        startDrag({
-          id: props.id,
-          index: props.index,
-          parentId: props.parentId,
-          listId: props.listId,
-          elemClientRect: elemClientRect,
-          offset: {
-            x: nativeEvent.offsetX,
-            y: nativeEvent.offsetY,
-            middleY: middleY,
-            halfHeight: elemClientRect.height / 2,
-          },
-        }),
-      );
-    }
-  };
+        dispatch(
+          startDrag({
+            id,
+            index,
+            parentId,
+            listId,
+            elemClientRect: { x, width, height },
+            offset: {
+              x: nativeEvent.offsetX,
+              y: nativeEvent.offsetY,
+              middleY: middleY,
+              halfHeight: height / 2,
+            },
+          }),
+        );
+      }
+    },
+    [dispatch, id, index, listId, parentId],
+  );
 
-  const saveItemToList = () => {
+  const saveItemToList = useCallback(() => {
     if (!currentElement.current) return;
 
     const top = currentElement.current.offsetTop;
     const bottom = top + currentElement.current.offsetHeight;
-    const { id, index, parentId, listId } = props;
-    leftSideCoord = currentElement.current?.offsetLeft;
+
+    leftSideCoord.current = currentElement.current?.offsetLeft;
 
     const params = {
       id,
@@ -121,16 +123,14 @@ const DragDropItem = (props: DragDropItemProps) => {
     };
 
     dispatch(addDragItemToList(params));
-  };
+  }, [dispatch, id, index, listId, parentId]);
 
-  const moveJustAdded = () => {
-    const { justAdded, nativeEvent } = props;
-
+  const moveJustAdded = useCallback(() => {
     // If element was just added with dragDrop
     if (justAdded && nativeEvent) {
       const left = nativeEvent.offsetX;
 
-      coords = {
+      coords.current = {
         left: left,
       };
 
@@ -141,10 +141,12 @@ const DragDropItem = (props: DragDropItemProps) => {
         nativeEvent,
       });
     }
-  };
+  }, [justAdded, nativeEvent, onMouseDown]);
 
-  // saveItemToList();
-  // moveJustAdded();
+  useEffect(() => {
+    saveItemToList();
+    moveJustAdded();
+  }, [saveItemToList, moveJustAdded, lastSwapSnapshot]);
 
   const position = getPosition();
   const status = getStatus(position);
@@ -168,7 +170,7 @@ const DragDropItem = (props: DragDropItemProps) => {
         {props.children}
       </div>
 
-      <Placeholder isDragging={isDragging()} elemClientRect={dragDropState.elemClientRect} />
+      <Placeholder isDragging={isDragging()} elemClientRect={elemClientRect} />
     </div>
   );
 };
