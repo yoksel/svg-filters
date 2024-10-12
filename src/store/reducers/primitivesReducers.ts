@@ -9,12 +9,13 @@ import {
   Section,
   ToggleDocsArgs,
 } from '../types';
-import { purgeIdKeeperSection, resetIdKeeperSection, updateUniqueProps } from './helpers';
+import { updateUniqueProps } from './helpers';
 
 import deepClone from '../../helpers/deepClone';
 import swapPrimitives from './helpers/swapPrimitives';
 import updateInPropInPrimitiveItem from './helpers/updateInPropInPrimitiveItem';
 import getFilteredWithPosition from './helpers/getFilteredWithPosition';
+import { purgeIdKeeperSection, resetIdKeeperSection } from './helpers/idKeeper';
 
 interface Action {
   type: string;
