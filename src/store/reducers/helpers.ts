@@ -2,7 +2,6 @@ import { PrimitiveItem, Section, SectionState } from '../types';
 import deepClone from '../../helpers/deepClone';
 import countItemsInGroups from './helpers/countItemsInGroups';
 import getLastResultIdFromPrimitivesList from './helpers/getLastResultIdFromPrimitivesList';
-import updateInPropInPrimitiveItem from './helpers/updateInPropInPrimitiveItem';
 
 // to fix: clarify name
 interface Counter {
@@ -128,20 +127,3 @@ export const updateUniqueProps = ({
   return newPrimitive;
 };
 
-export const getFilteredWithIndex = (list: PrimitiveItem[], id: string) => {
-  let pos = 0;
-  const filteredList = list?.filter((item, index) => {
-    if (item.id === id) {
-      pos = index;
-      return true;
-    }
-    return false;
-  });
-
-  const filtered = filteredList?.[0];
-
-  return {
-    pos,
-    filtered,
-  };
-};

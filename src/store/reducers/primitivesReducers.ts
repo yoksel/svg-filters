@@ -9,16 +9,12 @@ import {
   Section,
   ToggleDocsArgs,
 } from '../types';
-import {
-  getFilteredWithIndex,
-  purgeIdKeeperSection,
-  resetIdKeeperSection,
-  updateUniqueProps,
-} from './helpers';
+import { purgeIdKeeperSection, resetIdKeeperSection, updateUniqueProps } from './helpers';
 
 import deepClone from '../../helpers/deepClone';
 import swapPrimitives from './helpers/swapPrimitives';
 import updateInPropInPrimitiveItem from './helpers/updateInPropInPrimitiveItem';
+import getFilteredWithPosition from './helpers/getFilteredWithPosition';
 
 interface Action {
   type: string;
@@ -34,18 +30,18 @@ const updateDuplicatedPrimitive = (
 ): { newPrimitive: PrimitiveItem; pos: number } => {
   const { section } = action;
 
-  let filteredWithIndex = getFilteredWithIndex(sectionState, action.id);
+  let filteredWithIndex = getFilteredWithPosition(sectionState, action.id);
 
   if (action.childId) {
     const children = filteredWithIndex?.filtered?.children;
     if (children) {
-      filteredWithIndex = getFilteredWithIndex(children, action.childId);
+      filteredWithIndex = getFilteredWithPosition(children, action.childId);
     }
   }
 
   const duplicatedAction = updateUniqueProps({
     sectionState,
-    primitive: { ...filteredWithIndex.filtered, showDocs: false },
+    primitive: { ...filteredWithIndex?.filtered, showDocs: false },
     actionType: 'DUPLICATE_PRIMITIVE',
     section,
   });
