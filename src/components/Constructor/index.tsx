@@ -85,7 +85,6 @@ const Constructor = ({
                   {primitive?.children?.map((item, childIndex) => {
                     return (
                       <div key={item.id} id={item.id} className="Constructor__item">
-                        {item.id}
                         <DragDropItem
                           id={item.id}
                           parentId={primitive.id}
