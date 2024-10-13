@@ -9,8 +9,8 @@ import {
   Section,
   ToggleDocsArgs,
 } from '../types';
-import { updateUniqueProps } from './helpers';
 
+import { updateUniqueProps } from './helpers/updateUniqueProps';
 import deepClone from '../../helpers/deepClone';
 import swapPrimitives from './helpers/swapPrimitives';
 import updateInPropInPrimitiveItem from './helpers/updateInPropInPrimitiveItem';
@@ -43,7 +43,7 @@ const updateDuplicatedPrimitive = (
   const duplicatedAction = updateUniqueProps({
     sectionState,
     primitive: { ...filteredWithIndex?.filtered, showDocs: false },
-    actionType: 'DUPLICATE_PRIMITIVE',
+    isDuplication: true,
     section,
   });
 
@@ -70,13 +70,12 @@ const reducers = {
       sectionState: stateBySection,
       primitive: primitive,
       section,
-      actionType: action.type,
     });
+
     newPrimitive.justAdded = true;
     newPrimitive.nativeEvent = nativeEvent;
 
-    // @ts-expect-error
-    state.sections[section] = [...state.sections[section], newPrimitive];
+    state.sections[section]?.push(newPrimitive);
   },
   discoverPrimitive: (
     state: PrimitivesState,

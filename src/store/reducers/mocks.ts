@@ -144,3 +144,47 @@ export const floodMock: PrimitiveItem = {
   },
   groupName: 'flood',
 };
+
+export const displacementMapMock: PrimitiveItem = {
+  id: 'displacementMap',
+  params: {
+    in: {
+      value: 'SourceGraphic',
+    },
+    in2: {
+      value: 'colormatrix',
+    },
+    scale: {
+      value: '40',
+    },
+    xChannelSelector: {
+      value: 'R',
+    },
+    yChannelSelector: {
+      value: 'G',
+    },
+    result: {
+      value: 'displacementMap',
+    },
+  },
+  groupName: 'displacementMap',
+};
+
+export const compositeMock: PrimitiveItem = {
+  id: 'composite',
+  params: {
+    in: {
+      value: 'SourceGraphic',
+    },
+    in2: {
+      value: 'SourceAlpha',
+    },
+    operator: {
+      value: 'in',
+    },
+    result: {
+      value: 'composite',
+    },
+  },
+  groupName: 'composite',
+};

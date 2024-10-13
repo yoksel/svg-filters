@@ -1,20 +1,22 @@
-import { PrimitiveItem, Section, SectionState } from '../types';
-import deepClone from '../../helpers/deepClone';
-import getLastResultIdFromPrimitivesList from './helpers/getLastResultIdFromPrimitivesList';
-import idKeeper from './helpers/idKeeper';
+import { PrimitiveItem, Section, SectionState } from '../../types';
+import deepClone from '../../../helpers/deepClone';
+import getLastResultIdFromPrimitivesList from './getLastResultIdFromPrimitivesList';
+import idKeeper from './idKeeper';
 
-interface UpdateUniquePropsArgs {
+export interface UpdateUniquePropsArgs {
   sectionState: SectionState;
   primitive: PrimitiveItem;
-  actionType: string;
   section: Section;
+  isDuplication?: boolean;
 }
 
+// Update props which should be unique for newly added primitive
+// before adding to primitives list in section
 export const updateUniqueProps = ({
   sectionState,
   primitive,
-  actionType,
   section,
+  isDuplication,
 }: UpdateUniquePropsArgs) => {
   if (!idKeeper.hasSection(section)) {
     idKeeper.addSection(sectionState, section);
@@ -25,23 +27,21 @@ export const updateUniqueProps = ({
   }
 
   const newPrimitive = deepClone(primitive);
-  let newIn = getLastResultIdFromPrimitivesList(sectionState);
-  let newIdAdd = newPrimitive.id;
+  let newId =
+    section === 'docs' ? newPrimitive.id : idKeeper.getUniqueId(newPrimitive.groupName, section);
 
-  if (section !== 'docs') {
-    newIdAdd = idKeeper.getUniqueId(newPrimitive.groupName, section);
-  }
-
-  newPrimitive.id = newIdAdd;
+  newPrimitive.id = newId;
 
   if (newPrimitive.params) {
     if (newPrimitive.params.result) {
-      newPrimitive.params.result.value = newIdAdd;
+      newPrimitive.params.result.value = newId;
     }
 
-    if (actionType !== 'DUPLICATE_PRIMITIVE') {
+    if (!isDuplication && section !== 'docs') {
+      let newIn = getLastResultIdFromPrimitivesList(sectionState);
+
       if (newPrimitive.params.in2) {
-        // In + In2
+        // In and In2
         newPrimitive.params.in.value = 'SourceGraphic';
         newPrimitive.params.in2.value = newIn;
 
@@ -62,11 +62,10 @@ export const updateUniqueProps = ({
         sectionState,
         primitive: item,
         section,
-        actionType,
+        isDuplication,
       });
     });
   }
 
   return newPrimitive;
 };
-
