@@ -1,4 +1,4 @@
-const deepFreeze = (obj) => {
+const deepFreeze = <T>(obj: T) => {
   Object.freeze(obj);
 
   for (let key in obj) {

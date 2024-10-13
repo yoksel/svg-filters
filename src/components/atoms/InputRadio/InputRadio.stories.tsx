@@ -23,6 +23,6 @@ export const Default: Story = {
     value: 'value',
     checked: true,
     hidden: false,
-    onChange: fn()
+    onChange: fn(),
   },
 };

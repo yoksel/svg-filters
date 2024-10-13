@@ -31,18 +31,19 @@ const PrimitivePanelControlsContainer = (props: PrimitivePanelControlsContainerP
   const { primitive, section, parentId } = props;
   const dispatch = useDispatch();
   const id = parentId || primitive.id;
+  const childId = parentId ? primitive.id : undefined;
 
   let params: PrimitiveActionArgs = {
     primitive,
-    id: id,
-    childId: parentId ? primitive.id : undefined,
+    id,
+    childId,
     section,
   };
 
   return (
     <PrimitivePanelControls
       {...props}
-      id={id}
+      childId={childId}
       duplicatePrimitive={() => {
         dispatch(duplicatePrimitive(params));
       }}

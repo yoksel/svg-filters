@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import withRouter from '../../helpers/withRouter';
 
 import ControlsList from '../../components/ControlsList';
 import { RootState } from '../../store/store';
@@ -12,4 +11,4 @@ const PresetsList = () => {
   return <ControlsList items={presetControls} control="NavLink" />;
 };
 
-export default withRouter(PresetsList);
+export default PresetsList;

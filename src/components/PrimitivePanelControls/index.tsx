@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { docsData } from '../../data';
 
 import Icon from '../atoms/Icon';
@@ -8,7 +9,7 @@ import './PrimitivePanelControls.scss';
 
 export interface PrimitivePanelControlsProps {
   section: Section;
-  id: string;
+  childId?: string;
   parentId?: string;
   groupName: string;
   hasResult?: boolean;
@@ -30,49 +31,42 @@ const PrimitivePanelControls = ({
   toggleDocs,
   hasResult,
   section,
-  id,
+  childId,
   parentId,
   groupName,
   hasChildrenMod,
   parentHasSingleChild,
   noChangesForChildren,
 }: PrimitivePanelControlsProps) => {
-  const panelClassList = ['PrimitivePanelControls', `PrimitivePanelControls--${hasChildrenMod}`];
-  let showDocs = true;
+  const panelClassList = clsx(
+    'PrimitivePanelControls',
+    `PrimitivePanelControls--${hasChildrenMod}`,
+    !hasResult && 'PrimitivePanelControls--no-result',
+    parentHasSingleChild && 'PrimitivePanelControls--parentHasSingleChild',
+  );
+  const showDocs = !docsData[groupName] || section === 'docs' ? false : true;
 
-  if (!docsData[groupName] || section === 'docs') {
-    showDocs = false;
-  }
+  const DocsButton = () => (
+    <button
+      className="PrimitivePanelControl PrimitivePanelControl--docs"
+      type="button"
+      onClick={toggleDocs}
+      title="Show documentation for this primitive"
+    >
+      <Icon symbol="doc" color="currentColor" size="15" />
+    </button>
+  );
 
-  if (!hasResult) {
-    panelClassList.push('PrimitivePanelControls--no-result');
-  }
-  if (parentHasSingleChild) {
-    panelClassList.push('PrimitivePanelControls--parentHasSingleChild');
-  }
-
-  const getDocsButton = () => {
-    if (!showDocs) {
-      return null;
-    }
-
+  if (parentHasSingleChild && parentId && childId) {
+    // Choice of lightning source in feSpecularLighting
     return (
-      <button
-        className="PrimitivePanelControl PrimitivePanelControl--docs"
-        type="button"
-        onClick={toggleDocs}
-        title="Show documentation for this primitive"
-      >
-        <Icon symbol="doc" color="currentColor" size="15" />
-      </button>
-    );
-  };
-
-  if (parentHasSingleChild) {
-    return (
-      <div className={panelClassList.join(' ')}>
-        <PrimitivePanelSwitcher id={id} parentId={parentId} primitiveDisabled={primitiveDisabled} />
-        {getDocsButton()}
+      <div className={panelClassList}>
+        <PrimitivePanelSwitcher
+          parentId={parentId}
+          childId={childId}
+          primitiveDisabled={primitiveDisabled}
+        />
+        {showDocs && <DocsButton />}
       </div>
     );
   }
@@ -84,12 +78,12 @@ const PrimitivePanelControls = ({
 
   // Hide toggle, duplicate, delete controls for componentTransfer
   if (noChangesForChildren) {
-    return <div className={panelClassList.join(' ')}>{getDocsButton()}</div>;
+    return <div className={panelClassList}>{showDocs && <DocsButton />}</div>;
   }
 
   return (
-    <div className={panelClassList.join(' ')}>
-      {getDocsButton()}
+    <div className={panelClassList}>
+      {showDocs && <DocsButton />}
 
       <button
         className="PrimitivePanelControl PrimitivePanelControl--toggle"

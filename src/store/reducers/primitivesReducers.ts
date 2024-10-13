@@ -441,10 +441,10 @@ const reducers = {
     // @ts-expect-error
     const updatedList = state.sections[section].map((item: PrimitiveItem) => {
       if (item.id === parentId) {
-        item = deepClone(item);
+        // item = deepClone(item);
 
         item.children = item.children?.map((child: PrimitiveItem) => {
-          child = deepClone(child);
+          // child = deepClone(child);
           child.disabled = !(child.id === id);
 
           return child;

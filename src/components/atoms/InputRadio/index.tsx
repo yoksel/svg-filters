@@ -2,16 +2,16 @@ import React from 'react';
 import './InputRadio.scss';
 import clsx from 'clsx';
 
-interface InputRadioProps {
+export interface InputRadioProps {
   id: string;
   name: string;
-  value: string;
-  checked: boolean;
-  hidden: boolean;
+  value?: string;
+  checked?: boolean;
+  hidden?: boolean;
   onChange: (value: string) => void;
 }
 
-const InputRadio = ({ value, checked, hidden, onChange }: InputRadioProps) => {
+const InputRadio = ({ id, name, value, checked, hidden, onChange }: InputRadioProps) => {
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value = event.target.value;
 
@@ -20,8 +20,10 @@ const InputRadio = ({ value, checked, hidden, onChange }: InputRadioProps) => {
 
   return (
     <input
+      id={id}
       value={value}
-      type={'radio'}
+      type="radio"
+      name={name}
       checked={checked}
       onChange={onChangeHandler}
       className={clsx('InputRadio', hidden && 'visually-hidden')}

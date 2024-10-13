@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import clsx from 'clsx';
 
 import { primitivesAttrs } from '../../data';
 import useSection from '../../hooks/useSection';
@@ -9,7 +10,6 @@ import {
   PrimitiveItem,
   Section,
 } from '../../store/types';
-import clsx from 'clsx';
 
 import './ControlsList.scss';
 
@@ -83,5 +83,4 @@ const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListP
   );
 };
 
-// export default withRouter(ControlsList);
 export default ControlsList;
