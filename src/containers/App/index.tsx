@@ -7,7 +7,7 @@ import Docs from '../../containers/Docs';
 import Icons from '../../components/atoms/Icons';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Sidebar from '../../components/Sidebar';
+import Sidebar from '../Sidebar';
 import Wrapper from '../../components/atoms/Wrapper';
 
 import './App.scss';
