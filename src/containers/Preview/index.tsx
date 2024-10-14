@@ -11,7 +11,7 @@ import Tip from './Tip';
 
 import './Preview.scss';
 
-const PreviewContainer = () => {
+const Preview = () => {
   const { section } = useSection();
   const previewType = useSelector((state: RootState) => state.preview.type);
   const customSvgCode = useSelector((state: RootState) => state.preview.customSvgCode);
@@ -60,4 +60,4 @@ const PreviewContainer = () => {
   );
 };
 
-export default PreviewContainer;
+export default Preview;
