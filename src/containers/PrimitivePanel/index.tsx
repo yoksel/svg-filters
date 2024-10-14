@@ -1,10 +1,10 @@
 import { primitivesAttrs } from '../../data';
 import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 import useSection from '../../hooks/useSection';
-import PrimitivePanelControls from '../../containers/PrimitivePanelControls';
-import Docs from '../../containers/Docs';
-import PrimitivePanelInput from '../molecules/PrimitivePanelInput';
-import ResultAttribute from '../atoms/ResultAttribute';
+import PrimitivePanelControls from '../PrimitivePanelControls';
+import Docs from '../Docs';
+import PrimitivePanelInput from '../../components/molecules/PrimitivePanelInput';
+import ResultAttribute from '../../components/atoms/ResultAttribute';
 import clsx from 'clsx';
 
 import './PrimitivePanel.scss';
@@ -17,6 +17,7 @@ interface PrimitivePanelProp extends React.PropsWithChildren {
   noChangesForChildren?: boolean;
 }
 
+/** Panel with controls to manipulate properties of particular primitive */
 const PrimitivePanel = ({
   primitive,
   parentId,

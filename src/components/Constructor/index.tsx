@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { primitivesAttrs } from '../../data';
 
 import DragDropItem from '../../containers/DragDropItem';
-import PrimitivePanel from '../PrimitivePanel';
+import PrimitivePanel from '../../containers/PrimitivePanel';
 import ConstructorPlaceholder from '../atoms/ConstructorPlaceholder';
 import { PrimitiveItem, Section } from '../../store/types';
 import { defaultSources } from '../../store/reducers/helpers/updateInPropInPrimitiveItem';
