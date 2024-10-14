@@ -7,7 +7,7 @@ interface IconProps {
 };
 
 const Icon = ({ symbol, color = 'currentColor', size }: IconProps) => (
-  <svg className={`icon icon-${symbol}`} fill={color} width={size} height={size} aria-hidden>
+  <svg className={`icon icon-${symbol}`} fill={color} width={size} height={size} aria-hidden={true}>
     <use xlinkHref={`#icon-${symbol}`} />
   </svg>
 );
