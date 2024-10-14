@@ -12,27 +12,17 @@ const PrimitivePanelInputTextarea = ({
   parentId,
 }: PrimitivePanelInputTextareaProps) => {
   const param = primitive.params[paramKey];
-  const { value, type } = param;
-  let input;
+  const { value } = param;
 
-  let actualValue = value;
-
-  if (!actualValue) {
-    actualValue = '';
-  }
-
-  input = (
+  return (
     <InputTextarea
       id={primitive.id}
       parentId={parentId}
       key={primitive.id}
       param={paramKey}
-      value={actualValue}
-      type={type}
+      value={value || ''}
     />
   );
-
-  return input;
 };
 
 export default PrimitivePanelInputTextarea;

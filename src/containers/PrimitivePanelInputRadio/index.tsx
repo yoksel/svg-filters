@@ -12,7 +12,7 @@ interface PrimitiveInputRadioContainerProps extends Omit<InputRadioProps, 'onCha
 
 const PrimitiveInputRadioContainer = (props: PrimitiveInputRadioContainerProps) => {
   const { section } = useSection();
-  const { id, parentId } = props;
+  const { parentId } = props;
   const dispatch = useDispatch();
 
   if (!isPrimitivesSection(section)) return null;

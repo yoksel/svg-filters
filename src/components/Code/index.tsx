@@ -48,9 +48,9 @@ const Code = ({ filterData, primitives }: CodeProps) => {
 
   if (process.env.NODE_ENV !== 'production' && primitives?.length) {
     // Temporary for extracting good presets
-    console.groupCollapsed('Filter code');
-    console.log(JSON.stringify(primitives, null, '\t'));
-    console.groupEnd();
+    // console.groupCollapsed('Filter code');
+    // console.log(JSON.stringify(primitives, null, '\t'));
+    // console.groupEnd();
   }
 
   const value = primitivesCode

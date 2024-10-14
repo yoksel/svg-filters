@@ -9,7 +9,7 @@ import {
   toggleDocs,
   togglePrimitive,
 } from '../../store/primitivesSlice';
-import { PrimitiveActionArgs, PrimitiveItem, PrimitivesSections, Section } from '../../store/types';
+import { PrimitiveActionArgs, PrimitiveItem, PrimitivesSections } from '../../store/types';
 
 interface PrimitivePanelControlsContainerProps
   extends Omit<
