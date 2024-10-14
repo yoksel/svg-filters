@@ -9,7 +9,7 @@ import {
   purgePrimitives,
 } from '../../store/primitivesSlice';
 
-import App from '../../components/App';
+import App from '../../containers/App';
 import { RootState } from '../../store/store';
 import { isPrimitiveItems, Preset, PrimitiveItem } from '../../store/types';
 
