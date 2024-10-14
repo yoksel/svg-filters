@@ -4,11 +4,11 @@ import Preview from '../../containers/Preview';
 import Code from '../../containers/Code';
 import Docs from '../../containers/Docs';
 
-import Icons from '../atoms/Icons';
-import Header from '../Header';
-import Footer from '../Footer';
-import Sidebar from '../Sidebar';
-import Wrapper from '../atoms/Wrapper';
+import Icons from '../../components/atoms/Icons';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import Sidebar from '../../components/Sidebar';
+import Wrapper from '../../components/atoms/Wrapper';
 
 import './App.scss';
 
