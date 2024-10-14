@@ -1,4 +1,4 @@
-import PrimitivePanelInputRadio from '../../containers/PrimitivePanelInputRadio';
+import PrimitivePanelInputRadio from '../PrimitivePanelInputRadio';
 
 import './PrimitivePanelSwitcher.scss';
 
@@ -8,6 +8,7 @@ interface PrimitivePanelSwitcherProps {
   primitiveDisabled?: boolean;
 }
 
+/** Control for switching panels with light sources */
 const PrimitivePanelSwitcher = ({
   childId,
   parentId,

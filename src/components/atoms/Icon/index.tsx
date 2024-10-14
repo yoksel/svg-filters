@@ -1,9 +1,11 @@
 import './Icon.scss';
 
+export type IconSymbol = 'doc' | 'eye' | 'eye-blocked' | 'plus' | 'cross';
+
 interface IconProps {
-  symbol: 'doc' | 'eye' | 'eye-blocked' | 'plus' | 'cross';
-  color: string,
-  size: string,
+  symbol: IconSymbol;
+  color: string;
+  size: string;
 };
 
 const Icon = ({ symbol, color = 'currentColor', size }: IconProps) => (
