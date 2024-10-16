@@ -32,55 +32,50 @@ export interface ColormatrixPrimitiveAttributes extends PrimitiveAttributes<Inpu
 }
 
 const attributes: ColormatrixPrimitiveAttributes = {
-  "name": "feColorMatrix",
-  "inputsData": {
-    "type": {
-      "type": "select",
-      "dependencies": [
+  name: 'feColorMatrix',
+  inputsData: {
+    type: {
+      type: 'select',
+      dependencies: [
         {
-          "value": "luminanceToAlpha",
-          "disable": ["values"]
-        }
-      ]
-    },
-    "values": {
-      "type": "number",
-      "variants": {
-        "key": "type",
-        "values": {
-          "saturate": 5,
-          "hueRotate": 180,
-          "matrix": "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 500 -20"
+          value: 'luminanceToAlpha',
+          disable: ['values'],
         },
-        "types": {
-          "saturate": "number",
-          "hueRotate": "number",
-          "matrix": "textarea"
-        }
-      }
+      ],
     },
-    "x": {
-      "type": "text"
+    values: {
+      type: 'number',
+      variants: {
+        key: 'type',
+        values: {
+          saturate: 5,
+          hueRotate: 180,
+          matrix: '.5 0 0 0 0\n0 .5 0 0 0\n0 0 .5 0 0\n0 0 0 .95 0',
+        },
+        types: {
+          saturate: 'number',
+          hueRotate: 'number',
+          matrix: 'textarea',
+        },
+      },
     },
-    "y": {
-      "type": "text"
+    x: {
+      type: 'text',
     },
-    "width": {
-      "type": "text"
+    y: {
+      type: 'text',
     },
-    "height": {
-      "type": "text"
+    width: {
+      type: 'text',
     },
-    "in": {
-      "type": "select"
-    }
+    height: {
+      type: 'text',
+    },
+    in: {
+      type: 'select',
+    },
   },
-  "type": [
-    "saturate",
-    "hueRotate",
-    "matrix",
-    "luminanceToAlpha"
-  ]
+  type: ['saturate', 'hueRotate', 'matrix', 'luminanceToAlpha'],
 };
 
 export default attributes;

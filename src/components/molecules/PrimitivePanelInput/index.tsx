@@ -25,7 +25,12 @@ const PrimitivePanelInput = (props: PrimitivePanelInputProps) => {
   const { inputsData } = primitivesAttrs[primitive.groupName];
   const inputDataByKey = inputsData[paramKey as keyof typeof inputsData];
   // @ts-expect-error: FIX IT
-  const type = 'type' in inputDataByKey ? inputDataByKey?.type : undefined;
+  let type = 'type' in inputDataByKey ? inputDataByKey?.type : undefined;
+
+  if (primitive.params[paramKey].type) {
+    // to get switched types in colormatrix
+    type = primitive.params[paramKey].type;
+  }
 
   // PrimitiveAttributesType
   if (type === 'textarea') {
