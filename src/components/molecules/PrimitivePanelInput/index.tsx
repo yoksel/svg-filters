@@ -1,6 +1,6 @@
 import { primitivesAttrs } from '../../../data';
 
-import PrimitivePanelInputText from '../PrimitivePanelInputText';
+import PrimitivePanelInputText from '../../../containers/PrimitivePanelInputText';
 import PrimitivePanelInputSelect from '../../PrimitivePanelInputSelect';
 import PrimitivePanelInputTextarea from '../../PrimitivePanelInputTextarea';
 import { PrimitiveAttributesType } from '../../../data/types';

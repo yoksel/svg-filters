@@ -1,7 +1,7 @@
 # PrimitivePanelInputText
 
-Exports:
+Text input for [PrimitivePanel](#primitivepanel)
 
-* onChange() with action changePrimitiveProp()
+Uses container:
 
-__Template:__ [InputText](#inputtext)
+* [PrimitivePanelInputText](#primitivepanelinputtext-1)
