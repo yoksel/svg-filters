@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { primitivesAttrs } from '../../data';
 
-import DragDropItem from '../../containers/DragDropItem';
 import PrimitivePanel from '../../containers/PrimitivePanel';
 import ConstructorPlaceholder from '../atoms/ConstructorPlaceholder';
 import { PrimitiveItem, Section } from '../../store/types';
 import { defaultSources } from '../../store/reducers/helpers/updateInPropInPrimitiveItem';
+import ConstructorItem from '../../containers/ConstructorItem';
 
 import './Constructor.scss';
 
@@ -70,43 +70,38 @@ const Constructor = ({
           const groupData = primitivesAttrs[primitive.groupName];
 
           return (
-            <div key={primitive.id} id={primitive.id} className="Constructor__item">
-              <DragDropItem
-                id={primitive.id}
-                listId="primitives"
-                index={index}
-                justAdded={primitive.justAdded}
-                nativeEvent={primitive.nativeEvent || undefined}
-              >
-                <PrimitivePanel
-                  primitive={primitive}
-                  resultsList={getResultsList(primitives, index)}
-                >
-                  {primitive?.children?.map((item, childIndex) => {
-                    return (
-                      <div key={item.id} id={item.id} className="Constructor__item">
-                        <DragDropItem
-                          id={item.id}
-                          parentId={primitive.id}
-                          listId={primitive.id}
-                          index={childIndex}
-                          justAdded={item.justAdded}
-                          nativeEvent={item.nativeEvent || undefined}
-                        >
-                          <PrimitivePanel
-                            parentId={primitive.id}
-                            primitive={item}
-                            resultsList={getResultsList(primitives, index)}
-                            parentHasSingleChild={groupData.hasSingleChild}
-                            noChangesForChildren={groupData.noChangesForChildren}
-                          />
-                        </DragDropItem>
-                      </div>
-                    );
-                  })}
-                </PrimitivePanel>
-              </DragDropItem>
-            </div>
+            <ConstructorItem
+              key={primitive.id}
+              id={primitive.id}
+              listId="primitives"
+              index={index}
+              justAdded={primitive.justAdded}
+              nativeEvent={primitive.nativeEvent || undefined}
+            >
+              <PrimitivePanel primitive={primitive} resultsList={getResultsList(primitives, index)}>
+                {primitive?.children?.map((item, childIndex) => {
+                  return (
+                    <ConstructorItem
+                      key={item.id}
+                      id={item.id}
+                      listId={primitive.id}
+                      parentId={primitive.id}
+                      index={childIndex}
+                      justAdded={item.justAdded}
+                      nativeEvent={item.nativeEvent || undefined}
+                    >
+                      <PrimitivePanel
+                        parentId={primitive.id}
+                        primitive={item}
+                        resultsList={getResultsList(primitives, index)}
+                        parentHasSingleChild={groupData.hasSingleChild}
+                        noChangesForChildren={groupData.noChangesForChildren}
+                      />
+                    </ConstructorItem>
+                  );
+                })}
+              </PrimitivePanel>
+            </ConstructorItem>
           );
         })}
       </div>
