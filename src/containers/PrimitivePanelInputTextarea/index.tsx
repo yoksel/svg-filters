@@ -3,32 +3,35 @@ import { useDispatch } from 'react-redux';
 import useSection from '../../hooks/useSection';
 
 import { changePrimitiveProp } from '../../store/primitivesSlice';
-import { isPrimitivesSection } from '../../store/types';
+import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 
-import InputTextarea, { InputTextareaProps } from '../../components/atoms/InputTextarea';
+import InputTextarea from '../../components/atoms/InputTextarea';
 
-interface PrimitivePanelInputTextareaContainerProps extends Omit<InputTextareaProps, 'onChange'> {
-  id: string;
+interface PrimitivePanelInputTextareaProps {
+  primitive: PrimitiveItem;
+  paramKey: string;
   parentId?: string;
-  param: string;
 }
 
-const PrimitivePanelInputTextareaContainer = (props: PrimitivePanelInputTextareaContainerProps) => {
+const PrimitivePanelInputTextareaContainer = (props: PrimitivePanelInputTextareaProps) => {
   const { section } = useSection();
   const dispatch = useDispatch();
+  const { primitive, parentId, paramKey } = props;
+  const id = primitive.id;
+  const param = primitive.params[paramKey];
+  const { value } = param;
 
   if (!isPrimitivesSection(section)) return null;
 
   return (
     <InputTextarea
-      {...props}
+      value={value || ''}
       onChange={(value) => {
-        const { id, parentId, param } = props;
-
         const initialProps = {
           id,
           parentId,
-          param,
+          // TODO: fix naming
+          param: paramKey,
           value,
           section,
         };
