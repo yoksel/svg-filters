@@ -13,6 +13,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: .5em;
+  margin-top: .5em;
   border: 2px dashed;
   border-radius: $border-radius;
 }
@@ -21,14 +23,6 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-}
-
-.Constructor__tag--open {
-  margin-bottom: .5em;
-}
-
-.Constructor__tag--close {
-  margin-top: .5em;
 }
 
 .Constructor__button {
@@ -61,8 +55,4 @@
   &:hover {
     color: crimson;
   }
-}
-
-.Constructor__item {
-  width: 100%;
 }
