@@ -1,158 +1,132 @@
-import { useDispatch } from 'react-redux';
-
-import {
-  changePrimitiveProp,
-  changePrimitivePropType,
-  togglePrimitiveProp,
-} from '../../store/primitivesSlice';
-import InputSelect from '../../components/atoms/InputSelect';
+import { primitivesAttrs } from '../../data';
+import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 import useSection from '../../hooks/useSection';
-import { isPrimitivesSection } from '../../store/types';
+import { useDispatch } from 'react-redux';
+import { changePrimitiveProp } from '../../store/primitivesSlice';
+import { updateDependencies, updateTiedTypes, updateTiedValues } from './utils';
+import InputSelect from '../../components/atoms/InputSelect';
 
-interface Dependency {
-  enable: [];
-  disable: [];
-  value: string;
-}
-
-interface PrimitiveInputSelectContainerProps {
-  id: string;
-  param: string;
-  value: string;
-  firstValue?: string;
-  secondValue?: string;
-  valuesList: string[];
+interface PrimitivePanelInputSelectProps {
+  primitive: PrimitiveItem;
+  paramKey: string;
+  resultsList: string[];
   parentId?: string;
-  tiedValues: { [key: string]: string };
-  tiedTypes: { [key: string]: string };
-  dependencies: Dependency[];
 }
 
-const PrimitiveInputSelectContainer = ({
-  // firstValue,
-  secondValue,
-  value,
-  valuesList,
-  id,
+const PrimitivePanelInputSelect = ({
+  primitive,
+  paramKey,
+  resultsList,
   parentId,
-  param,
-  dependencies,
-  tiedValues,
-  tiedTypes,
-}: PrimitiveInputSelectContainerProps) => {
+}: PrimitivePanelInputSelectProps) => {
+  const param = primitive.params[paramKey];
+  const { value } = param;
+  const values = primitive.params.values;
   const dispatch = useDispatch();
   const { section } = useSection();
 
   if (!isPrimitivesSection(section)) return null;
 
+  // to fix
+  let actualValue = value as string;
+  let secondValue = '';
+
+  const { groupName } = primitive;
+
+  let secondOptionsList = [];
+  let tiedValues: { [key: string]: string } = {};
+  let tiedTypes: { [key: string]: string } = {};
+  const groupData = primitivesAttrs[groupName];
+  const { inputsData } = groupData;
+  // @ts-expect-error
+  const { double, valuesKeys, dependencies } = inputsData[paramKey];
+  // @ts-expect-error
+  let actualOptionsList = groupData[paramKey];
+
+  if (paramKey === 'in' || paramKey === 'in2') {
+    // @ts-expect-error
+    actualOptionsList = primitivesAttrs[paramKey];
+    actualOptionsList = actualOptionsList ? actualOptionsList.concat(resultsList) : resultsList;
+  } else if (double && typeof value === 'string') {
+    let valuesList = value.split(' ');
+    actualValue = valuesList[0];
+    secondValue = valuesList[1];
+
+    if (valuesKeys && valuesKeys.length === 2) {
+      // @ts-expect-error
+      actualOptionsList = groupData[valuesKeys[0]];
+      // @ts-expect-error
+      secondOptionsList = groupData[valuesKeys[1]];
+    }
+  }
+
+  // @ts-expect-error
+  if (inputsData.values) {
+    // @ts-expect-error
+    tiedValues = inputsData.values.variants.values;
+    // @ts-expect-error
+    tiedTypes = inputsData.values.variants.types;
+
+    if (values.variants) {
+      // @ts-expect-error
+      tiedValues = {
+        ...tiedValues,
+        ...values.variants.values,
+      };
+    }
+  }
+
+  const onChange = (value: string) => {
+    const initialProps = {
+      id: primitive.id,
+      parentId,
+      // TODO: fix it
+      param: paramKey,
+      value,
+      section,
+    };
+
+    // Change initial prop value
+    dispatch(changePrimitiveProp(initialProps));
+
+    // Enable/disable dependencies
+    // k-attributes in composite
+    if (dependencies) {
+      updateDependencies({ initialProps, dispatch, dependencies, value });
+    }
+
+    // Change tied values
+    // colormatrix
+    if (tiedValues) {
+      updateTiedValues({ initialProps, dispatch, newValue: tiedValues[value] });
+    }
+
+    // Change tied types
+    // matrix in colormatrix
+    if (tiedTypes) {
+      updateTiedTypes({ initialProps, dispatch, propType: tiedTypes[value] });
+    }
+  };
+
   return (
-    <InputSelect
-      secondValue={secondValue}
-      // firstValue={firstValue}
-      value={value}
-      valuesList={valuesList}
-      onChange={(value) => {
-        const initialProps = {
-          id,
-          parentId,
-          param,
-          value,
-          section,
-        };
+    <>
+      <InputSelect
+        secondValue={secondValue}
+        value={actualValue}
+        valuesList={actualOptionsList}
+        onChange={onChange}
+      />
 
-        // Change initial prop value
-        dispatch(changePrimitiveProp(initialProps));
-
-        // Enable/disable dependencies
-        // k-attributes in composite
-        if (dependencies) {
-          const justEnabled: { [key: string]: string } = {};
-
-          dependencies.forEach((oneDep) => {
-            let isDepsDisabled = value !== oneDep.value;
-            const enable = oneDep.enable || [];
-            const disable = oneDep.disable || [];
-
-            if (oneDep.disable) {
-              isDepsDisabled = !isDepsDisabled;
-            }
-
-            const listToHandle = [...enable, ...disable];
-
-            listToHandle.forEach((depsItem) => {
-              const depsItemProps = {
-                ...initialProps,
-                param: depsItem,
-                disabled: isDepsDisabled,
-              };
-
-              if (isDepsDisabled === false) {
-                justEnabled[depsItem] = depsItem;
-              }
-
-              if (isDepsDisabled === true) {
-                // Prevent disabling just enabled items
-                if (!justEnabled[depsItem]) {
-                  dispatch(togglePrimitiveProp(depsItemProps));
-                }
-              } else {
-                dispatch(togglePrimitiveProp(depsItemProps));
-              }
-            });
-          });
-        }
-
-        // Change tied values
-        // colormatrix
-        if (tiedValues) {
-          const newValue = tiedValues[value];
-          const disabled = newValue === 'disabled';
-
-          if (!newValue) {
-            return null;
-          }
-
-          // Override handling param
-          const valueProps = {
-            ...initialProps,
-            param: 'values',
-            disabled,
-          };
-
-          // Disable/enable values
-          dispatch(togglePrimitiveProp(valueProps));
-
-          if (newValue !== 'disabled') {
-            // Change prop value
-            dispatch(
-              changePrimitiveProp({
-                ...valueProps,
-                value: tiedValues[value],
-              }),
-            );
-          }
-        }
-
-        // Change tied types
-        // matrix in colormatrix
-        if (tiedTypes) {
-          const propType = tiedTypes[value];
-
-          if (!propType) {
-            return null;
-          }
-
-          const typeProps = {
-            ...initialProps,
-            param: 'values',
-            propType,
-          };
-
-          dispatch(changePrimitivePropType(typeProps));
-        }
-      }}
-    />
+      {double && secondOptionsList.length > 0 && (
+        <InputSelect
+          secondValue={secondValue}
+          value={actualValue}
+          valuesList={actualOptionsList}
+          onChange={onChange}
+        />
+      )}
+    </>
   );
 };
 
-export default PrimitiveInputSelectContainer;
+export default PrimitivePanelInputSelect;

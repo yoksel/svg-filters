@@ -1,21 +1,7 @@
 # PrimitivePanelInputSelect
 
-Exports:
+Select for [PrimitivePanel](#primitivepanel)
 
-* onChange() with action changePrimitiveProp()
+Uses container:
 
-__Template__: [InputSelect](#inputselect)
-
-```jsx static
-<PrimitivePanelInputSelect
-  id={primitive.id}
-  param={paramKey}
-  value={actualValue}
-  secondValue={secondValue}
-  valuesList={actualOptionsList}
-  parentId={parentId}
-  tiedValues={tiedValues}
-  tiedTypes={tiedTypes}
-  dependencies={dependencies}
-/>
-```
+* [PrimitivePanelInputSelect](#primitivepanelinputselect-1)
