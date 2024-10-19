@@ -3,11 +3,11 @@ import {
   Interpolation,
   NativeEventCoords,
   PrimitiveActionArgs,
+  PrimitiveActionArgsWithPrimitive,
   PrimitiveItem,
   PrimitivesSections,
   PrimitivesState,
   Section,
-  ToggleDocsArgs,
 } from '../types';
 
 import { updateUniqueProps } from './helpers/updateUniqueProps';
@@ -86,7 +86,10 @@ const reducers = {
 
     state.sections.docs = primitives;
   },
-  duplicatePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
+  duplicatePrimitive: (
+    state: PrimitivesState,
+    action: PayloadAction<PrimitiveActionArgsWithPrimitive>,
+  ) => {
     const { section, primitive, childId, id } = action.payload;
     const sectionStateList = state.sections[section];
     const primitiveData = {
@@ -469,7 +472,7 @@ const reducers = {
     // @ts-expect-error
     state.sections['playground'] = listToMove;
   },
-  toggleDocs: (state: PrimitivesState, action: PayloadAction<ToggleDocsArgs>) => {
+  toggleDocs: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
     // @ts-expect-error
     const updatedList = state.sections[section].map((item: PrimitiveItem) => {

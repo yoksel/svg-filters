@@ -127,13 +127,12 @@ export interface DragDropState {
 }
 
 export interface PrimitiveActionArgs {
-  primitive: PrimitiveItem;
   section: keyof PrimitivesSections;
   id?: string;
   childId?: string;
 }
 
-export type ToggleDocsArgs = Omit<PrimitiveActionArgs, 'primitive'>;
+export type PrimitiveActionArgsWithPrimitive = PrimitiveActionArgs & { primitive: PrimitiveItem };
 
 export const isPrimitiveItem = (item: PrimitiveItem | Preset): item is PrimitiveItem => {
   return 'groupName' in item;

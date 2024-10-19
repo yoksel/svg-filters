@@ -46,7 +46,6 @@ const PrimitivePanelControlsContainer = (props: PrimitivePanelControlsContainerP
   const docsData = useSelector((state: RootState) => state.data.docs);
 
   let params: PrimitiveActionArgs = {
-    primitive,
     id,
     childId,
     section,
@@ -125,7 +124,7 @@ const PrimitivePanelControlsContainer = (props: PrimitivePanelControlsContainerP
         title="Duplicate"
         symbol="plus"
         onClick={() => {
-          dispatch(duplicatePrimitive(params));
+          dispatch(duplicatePrimitive({ ...params, primitive }));
         }}
       />
 

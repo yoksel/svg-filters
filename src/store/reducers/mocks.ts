@@ -104,6 +104,16 @@ export const mergeMock: PrimitiveItem = {
   ],
 };
 
+export const mergeNodeMock: PrimitiveItem = {
+  id: 'mergeNode',
+  groupName: 'mergeNode',
+  params: {
+    in: {
+      value: 'SourceGraphic',
+    },
+  },
+};
+
 export const turbulenceMock: PrimitiveItem = {
   id: 'turbulence',
   params: {
@@ -187,4 +197,113 @@ export const compositeMock: PrimitiveItem = {
     },
   },
   groupName: 'composite',
+};
+
+export const matrixMock: PrimitiveItem = {
+  id: 'colormatrix',
+  params: {
+    type: {
+      value: 'matrix',
+    },
+    values: {
+      value: '1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 10 0',
+      type: 'textarea',
+      variants: {
+        key: 'type',
+      },
+    },
+    in: {
+      value: 'morphology',
+    },
+    result: {
+      value: 'colormatrix',
+    },
+  },
+  groupName: 'colormatrix',
+};
+
+export const distantLightMock: PrimitiveItem = {
+  id: 'distantLight',
+  groupName: 'distantLight',
+  params: {
+    azimuth: {
+      value: '100',
+    },
+    elevation: {
+      value: '17',
+    },
+  },
+  disabled: false,
+};
+
+export const pointLightMock: PrimitiveItem = {
+  id: 'pointLight',
+  groupName: 'pointLight',
+  disabled: true,
+  params: {
+    x: {
+      value: '123',
+    },
+    y: {
+      value: '20',
+    },
+    z: {
+      value: '50',
+    },
+  },
+};
+
+export const spotLightMock: PrimitiveItem = {
+  id: 'spotLight',
+  groupName: 'spotLight',
+  disabled: true,
+  params: {
+    x: {
+      value: '200',
+    },
+    y: {
+      value: '100',
+    },
+    z: {
+      value: '220',
+    },
+    pointsAtX: {
+      value: 0,
+    },
+    pointsAtY: {
+      value: '0',
+    },
+    pointsAtZ: {
+      value: '-200',
+    },
+    specularExponent: {
+      value: 1,
+    },
+    limitingConeAngle: {
+      value: '51',
+    },
+  },
+};
+
+export const diffuseLighting: PrimitiveItem = {
+  id: 'diffuseLighting',
+  groupName: 'diffuseLighting',
+  params: {
+    surfaceScale: {
+      value: '0.3',
+    },
+    diffuseConstant: {
+      value: '3.1',
+    },
+    lightingColor: {
+      value: '#ffffff',
+    },
+    in: {
+      value: 'turbulence',
+    },
+    result: {
+      value: 'diffuseLighting',
+    },
+  },
+  children: [distantLightMock, pointLightMock, spotLightMock],
 };

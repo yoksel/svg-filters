@@ -2,16 +2,20 @@ import { createSlice } from '@reduxjs/toolkit';
 import { PrimitivesState } from './types';
 import primitivesReducers from './reducers/primitivesReducers';
 
-const initialState: PrimitivesState = {
-  sections: {
-    playground: [],
-  },
-  filter: {
-    colorInterpolationFilters: 'linearRGB',
-    filterUnits: 'objectBoundingBox',
-    primitiveUnits: 'userSpaceOnUse',
-  },
+export const getInitialState = (): PrimitivesState => {
+  return {
+    sections: {
+      playground: [],
+    },
+    filter: {
+      colorInterpolationFilters: 'linearRGB',
+      filterUnits: 'objectBoundingBox',
+      primitiveUnits: 'userSpaceOnUse',
+    },
+  };
 };
+
+const initialState: PrimitivesState = getInitialState();
 
 export const primitivesSlice = createSlice({
   name: 'primitives',
