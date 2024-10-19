@@ -3,7 +3,7 @@ import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 import useSection from '../../hooks/useSection';
 import PrimitivePanelControls from '../PrimitivePanelControls';
 import Docs from '../Docs';
-import PrimitivePanelInput from '../../components/molecules/PrimitivePanelInput';
+import PrimitivePanelInput from '../PrimitivePanelInput';
 import ResultAttribute from '../../components/atoms/ResultAttribute';
 import clsx from 'clsx';
 

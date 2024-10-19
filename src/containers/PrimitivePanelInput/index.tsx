@@ -1,10 +1,10 @@
-import { primitivesAttrs } from '../../../data';
+import { primitivesAttrs } from '../../data';
+import { PrimitiveAttributesType } from '../../data/types';
+import { PrimitiveItem } from '../../store/types';
 
-import PrimitivePanelInputText from '../../../containers/PrimitivePanelInputText';
-import PrimitivePanelInputSelect from '../../PrimitivePanelInputSelect';
-import PrimitivePanelInputTextarea from '../../PrimitivePanelInputTextarea';
-import { PrimitiveAttributesType } from '../../../data/types';
-import { PrimitiveItem } from '../../../store/types';
+import PrimitivePanelInputText from '../PrimitivePanelInputText';
+import PrimitivePanelInputSelect from '../../components/PrimitivePanelInputSelect';
+import PrimitivePanelInputTextarea from '../PrimitivePanelInputTextarea';
 
 interface PrimitivePanelInputProps {
   primitive: PrimitiveItem;
