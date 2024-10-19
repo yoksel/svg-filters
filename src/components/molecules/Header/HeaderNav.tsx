@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
-import useSection from '../../hooks/useSection';
+import useSection from '../../../hooks/useSection';
 
 const sectionsList = [
   {

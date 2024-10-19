@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import Filter from '../../components/Filter';
+import Filter from '../../components/molecules/Filter';
 import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';
 import { isPrimitivesSection } from '../../store/types';

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleEditPanel, updateSvg } from '../../store/previewSlice';
 
-import SvgCode from '../../components/SvgCode';
+import SvgCode from '../../components/molecules/SvgCode';
 import { RootState } from '../../store/store';
 
 const SvgCodeContainer = () => {

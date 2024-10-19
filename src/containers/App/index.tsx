@@ -5,8 +5,8 @@ import Code from '../../containers/Code';
 import Docs from '../../containers/Docs';
 
 import Icons from '../../components/atoms/Icons';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import Header from '../../components/molecules/Header';
+import Footer from '../../components/molecules/Footer';
 import Sidebar from '../Sidebar';
 import Wrapper from '../../components/atoms/Wrapper';
 

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import Icon from '../atoms/Icon';
-import InputTextarea from '../atoms/InputTextarea';
+import Icon from '../../atoms/Icon';
+import InputTextarea from '../../atoms/InputTextarea';
 import { getExampleContent } from './getExampleContent';
 
 import './SvgCode.scss';

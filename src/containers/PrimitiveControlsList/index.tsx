@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import ControlsList from '../../components/ControlsList';
+import ControlsList from '../../components/molecules/ControlsList';
 import { addPrimitive } from '../../store/primitivesSlice';
 import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';

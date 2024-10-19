@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-import Wrapper from '../atoms/Wrapper';
+import useSection from '../../../hooks/useSection';
+import Wrapper from '../../atoms/Wrapper';
 import { HeaderNav } from './HeaderNav';
 
 import './Header.scss';
-import useSection from '../../hooks/useSection';
 
 const Header = () => {
   const { section } = useSection();

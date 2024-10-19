@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 
-import Wrapper from '../atoms/Wrapper';
+import useSection from '../../../hooks/useSection';
+import Wrapper from '../../atoms/Wrapper';
 
 import './Footer.scss';
-import useSection from '../../hooks/useSection';
 
 const Footer = () => {
   const { section } = useSection();

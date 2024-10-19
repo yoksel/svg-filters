@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 
-import { primitivesAttrs } from '../../data';
-import useSection from '../../hooks/useSection';
+import { primitivesAttrs } from '../../../data';
+import useSection from '../../../hooks/useSection';
 import {
   isPrimitiveItem,
   NativeEventCoords,
   Preset,
   PrimitiveItem,
   Section,
-} from '../../store/types';
+} from '../../../store/types';
 
 import './ControlsList.scss';
 

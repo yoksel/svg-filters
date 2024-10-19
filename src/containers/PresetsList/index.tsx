@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import ControlsList from '../../components/ControlsList';
+import ControlsList from '../../components/molecules/ControlsList';
 import { RootState } from '../../store/store';
 
 const PresetsList = () => {

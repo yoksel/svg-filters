@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { PrimitiveItem, Section } from '../../store/types';
+import { PrimitiveItem, Section } from '../../../store/types';
 
 import './Constructor.scss';
 
