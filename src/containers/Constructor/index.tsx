@@ -7,7 +7,7 @@ import { moveToPlayground, purgePrimitives } from '../../store/primitivesSlice';
 import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 import { defaultSources } from '../../store/reducers/helpers/updateInPropInPrimitiveItem';
 
-import Constructor from '../../components/molecules/Constructor';
+import Constructor from '../../components/organisms/Constructor';
 import ConstructorPlaceholder from '../../components/atoms/ConstructorPlaceholder';
 import ConstructorItem from '../ConstructorItem';
 import PrimitivePanel from '../PrimitivePanel';
