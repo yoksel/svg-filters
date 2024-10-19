@@ -3,20 +3,22 @@ import Constructor from '../../components/Constructor';
 import useSection from '../../hooks/useSection';
 import { RootState } from '../../store/store';
 import { moveToPlayground, purgePrimitives } from '../../store/primitivesSlice';
+import { isPrimitivesSection } from '../../store/types';
 
 const ConstructorContainer = () => {
   const { section } = useSection();
-  // @ts-expect-error
-  const primitives = useSelector((state: RootState) => state.primitives.sections[section]);
+  const primitives = useSelector((state: RootState) => {
+    if (!isPrimitivesSection(section)) return;
+    return state.primitives.sections[section];
+  });
   const dispatch = useDispatch();
+  if (!isPrimitivesSection(section)) return null;
 
   return (
     <Constructor
       section={section}
       primitives={primitives || undefined}
-      // @ts-expect-error
       purgePrimitives={() => dispatch(purgePrimitives({ section }))}
-      // @ts-expect-error
       moveToPlayground={() => dispatch(moveToPlayground({ section }))}
     />
   );
