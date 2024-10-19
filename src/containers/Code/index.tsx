@@ -71,7 +71,7 @@ const Code = () => {
     <section className="Code">
       <h2 className="visually-hidden">Filter code</h2>
       <ColorInterpolFiltersSwitcher />
-      <textarea className="Code__textarea" value={value} spellCheck="false" />
+      <textarea className="Code__textarea" defaultValue={value} spellCheck="false" />
     </section>
   );
 };
