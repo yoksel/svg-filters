@@ -90,7 +90,7 @@ const PrimitivePanel = ({
           {primitivePropControls}
 
           {primitive.showDocs && (
-            <Docs docId={primitive.groupName} id={primitive.id} parentId={parentId} embeded />
+            <Docs docId={primitive.groupName} id={primitive.id} parentId={parentId} isEmbedded />
           )}
 
           <div className="PrimitivePanel__children">{children}</div>

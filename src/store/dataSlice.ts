@@ -13,13 +13,13 @@ import { createSlice } from '@reduxjs/toolkit';
 // import { presetsData } from '../data';
 import presets from '../data/presets';
 import primitives from '../data/primitives';
-import docs, { Docs } from '../data/docs';
+import docs from '../data/docs';
 
-import { Preset, PrimitiveItem } from './types';
+import { Preset, PrimitiveItem, DocsData } from './types';
 // import type { PayloadAction } from '@reduxjs/toolkit';
 // console.log(presetsData);
 
-export type DataState = { presets: Preset[]; primitives: PrimitiveItem[]; docs: Docs };
+export type DataState = { presets: Preset[]; primitives: PrimitiveItem[]; docs: DocsData };
 
 const initialState: DataState = { presets, primitives, docs };
 

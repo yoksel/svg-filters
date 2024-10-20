@@ -145,3 +145,25 @@ export type SectionState =
   | PrimitivesState['sections']['playground']
   | PrimitivesState['sections']['presets']
   | PrimitivesState['sections']['docs'];
+
+interface DocProp {
+  name: string;
+  value?: string;
+  desc?: string;
+  disable?: boolean;
+}
+
+export interface DocData {
+  name?: string;
+  link?: string;
+  desc?: string;
+  value?: string;
+  props?: DocProp[];
+  children?: string[];
+  commonProps?: string[];
+  primitives?: PrimitiveItem[];
+}
+
+export interface DocsData {
+  [key: string]: DocData;
+}

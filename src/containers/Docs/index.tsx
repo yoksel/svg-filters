@@ -1,20 +1,23 @@
-import { useDispatch } from 'react-redux';
-import Docs from '../../components/Docs';
+import { useDispatch, useSelector } from 'react-redux';
+import Docs from '../../components/organisms/Docs';
 import useSection from '../../hooks/useSection';
 import { toggleDocs } from '../../store/primitivesSlice';
 import { isPrimitivesSection } from '../../store/types';
+import { RootState } from '../../store/store';
 
 interface DocsContainerProps {
   docId?: string;
   id?: string;
   parentId?: string;
-  embeded?: boolean; // to check
+  isEmbedded?: boolean; // to check
 }
 
-const DocsContainer = ({ id, docId, parentId }: DocsContainerProps) => {
+const DocsContainer = ({ id, docId, parentId, isEmbedded }: DocsContainerProps) => {
   const { section, id: idFromUrl } = useSection();
-  const dispatch = useDispatch();
+  /// WTF
   const docsId = id || idFromUrl;
+  const dispatch = useDispatch();
+  const docsData = useSelector((state: RootState) => state.data.docs);
 
   if (!docsId || !isPrimitivesSection(section)) return null;
 
@@ -34,9 +37,13 @@ const DocsContainer = ({ id, docId, parentId }: DocsContainerProps) => {
     docId = docsId;
   }
 
+  if (!docId) return null;
+
   return (
     <Docs
       docId={docId}
+      docsData={docsData}
+      isEmbedded={isEmbedded}
       toggleDocs={() => {
         dispatch(toggleDocs(params));
       }}
