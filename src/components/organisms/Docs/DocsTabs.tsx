@@ -11,22 +11,24 @@ const DocsTabs = ({ children, currentDocProps, currentProp, toggleCurrentProp }:
   return (
     <div className="Docs-tabs">
       <div className="Docs__list Docs-tabs__controls">
-        {currentDocProps?.map(({ name: propName }) => (
-          <button
-            type="button"
-            key={propName}
-            className={clsx(
-              'Doc-prop__name',
-              'Doc-prop__control',
-              currentProp === propName ? 'Doc-prop__control--current' : '',
-            )}
-            onClick={() => {
-              toggleCurrentProp(propName);
-            }}
-          >
-            {propName}
-          </button>
-        ))}
+        {currentDocProps
+          ?.filter(({ disable }) => !disable)
+          .map(({ name: propName }) => (
+            <button
+              type="button"
+              key={propName}
+              className={clsx(
+                'Doc-prop__name',
+                'Doc-prop__control',
+                currentProp === propName ? 'Doc-prop__control--current' : '',
+              )}
+              onClick={() => {
+                toggleCurrentProp(propName);
+              }}
+            >
+              {propName}
+            </button>
+          ))}
       </div>
       {children}
     </div>
