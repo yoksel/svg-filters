@@ -17,9 +17,8 @@ const Constructor = ({
   section,
   children,
 }: ConstructorProps) => {
-  if (!primitives?.length) return null;
-
-  const showMoveToPlaygroundButton = section !== 'playground' && primitives.length > 0;
+  const showMoveToPlaygroundButton =
+    section !== 'playground' && primitives && primitives?.length > 0;
   const showClearButton = Boolean(primitives?.length) && section === 'playground';
 
   return (
