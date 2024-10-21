@@ -16,6 +16,7 @@ export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
   return params;
 }
 
+/** App container fills page with content by id from url. */
 const AppRoute = () => {
   const { section, id } = useSection();
   const presets = useSelector((state: RootState) => state.data.presets);

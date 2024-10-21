@@ -6,6 +6,7 @@ import Wrapper from '../../components/atoms/Wrapper';
 
 import './Read.scss';
 
+//** Single page with links */
 const Read = () => {
   return (
     <>
@@ -124,6 +125,13 @@ const Read = () => {
                 </a>
               </li>
             </ul>
+            <br />
+            <p>
+              Photo by <a href="https://unsplash.com/@madhatterzone">Manja Vitolic</a> on{' '}
+              <a href="https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk">
+                Unsplash
+              </a>
+            </p>
           </main>
         </Wrapper>
 
