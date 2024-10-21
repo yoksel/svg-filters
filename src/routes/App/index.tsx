@@ -1,37 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
+import { LoaderFunctionArgs } from 'react-router-dom';
 
-// import { addPreset, discoveryPrimitive, purgePrimitives } from '../../store/actions';
 import {
   addPresetPrimitivesToStage,
-  addPrimitive,
   discoverPrimitive,
-  purgePrimitives,
+  purgeAllPrimitivesExcludingSection,
 } from '../../store/primitivesSlice';
 
 import App from '../../containers/App';
 import { RootState } from '../../store/store';
-import { isPrimitiveItems, Preset, PrimitiveItem } from '../../store/types';
+import { isPrimitiveItems, isPrimitivesSection, Preset, PrimitiveItem } from '../../store/types';
+import useSection from '../../hooks/useSection';
 
 export function loader({ params }: LoaderFunctionArgs<{ params: string }>) {
   return params;
 }
 
 const AppRoute = () => {
-  const { section, id } = (useLoaderData() as { section: string; id?: string }) || {};
+  const { section, id } = useSection();
   const presets = useSelector((state: RootState) => state.data.presets);
   const primitives = useSelector((state: RootState) => state.data.primitives);
   const docs = useSelector((state: RootState) => state.data.docs);
   const dispatch = useDispatch();
-
-  // @ts-expect-error
-  const purgePrev = (prevSection) => {
-    if (!prevSection) {
-      return null;
-    }
-    // @ts-expect-error
-    this.props.purgePrimitives(prevSection);
-  };
 
   const itemFromPath = () => {
     if (!id) {
@@ -68,6 +58,10 @@ const AppRoute = () => {
   };
 
   itemFromPath();
+
+  if (isPrimitivesSection(section)) {
+    dispatch(purgeAllPrimitivesExcludingSection({ section }));
+  }
 
   return <App />;
 };

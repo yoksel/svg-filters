@@ -423,14 +423,30 @@ const reducers = {
     state: PrimitivesState,
     action: PayloadAction<{ section: keyof PrimitivesSections }>,
   ) => {
-    const purgeSection = action.payload.section;
+    const section = action.payload.section;
 
-    if (purgeSection !== 'docs') {
-      // Docs not using unique Id
-      purgeIdKeeperSection(purgeSection);
+    if (section !== 'docs') {
+      // Docs not using unique Id so we need to purge only presets
+      purgeIdKeeperSection(section);
     }
 
-    state.sections[purgeSection] = [];
+    state.sections[section] = [];
+  },
+  purgeAllPrimitivesExcludingSection: (
+    state: PrimitivesState,
+    action: PayloadAction<{ section: keyof PrimitivesSections }>,
+  ) => {
+    const section = action.payload.section;
+
+    if (section !== 'presets') {
+      // Docs not using unique Id so we need to purge only presets
+      purgeIdKeeperSection('presets');
+      state.sections['presets'] = [];
+    }
+
+    if (section !== 'docs') {
+      state.sections['docs'] = [];
+    }
   },
   switchChild: (
     state: PrimitivesState,

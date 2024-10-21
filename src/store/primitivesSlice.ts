@@ -36,6 +36,7 @@ export const {
   switchOffLastAdded,
   swapPrimitives,
   purgePrimitives,
+  purgeAllPrimitivesExcludingSection,
   switchChild,
   moveToPlayground,
   toggleDocs,
