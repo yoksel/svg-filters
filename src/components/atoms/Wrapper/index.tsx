@@ -3,7 +3,7 @@ import {PropsWithChildren} from 'react';
 import './Wrapper.scss';
 
 /**
- * Page content wrapper
+ * Common wrapper to control content width
  */
 const Wrapper = ({children}: PropsWithChildren) => (
   <div className="Wrapper">

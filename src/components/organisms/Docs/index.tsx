@@ -16,6 +16,7 @@ interface DocsProps {
   toggleDocs: () => void;
 }
 
+/** Shows documentation from spec for given docId */
 const Docs = ({ docId, isEmbedded, docsData, toggleDocs }: DocsProps) => {
   const currentDoc = docsData[docId];
   const [currentProp, setCurrentProp] = useState<string | null>(null);

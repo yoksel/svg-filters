@@ -12,6 +12,7 @@ interface InputTextProps {
   onChange: (value: string) => void;
 };
 
+/** Input text with types text or number or color */
 const InputText = ({secondValue, firstValue, value, type, step, min, max, onChange}: InputTextProps) => {
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value = event.target?.value;

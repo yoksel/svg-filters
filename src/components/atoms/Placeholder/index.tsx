@@ -7,6 +7,7 @@ interface PlaceholderProps {
   isDragging: boolean;
 }
 
+/** Placeholder for draggable element */
 const Placeholder = ({ elemClientRect, isDragging }: PlaceholderProps) => {
   if (!isDragging || !elemClientRect) {
     return null;

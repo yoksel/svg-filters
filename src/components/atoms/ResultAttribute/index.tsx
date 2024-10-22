@@ -1,5 +1,6 @@
 import './ResultAttribute.scss';
 
+/** Element with result attribute for PrimitivePanel */
 const ResultAttribute = ({ value }: { value: string | number }) => {
   return (
     <span className="ResultAttribute">

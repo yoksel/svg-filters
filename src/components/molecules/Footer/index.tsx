@@ -5,6 +5,7 @@ import { Section } from '../../../store/types';
 
 import './Footer.scss';
 
+/** Page footer */
 const Footer = ({ section }: { section: Section }) => {
   const getLink = () => {
     if (section === 'read') {

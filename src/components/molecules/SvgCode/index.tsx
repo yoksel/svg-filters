@@ -56,6 +56,7 @@ interface SvgCodeProps {
   toggleEditPanel: (value: boolean) => void;
 }
 
+/** Panel for adding custom SVG content to demo. */
 const SvgCode = ({
   addExample,
   value,

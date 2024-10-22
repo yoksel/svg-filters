@@ -9,6 +9,7 @@ const text: { [key in Section]: string | null } = {
   read: null, // should be excluded
 };
 
+/** Placeholder for constructor without primitives. Prints text depending on current section */
 const ConstructorPlaceholder = ({ section }: { section: Section }) => {
   const textBySection = text[section];
   if (!textBySection) return null;

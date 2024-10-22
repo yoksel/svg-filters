@@ -6,6 +6,7 @@ import { Section } from '../../../store/types';
 
 import './Header.scss';
 
+/** Page header, contains logo & navigation */
 const Header = ({ section }: { section: Section }) => {
   const getLogoLink = () => {
     const pageTitle = 'SVG Filters';

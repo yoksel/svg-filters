@@ -6,7 +6,7 @@ import Wrapper from '../../components/atoms/Wrapper';
 
 import './Read.scss';
 
-//** Single page with links */
+/** Single page with links */
 const Read = () => {
   return (
     <>

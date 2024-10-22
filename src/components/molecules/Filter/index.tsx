@@ -6,6 +6,7 @@ interface FilterProps {
   filterProps?: FilterParams;
 }
 
+/** Element `filter` for using inside element `svg` in Preview */
 const Filter = ({ primitives, filterProps }: FilterProps) => (
   <filter id="filter" {...filterProps}>
     {primitives.map((primitive) => {

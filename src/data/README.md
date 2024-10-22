@@ -7,12 +7,3 @@ Contains default data:
 * `docsData` — object with docs for primitives
 * `primitivesAttrs` — object with primitives attributes
 
-Usage:
-
-```js static
-import {
-  primitivesData,
-  primitivesAttrs,
-  presetsData,
-  docsData} from '../Data';
-```

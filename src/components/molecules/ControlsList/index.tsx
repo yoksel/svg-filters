@@ -25,6 +25,7 @@ interface ControlsListProps {
   addPrimitive?: (args: AddPrimitiveArgs) => void;
 }
 
+/**Outputs list of primitives or presets, depends of current section. */
 const ControlsList = ({ items, control = 'button', addPrimitive }: ControlsListProps) => {
   const { section, id } = useSection();
 

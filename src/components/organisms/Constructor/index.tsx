@@ -10,6 +10,7 @@ interface ConstructorProps extends React.PropsWithChildren {
   section: Section;
 }
 
+/** Constructor for visual manipulating filter primitives */
 const Constructor = ({
   primitives,
   purgePrimitives,

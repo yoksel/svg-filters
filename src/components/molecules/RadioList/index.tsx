@@ -9,7 +9,7 @@ interface RadioListProps {
   listTitle?: string;
   onChange: (value: string | Interpolation) => void;
 }
-
+/** Component allows to switch given values using radio buttons */
 const RadioList = ({ list, current, listTitle, onChange }: RadioListProps) => {
   return (
     <div className="RadioList">
