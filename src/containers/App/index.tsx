@@ -9,17 +9,20 @@ import Header from '../../components/molecules/Header';
 import Footer from '../../components/molecules/Footer';
 import Sidebar from '../Sidebar';
 import Wrapper from '../../components/atoms/Wrapper';
+import useSection from '../../hooks/useSection';
 
 import './App.scss';
 
 const App = () => {
+  const { section } = useSection();
+
   return (
     <>
       <DragDrop listId="primitives_to_constructor">
         <Icons />
 
         <div className="App">
-          <Header />
+          <Header section={section} />
 
           <Wrapper>
             <main className="App__inner">
@@ -43,7 +46,7 @@ const App = () => {
             </main>
           </Wrapper>
 
-          <Footer />
+          <Footer section={section} />
         </div>
       </DragDrop>
     </>

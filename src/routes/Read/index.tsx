@@ -13,7 +13,7 @@ const Read = () => {
       <Icons />
 
       <div className="Read">
-        <Header />
+        <Header section="read" />
 
         <Wrapper>
           <main className="Read__inner">
@@ -135,7 +135,7 @@ const Read = () => {
           </main>
         </Wrapper>
 
-        <Footer />
+        <Footer section="read" />
       </div>
     </>
   );

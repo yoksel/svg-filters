@@ -1,13 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
-import useSection from '../../../hooks/useSection';
 import Wrapper from '../../atoms/Wrapper';
+import { Section } from '../../../store/types';
 
 import './Footer.scss';
 
-const Footer = () => {
-  const { section } = useSection();
-
+const Footer = ({ section }: { section: Section }) => {
   const getLink = () => {
     if (section === 'read') {
       return <span className="Footer__link Footer__link--read">Useful Resources</span>;

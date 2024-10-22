@@ -1,14 +1,12 @@
 import { NavLink } from 'react-router-dom';
 
-import useSection from '../../../hooks/useSection';
 import Wrapper from '../../atoms/Wrapper';
 import { HeaderNav } from './HeaderNav';
+import { Section } from '../../../store/types';
 
 import './Header.scss';
 
-const Header = () => {
-  const { section } = useSection();
-
+const Header = ({ section }: { section: Section }) => {
   const getLogoLink = () => {
     const pageTitle = 'SVG Filters';
 
