@@ -2,6 +2,8 @@ import type { Preview } from '@storybook/react';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
+import '../src/index.scss';
+
 const preview: Preview = {
   parameters: {
     controls: {
