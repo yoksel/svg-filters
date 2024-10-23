@@ -12,7 +12,7 @@ import reducer, {
   switchOffLastAdded,
   swapPrimitives,
   purgePrimitives,
-  switchChild,
+  togglePrimitiveChild,
   moveToPlayground,
   toggleDocs,
   addPresetPrimitivesToStage,
@@ -700,7 +700,7 @@ describe('reducers', () => {
   // SWITCH_CHILD
   // ------------------------------
 
-  it('switchChild: should enable one child & disable others', () => {
+  it('togglePrimitiveChild: should enable one child & disable others', () => {
     const stateBefore = mockState({
       sections: {
         playground: [
@@ -754,7 +754,7 @@ describe('reducers', () => {
       },
     });
 
-    expect(reducer(stateBefore, switchChild(action))).toEqual(stateAfter);
+    expect(reducer(stateBefore, togglePrimitiveChild(action))).toEqual(stateAfter);
   });
 
   // MOVE_TO_PLAYGROUND

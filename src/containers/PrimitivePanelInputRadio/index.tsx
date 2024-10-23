@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { switchChild } from '../../store/primitivesSlice';
+import { togglePrimitiveChild } from '../../store/primitivesSlice';
 import InputRadio, { InputRadioProps } from '../../components/atoms/InputRadio';
 import useSection from '../../hooks/useSection';
 import { isPrimitivesSection } from '../../store/types';
@@ -22,7 +22,7 @@ const PrimitiveInputRadioContainer = (props: PrimitiveInputRadioContainerProps) 
       {...props}
       onChange={(targetId: string) => {
         dispatch(
-          switchChild({
+          togglePrimitiveChild({
             id: targetId,
             parentId,
             section,

@@ -448,7 +448,7 @@ const reducers = {
       state.sections['docs'] = [];
     }
   },
-  switchChild: (
+  togglePrimitiveChild: (
     state: PrimitivesState,
     action: PayloadAction<{
       section: keyof PrimitivesSections;
