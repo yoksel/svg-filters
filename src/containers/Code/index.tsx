@@ -18,6 +18,7 @@ const getFilterAttrs = (filterData?: FilterParams) => {
   const attrsList = Object.keys(filterData).reduce<string[]>((prev, attrName) => {
     let value = filterData[attrName as keyof FilterParams];
     let valueAsString: string = '';
+
     if (typeof value === 'object') {
       const valueWithStringTypes = value as { [key: string]: string };
       const valueList = Object.keys(valueWithStringTypes).reduce<string[]>((prev, valueKey) => {
@@ -65,7 +66,7 @@ const Code = () => {
     <section className="Code">
       <h2 className="visually-hidden">Filter code</h2>
       <ColorInterpolFiltersSwitcher />
-      <textarea className="Code__textarea" defaultValue={value} spellCheck="false" />
+      <textarea className="Code__textarea" value={value} readOnly={true} spellCheck="false" />
     </section>
   );
 };
