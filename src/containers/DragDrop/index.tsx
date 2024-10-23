@@ -13,9 +13,10 @@ interface SwapItemsData {
 }
 
 interface DragDropProps extends React.PropsWithChildren {
-  listId: string; ///????
+  listId: string;
 }
 
+/** Component handles logic for dragging items to Constructor & inside it. */
 const DragDrop = ({ children, listId }: DragDropProps) => {
   const dragDrop = useSelector((state: RootState) => state.dragDrop);
   const isDragging = useSelector((state: RootState) => Boolean(state.dragDrop.currentId));

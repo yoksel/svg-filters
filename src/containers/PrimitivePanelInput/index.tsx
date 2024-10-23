@@ -20,6 +20,7 @@ function isKeyInData(
   return paramKey in inputsData;
 }
 
+/** Component handles inputs from PrimitivePanel and returns input container of proper type */
 const PrimitivePanelInput = (props: PrimitivePanelInputProps) => {
   const { primitive, paramKey } = props;
   const { inputsData } = primitivesAttrs[primitive.groupName];

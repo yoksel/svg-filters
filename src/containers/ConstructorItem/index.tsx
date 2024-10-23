@@ -11,6 +11,7 @@ interface ConstructorItemProps extends React.PropsWithChildren {
   nativeEvent?: NativeEventCoords;
 }
 
+/** Constructor item component, contains passed primitive panel and wrap it with DragDropItem */
 const ConstructorItem = ({
   children,
   id,

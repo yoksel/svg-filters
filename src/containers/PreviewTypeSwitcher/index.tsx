@@ -23,6 +23,7 @@ const typesList = [
   },
 ];
 
+/** Switcher for playground types to choose what to show: image with text or just text or to add custom content */
 const PreviewTypeSwitcher = () => {
   const playgroundType = useSelector((state: RootState) => state.preview.type);
   const dispatch = useDispatch();

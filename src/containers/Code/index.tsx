@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';
-import { FilterParams, isPrimitivesSection, PrimitiveItem } from '../../store/types';
+import { FilterParams, isPrimitivesSection } from '../../store/types';
 import ColorInterpolFiltersSwitcher from '../ColorInterpolFiltersSwitcher';
 import { getAllPrimitivesCode } from './helpers';
 
@@ -38,12 +38,6 @@ const getFilterAttrs = (filterData?: FilterParams) => {
   }, []);
 
   return attrsList.join(' ');
-};
-
-const printCode = (primitives: PrimitiveItem[]) => {
-  console.groupCollapsed('Filter code');
-  console.log(JSON.stringify(primitives, null, '\t'));
-  console.groupEnd();
 };
 
 /** Section containing Textarea with filter code and color interpolation switcher */

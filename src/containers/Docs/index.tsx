@@ -11,6 +11,7 @@ interface DocsContainerProps {
   isEmbedded?: boolean; // to check
 }
 
+/** Container for passing down values from store to UI Docs component */
 const DocsContainer = ({ primitiveGroupName, parentId, isEmbedded }: DocsContainerProps) => {
   const { section, id: idFromUrl } = useSection();
   // id prop is used to show docs in primitive panel

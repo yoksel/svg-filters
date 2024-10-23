@@ -28,6 +28,7 @@ interface PrimitivePanelControlsContainerProps {
   section: keyof PrimitivesSections;
 }
 
+/** Controls for primitive panel to toggle or delete or duplicate primitive or to show documentation */
 const PrimitivePanelControlsContainer = (props: PrimitivePanelControlsContainerProps) => {
   const {
     primitive,

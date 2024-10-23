@@ -5,6 +5,7 @@ import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';
 import { isPrimitivesSection } from '../../store/types';
 
+/** Container for passing down values from store to UI Filter component */
 const FilterContainer = () => {
   const { section } = useSection();
   const filterProps = useSelector((state: RootState) => state.primitives.filter);

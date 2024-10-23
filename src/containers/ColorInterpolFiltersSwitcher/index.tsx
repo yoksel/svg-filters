@@ -16,6 +16,7 @@ const colorInterpolList = [
   },
 ];
 
+/** Switcher for the filter interpolation types */
 const ColorInterpolFiltersSwitcher = () => {
   const filter = useSelector((state: RootState) => state.primitives.filter);
   const dispatch = useDispatch();

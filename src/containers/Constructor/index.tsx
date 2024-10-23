@@ -12,6 +12,7 @@ import ConstructorPlaceholder from '../../components/atoms/ConstructorPlaceholde
 import ConstructorItem from '../ConstructorItem';
 import PrimitivePanel from '../PrimitivePanel';
 
+/** Constructor component, contains primitives  */
 const ConstructorContainer = () => {
   const { section } = useSection();
   const primitives = useSelector((state: RootState) => {

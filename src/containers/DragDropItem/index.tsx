@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { startDrag, addDragItemToList } from '../../store/dragDropSlice';
 
-// import {startDrag} from '../../store/actions';
-
 import Placeholder from '../../components/atoms/Placeholder';
 import { NativeEventCoords } from '../../store/types';
 
@@ -26,6 +24,7 @@ interface DragDropItemProps extends React.PropsWithChildren {
   nativeEvent?: NativeEventCoords;
 }
 
+/** Component is used to make single items draggable */
 const DragDropItem = (props: DragDropItemProps) => {
   const { id, index, parentId, listId, justAdded, nativeEvent } = props;
   // from state

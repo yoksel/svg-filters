@@ -11,6 +11,7 @@ import Tip from './Tip';
 
 import './Preview.scss';
 
+/** Component shows SVG content with applied filter */
 const Preview = () => {
   const { section } = useSection();
   const previewType = useSelector((state: RootState) => state.preview.type);

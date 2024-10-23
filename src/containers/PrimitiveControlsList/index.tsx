@@ -5,6 +5,7 @@ import { RootState } from '../../store/store';
 import useSection from '../../hooks/useSection';
 import { isPrimitivesSection, PrimitiveItem } from '../../store/types';
 
+/** List of primitives controls for the left column in Preview & Docs sections. */
 const PrimitiveControlsList = () => {
   const dispatch = useDispatch();
   const { section } = useSection();

@@ -13,6 +13,7 @@ import useSection from '../../hooks/useSection';
 
 import './App.scss';
 
+/** Main component for app. It joins all app components into one layout */
 const App = () => {
   const { section } = useSection();
 
