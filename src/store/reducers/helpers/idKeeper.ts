@@ -2,12 +2,12 @@ import { PrimitiveItem, Section, SectionState } from '../../types';
 import countItemsInGroups from './countItemsInGroups';
 
 // to fix: clarify name
-interface Counter {
+interface IdCountersByName {
   [key: string]: number;
 }
 
 export const idKeeperConstructor = () => {
-  const groupIdCounter: { [key: string]: Counter } = {};
+  const groupIdCounter: { [key: string]: IdCountersByName } = {};
 
   const addSection = (sectionState: SectionState, section: string) => {
     // If state was filled from localStorage,
