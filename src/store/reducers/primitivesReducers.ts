@@ -92,6 +92,8 @@ const reducers = {
   ) => {
     const { section, primitive, childId, id } = action.payload;
     const sectionStateList = state.sections[section];
+    if (!sectionStateList || !id) return;
+
     const primitiveData = {
       type: 'DUPLICATE_PRIMITIVE',
       primitive,
@@ -100,15 +102,11 @@ const reducers = {
       id,
     };
 
-    if (!sectionStateList) return;
-
-    // @ts-expect-error
     const { newPrimitive, pos } = updateDuplicatedPrimitive(sectionStateList, primitiveData);
-    let duplicateList: PrimitiveItem[] = [];
+    let duplicateList: PrimitiveItem[] | undefined = [];
 
     if (childId !== undefined) {
       // Inner list
-      // @ts-expect-error
       duplicateList = state.sections[section]?.map((item: PrimitiveItem) => {
         if (item.id === id && item.children) {
           item.children = [
@@ -129,7 +127,9 @@ const reducers = {
       ];
     }
 
-    state.sections[section] = duplicateList;
+    if (duplicateList) {
+      state.sections[section] = duplicateList;
+    }
   },
   togglePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
@@ -164,12 +164,11 @@ const reducers = {
   deletePrimitive: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
     const sectionStateList = state.sections[section];
-    let updatedList = [];
+    let updatedList: PrimitiveItem[] | undefined = [];
 
     if (childId) {
       // Inner list
-      // @ts-expect-error
-      updatedList = sectionStateList.map((item: PrimitiveItem) => {
+      updatedList = sectionStateList?.map((item: PrimitiveItem) => {
         if (item.id === id) {
           item = deepClone(item);
           item.children = item.children?.filter((child) => child.id !== childId);
@@ -179,11 +178,12 @@ const reducers = {
       });
     } else {
       // Top level list
-      // @ts-expect-error
-      updatedList = sectionStateList.filter((item: PrimitiveItem) => item.id !== id);
+      updatedList = sectionStateList?.filter((item: PrimitiveItem) => item.id !== id);
     }
 
-    state.sections[section] = updatedList;
+    if (updatedList?.length) {
+      state.sections[section] = updatedList;
+    }
   },
   togglePrimitiveProp: (
     state: PrimitivesState,
@@ -196,8 +196,8 @@ const reducers = {
     }>,
   ) => {
     const { section, id, parentId, disabled, param } = action.payload;
-    // @ts-expect-error
-    let updatedList = state.sections[section].map((item: PrimitiveItem) => {
+    const sectionStateList = state.sections[section];
+    let updatedList = sectionStateList?.map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item.id === parentId) {
         item = deepClone(item);
@@ -223,7 +223,9 @@ const reducers = {
       return item;
     });
 
-    state.sections[section] = updatedList;
+    if (updatedList?.length) {
+      state.sections[section] = updatedList;
+    }
   },
   changePrimitiveProp: (
     state: PrimitivesState,
@@ -237,8 +239,8 @@ const reducers = {
     }>,
   ) => {
     const { section, id, parentId, param, value } = action.payload;
-    // @ts-expect-error
-    let updatedList = state.sections[section].map((item: PrimitiveItem) => {
+    const sectionStateList = state.sections[section];
+    let updatedList = sectionStateList?.map((item: PrimitiveItem) => {
       // Edit prop of child
       if (item.id === parentId) {
         item = deepClone(item);
@@ -274,7 +276,9 @@ const reducers = {
       return item;
     });
 
-    state.sections[section] = updatedList;
+    if (updatedList?.length) {
+      state.sections[section] = updatedList;
+    }
   },
   changePrimitivePropType: (
     state: PrimitivesState,
@@ -287,8 +291,8 @@ const reducers = {
     }>,
   ) => {
     const { section, id, parentId, param, propType } = action.payload;
-    // @ts-expect-error
-    let changePropTypeList = state.sections[section].map((item: PrimitiveItem) => {
+    const sectionStateList = state.sections[section];
+    let updatedList = sectionStateList?.map((item: PrimitiveItem) => {
       if (item.id === parentId) {
         // Edit prop type of child
         item = deepClone(item);
@@ -313,7 +317,9 @@ const reducers = {
 
       return item;
     });
-    state.sections[section] = changePropTypeList;
+    if (updatedList?.length) {
+      state.sections[section] = updatedList;
+    }
   },
   changeInProps: (
     state: PrimitivesState,
@@ -322,15 +328,14 @@ const reducers = {
     }>,
   ) => {
     const { section } = action.payload;
-    const list = state.sections[section];
-    // @ts-expect-error
-    let updatedList = state.sections[section].map((item: PrimitiveItem, index: number) => {
-      if (item.disabled || !list?.length) {
+    const sectionStateList = state.sections[section];
+    let updatedList = sectionStateList?.map((item: PrimitiveItem, index: number) => {
+      if (item.disabled || !sectionStateList?.length) {
         return item;
       }
 
       if (item.params.in) {
-        item = updateInPropInPrimitiveItem({ item, index, list });
+        item = updateInPropInPrimitiveItem({ item, index, list: sectionStateList });
       }
       if (item.children) {
         const children = deepClone(item?.children);
@@ -343,14 +348,17 @@ const reducers = {
             item: child,
             index: childIndex,
             isChild: true,
-            list,
+            list: sectionStateList,
           });
         });
       }
 
       return item;
     });
-    state.sections[section] = updatedList;
+
+    if (updatedList?.length) {
+      state.sections[section] = updatedList;
+    }
   },
   switchOffLastAdded: (
     state: PrimitivesState,
@@ -360,8 +368,8 @@ const reducers = {
     }>,
   ) => {
     const { section, id } = action.payload;
-    // @ts-expect-error
-    const updatedList = state.sections[section].map((item: PrimitiveItem) => {
+    const sectionStateList = state.sections[section];
+    const updatedList = sectionStateList?.map((item: PrimitiveItem) => {
       if (item.id === id) {
         item = deepClone(item);
         item.justAdded = false;
@@ -371,7 +379,9 @@ const reducers = {
       return item;
     });
 
-    state.sections[section] = updatedList;
+    if (updatedList?.length) {
+      state.sections[section] = updatedList;
+    }
   },
   swapPrimitives: (
     state: PrimitivesState,
@@ -383,8 +393,7 @@ const reducers = {
     }>,
   ) => {
     const { section, parentId, swapSnapshot, indexes } = action.payload;
-    // @ts-expect-error
-    let swapPrimitivesList = [...state.sections[section]];
+    let swapPrimitivesList = [...(state.sections[section] ?? [])];
 
     if (state.swapSnapshot && state.swapSnapshot === swapSnapshot) {
       return;
@@ -406,15 +415,6 @@ const reducers = {
     }
 
     swapPrimitivesList = swapPrimitivesList.filter((item) => item);
-
-    // const swapResult = {
-    //   ...state: PrimitivesState,
-    //   swapSnapshot: action.swapSnapshot,
-    // };
-
-    // swapResult[swapSection] = swapPrimitivesList;
-
-    // return swapResult;
 
     state.sections[section] = swapPrimitivesList;
     state.swapSnapshot = swapSnapshot;
@@ -457,8 +457,8 @@ const reducers = {
     }>,
   ) => {
     const { section, id, parentId } = action.payload;
-    // @ts-expect-error
-    const updatedList = state.sections[section].map((item: PrimitiveItem) => {
+    const sectionStateList = state.sections[section];
+    const updatedList = sectionStateList?.map((item: PrimitiveItem) => {
       if (item.id === parentId) {
         // item = deepClone(item);
 
@@ -473,7 +473,9 @@ const reducers = {
       return item;
     });
 
-    state.sections[section] = updatedList;
+    if (updatedList?.length) {
+      state.sections[section] = updatedList;
+    }
   },
   moveToPlayground: (
     state: PrimitivesState,
@@ -483,15 +485,16 @@ const reducers = {
   ) => {
     const { section } = action.payload;
     let listToMove = state.sections[section];
-    // @ts-expect-error
-    resetIdKeeperSection(listToMove, 'playground');
-    // @ts-expect-error
-    state.sections['playground'] = listToMove;
+
+    if (listToMove?.length) {
+      resetIdKeeperSection(listToMove, 'playground');
+      state.sections['playground'] = listToMove;
+    }
   },
   toggleDocs: (state: PrimitivesState, action: PayloadAction<PrimitiveActionArgs>) => {
     const { section, id, childId } = action.payload;
-    // @ts-expect-error
-    const updatedList = state.sections[section].map((item: PrimitiveItem) => {
+    const sectionStateList = state.sections[section];
+    const updatedList = sectionStateList?.map((item: PrimitiveItem) => {
       if (item.id === id) {
         item = deepClone(item);
 
@@ -511,7 +514,10 @@ const reducers = {
 
       return item;
     });
-    state.sections[section] = updatedList;
+
+    if (updatedList?.length) {
+      state.sections[section] = updatedList;
+    }
   },
   addPresetPrimitivesToStage: (
     state: PrimitivesState,
