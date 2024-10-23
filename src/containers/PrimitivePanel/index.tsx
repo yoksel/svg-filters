@@ -36,8 +36,8 @@ const PrimitivePanel = ({
   const primitiveName = groupData.name;
   const inputsData = groupData.inputsData;
   const fieldsetProps: { disabled?: boolean } = {};
-  const hasChildren = primitive.children ? 'has-children' : 'no-children';
-  const PrimitivePanelContentClass = `PrimitivePanel__content PrimitivePanel__content--${hasChildren}`;
+  const hasChildrenMod = primitive.children ? 'has-children' : 'no-children';
+  const PrimitivePanelContentClass = `PrimitivePanel__content PrimitivePanel__content--${hasChildrenMod}`;
   const hasResult = Boolean(primitive.params.result);
 
   if (primitiveDisabled) {
@@ -80,7 +80,7 @@ const PrimitivePanel = ({
     <div
       className={clsx(
         'PrimitivePanel',
-        `PrimitivePanel--${hasChildren}`,
+        `PrimitivePanel--${hasChildrenMod}`,
         !hasResult && 'PrimitivePanel--no-result',
       )}
     >
@@ -104,7 +104,7 @@ const PrimitivePanel = ({
         section={section}
         primitiveDisabled={primitiveDisabled}
         hasResult={hasResult}
-        hasChildrenMod={hasChildren}
+        hasChildrenMod={hasChildrenMod}
         parentHasSingleChild={parentHasSingleChild}
         noChangesForChildren={noChangesForChildren}
       />
