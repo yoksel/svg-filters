@@ -53,8 +53,14 @@ const AppRoute = () => {
 
     if (currentItems.length && section === 'presets' && id) {
       const preset = presets.find((preset: Preset) => preset.id === id);
-      if (preset?.primitives?.length)
-        dispatch(addPresetPrimitivesToStage({ primitives: preset?.primitives }));
+      if (preset?.primitives?.length) {
+        dispatch(
+          addPresetPrimitivesToStage({
+            primitives: preset?.primitives,
+            colorInterpolationFilters: preset?.colorInterpolationFilters,
+          }),
+        );
+      }
     }
   };
 

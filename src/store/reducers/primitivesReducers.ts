@@ -513,7 +513,6 @@ const reducers = {
     });
     state.sections[section] = updatedList;
   },
-  // TODO: CHECK THIS REDUCER, add tests
   addPresetPrimitivesToStage: (
     state: PrimitivesState,
     action: PayloadAction<{
