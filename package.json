@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@chromatic-com/storybook": "^1.8.0",
     "@reduxjs/toolkit": "^2.2.7",
     "@storybook/addon-essentials": "^8.2.9",
