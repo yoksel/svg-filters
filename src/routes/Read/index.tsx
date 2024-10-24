@@ -113,17 +113,6 @@ const Read = () => {
                 <a href="https://kazzkiq.github.io/svg-color-filter/">SVG Color Filter Preview</a>{' '}
                 by Claudio Holanda
               </li>
-              <li>
-                <a href="http://andresgalante.com/RGBAtoFeColorMatrix/">
-                  RGBA to feColorMatrix converter
-                </a>{' '}
-                by Andres Galante
-              </li>
-              <li>
-                <a href="https://testdrive-archive.azurewebsites.net/graphics/hands-on-css3/hands-on_svg-filter-effects.htm">
-                  Hands On: SVG Filter Effects
-                </a>
-              </li>
             </ul>
             <br />
             <p>
