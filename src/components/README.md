@@ -1,3 +1,3 @@
 # Components
 
-Visual components not connected to store
+UI components not connected to store

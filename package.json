@@ -1,54 +1,74 @@
 {
   "name": "svg-filters",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "homepage": "https://yoksel.github.io/svg-filters/",
-  "jest": {
-    "coverageReporters": [
-      "text"
-    ]
-  },
   "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.106",
+    "@types/react": "^18.3.4",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "react-router-dom": "^6.26.1",
+    "react-scripts": "5.0.1",
+    "redux": "^5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
-    "test": "react-scripts test --env=jsdom",
-    "test:coverage": "react-scripts test --env=jsdom --coverage",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "create": "create-component-files",
-    "component": "create-component-files -- --path=./src/components",
-    "container": "create-component-files -- --path=./src/containers --type=container",
-    "js:lint": "eslint '**/*.js'",
-    "js:fix": "eslint '**/*.js' --fix",
-    "css:lint": "stylelint src/**/*.scss",
-    "lint": "npm run js:lint && npm run css:lint",
-    "lint:fix": "npm run js:fix",
-    "deploy": "npm run build && gh-pages -d build",
-    "styleguide:watch": "npx styleguidist server",
-    "styleguide:build": "npx styleguidist build"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "deploy": "yarn build && gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:storybook/recommended"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "create-component-files": "^0.1.15",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@chromatic-com/storybook": "^1.8.0",
+    "@reduxjs/toolkit": "^2.2.7",
+    "@storybook/addon-essentials": "^8.2.9",
+    "@storybook/addon-interactions": "^8.2.9",
+    "@storybook/addon-links": "^8.2.9",
+    "@storybook/addon-onboarding": "^8.2.9",
+    "@storybook/blocks": "^8.2.9",
+    "@storybook/preset-create-react-app": "^8.2.9",
+    "@storybook/react": "^8.2.9",
+    "@storybook/react-webpack5": "^8.2.9",
+    "@storybook/test": "^8.2.9",
+    "clsx": "^2.1.1",
     "eslint-config-yandex": "^1.0.6",
-    "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-react": "^7.10.0",
-    "gh-pages": "^1.2.0",
-    "lodash": "^4.17.10",
-    "node-sass-chokidar": "^1.3.0",
-    "npm-run-all": "^4.1.3",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "react-styleguidist": "^7.3.0",
-    "redux": "^4.0.0",
-    "stylelint": "^9.3.0",
-    "stylelint-config-standard": "^18.2.0"
+    "eslint-plugin-storybook": "^0.8.0",
+    "gh-pages": "^6.2.0",
+    "prettier": "^3.3.3",
+    "prop-types": "^15.8.1",
+    "sass": "^1.77.8",
+    "storybook": "^8.2.9",
+    "webpack": "^5.94.0"
   }
 }

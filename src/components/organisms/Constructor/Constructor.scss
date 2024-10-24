@@ -1,0 +1,58 @@
+@import "../../../variables.scss";
+
+.Constructor {
+  min-width: 350px;
+  margin-bottom: 1rem;
+  color: $color-lightgray;
+}
+
+.Constructor__container {
+  min-height: 80px;
+  padding: 12px;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: .5em;
+  margin-top: .5em;
+  border: 2px dashed;
+  border-radius: $border-radius;
+}
+
+.Constructor__tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.Constructor__button {
+  padding: 2px 4px;
+  background: none;
+  border: none;
+  border-radius: $border-radius;
+  outline: none;
+  box-shadow: 0 0 0 2px transparent;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  color: inherit;
+
+  &:hover {
+    box-shadow: 0 0 0 2px transparent;
+    color: lightseagreen;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px;
+  }
+}
+
+.Constructor__button--move {
+  text-decoration: none;
+}
+
+.Constructor__button--purge {
+  &:hover {
+    color: crimson;
+  }
+}

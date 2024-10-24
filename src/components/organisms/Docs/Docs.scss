@@ -1,0 +1,140 @@
+@import "../../../variables.scss";
+
+.Docs {
+  min-width: 0;
+  transition: min-width .3s;
+  font-size: 14px;
+  pointer-events: all;
+
+  CODE {
+    padding: 2px 4px;
+    border-radius: $border-radius;
+    background: $hlt-blue;
+  }
+}
+
+.Docs__title {
+  margin-top: 0;
+  margin-bottom: .5em;
+  font-size: 1.3em;
+}
+
+.Docs__links {
+  padding: .3em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Docs__link {
+  line-height: 1;
+}
+
+.Docs__link--docs {
+  text-decoration: dashed;
+  text-decoration-line: underline;
+  color: inherit;
+
+  &:hover {
+    color: lightseagreen;
+  }
+}
+
+.Docs__list-title {
+  margin: 2em 0 1em;
+  font-size: 1.2em;
+}
+
+.Docs__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.Doc-prop {
+  margin-bottom: 2rem;
+}
+
+.Doc-prop__name {
+  padding: 2px 6px;
+  background: $hlt-green;
+  border: none;
+  border-radius: $border-radius;
+  font: inherit;
+}
+
+.Doc-prop__value,
+.Doc-prop__desc {
+  margin: .7rem 0;
+}
+
+.Docs__desc,
+.Doc-prop__desc {
+  UL {
+    padding-left: 20px;
+  }
+}
+
+.Docs--embeded {
+  width: 100%;
+  margin-top: 5px;
+  padding: .5em;
+  border: 2px solid $hlt-orange;
+  border-radius: $border-radius;
+
+  .Docs__title {
+    display: none;
+  }
+
+  .Docs__list-title {
+    margin: 1rem 0 .5rem;
+  }
+
+  .Docs-props {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+
+  .Doc-prop__control {
+    position: relative;
+    margin: .5em 1em 0 0;
+    outline: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 2px $color-darkgray;
+    }
+
+    &--current {
+      background: $color-darkgray;
+      box-shadow: 0 0 0 2px $color-darkgray;
+      color: #FFF;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 0;
+        margin: auto;
+        border: 7px solid transparent;
+        border-top-color: $color-darkgray;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .Doc-prop {
+    display: none;
+    margin-right: 1em;
+    margin-bottom: 0;
+
+    &--current {
+      display: block;
+      margin-top: 1em;
+    }
+  }
+}

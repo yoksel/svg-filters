@@ -1,0 +1,66 @@
+.Preview {
+  display: flex;
+}
+
+.Preview__image {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Preview__svg-wrapper {
+  position: relative;
+}
+
+.Preview__tip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, .75);
+  border: 2px solid #CCC;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  min-width: 50%;
+
+  &--add-svg-content {
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  &--add-primitives {
+    white-space: nowrap;
+  }
+}
+
+.Preview__svg {
+  width: 100%;
+  height: 400px;
+  flex-grow: 1;
+  background: url("./gray-cells.png");
+  font-size: 6rem;
+  font-weight: bold;
+  font-family: Arial Black, Arial Bold, Arial, sans-serif;
+  fill: lightseagreen;
+
+  @media (min-width: 1100px) {
+    height: 450px;
+  }
+
+  @media (min-width: 1250px) {
+    height: 525px;
+  }
+
+  @media (min-width: 1400px) {
+    height: 600px;
+  }
+
+  .Preview--text & {
+    font-size: 9rem;
+  }
+}

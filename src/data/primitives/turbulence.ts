@@ -1,0 +1,40 @@
+import { PrimitiveItem } from '../../store/types';
+
+const turbulence: PrimitiveItem = {
+  id: 'turbulence',
+  groupName: 'turbulence',
+  params: {
+    type: {
+      value: 'turbulence',
+    },
+    baseFrequency: {
+      value: '0.015 0.1',
+    },
+    numOctaves: {
+      value: '2',
+    },
+    seed: {
+      value: '2',
+    },
+    stitchTiles: {
+      value: 'stitch',
+    },
+    x: {
+      value: '0%',
+    },
+    y: {
+      value: '0%',
+    },
+    width: {
+      value: '100%',
+    },
+    height: {
+      value: '100%',
+    },
+    result: {
+      value: 'turbulence',
+    },
+  },
+};
+
+export default turbulence;

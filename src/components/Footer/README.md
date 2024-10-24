@@ -1,7 +1,0 @@
-# Footer
-
-Page footer
-
-```
-<Footer/>
-```

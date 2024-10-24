@@ -1,0 +1,58 @@
+import { Preset } from '../../store/types';
+
+const waves: Preset = {
+  id: 'waves',
+  name: 'Waves',
+  primitives: [
+    {
+      id: 'turbulence',
+      params: {
+        type: {
+          value: 'turbulence',
+        },
+        baseFrequency: {
+          value: '0.01 0.05',
+        },
+        numOctaves: {
+          value: '2',
+        },
+        seed: {
+          value: '2',
+        },
+        stitchTiles: {
+          value: 'noStitch',
+        },
+        result: {
+          value: 'turbulence',
+        },
+      },
+      groupName: 'turbulence',
+    },
+    {
+      id: 'displacementMap',
+      params: {
+        in: {
+          value: 'SourceGraphic',
+        },
+        in2: {
+          value: 'turbulence',
+        },
+        scale: {
+          value: '20',
+        },
+        xChannelSelector: {
+          value: 'G',
+        },
+        yChannelSelector: {
+          value: 'A',
+        },
+        result: {
+          value: 'displacementMap',
+        },
+      },
+      groupName: 'displacementMap',
+    },
+  ],
+};
+
+export default waves;

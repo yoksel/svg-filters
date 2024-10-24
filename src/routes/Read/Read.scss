@@ -1,0 +1,26 @@
+@import "../../variables.scss";
+
+.Read {
+  min-width: 800px;
+}
+
+.Read__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem $offset;
+}
+
+.Read__title {
+  margin-top: 0;
+}
+
+.Read__list {
+  LI {
+    margin-bottom: .5rem;
+    font-size: 14px;
+  }
+
+  A {
+    font-size: 16px;
+  }
+}
