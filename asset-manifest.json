@@ -1,4 +1,11 @@
 {
-  "main.css": "static/css/main.4ae9df74.css",
-  "main.js": "static/js/main.0e076285.js"
+  "files": {
+    "main.css": "/svg-filters/static/css/main.7e32856c.css",
+    "main.js": "/svg-filters/static/js/main.a4fc3925.js",
+    "index.html": "/svg-filters/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.7e32856c.css",
+    "static/js/main.a4fc3925.js"
+  ]
 }
