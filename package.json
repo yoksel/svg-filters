@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
+  "name": "svg-filters",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://yoksel.github.io/svg-filters/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -25,7 +26,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy": "yarn build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +64,7 @@
     "clsx": "^2.1.1",
     "eslint-config-yandex": "^1.0.6",
     "eslint-plugin-storybook": "^0.8.0",
+    "gh-pages": "^6.2.0",
     "prettier": "^3.3.3",
     "prop-types": "^15.8.1",
     "sass": "^1.77.8",
